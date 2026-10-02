@@ -1,0 +1,2139 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Paket &amp; Harga | Qriya — Gantungan QR &amp; Website Digital</title>
+<meta name="description" content="Pilih paket Qriya: Starter, Pro, Business, dan NFC Gaming Card. Harga jelas, fitur lengkap, plus galeri hasil project website.">
+<meta name="theme-color" content="#050b18">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+<script>document.documentElement.classList.add('js');</script>
+
+<style>
+/* =========================================================
+   DESIGN TOKENS
+   ========================================================= */
+:root{
+  --bg:#050b18;
+  --bg-secondary:#0a1328;
+  --blue:#2563eb;
+  --electric:#38bdf8;
+  --indigo:#4f46e5;
+  --purple:#7c3aed;
+  --white:#ffffff;
+  --text:#f8fafc;
+  --muted:#94a3b8;
+  --muted-2:rgba(148,163,184,.62);
+  --line:rgba(255,255,255,.08);
+  --line-2:rgba(255,255,255,.14);
+  --grad:linear-gradient(135deg,#2563eb 0%,#4f46e5 52%,#7c3aed 100%);
+  --grad-soft:linear-gradient(135deg,rgba(37,99,235,.16),rgba(124,58,237,.16));
+  --r-sm:12px;
+  --r-md:16px;
+  --r-lg:20px;
+  --r-xl:28px;
+  --ease:cubic-bezier(.22,.8,.24,1);
+  --max:1240px;
+  --space-1:clamp(8px,1vw,12px);
+  --space-2:clamp(16px,2vw,24px);
+  --space-3:clamp(24px,3vw,36px);
+  --space-4:clamp(40px,5vw,64px);
+  --space-5:clamp(64px,8vw,96px);
+  --space-6:clamp(88px,11vw,140px);
+}
+
+/* =========================================================
+   RESET
+   ========================================================= */
+*,*::before,*::after{box-sizing:border-box}
+*{margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:104px;-webkit-text-size-adjust:100%}
+body{
+  font-family:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  font-size:16px;
+  line-height:1.65;
+  color:var(--text);
+  background:
+    radial-gradient(1100px 620px at 88% -12%, rgba(79,70,229,.18), transparent 62%),
+    radial-gradient(900px 520px at -12% 18%, rgba(37,99,235,.13), transparent 64%),
+    var(--bg);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  text-rendering:optimizeLegibility;
+}
+body.lb-open{overflow:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button{font-family:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--electric);outline-offset:3px;border-radius:6px}
+::selection{background:rgba(124,58,237,.45);color:#fff}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+svg.lucide{width:18px;height:18px;flex:none;stroke-width:1.8}
+
+/* =========================================================
+   LAYOUT HELPERS
+   ========================================================= */
+.container{width:100%;max-width:var(--max);margin-inline:auto}
+.section{padding:var(--space-6) clamp(20px,5vw,64px);position:relative}
+.sec-head{max-width:700px;margin-bottom:var(--space-4)}
+.sec-head.center{margin-inline:auto;text-align:center}
+
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:#a5b4fc;margin-bottom:20px;
+  padding:6px 12px;border-radius:999px;
+  background:rgba(124,58,237,.10);border:1px solid rgba(167,139,250,.22);
+}
+.eyebrow::before{
+  content:"";width:5px;height:5px;border-radius:50%;
+  background:var(--grad);box-shadow:0 0 12px rgba(56,189,248,.9);flex:0 0 auto;
+}
+
+h1{font-size:clamp(2.1rem,5vw,3.6rem);font-weight:800;line-height:1.05;letter-spacing:-.035em}
+h2{font-size:clamp(1.6rem,3.4vw,2.5rem);font-weight:700;line-height:1.15;letter-spacing:-.028em}
+h3{font-size:1.02rem;font-weight:600;letter-spacing:-.01em;line-height:1.35}
+.lead{margin-top:20px;font-size:clamp(.94rem,1.1vw,1.04rem);color:var(--muted);max-width:60ch;line-height:1.75}
+.sec-head.center .lead{margin-inline:auto}
+p{color:var(--muted)}
+.grad-text{background:linear-gradient(120deg,#7dd3fc 0%,#a78bfa 55%,#c4b5fd 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:15px 28px;border-radius:14px;
+  font-size:.94rem;font-weight:600;letter-spacing:.005em;
+  border:1px solid transparent;
+  transition:transform .32s var(--ease),box-shadow .32s var(--ease),background .32s ease,border-color .32s ease,color .32s ease;
+  white-space:nowrap;
+}
+.btn svg.lucide{width:18px;height:18px;transition:transform .32s var(--ease)}
+.btn-primary{background:var(--grad);color:#fff;border-color:rgba(255,255,255,.20);box-shadow:0 10px 28px rgba(79,70,229,.42)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 42px rgba(124,58,237,.55)}
+.btn-primary:hover svg.lucide{transform:translateX(3px)}
+.btn-ghost{background:rgba(255,255,255,.06);color:#fff;border-color:rgba(255,255,255,.18);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.btn-ghost:hover{background:rgba(255,255,255,.12);transform:translateY(-2px)}
+.btn-lg{padding:17px 34px;font-size:1rem;border-radius:16px}
+.btn-block{width:100%}
+.actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:var(--space-3)}
+
+/* =========================================================
+   CARD BASE
+   ========================================================= */
+.card{
+  position:relative;border-radius:var(--r-lg);padding:26px;
+  background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.018));
+  border:1px solid var(--line-2);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  transition:transform .42s var(--ease),border-color .42s ease,box-shadow .42s ease;
+}
+.card:hover{transform:translateY(-4px);border-color:rgba(139,92,246,.42);box-shadow:0 20px 44px rgba(3,7,22,.55),0 0 34px rgba(79,70,229,.16)}
+.ico{
+  width:46px;height:46px;flex:0 0 auto;border-radius:13px;display:grid;place-items:center;
+  background:linear-gradient(135deg,rgba(56,189,248,.16),rgba(124,58,237,.24));
+  border:1px solid rgba(255,255,255,.14);color:#bfdbfe;
+}
+.ico svg.lucide{width:21px;height:21px}
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+.site-header{
+  position:fixed;top:0;left:0;right:0;z-index:80;
+  background:transparent;
+  border-bottom:1px solid transparent;
+  transition:background .45s ease,border-color .45s ease,backdrop-filter .45s ease;
+}
+.site-header::before{
+  content:"";position:absolute;inset:0 0 -40px 0;z-index:-1;pointer-events:none;
+  background:linear-gradient(to bottom,rgba(5,11,24,.62),rgba(5,11,24,0));
+  transition:opacity .45s ease;
+}
+.site-header.scrolled{
+  background:rgba(5,11,24,.78);
+  backdrop-filter:blur(18px) saturate(140%);
+  -webkit-backdrop-filter:blur(18px) saturate(140%);
+  border-bottom-color:rgba(255,255,255,.10);
+}
+.site-header.scrolled::before{opacity:0}
+
+.nav{
+  max-width:1360px;margin:0 auto;
+  padding:16px clamp(18px,4vw,44px);
+  padding-top:calc(16px + env(safe-area-inset-top,0px));
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+}
+
+.brand{
+  display:flex;align-items:center;gap:12px;flex-shrink:0;
+  transition:transform .35s var(--ease);
+}
+.brand img{
+  height:52px;width:auto;max-width:120px;object-fit:contain;
+  transition:transform .35s var(--ease),filter .35s ease;
+  filter:drop-shadow(0 0 14px rgba(79,70,229,.45));
+}
+.brand-text{
+  display:flex;flex-direction:column;line-height:1;
+  font-family:"Plus Jakarta Sans",system-ui,sans-serif;
+}
+.brand-text .b-name{
+  font-size:1.45rem;font-weight:800;letter-spacing:-.02em;
+  background:linear-gradient(120deg,#ffffff 0%,#c4b5fd 55%,#a5b4fc 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  text-shadow:0 0 22px rgba(124,58,237,.35);
+}
+.brand-text .b-tag{
+  margin-top:6px;
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:.56rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
+  color:rgba(165,180,252,.78);
+}
+.brand:hover{transform:scale(1.02)}
+.brand:hover img{filter:drop-shadow(0 0 22px rgba(124,58,237,.8))}
+.brand:hover .brand-text .b-name{
+  background:linear-gradient(120deg,#ffffff 0%,#a5b4fc 45%,#7dd3fc 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+
+.nav-links{display:flex;gap:2px;align-items:center}
+.nav-links a{
+  position:relative;display:inline-flex;align-items:center;gap:8px;
+  padding:11px 15px;font-size:.9rem;font-weight:500;
+  color:rgba(255,255,255,.82);text-shadow:0 1px 10px rgba(0,0,0,.45);
+  background:transparent;border:none;border-radius:0;
+  transition:color .3s ease;
+}
+.nav-links a svg.lucide{width:16px;height:16px;opacity:.8;transition:opacity .3s ease,color .3s ease}
+.nav-links a::after{
+  content:"";position:absolute;left:15px;right:15px;bottom:4px;
+  height:1.5px;border-radius:2px;background:var(--grad);
+  transform:scaleX(0);transform-origin:left;transition:transform .32s var(--ease);
+}
+.nav-links a:hover{color:#fff}
+.nav-links a:hover svg.lucide{opacity:1}
+.nav-links a:hover::after{transform:scaleX(1)}
+
+.nav-links a.active{color:#fff;font-weight:600}
+.nav-links a.active svg.lucide{opacity:1;color:#c7d2fe;filter:drop-shadow(0 0 8px rgba(124,58,237,.85))}
+.nav-links a.active::after{transform:scaleX(1);height:2px;box-shadow:0 0 12px rgba(124,58,237,.9),0 0 4px rgba(56,189,248,.7)}
+
+.menu-btn{
+  display:none;width:44px;height:44px;border-radius:10px;
+  border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);
+  position:relative;color:#fff;flex-shrink:0;transition:background .3s ease;
+}
+.menu-btn:hover{background:rgba(255,255,255,.12)}
+.menu-btn span{position:absolute;left:12px;right:12px;height:1.8px;border-radius:2px;background:#fff;transition:transform .35s var(--ease),opacity .25s ease,top .35s var(--ease)}
+.menu-btn span:nth-child(1){top:15px}
+.menu-btn span:nth-child(2){top:21px}
+.menu-btn span:nth-child(3){top:27px}
+.menu-btn[aria-expanded="true"] span:nth-child(1){top:21px;transform:rotate(45deg)}
+.menu-btn[aria-expanded="true"] span:nth-child(2){opacity:0}
+.menu-btn[aria-expanded="true"] span:nth-child(3){top:21px;transform:rotate(-45deg)}
+
+/* =========================================================
+   PAGE HERO
+   ========================================================= */
+.page-hero{
+  position:relative;
+  padding:calc(160px + env(safe-area-inset-top,0px)) clamp(20px,5vw,64px) var(--space-5);
+  text-align:center;
+  overflow:hidden;
+  isolation:isolate;
+  background:
+    radial-gradient(900px 460px at 50% -10%, rgba(79,70,229,.26), transparent 65%),
+    radial-gradient(700px 400px at 8% 90%, rgba(37,99,235,.16), transparent 62%),
+    radial-gradient(700px 400px at 94% 80%, rgba(124,58,237,.18), transparent 62%),
+    var(--bg);
+}
+.page-hero::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(139,92,246,.5),transparent);
+}
+.page-hero h1{max-width:24ch;margin-inline:auto}
+.page-hero .lead{margin:var(--space-2) auto 0;max-width:62ch;font-size:clamp(1rem,1.35vw,1.14rem);color:rgba(226,232,240,.82)}
+.page-hero .actions{justify-content:center}
+.breadcrumb{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted-2);margin-bottom:22px;flex-wrap:wrap;
+}
+.breadcrumb a{color:var(--muted);transition:color .28s ease}
+.breadcrumb a:hover{color:#fff}
+.breadcrumb svg.lucide{width:14px;height:14px;opacity:.5}
+
+/* =========================================================
+   PRICING
+   ========================================================= */
+.pricing{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;align-items:start}
+.plan{
+  position:relative;padding:36px 32px 34px;border-radius:var(--r-lg);
+  background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015));
+  border:1px solid var(--line-2);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  display:flex;flex-direction:column;
+  transition:transform .42s var(--ease),border-color .42s ease,box-shadow .42s ease;
+}
+.plan:hover{transform:translateY(-4px);border-color:rgba(139,92,246,.42);box-shadow:0 22px 50px rgba(3,7,22,.55)}
+.plan.featured{border-color:rgba(139,92,246,.55);background:linear-gradient(160deg,rgba(124,58,237,.16),rgba(37,99,235,.07));box-shadow:0 22px 54px rgba(79,70,229,.26)}
+.plan .tag{
+  display:inline-block;
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:#c4b5fd;margin-bottom:16px;
+}
+.plan h3{font-size:1.16rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+.plan .price{
+  margin-top:16px;font-size:1.75rem;font-weight:800;letter-spacing:-.02em;line-height:1.2;
+  background:linear-gradient(120deg,#fff,#c4b5fd);-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.plan .price small{display:inline-block;font-size:.75rem;font-weight:500;letter-spacing:0;-webkit-text-fill-color:initial;color:var(--muted-2);margin-left:8px}
+.plan .desc{margin-top:14px;font-size:.87rem;line-height:1.65}
+
+.preorder{
+  margin-top:24px;padding:18px 20px;border-radius:14px;
+  background:rgba(255,255,255,.04);border:1px dashed rgba(255,255,255,.18);
+}
+.preorder .po-badge{
+  display:inline-block;
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:#7dd3fc;margin-bottom:10px;
+}
+.preorder strong{display:block;font-size:.96rem;font-weight:700;color:#fff;letter-spacing:-.01em}
+.preorder span{display:block;margin-top:6px;font-size:.8rem;color:var(--muted)}
+
+.feat-list{display:grid;gap:10px;margin-top:24px}
+.feat-list li{display:flex;gap:11px;align-items:flex-start;font-size:.86rem;color:var(--muted);line-height:1.6}
+.feat-list li svg.lucide{width:16px;height:16px;color:#7dd3fc;margin-top:4px}
+
+.group-title{
+  margin-top:26px;
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:.66rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(255,255,255,.88);padding-bottom:12px;border-bottom:1px solid var(--line);
+}
+.group-title + .feat-list{margin-top:16px}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.chips span{
+  font-size:.73rem;padding:6px 12px;border-radius:999px;
+  border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);color:var(--muted);
+}
+
+.plan .btn{margin-top:28px}
+
+/* =========================================================
+   STARTER — NFC GAMING CARD
+   ========================================================= */
+.starter-sec{
+  background:
+    radial-gradient(760px 420px at 15% 0%, rgba(37,99,235,.14), transparent 60%),
+    radial-gradient(700px 420px at 88% 100%, rgba(124,58,237,.16), transparent 62%);
+}
+.starter-launch{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:24px;
+  padding:24px 28px;
+  border-radius:var(--r-lg);
+  border:1px solid rgba(167,139,250,.35);
+  background:linear-gradient(135deg,rgba(124,58,237,.18),rgba(37,99,235,.08));
+  box-shadow:0 18px 44px rgba(3,7,22,.5);
+  margin-bottom:var(--space-4);
+  position:relative;overflow:hidden;
+}
+.starter-launch::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(600px 200px at 20% 50%, rgba(56,189,248,.14), transparent 70%);
+  pointer-events:none;
+}
+.starter-launch > *{position:relative;min-width:0}
+
+.starter-fire{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:#fff;padding:10px 16px;border-radius:999px;
+  background:linear-gradient(135deg,#f97316,#ef4444);
+  box-shadow:0 8px 22px rgba(239,68,68,.42);white-space:nowrap;
+}
+.starter-launch .launch-copy strong{display:block;font-size:1rem;font-weight:700;color:#fff;letter-spacing:-.01em}
+.starter-launch .launch-copy span{display:block;margin-top:6px;font-size:.85rem;color:var(--muted)}
+
+.starter-quota{
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:#fff;padding:12px 20px;border-radius:12px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);
+  white-space:nowrap;
+}
+.starter-quota small{
+  display:block;margin-bottom:4px;
+  font-size:.6rem;font-weight:700;letter-spacing:.2em;
+  color:rgba(165,180,252,.85);
+}
+.starter-quota strong{
+  display:block;font-size:1rem;font-weight:800;
+  background:linear-gradient(120deg,#fff,#c4b5fd);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+
+.starter-grid{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:24px;max-width:960px;margin-inline:auto;align-items:stretch;
+}
+.starter-card{
+  position:relative;display:flex;flex-direction:column;
+  padding:36px 32px 34px;border-radius:var(--r-xl);
+  border:1px solid var(--line-2);
+  background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015));
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  transition:transform .42s var(--ease),border-color .42s ease,box-shadow .42s ease;
+}
+.starter-card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(139,92,246,.45);
+  box-shadow:0 24px 54px rgba(3,7,22,.55),0 0 36px rgba(79,70,229,.18);
+}
+.starter-card.featured{
+  border-color:rgba(167,139,250,.55);
+  background:linear-gradient(160deg,rgba(124,58,237,.18),rgba(37,99,235,.07));
+  box-shadow:0 22px 54px rgba(79,70,229,.28);
+}
+.starter-badge{
+  position:absolute;top:-13px;right:24px;
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:#fff;padding:7px 14px;border-radius:999px;
+  background:var(--grad);
+  box-shadow:0 8px 22px rgba(124,58,237,.5);
+  border:1px solid rgba(255,255,255,.2);
+}
+.starter-tag{
+  display:inline-block;
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:#c4b5fd;margin-bottom:14px;
+}
+.starter-card h3{font-size:1.28rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.starter-price{
+  margin-top:14px;
+  font-size:2.15rem;font-weight:800;letter-spacing:-.03em;line-height:1.1;
+  background:linear-gradient(120deg,#fff,#c4b5fd);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.starter-price small{
+  display:block;margin-top:8px;font-size:.8rem;font-weight:500;letter-spacing:0;
+  -webkit-text-fill-color:initial;color:var(--muted);
+}
+.starter-desc{margin-top:14px;font-size:.88rem;line-height:1.7;color:var(--muted)}
+.starter-card .feat-list{margin-top:22px;flex:1}
+.starter-card .btn{margin-top:26px}
+
+/* =========================================================
+   DESIGN KARTU NFC — PREVIEW MOCKUP
+   ========================================================= */
+.design-sec{margin-top:var(--space-5)}
+.design-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:24px;
+  max-width:960px;
+  margin-inline:auto;
+  align-items:stretch;
+}
+.design-item{
+  position:relative;
+  border-radius:var(--r-xl);
+  border:1px solid var(--line-2);
+  background:linear-gradient(160deg,rgba(255,255,255,.055),rgba(255,255,255,.012));
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  overflow:hidden;
+  display:flex;flex-direction:column;
+  transition:transform .42s var(--ease),border-color .42s ease,box-shadow .42s ease;
+}
+.design-item:hover{
+  transform:translateY(-5px);
+  border-color:rgba(139,92,246,.45);
+  box-shadow:0 24px 54px rgba(3,7,22,.55),0 0 36px rgba(79,70,229,.18);
+}
+.design-item.featured{
+  border-color:rgba(167,139,250,.55);
+  background:linear-gradient(160deg,rgba(124,58,237,.16),rgba(37,99,235,.06));
+  box-shadow:0 22px 54px rgba(79,70,229,.24);
+}
+
+.design-thumb{
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(135deg,rgba(37,99,235,.16),rgba(124,58,237,.22));
+  cursor:zoom-in;
+}
+.design-thumb img{
+  width:100%;
+  height:auto;
+  display:block;
+  transition:transform .55s var(--ease);
+}
+.design-item:hover .design-thumb img{transform:scale(1.03)}
+
+.design-label{
+  position:absolute;top:16px;left:16px;z-index:2;
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  padding:6px 12px;border-radius:999px;
+  background:rgba(5,11,24,.82);
+  border:1px solid rgba(167,139,250,.4);
+  color:#c4b5fd;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+}
+.design-item.featured .design-label{
+  border-color:rgba(167,139,250,.75);
+  background:rgba(124,58,237,.55);
+  color:#fff;
+}
+
+.design-zoom{
+  position:absolute;bottom:16px;right:16px;z-index:3;
+  width:38px;height:38px;border-radius:12px;
+  display:grid;place-items:center;
+  background:rgba(5,11,24,.82);
+  border:1px solid rgba(255,255,255,.18);
+  color:#e0e7ff;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  transition:background .3s ease,border-color .3s ease,color .3s ease,transform .3s var(--ease);
+  cursor:zoom-in;
+}
+.design-zoom svg.lucide{width:16px;height:16px}
+.design-item:hover .design-zoom{
+  background:rgba(37,99,235,.85);
+  border-color:rgba(255,255,255,.3);
+  color:#fff;transform:translateY(-2px);
+}
+
+.design-body{padding:22px 24px 24px}
+.design-body h3{font-size:1.04rem;font-weight:700;letter-spacing:-.005em}
+.design-body p{margin-top:10px;font-size:.86rem;line-height:1.65}
+
+/* =========================================================
+   PROJECT GALLERY — FOTO PROJECT WEBSITE (Natural + Zoom)
+   ========================================================= */
+.project-sec{
+  background:
+    radial-gradient(720px 420px at 12% 0%, rgba(37,99,235,.14), transparent 62%),
+    radial-gradient(680px 400px at 92% 100%, rgba(124,58,237,.16), transparent 62%);
+}
+
+.project-filter{
+  display:flex;flex-wrap:wrap;gap:10px;justify-content:center;
+  margin-bottom:var(--space-4);
+}
+.project-filter button{
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);
+  padding:10px 18px;border-radius:999px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.14);
+  transition:color .3s ease,background .3s ease,border-color .3s ease,transform .3s var(--ease);
+  cursor:pointer;
+}
+.project-filter button:hover{
+  color:#fff;background:rgba(255,255,255,.08);
+  border-color:rgba(167,139,250,.42);transform:translateY(-2px);
+}
+.project-filter button.active{
+  color:#fff;
+  background:linear-gradient(135deg,rgba(37,99,235,.28),rgba(124,58,237,.28));
+  border-color:rgba(167,139,250,.6);
+  box-shadow:0 8px 22px rgba(79,70,229,.32);
+}
+
+.project-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:22px;
+  align-items:start;
+}
+.project-card{
+  position:relative;overflow:hidden;
+  border-radius:var(--r-lg);
+  border:1px solid var(--line-2);
+  background:linear-gradient(160deg,rgba(255,255,255,.055),rgba(255,255,255,.012));
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  display:flex;flex-direction:column;
+  transition:transform .42s var(--ease),border-color .42s ease,box-shadow .42s ease;
+}
+.project-card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(139,92,246,.45);
+  box-shadow:0 24px 54px rgba(3,7,22,.55),0 0 36px rgba(79,70,229,.18);
+}
+
+.project-thumb{
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(135deg,rgba(37,99,235,.14),rgba(124,58,237,.18));
+  cursor:zoom-in;
+}
+.project-thumb img{
+  width:100%;
+  height:auto;
+  display:block;
+  transition:transform .55s var(--ease);
+}
+.project-card:hover .project-thumb img{transform:scale(1.02)}
+
+.project-cat{
+  position:absolute;top:16px;left:16px;z-index:2;
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  padding:6px 12px;border-radius:999px;
+  background:rgba(5,11,24,.82);
+  border:1px solid rgba(167,139,250,.38);
+  color:#c4b5fd;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+}
+
+.project-link{
+  position:absolute;top:16px;right:16px;z-index:3;
+  width:38px;height:38px;border-radius:12px;
+  display:grid;place-items:center;
+  background:rgba(5,11,24,.82);
+  border:1px solid rgba(255,255,255,.18);
+  color:#e0e7ff;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  transition:background .3s ease,border-color .3s ease,color .3s ease,transform .3s var(--ease);
+}
+.project-link svg.lucide{width:16px;height:16px}
+.project-card:hover .project-link{
+  background:rgba(124,58,237,.75);
+  border-color:rgba(255,255,255,.28);
+  color:#fff;transform:translateY(-2px);
+}
+
+.project-zoom{
+  position:absolute;bottom:16px;right:16px;z-index:3;
+  width:38px;height:38px;border-radius:12px;
+  display:grid;place-items:center;
+  background:rgba(5,11,24,.82);
+  border:1px solid rgba(255,255,255,.18);
+  color:#e0e7ff;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  transition:background .3s ease,border-color .3s ease,color .3s ease,transform .3s var(--ease);
+  cursor:zoom-in;
+}
+.project-zoom svg.lucide{width:16px;height:16px}
+.project-card:hover .project-zoom{
+  background:rgba(37,99,235,.8);
+  border-color:rgba(255,255,255,.28);
+  color:#fff;transform:translateY(-2px);
+}
+
+.project-body{
+  padding:22px 24px 24px;
+  display:flex;flex-direction:column;flex:1;
+}
+.project-body h3{font-size:1.04rem;font-weight:700;letter-spacing:-.005em}
+.project-body p{margin-top:10px;font-size:.86rem;line-height:1.65;flex:1}
+
+.project-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.project-tags span{
+  font-size:.7rem;padding:5px 10px;border-radius:999px;
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.04);
+  color:var(--muted);
+}
+
+.project-cta{
+  margin-top:var(--space-4);
+  text-align:center;
+}
+
+/* =========================================================
+   LIGHTBOX — ZOOM FOTO
+   ========================================================= */
+.lightbox{
+  position:fixed;inset:0;z-index:200;
+  background:rgba(5,11,24,.96);
+  -webkit-backdrop-filter:blur(18px);
+  backdrop-filter:blur(18px);
+  opacity:0;visibility:hidden;
+  transition:opacity .3s ease,visibility .3s ease;
+  padding:88px 24px 88px;
+}
+.lightbox.open{opacity:1;visibility:visible}
+
+.lb-stage{
+  width:100%;height:100%;
+  overflow:auto;
+  scrollbar-width:thin;
+  scrollbar-color:rgba(255,255,255,.3) transparent;
+  -webkit-overflow-scrolling:touch;
+}
+.lb-stage::-webkit-scrollbar{width:10px;height:10px}
+.lb-stage::-webkit-scrollbar-thumb{background:rgba(255,255,255,.22);border-radius:6px}
+.lb-stage::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,.35)}
+
+.lb-img{
+  display:block;
+  margin:0 auto;
+  width:auto;
+  height:auto;
+  max-width:100%;
+  max-height:calc(100vh - 200px);
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.16);
+  box-shadow:0 30px 90px rgba(0,0,0,.7);
+  background:rgba(255,255,255,.02);
+  user-select:none;
+  -webkit-user-drag:none;
+  transition:max-width .35s var(--ease),max-height .35s var(--ease);
+}
+
+.lb-btn{
+  position:absolute;z-index:3;
+  width:48px;height:48px;border-radius:14px;
+  display:grid;place-items:center;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.18);
+  color:#fff;
+  -webkit-backdrop-filter:blur(10px);
+  backdrop-filter:blur(10px);
+  transition:background .25s ease,transform .25s ease,border-color .25s ease;
+  cursor:pointer;
+}
+.lb-btn svg.lucide{width:20px;height:20px}
+.lb-btn:hover{
+  background:rgba(124,58,237,.65);
+  border-color:rgba(255,255,255,.32);
+  transform:translateY(-2px);
+}
+.lb-btn:active{transform:translateY(0) scale(.96)}
+
+.lb-close{top:24px;right:24px}
+.lb-zoom-in{bottom:24px;right:24px}
+.lb-zoom-out{bottom:24px;right:84px}
+.lb-reset{bottom:24px;right:144px}
+
+.lb-hint{
+  position:absolute;top:28px;left:50%;
+  transform:translateX(-50%);
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(226,232,240,.65);
+  padding:8px 14px;border-radius:999px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.10);
+  pointer-events:none;
+  z-index:3;
+}
+
+/* =========================================================
+   BUSINESS DETAIL
+   ========================================================= */
+.biz-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;align-items:start}
+.biz{
+  padding:36px 32px 34px;border-radius:var(--r-lg);
+  background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015));
+  border:1px solid var(--line-2);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  transition:transform .42s var(--ease),border-color .42s ease,box-shadow .42s ease;
+}
+.biz:hover{transform:translateY(-4px);border-color:rgba(139,92,246,.42);box-shadow:0 22px 50px rgba(3,7,22,.55)}
+.biz.mid{border-color:rgba(139,92,246,.45);background:linear-gradient(160deg,rgba(79,70,229,.14),rgba(37,99,235,.05))}
+.biz.high{border-color:rgba(167,139,250,.5);background:linear-gradient(160deg,rgba(124,58,237,.18),rgba(37,99,235,.06))}
+.biz h3{font-size:1rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+.biz .price{
+  margin-top:14px;font-size:1.65rem;font-weight:800;letter-spacing:-.02em;
+  background:linear-gradient(120deg,#fff,#c4b5fd);-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.biz .inherit{
+  margin-top:16px;font-size:.82rem;font-weight:600;color:#c7d2fe;
+  padding:10px 15px;border-radius:10px;background:rgba(124,58,237,.14);border:1px solid rgba(167,139,250,.28);
+  display:inline-block;
+}
+
+.note{
+  margin-top:var(--space-3);padding:22px 26px;border-radius:16px;
+  border-left:3px solid #7c3aed;
+  background:linear-gradient(100deg,rgba(124,58,237,.13),rgba(37,99,235,.05));
+  font-size:.88rem;color:rgba(226,232,240,.85);line-height:1.75;
+}
+
+/* Comparison table */
+.cmp-wrap{
+  margin-top:var(--space-3);border-radius:var(--r-xl);overflow:hidden;
+  border:1px solid var(--line-2);background:rgba(255,255,255,.02);
+}
+table.cmp{width:100%;border-collapse:collapse;font-size:.875rem}
+table.cmp thead th{
+  padding:24px 22px;text-align:left;vertical-align:bottom;
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:.66rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#c4b5fd;
+  background:linear-gradient(160deg,rgba(124,58,237,.16),rgba(37,99,235,.06));
+  border-bottom:1px solid var(--line-2);
+}
+table.cmp thead th span{
+  display:block;margin-top:10px;font-family:"Plus Jakarta Sans",sans-serif;
+  font-size:.98rem;font-weight:800;letter-spacing:-.01em;text-transform:none;color:#fff;
+}
+table.cmp tbody td{
+  padding:16px 22px;border-bottom:1px solid var(--line);
+  color:var(--muted);font-size:.855rem;
+}
+table.cmp tbody tr:last-child td{border-bottom:none}
+table.cmp tbody tr:hover td{background:rgba(124,58,237,.07)}
+table.cmp td:first-child{color:rgba(255,255,255,.9);font-weight:600}
+table.cmp td.val{color:#c7d2fe}
+table.cmp td .yes{color:#7dd3fc;display:inline-grid;place-items:center}
+table.cmp td .yes svg.lucide{width:17px;height:17px}
+table.cmp td .no{color:rgba(148,163,184,.42)}
+table.cmp tfoot td{
+  padding:22px;font-weight:800;color:#fff;font-size:.95rem;
+  background:linear-gradient(160deg,rgba(255,255,255,.05),rgba(255,255,255,.01));
+}
+
+/* =========================================================
+   FAQ
+   ========================================================= */
+.faq-list{display:grid;gap:14px;max-width:880px;margin-inline:auto}
+.faq-item{
+  border-radius:var(--r-md);border:1px solid var(--line-2);
+  background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015));
+  overflow:hidden;transition:border-color .38s ease,box-shadow .38s ease;
+}
+.faq-item:hover{border-color:rgba(139,92,246,.4)}
+.faq-item[open]{border-color:rgba(139,92,246,.5);box-shadow:0 16px 40px rgba(3,7,22,.45)}
+.faq-item summary{
+  display:flex;align-items:center;justify-content:space-between;gap:18px;
+  padding:22px 26px;cursor:pointer;list-style:none;
+  font-size:.96rem;font-weight:600;color:#fff;letter-spacing:-.01em;
+}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary .chev{
+  width:32px;height:32px;flex:0 0 auto;border-radius:10px;display:grid;place-items:center;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);color:#bfdbfe;
+  transition:transform .38s var(--ease),background .38s ease;
+}
+.faq-item summary .chev svg.lucide{width:16px;height:16px}
+.faq-item[open] summary .chev{transform:rotate(180deg);background:rgba(124,58,237,.2)}
+.faq-item .faq-body{padding:0 26px 24px;font-size:.88rem;line-height:1.75;color:var(--muted)}
+
+/* =========================================================
+   CTA
+   ========================================================= */
+.cta-panel{
+  position:relative;overflow:hidden;text-align:center;
+  padding:var(--space-5) clamp(28px,5vw,72px);border-radius:var(--r-xl);
+  background:
+    radial-gradient(700px 380px at 20% 10%, rgba(56,189,248,.18), transparent 60%),
+    radial-gradient(700px 420px at 85% 95%, rgba(124,58,237,.26), transparent 62%),
+    linear-gradient(135deg,rgba(37,99,235,.18),rgba(124,58,237,.16));
+  border:1px solid rgba(255,255,255,.16);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  box-shadow:0 30px 80px rgba(3,6,22,.55),inset 0 1px 0 rgba(255,255,255,.12);
+}
+.cta-panel > *{position:relative}
+.cta-panel h2{max-width:24ch;margin-inline:auto}
+.cta-panel p{margin:20px auto 0;font-size:clamp(.94rem,1.2vw,1.04rem);max-width:56ch}
+.cta-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:var(--space-3)}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+.footer{
+  padding:var(--space-5) clamp(20px,5vw,64px) 36px;
+  border-top:1px solid var(--line);
+  background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0));
+}
+.footer-grid{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:var(--space-4)}
+.f-brand .brand{
+  display:inline-flex;align-items:center;gap:14px;
+}
+.f-brand .brand img{height:56px;width:auto;max-width:120px;object-fit:contain;filter:drop-shadow(0 0 16px rgba(79,70,229,.5))}
+.f-brand .brand .brand-text .b-name{font-size:1.6rem}
+.f-brand p{margin-top:20px;font-size:.88rem;max-width:36ch;line-height:1.75}
+.f-col h4{
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(255,255,255,.9);margin-bottom:20px;
+}
+.f-col li + li{margin-top:12px}
+.f-col a,.f-col span{font-size:.88rem;color:var(--muted);transition:color .28s ease}
+.f-col a:hover{color:#fff}
+.footer-bottom{
+  margin-top:var(--space-4);padding-top:28px;border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  font-size:.8rem;color:var(--muted-2);
+}
+.footer-bottom p{color:var(--muted-2)}
+
+/* =========================================================
+   REVEAL
+   ========================================================= */
+.js .reveal{
+  opacity:0;transform:translateY(24px);
+  transition:opacity .9s var(--ease),transform .9s var(--ease);
+  transition-delay:var(--d,0s);will-change:opacity,transform;
+}
+.js .reveal.in{opacity:1;transform:none}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width:1120px){
+  .project-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:980px){
+  .pricing,.biz-grid{grid-template-columns:1fr;max-width:560px;margin-inline:auto}
+  .starter-grid{grid-template-columns:1fr;max-width:560px}
+  .design-grid{grid-template-columns:1fr;max-width:560px}
+  .starter-launch{grid-template-columns:1fr}
+  .starter-quota{justify-self:start}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:36px}
+  .f-brand{grid-column:1 / -1}
+}
+@media (max-width:880px){
+  .menu-btn{display:block}
+  .nav-links{
+    position:absolute;top:100%;left:0;right:0;
+    flex-direction:column;align-items:stretch;gap:0;padding:12px 18px 20px;
+    background:rgba(5,11,24,.96);
+    backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+    border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);
+    opacity:0;visibility:hidden;transform:translateY(-8px);
+    transition:opacity .3s ease,transform .3s ease,visibility .3s;
+  }
+  .nav-links.open{opacity:1;visibility:visible;transform:none}
+  .nav-links a{padding:15px 12px;border-bottom:1px solid rgba(255,255,255,.05);font-size:.95rem;text-shadow:none}
+  .nav-links a::after{display:none}
+  .nav-links a.active{padding-left:16px;border-left:2px solid #7c3aed}
+
+  .cmp-wrap{border:none;background:none;border-radius:0}
+  table.cmp{display:block;font-size:.85rem}
+  table.cmp thead{display:none}
+  table.cmp tbody{display:grid;gap:16px}
+  table.cmp tbody tr{
+    display:block;padding:8px 20px 12px;border-radius:16px;
+    background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015));
+    border:1px solid var(--line-2);
+  }
+  table.cmp tbody tr:hover td{background:transparent}
+  table.cmp tbody td{
+    display:flex;align-items:center;justify-content:space-between;gap:14px;
+    padding:12px 0;border-bottom:1px solid rgba(255,255,255,.06);
+    font-size:.83rem;
+  }
+  table.cmp tbody td:first-child{
+    display:block;padding:16px 0 12px;font-size:.94rem;font-weight:700;color:#fff;
+    border-bottom:1px solid var(--line-2);
+  }
+  table.cmp tbody td:last-child{border-bottom:none}
+  table.cmp tbody td:not(:first-child)::before{
+    content:attr(data-label);
+    font-family:"JetBrains Mono",ui-monospace,monospace;
+    font-size:.64rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--muted-2);
+  }
+  table.cmp tfoot{display:block}
+  table.cmp tfoot tr{display:block;margin-top:16px;border-radius:16px;overflow:hidden;border:1px solid var(--line-2)}
+  table.cmp tfoot td{display:flex;justify-content:space-between;gap:14px;padding:18px 20px;border-bottom:1px solid var(--line)}
+  table.cmp tfoot td:last-child{border-bottom:none}
+  table.cmp tfoot td::before{
+    content:attr(data-label);
+    font-family:"JetBrains Mono",ui-monospace,monospace;
+    font-size:.64rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-2);
+  }
+}
+@media (max-width:640px){
+  .brand img{height:42px;max-width:100px}
+  .brand-text .b-name{font-size:1.2rem}
+  .brand-text .b-tag{font-size:.5rem;letter-spacing:.2em;margin-top:4px}
+  .page-hero h1{max-width:100%}
+  .actions{flex-direction:column;align-items:stretch}
+  .actions .btn{width:100%}
+  .cta-actions{flex-direction:column}
+  .cta-actions .btn{width:100%}
+  .footer-grid{grid-template-columns:1fr;gap:36px}
+  .footer-bottom{flex-direction:column;gap:10px}
+  .faq-item summary{padding:18px 20px;font-size:.9rem}
+  .faq-item .faq-body{padding:0 20px 20px}
+
+  /* STARTER mobile */
+  .starter-card{padding:30px 24px 28px}
+  .starter-card .btn{width:100%}
+  .starter-badge{right:16px;font-size:.56rem;padding:6px 12px}
+  .starter-launch{padding:20px 22px;gap:16px}
+  .starter-fire{font-size:.62rem;padding:9px 14px}
+  .starter-price{font-size:1.85rem}
+  .starter-quota{padding:10px 16px;font-size:.66rem}
+  .starter-quota strong{font-size:.92rem}
+
+  /* PROJECT mobile */
+  .project-grid{grid-template-columns:1fr}
+  .project-filter button{font-size:.6rem;padding:9px 14px;letter-spacing:.14em}
+
+  /* LIGHTBOX mobile */
+  .lightbox{padding:78px 12px 78px}
+  .lb-img{max-height:calc(100vh - 170px);border-radius:10px}
+  .lb-btn{width:42px;height:42px;border-radius:12px}
+  .lb-btn svg.lucide{width:18px;height:18px}
+  .lb-close{top:14px;right:14px}
+  .lb-zoom-in{bottom:14px;right:14px}
+  .lb-zoom-out{bottom:14px;right:62px}
+  .lb-reset{bottom:14px;right:110px}
+  .lb-hint{top:18px;font-size:.56rem;padding:6px 12px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+  .js .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- =========================================================
+     HEADER / NAVBAR
+     ========================================================= -->
+<header class="site-header" id="siteHeader">
+  <nav class="nav" aria-label="Navigasi utama">
+
+    <a class="brand" href="beranda.html" aria-label="Qriya — Beranda">
+      <img src="foto1.jpg" alt="Logo Qriya">
+      <span class="brand-text">
+        <span class="b-name">Qriya</span>
+        <span class="b-tag">QR Keychain</span>
+      </span>
+    </a>
+
+    <button class="menu-btn" id="menuBtn" type="button" aria-label="Buka menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="beranda.html"><i data-lucide="house"></i><span>Beranda</span></a></li>
+      <li><a href="cara-kerja.html"><i data-lucide="workflow"></i><span>Cara Kerja</span></a></li>
+      <li><a href="paket.html" class="active" aria-current="page"><i data-lucide="gem"></i><span>Paket</span></a></li>
+      <li><a href="demo.html"><i data-lucide="circle-play"></i><span>Demo</span></a></li>
+      <li><a href="tentang-kami.html"><i data-lucide="info"></i><span>Tentang Kami</span></a></li>
+      <li><a href="faq.html"><i data-lucide="circle-help"></i><span>FAQ</span></a></li>
+    </ul>
+
+  </nav>
+</header>
+
+<main>
+
+  <!-- =========================================================
+       PAGE HERO
+       ========================================================= -->
+  <section class="page-hero" aria-label="Paket dan harga Qriya">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="beranda.html">Beranda</a>
+        <i data-lucide="chevron-right"></i>
+        <span>Paket</span>
+      </nav>
+
+      <span class="eyebrow reveal">Paket &amp; Harga Qriya</span>
+      <h1 class="reveal" style="--d:.06s">
+        Pilih Paket, <span class="grad-text">Mulai Identitas Digitalmu.</span>
+      </h1>
+      <p class="lead reveal" style="--d:.12s">
+        Dari gantungan personal hingga sistem bisnis lengkap. Semua paket sudah termasuk desain, QR Code, dan website yang siap dipakai.
+      </p>
+
+      <div class="actions reveal" style="--d:.18s">
+        <a class="btn btn-primary btn-lg" href="#paket-utama">Lihat Paket <i data-lucide="arrow-right"></i></a>
+        <a class="btn btn-ghost btn-lg" href="#galeri-project">Lihat Project</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION — PAKET UTAMA (Starter, Pro, Business)
+       ========================================================= -->
+  <section class="section" id="paket-utama">
+    <div class="container">
+      <div class="sec-head center reveal">
+        <span class="eyebrow">Paket Utama</span>
+        <h2>Pilih Titik Mulai Anda.</h2>
+        <p class="lead">Harga jelas, fitur lengkap. Setiap gantungan Qriya selalu terhubung ke satu website.</p>
+      </div>
+
+      <div class="pricing">
+
+        <!-- STARTER -->
+        <article class="plan reveal">
+          <span class="tag">Starter Project</span>
+          <h3>Starter</h3>
+          <div class="price">Rp99.000<small>mulai dari</small></div>
+
+          <div class="preorder">
+            <span class="po-badge">Pre-Order</span>
+            <strong>15 Gantungan + 15 Website</strong>
+            <span>1 Gantungan = 1 Website Personal</span>
+          </div>
+
+          <div class="group-title">Fitur</div>
+          <ul class="feat-list">
+            <li><i data-lucide="check"></i>15 Gantungan Kunci QR</li>
+            <li><i data-lucide="check"></i>Custom Design Gantungan Kunci</li>
+            <li><i data-lucide="check"></i>15 QR Code Unik</li>
+            <li><i data-lucide="check"></i>15 Website Personal</li>
+            <li><i data-lucide="check"></i>Landing Page</li>
+            <li><i data-lucide="check"></i>Profil Pengguna</li>
+            <li><i data-lucide="check"></i>Link Media Sosial</li>
+            <li><i data-lucide="check"></i>Responsive di HP, Tablet &amp; Laptop</li>
+            <li><i data-lucide="check"></i>Hosting Vercel</li>
+            <li><i data-lucide="check"></i>QR Code langsung terhubung ke website</li>
+            <li><i data-lucide="check"></i>Tanpa Custom Domain</li>
+          </ul>
+
+          <div class="group-title">Cocok Untuk</div>
+          <div class="chips">
+            <span>Mahasiswa</span><span>Pelajar</span><span>Komunitas</span>
+            <span>Teman Satu Kelas</span><span>Organisasi</span><span>Personal Branding Sederhana</span>
+          </div>
+
+          <a class="btn btn-ghost btn-block" href="#order">Pilih Starter</a>
+        </article>
+
+        <!-- PRO -->
+        <article class="plan featured reveal" style="--d:.1s">
+          <span class="tag">Pro Project · Populer</span>
+          <h3>Pro</h3>
+          <div class="price">Rp199.000<small>mulai dari</small></div>
+
+          <div class="preorder">
+            <span class="po-badge">Pre-Order</span>
+            <strong>10 Gantungan + 10 Website</strong>
+            <span>1 Gantungan = 1 Website Personal</span>
+          </div>
+
+          <div class="group-title">Fitur</div>
+          <ul class="feat-list">
+            <li><i data-lucide="check"></i>10 Gantungan Kunci QR</li>
+            <li><i data-lucide="check"></i>Custom Design Gantungan Kunci</li>
+            <li><i data-lucide="check"></i>10 QR Code Unik</li>
+            <li><i data-lucide="check"></i>10 Website Personal</li>
+            <li><i data-lucide="check"></i>Landing Page Premium</li>
+            <li><i data-lucide="check"></i>Profil Lengkap</li>
+            <li><i data-lucide="check"></i>Portfolio Project</li>
+            <li><i data-lucide="check"></i>CV Online</li>
+            <li><i data-lucide="check"></i>Tombol WhatsApp</li>
+            <li><i data-lucide="check"></i>Media Sosial</li>
+            <li><i data-lucide="check"></i>Responsive di berbagai perangkat</li>
+            <li><i data-lucide="check"></i>Custom Domain</li>
+            <li><i data-lucide="check"></i>Hosting</li>
+          </ul>
+
+          <div class="group-title">Cocok Untuk</div>
+          <div class="chips">
+            <span>Mahasiswa</span><span>Fresh Graduate</span><span>Programmer</span>
+            <span>Freelancer</span><span>Content Creator</span><span>Personal Branding</span>
+          </div>
+
+          <a class="btn btn-primary btn-block" href="#order">Pilih Pro <i data-lucide="arrow-right"></i></a>
+        </article>
+
+        <!-- BUSINESS -->
+        <article class="plan reveal" style="--d:.2s">
+          <span class="tag">Business Project</span>
+          <h3>Business</h3>
+          <div class="price">Rp1.500.000 – Rp4.000.000+<small>per proyek</small></div>
+
+          <div class="preorder">
+            <span class="po-badge">Pre-Order</span>
+            <strong>5 Gantungan + 5 Website</strong>
+            <span>1 Gantungan = 1 Website Bisnis</span>
+          </div>
+
+          <div class="group-title">Khusus Untuk</div>
+          <div class="chips">
+            <span>UMKM / Kedai Kopi</span><span>Toko</span><span>Bisnis Kuliner</span>
+            <span>Bisnis Online</span><span>Usaha</span><span>Organisasi / Komunitas</span><span>Personal Business</span>
+          </div>
+
+          <div class="group-title">Fitur Gantungan</div>
+          <ul class="feat-list">
+            <li><i data-lucide="check"></i>5 Gantungan Kunci QR</li>
+            <li><i data-lucide="check"></i>Custom Design Gantungan Kunci</li>
+            <li><i data-lucide="check"></i>5 QR Code Unik</li>
+            <li><i data-lucide="check"></i>QR terhubung langsung ke website</li>
+          </ul>
+
+          <div class="group-title">Fitur Website</div>
+          <ul class="feat-list">
+            <li><i data-lucide="check"></i>Website Bisnis</li>
+            <li><i data-lucide="check"></i>Landing Page</li>
+            <li><i data-lucide="check"></i>Responsive</li>
+            <li><i data-lucide="check"></i>Custom Domain</li>
+            <li><i data-lucide="check"></i>Hosting</li>
+            <li><i data-lucide="check"></i>Kontak / WhatsApp</li>
+            <li><i data-lucide="check"></i>Google Maps</li>
+            <li><i data-lucide="check"></i>Media Sosial</li>
+          </ul>
+
+          <div class="group-title">Fitur Sistem</div>
+          <ul class="feat-list">
+            <li><i data-lucide="check"></i>Database</li>
+            <li><i data-lucide="check"></i>Login Admin</li>
+            <li><i data-lucide="check"></i>Admin Dashboard</li>
+            <li><i data-lucide="check"></i>Tambah Data</li>
+            <li><i data-lucide="check"></i>Edit Data</li>
+            <li><i data-lucide="check"></i>Hapus Data</li>
+            <li><i data-lucide="check"></i>Pencarian Data</li>
+            <li><i data-lucide="check"></i>Pengelolaan Data</li>
+            <li><i data-lucide="check"></i>Responsive di berbagai perangkat</li>
+          </ul>
+
+          <div class="group-title">Layanan</div>
+          <ul class="feat-list">
+            <li><i data-lucide="check"></i>Maintenance</li>
+            <li><i data-lucide="check"></i>Bug Fixing</li>
+            <li><i data-lucide="check"></i>Update Sistem</li>
+            <li><i data-lucide="check"></i>Perbaikan Fitur</li>
+            <li><i data-lucide="check"></i>Backup Database</li>
+          </ul>
+
+          <a class="btn btn-ghost btn-block" href="#order">Pilih Business</a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION — NFC GAMING CARD
+       ========================================================= -->
+  <section class="section starter-sec" id="nfc-gaming" aria-label="NFC Gaming Card Qriya">
+    <div class="container">
+
+      <div class="sec-head center reveal">
+        <span class="eyebrow">Starter · NFC Gaming</span>
+        <h2>🎮 STARTER — NFC Gaming Card</h2>
+        <p class="lead">Satu kartu, satu identitas gaming. Cukup <strong>tap NFC</strong> menggunakan smartphone untuk membuka <strong>Gaming Profile</strong> dan mengakses informasi game kamu dengan cepat.</p>
+      </div>
+
+      <div class="starter-launch reveal">
+        <span class="starter-fire">🔥 PRE-ORDER 15 UNIT</span>
+
+        <div class="launch-copy">
+          <strong>Batch Pertama — Terbatas</strong>
+          <span>Hanya tersedia 15 unit pada batch pertama.</span>
+        </div>
+
+        <div class="starter-quota">
+          <small>Kuota Pre-Order</small>
+          <strong>15 Unit</strong>
+        </div>
+      </div>
+
+      <div class="starter-grid">
+
+        <!-- STARTER NFC -->
+        <article class="starter-card reveal">
+          <span class="starter-tag">🟢 Harga Normal</span>
+          <h3>Starter</h3>
+          <div class="starter-price">
+            Rp39.000
+            <small>Harga Normal</small>
+          </div>
+          <p class="starter-desc">
+            Cocok untuk gamer yang ingin memiliki kartu NFC dengan <strong>gambar game favorit</strong>
+            sebagai identitas, dan mempermudah teman menemukan akun game.
+          </p>
+
+          <ul class="feat-list">
+            <li><i data-lucide="radio"></i>NFC Gaming Card</li>
+            <li><i data-lucide="image"></i>Gambar / Art Game</li>
+            <li><i data-lucide="id-card"></i>Game ID</li>
+            <li><i data-lucide="user-round"></i>Username Game</li>
+            <li><i data-lucide="target"></i>Link / Add Friend</li>
+            <li><i data-lucide="zap"></i>Quick Access</li>
+          </ul>
+
+          <a class="btn btn-ghost btn-block" href="#order">Ambil Starter</a>
+        </article>
+
+        <!-- CUSTOM NFC -->
+        <article class="starter-card featured reveal" style="--d:.1s">
+          <span class="starter-badge">⭐ Rekomendasi</span>
+          <span class="starter-tag">⭐ Custom Gaming Card</span>
+          <h3>Custom</h3>
+          <div class="starter-price">
+            Rp49.000
+            <small>Custom Gaming Card</small>
+          </div>
+          <p class="starter-desc">
+            Buat kartu NFC dengan desain gaming custom <strong>plus halaman Gaming Profile</strong>
+            sesuai karakter, nickname, atau tema game favoritmu.
+          </p>
+
+          <ul class="feat-list">
+            <li><i data-lucide="radio"></i>Semua fitur Starter</li>
+            <li><i data-lucide="palette"></i>Desain Gaming Custom</li>
+            <li><i data-lucide="gamepad-2"></i>Custom Gaming Profile</li>
+            <li><i data-lucide="id-card"></i>Game ID &amp; Username</li>
+            <li><i data-lucide="layers"></i>Multiple Game Profile</li>
+            <li><i data-lucide="link"></i>Link Gaming</li>
+            <li><i data-lucide="tag"></i>Custom Nickname / Branding</li>
+            <li><i data-lucide="zap"></i>NFC Quick Access</li>
+          </ul>
+
+          <a class="btn btn-primary btn-block" href="#order">Pre-Order Custom <i data-lucide="arrow-right"></i></a>
+        </article>
+
+      </div>
+
+      <p class="starter-note reveal">
+        <strong>NFC Quick Access ke Game.</strong> Ketuk NFC untuk membuka halaman/link game atau profil gaming.
+        Fitur login otomatis bergantung pada dukungan game, perangkat, dan sistem autentikasi yang digunakan.
+      </p>
+
+      <!-- =====================================================
+           SUBSECTION — DESIGN KARTU NFC (PREVIEW MOCKUP)
+           ===================================================== -->
+      <div class="design-sec">
+        <div class="sec-head center reveal" style="margin-top:var(--space-5)">
+          <span class="eyebrow">Design Kartu</span>
+          <h2>Preview Design Kartu NFC.</h2>
+          <p class="lead">Gambaran visual kartu NFC Gaming — Starter dengan gambar/art game, dan Custom dengan desain gaming sesuai tema favoritmu. Klik gambar untuk melihat lebih jelas.</p>
+        </div>
+
+        <div class="design-grid">
+
+          <!-- DESIGN STARTER -->
+          <article class="design-item reveal">
+            <div class="design-thumb" data-lb="Gambar design kartu NFC Starter">
+              <span class="design-label">🟢 Starter Card</span>
+              <span class="design-zoom" aria-hidden="true"><i data-lucide="zoom-in"></i></span>
+              <!-- Ganti src dengan foto design kartu Starter Anda -->
+              <img src="design-starter.png" alt="Design kartu NFC Gaming Starter Qriya" loading="lazy">
+            </div>
+            <div class="design-body">
+              <h3>Design Starter — Gambar / Art Game</h3>
+              <p>Kartu NFC dengan gambar atau art dari game favoritmu sebagai identitas visual. Simple, clean, dan tetap memperlihatkan Game ID serta username.</p>
+            </div>
+          </article>
+
+          <!-- DESIGN CUSTOM -->
+          <article class="design-item featured reveal" style="--d:.1s">
+            <div class="design-thumb" data-lb="Gambar design kartu NFC Custom">
+              <span class="design-label">⭐ Custom Card</span>
+              <span class="design-zoom" aria-hidden="true"><i data-lucide="zoom-in"></i></span>
+              <!-- Ganti src dengan foto design kartu Custom Anda -->
+              <img src="design-custom.png" alt="Design kartu NFC Gaming Custom Qriya" loading="lazy">
+            </div>
+            <div class="design-body">
+              <h3>Design Custom — Full Gaming Theme</h3>
+              <p>Desain gaming custom sesuai karakter, nickname, atau tema game favoritmu. Ditambah halaman Gaming Profile dengan multiple game profile dan custom branding.</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION — GALERI PROJECT WEBSITE (FOTO-FOTO PROJECT)
+       ========================================================= -->
+  <section class="section project-sec" id="galeri-project" aria-label="Galeri project website Qriya">
+    <div class="container">
+
+      <div class="sec-head center reveal">
+        <span class="eyebrow">Galeri Project</span>
+        <h2>Hasil Project Website Qriya.</h2>
+        <p class="lead">Beberapa contoh halaman digital yang sudah dibuat untuk berbagai kebutuhan — personal, komunitas, hingga bisnis. Klik foto untuk melihat lebih jelas.</p>
+      </div>
+
+      <!-- FILTER KATEGORI -->
+      <div class="project-filter reveal" role="tablist" aria-label="Filter kategori project">
+        <button type="button" class="active" data-filter="all">Semua</button>
+        <button type="button" data-filter="personal">Personal</button>
+        <button type="button" data-filter="bisnis">Bisnis</button>
+        <button type="button" data-filter="komunitas">Komunitas</button>
+      </div>
+
+      <!-- GRID PROJECT -->
+      <div class="project-grid">
+
+        <!-- PROJECT 1 — PORTOFOLIO -->
+        <article class="project-card reveal" data-cat="personal">
+          <div class="project-thumb">
+            <span class="project-cat">Personal</span>
+            <a class="project-link" href="https://portofolio-lyart-omega.vercel.app/index.html" aria-label="Buka project portofolio" target="_blank" rel="noopener">
+              <i data-lucide="arrow-up-right"></i>
+            </a>
+            <span class="project-zoom" aria-hidden="true"><i data-lucide="zoom-in"></i></span>
+            <img src="portofolio.png" alt="Project website portofolio Qriya" loading="lazy">
+          </div>
+          <div class="project-body">
+            <h3>Website Portofolio</h3>
+            <p>Landing page portofolio personal dengan profil, keahlian, teknologi yang digunakan, dan kontak dalam satu halaman responsif.</p>
+            <div class="project-tags">
+              <span>Portofolio</span><span>Personal</span><span>Landing Page</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROJECT 2 — UMKM -->
+        <article class="project-card reveal" style="--d:.06s" data-cat="bisnis">
+          <div class="project-thumb">
+            <span class="project-cat">Bisnis</span>
+            <a class="project-link" href="https://umkmserangjuara.com/" aria-label="Buka project UMKM" target="_blank" rel="noopener">
+              <i data-lucide="arrow-up-right"></i>
+            </a>
+            <span class="project-zoom" aria-hidden="true"><i data-lucide="zoom-in"></i></span>
+            <img src="umkm.png" alt="Project website UMKM Qriya" loading="lazy">
+          </div>
+          <div class="project-body">
+            <h3>Website UMKM Desa Serang</h3>
+            <p>Website komunitas UMKM digital Desa Serang — katalog produk, profil desa, peta lokasi, dan sistem informasi terintegrasi.</p>
+            <div class="project-tags">
+              <span>UMKM</span><span>Desa Digital</span><span>Katalog Produk</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROJECT 3 — KOPI -->
+        <article class="project-card reveal" style="--d:.12s" data-cat="bisnis">
+          <div class="project-thumb">
+            <span class="project-cat">Bisnis</span>
+            <a class="project-link" href="#" aria-label="Buka project kedai kopi" target="_blank" rel="noopener">
+              <i data-lucide="arrow-up-right"></i>
+            </a>
+            <span class="project-zoom" aria-hidden="true"><i data-lucide="zoom-in"></i></span>
+            <img src="kopi.png" alt="Project website kedai kopi Qriya" loading="lazy">
+          </div>
+          <div class="project-body">
+            <h3>Website Kedai Kopi</h3>
+            <p>Halaman bisnis untuk kedai kopi — menu, lokasi via Google Maps, kontak WhatsApp, dan media sosial.</p>
+            <div class="project-tags">
+              <span>Bisnis</span><span>Kedai Kopi</span><span>Google Maps</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROJECT 4 — KOMUNITAS -->
+        <article class="project-card reveal" data-cat="komunitas">
+          <div class="project-thumb">
+            <span class="project-cat">Komunitas</span>
+            <a class="project-link" href="#" aria-label="Buka project komunitas" target="_blank" rel="noopener">
+              <i data-lucide="arrow-up-right"></i>
+            </a>
+            <span class="project-zoom" aria-hidden="true"><i data-lucide="zoom-in"></i></span>
+            <img src="komunitas.png" alt="Project website komunitas Qriya" loading="lazy">
+          </div>
+          <div class="project-body">
+            <h3>Website Komunitas</h3>
+            <p>Halaman komunitas dengan daftar anggota, jadwal kegiatan, dan link join komunitas.</p>
+            <div class="project-tags">
+              <span>Komunitas</span><span>Organisasi</span><span>Landing</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROJECT 5 — CV ONLINE -->
+        <article class="project-card reveal" style="--d:.06s" data-cat="personal">
+          <div class="project-thumb">
+            <span class="project-cat">Personal</span>
+            <a class="project-link" href="https://portofolio-lyart-omega.vercel.app/index.html" aria-label="Buka project CV online" target="_blank" rel="noopener">
+              <i data-lucide="arrow-up-right"></i>
+            </a>
+            <span class="project-zoom" aria-hidden="true"><i data-lucide="zoom-in"></i></span>
+            <img src="cv.png" alt="Project website CV online Qriya" loading="lazy">
+          </div>
+          <div class="project-body">
+            <h3>Website CV Online</h3>
+            <p>Halaman CV online untuk fresh graduate — profil, skill, pengalaman, dan tombol download CV.</p>
+            <div class="project-tags">
+              <span>CV Online</span><span>Portofolio</span><span>Fresh Graduate</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROJECT 6 — RUMAH -->
+        <article class="project-card reveal" style="--d:.12s" data-cat="bisnis">
+          <div class="project-thumb">
+            <span class="project-cat">Bisnis</span>
+            <a class="project-link" href="#" aria-label="Buka project properti rumah" target="_blank" rel="noopener">
+              <i data-lucide="arrow-up-right"></i>
+            </a>
+            <span class="project-zoom" aria-hidden="true"><i data-lucide="zoom-in"></i></span>
+            <img src="rumah.png" alt="Project website properti rumah Qriya" loading="lazy">
+          </div>
+          <div class="project-body">
+            <h3>Website Properti Rumah</h3>
+            <p>Halaman listing properti rumah dengan galeri foto, detail spesifikasi, harga, dan kontak pemasaran.</p>
+            <div class="project-tags">
+              <span>Properti</span><span>Listing</span><span>Bisnis</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="project-cta reveal">
+        <a class="btn btn-ghost btn-lg" href="demo.html">Lihat Demo Lengkap <i data-lucide="arrow-right"></i></a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION — BUSINESS DETAIL
+       ========================================================= -->
+  <section class="section" id="business">
+    <div class="container">
+      <div class="sec-head center reveal">
+        <span class="eyebrow">Business Detail</span>
+        <h2>Rincian Paket Business.</h2>
+        <p class="lead">Tiga tingkatan sistem bisnis yang dapat disesuaikan dengan skala kebutuhan Anda.</p>
+      </div>
+
+      <div class="biz-grid">
+
+        <article class="biz reveal">
+          <h3>Business Basic</h3>
+          <div class="price">Rp1.500.000</div>
+          <ul class="feat-list">
+            <li><i data-lucide="check"></i>5 Gantungan QR</li>
+            <li><i data-lucide="check"></i>Custom Design Gantungan Kunci</li>
+            <li><i data-lucide="check"></i>5 Website Bisnis</li>
+            <li><i data-lucide="check"></i>Custom Domain</li>
+            <li><i data-lucide="check"></i>Hosting</li>
+            <li><i data-lucide="check"></i>Website Bisnis</li>
+            <li><i data-lucide="check"></i>Database</li>
+            <li><i data-lucide="check"></i>Login Admin</li>
+            <li><i data-lucide="check"></i>CRUD Data</li>
+            <li><i data-lucide="check"></i>Responsive di berbagai perangkat</li>
+          </ul>
+        </article>
+
+        <article class="biz mid reveal" style="--d:.1s">
+          <h3>Business Standard</h3>
+          <div class="price">Rp3.000.000</div>
+          <span class="inherit">Semua fitur Business Basic +</span>
+          <ul class="feat-list">
+            <li><i data-lucide="check"></i>Dashboard Admin</li>
+            <li><i data-lucide="check"></i>Pencarian Data</li>
+            <li><i data-lucide="check"></i>WhatsApp</li>
+            <li><i data-lucide="check"></i>Google Maps</li>
+            <li><i data-lucide="check"></i>Media Sosial</li>
+            <li><i data-lucide="check"></i>Desain Website Lebih Premium</li>
+            <li><i data-lucide="check"></i>Maintenance</li>
+            <li><i data-lucide="check"></i>Responsive di berbagai perangkat</li>
+          </ul>
+        </article>
+
+        <article class="biz high reveal" style="--d:.2s">
+          <h3>Business Custom</h3>
+          <div class="price">Rp4.000.000+</div>
+          <span class="inherit">Semua fitur Business Standard +</span>
+          <ul class="feat-list">
+            <li><i data-lucide="check"></i>Sistem sesuai kebutuhan bisnis</li>
+            <li><i data-lucide="check"></i>Dashboard lebih lengkap</li>
+            <li><i data-lucide="check"></i>Hak Akses Pengguna</li>
+            <li><i data-lucide="check"></i>Database lebih kompleks</li>
+            <li><i data-lucide="check"></i>Laporan &amp; Statistik</li>
+            <li><i data-lucide="check"></i>Maintenance &amp; Update Sistem</li>
+            <li><i data-lucide="check"></i>Pengembangan Fitur Tambahan</li>
+            <li><i data-lucide="check"></i>Design Lebih Premium</li>
+            <li><i data-lucide="check"></i>Google Login</li>
+            <li><i data-lucide="check"></i>Google Maps</li>
+            <li><i data-lucide="check"></i>Optimasi Sistem</li>
+            <li><i data-lucide="check"></i>Responsive di berbagai perangkat</li>
+          </ul>
+        </article>
+
+      </div>
+
+      <p class="note reveal">Harga Business Custom dapat menyesuaikan tingkat kompleksitas sistem dan kebutuhan fitur pelanggan.</p>
+
+      <!-- COMPARISON -->
+      <div class="sec-head center reveal" style="margin-top:var(--space-5)">
+        <span class="eyebrow">Perbandingan</span>
+        <h2>Business Comparison.</h2>
+        <p class="lead">Bandingkan fitur setiap tingkatan sebelum menentukan pilihan.</p>
+      </div>
+
+      <div class="cmp-wrap reveal">
+        <table class="cmp">
+          <thead>
+            <tr>
+              <th>Fitur</th>
+              <th>Business Basic <span>Rp1.500.000</span></th>
+              <th>Business Standard <span>Rp3.000.000</span></th>
+              <th>Business Custom <span>Rp4.000.000+</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Gantungan Kunci QR</td>
+              <td data-label="Basic" class="val">5</td>
+              <td data-label="Standard" class="val">5</td>
+              <td data-label="Custom" class="val">5</td>
+            </tr>
+            <tr>
+              <td>Custom Design Gantungan</td>
+              <td data-label="Basic"><span class="yes"><i data-lucide="check"></i></span></td>
+              <td data-label="Standard"><span class="yes"><i data-lucide="check"></i></span></td>
+              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
+            </tr>
+            <tr>
+              <td>Website Bisnis</td>
+              <td data-label="Basic" class="val">5</td>
+              <td data-label="Standard" class="val">5</td>
+              <td data-label="Custom" class="val">5</td>
+            </tr>
+            <tr>
+              <td>Custom Domain</td>
+              <td data-label="Basic"><span class="yes"><i data-lucide="check"></i></span></td>
+              <td data-label="Standard"><span class="yes"><i data-lucide="check"></i></span></td>
+              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
+            </tr>
+            <tr>
+              <td>Hosting</td>
+              <td data-label="Basic"><span class="yes"><i data-lucide="check"></i></span></td>
+              <td data-label="Standard"><span class="yes"><i data-lucide="check"></i></span></td>
+              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
+            </tr>
+            <tr>
+              <td>Database</td>
+              <td data-label="Basic"><span class="yes"><i data-lucide="check"></i></span></td>
+              <td data-label="Standard"><span class="yes"><i data-lucide="check"></i></span></td>
+              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
+            </tr>
+            <tr>
+              <td>Login Admin</td>
+              <td data-label="Basic"><span class="yes"><i data-lucide="check"></i></span></td>
+              <td data-label="Standard"><span class="yes"><i data-lucide="check"></i></span></td>
+              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
+            </tr>
+            <tr>
+              <td>CRUD Data</td>
+              <td data-label="Basic"><span class="yes"><i data-lucide="check"></i></span></td>
+              <td data-label="Standard"><span class="yes"><i data-lucide="check"></i></span></td>
+              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
+            </tr>
+            <tr>
+              <td>Dashboard Admin</td>
+              <td data-label="Basic"><span class="no">—</span></td>
+              <td data-label="Standard"><span class="yes"><i data-lucide="check"></i></span></td>
+              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
+            </tr>
+            <tr>
+              <td>Pencarian Data</td>
+              <td data-label="Basic"><span class="no">—</span></td>
+              <td data-label="Standard"><span class="yes"><i data-lucide="check"></i></span></td>
+              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
+            </tr>
+            <tr>
+              <td>WhatsApp</td>
+              <td data-label="Basic"><span class="no">—</span></td>
+              <td data-label="Standard"><span class="yes"><i data-lucide="check"></i></span></td>
+              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
+            </tr>
+            <tr>
+              <td>Google Maps</td>
+              <td data-label="Basic"><span class="no">—</span></td>
+              <td data-label="Standard"><span class="yes"><i data-lucide="check"></i></span></td>
+              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
+            </tr>
+            <tr>
+              <td>Media Sosial</td>
+              <td data-label="Basic"><span class="no">—</span></td>
+              <td data-label="Standard"><span class="yes"><i data-lucide="check"></i></span></td>
+              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
+            </tr>
+            <tr>
+              <td>Desain Website Lebih Premium</td>
+              <td data-label="Basic"><span class="no">—</span></td>
+              <td data-label="Standard"><span class="yes"><i data-lucide="check"></i></span></td>
+              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
+            </tr>
+            <tr>
+              <td>Maintenance</td>
+              <td data-label="Basic"><span class="no">—</span></td>
+              <td data-label="Standard"><span class="yes"><i data-lucide="check"></i></span></td>
+              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
+            </tr>
+            <tr>
+              <td>Hak Akses Pengguna</td>
+              <td data-label="Basic"><span class="no">—</span></td>
+              <td data-label="Standard"><span class="no">—</span></td>
+              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
+            </tr>
+            <tr>
+              <td>Laporan &amp; Statistik</td>
+              <td data-label="Basic"><span class="no">—</span></td>
+              <td data-label="Standard"><span class="no">—</span></td>
+              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
+            </tr>
+            <tr>
+              <td>Google Login</td>
+              <td data-label="Basic"><span class="no">—</span></td>
+              <td data-label="Standard"><span class="no">—</span></td>
+              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
+            </tr>
+            <tr>
+              <td>Optimasi Sistem</td>
+              <td data-label="Basic"><span class="no">—</span></td>
+              <td data-label="Standard"><span class="no">—</span></td>
+              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
+            </tr>
+            <tr>
+              <td>Pengembangan Fitur Tambahan</td>
+              <td data-label="Basic"><span class="no">—</span></td>
+              <td data-label="Standard"><span class="no">—</span></td>
+              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td data-label="Paket">Business Basic</td>
+              <td data-label="Harga">Rp1.500.000</td>
+              <td data-label="Business Standard">Rp3.000.000</td>
+              <td data-label="Business Custom">Rp4.000.000+</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION — FAQ SINGKAT
+       ========================================================= -->
+  <section class="section" id="faq-paket">
+    <div class="container">
+      <div class="sec-head center reveal">
+        <span class="eyebrow">Pertanyaan Umum</span>
+        <h2>Hal yang Sering Ditanyakan.</h2>
+        <p class="lead">Beberapa pertanyaan yang paling sering muncul seputar paket Qriya.</p>
+      </div>
+
+      <div class="faq-list">
+        <details class="faq-item reveal">
+          <summary>
+            Apakah bisa pesan jumlah gantungan custom?
+            <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+          </summary>
+          <div class="faq-body">
+            Bisa. Paket Starter, Pro, dan Business punya jumlah default, tapi Anda bisa request jumlah khusus. Silakan hubungi kami untuk kebutuhan custom sesuai jumlah dan skala yang diinginkan.
+          </div>
+        </details>
+
+        <details class="faq-item reveal" style="--d:.06s">
+          <summary>
+            Apa perbedaan Paket Utama dan NFC Gaming Card?
+            <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+          </summary>
+          <div class="faq-body">
+            Paket Utama fokus ke website personal/bisnis lengkap dengan QR Code. Sedangkan NFC Gaming Card fokus ke identitas gaming dengan teknologi tap NFC — cocok untuk kamu yang ingin membagikan profil gaming dengan cepat.
+          </div>
+        </details>
+
+        <details class="faq-item reveal" style="--d:.12s">
+          <summary>
+            Apakah harga sudah termasuk hosting dan domain?
+            <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+          </summary>
+          <div class="faq-body">
+            Untuk paket Starter menggunakan hosting Vercel tanpa custom domain. Untuk paket Pro dan Business sudah termasuk hosting dan custom domain sesuai fitur paketnya.
+          </div>
+        </details>
+
+        <details class="faq-item reveal" style="--d:.18s">
+          <summary>
+            Bisa request desain gantungan sesuai tema?
+            <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+          </summary>
+          <div class="faq-body">
+            Tentu. Semua paket sudah termasuk custom design gantungan. Anda bisa kirim preferensi warna, gaya, atau referensi desain yang diinginkan.
+          </div>
+        </details>
+
+        <details class="faq-item reveal" style="--d:.24s">
+          <summary>
+            Apakah ada garansi jika QR Code tidak berfungsi?
+            <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+          </summary>
+          <div class="faq-body">
+            Setiap QR Code diuji sebelum dikirim, dan kami pastikan berfungsi dengan baik. Jika ada kendala setelah diterima, hubungi kami untuk pengecekan dan perbaikan.
+          </div>
+        </details>
+      </div>
+
+      <div class="actions reveal" style="justify-content:center;--d:.3s">
+        <a class="btn btn-ghost btn-lg" href="faq.html">Lihat Semua FAQ <i data-lucide="arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION — CTA
+       ========================================================= -->
+  <section class="section" id="order">
+    <div class="container">
+      <div class="cta-panel reveal">
+        <span class="eyebrow" style="justify-content:center;display:inline-flex">Mulai Sekarang</span>
+        <h2>Siap Pilih Paket Qriya Anda?</h2>
+        <p>Pilih paket yang sesuai, dan biarkan gantungan kecil Anda membuka pintu menuju identitas digital.</p>
+        <div class="cta-actions">
+          <a class="btn btn-primary btn-lg" href="https://wa.me/6280000000000" target="_blank" rel="noopener">Order via WhatsApp <i data-lucide="arrow-right"></i></a>
+          <a class="btn btn-ghost btn-lg" href="demo.html">Lihat Demo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+<footer class="footer">
+  <div class="container footer-grid">
+
+    <div class="f-brand">
+      <a class="brand" href="beranda.html" aria-label="Qriya — Beranda">
+        <img src="foto1.jpg" alt="Logo Qriya">
+        <span class="brand-text">
+          <span class="b-name">Qriya</span>
+          <span class="b-tag">QR Keychain</span>
+        </span>
+      </a>
+      <p>Qriya menghadirkan gantungan QR yang menghubungkan dunia fisik dengan identitas digital. Satu scan untuk membuka website personal maupun bisnis Anda.</p>
+    </div>
+
+    <div class="f-col">
+      <h4>Navigasi</h4>
+      <ul>
+        <li><a href="beranda.html">Beranda</a></li>
+        <li><a href="cara-kerja.html">Cara Kerja</a></li>
+        <li><a href="paket.html">Paket</a></li>
+        <li><a href="demo.html">Demo</a></li>
+        <li><a href="tentang-kami.html">Tentang Kami</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+    </div>
+
+    <div class="f-col">
+      <h4>Produk</h4>
+      <ul>
+        <li><a href="paket.html">QR Keychain</a></li>
+        <li><a href="paket.html">Website Personal</a></li>
+        <li><a href="paket.html">Website Bisnis</a></li>
+        <li><a href="paket.html">Digital Identity</a></li>
+      </ul>
+    </div>
+
+    <div class="f-col">
+      <h4>Kontak</h4>
+      <ul>
+        <li><span>Universitas Bina Sarana Informatika</span></li>
+        <li><span>Kampus Margonda, Depok</span></li>
+        <li><span>Jl. Margonda Raya, Pondok Cina</span></li>
+        <li><span>Depok, Jawa Barat 16424</span></li>
+        <li><span>email@domain.com</span></li>
+        <li><span>+62 8xx xxxx xxxx</span></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="container footer-bottom">
+    <p>© 2026 Qriya. All rights reserved.</p>
+    <p>Gantungan → Scan → Website → Identitas Digital</p>
+  </div>
+</footer>
+
+<!-- =========================================================
+     LIGHTBOX — ZOOM FOTO
+     ========================================================= -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Zoom foto" aria-hidden="true">
+  <span class="lb-hint">Klik luar untuk tutup · ESC · + / − untuk zoom</span>
+  <button class="lb-btn lb-close" type="button" aria-label="Tutup"><i data-lucide="x"></i></button>
+  <button class="lb-btn lb-zoom-in" type="button" aria-label="Perbesar"><i data-lucide="zoom-in"></i></button>
+  <button class="lb-btn lb-zoom-out" type="button" aria-label="Perkecil"><i data-lucide="zoom-out"></i></button>
+  <button class="lb-btn lb-reset" type="button" aria-label="Reset zoom"><i data-lucide="maximize"></i></button>
+  <div class="lb-stage">
+    <img class="lb-img" src="" alt="">
+  </div>
+</div>
+
+<script>
+/* ===== Lucide icons ===== */
+(function(){
+  function init(){
+    if(window.lucide && typeof window.lucide.createIcons === 'function'){
+      window.lucide.createIcons();
+    }
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+  window.addEventListener('load', init);
+})();
+
+/* ===== Menu mobile ===== */
+(function(){
+  var btn = document.getElementById('menuBtn');
+  var menu = document.getElementById('navLinks');
+  if(!btn || !menu) return;
+
+  function toggle(open){
+    menu.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', String(open));
+    btn.setAttribute('aria-label', open ? 'Tutup menu' : 'Buka menu');
+  }
+
+  btn.addEventListener('click', function(e){
+    e.stopPropagation();
+    toggle(!menu.classList.contains('open'));
+  });
+
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ toggle(false); });
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') toggle(false);
+  });
+
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.site-header')) toggle(false);
+  });
+
+  window.addEventListener('resize', function(){
+    if(window.innerWidth > 880) toggle(false);
+  });
+})();
+
+/* ===== Navbar: transparan di atas, solid setelah scroll ===== */
+(function(){
+  var header = document.getElementById('siteHeader');
+  if(!header) return;
+  var ticking = false;
+
+  function update(){
+    header.classList.toggle('scrolled', window.scrollY > 24);
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      window.requestAnimationFrame(update);
+      ticking = true;
+    }
+  }, {passive:true});
+
+  update();
+})();
+
+/* ===== Reveal on scroll ===== */
+(function(){
+  var items = document.querySelectorAll('.reveal');
+  if(!items.length) return;
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce || !('IntersectionObserver' in window)){
+    items.forEach(function(el){ el.classList.add('in'); });
+    return;
+  }
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.14, rootMargin:'0px 0px -8% 0px'});
+
+  items.forEach(function(el){ io.observe(el); });
+})();
+
+/* ===== Filter kategori galeri project ===== */
+(function(){
+  var filterBtns = document.querySelectorAll('.project-filter button');
+  var cards = document.querySelectorAll('.project-card');
+  if(!filterBtns.length || !cards.length) return;
+
+  filterBtns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var filter = btn.getAttribute('data-filter') || 'all';
+
+      filterBtns.forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+
+      cards.forEach(function(card){
+        var cat = card.getAttribute('data-cat') || '';
+        var match = (filter === 'all' || cat === filter);
+        card.style.display = match ? '' : 'none';
+      });
+    });
+  });
+})();
+
+/* ===== LIGHTBOX — Zoom foto project & design kartu ===== */
+(function(){
+  var lightbox = document.getElementById('lightbox');
+  if(!lightbox) return;
+
+  var lbImg   = lightbox.querySelector('.lb-img');
+  var lbStage = lightbox.querySelector('.lb-stage');
+  var lbClose = lightbox.querySelector('.lb-close');
+  var lbIn    = lightbox.querySelector('.lb-zoom-in');
+  var lbOut   = lightbox.querySelector('.lb-zoom-out');
+  var lbReset = lightbox.querySelector('.lb-reset');
+
+  if(!lbImg || !lbStage) return;
+
+  // Tingkatan zoom
+  var zooms = [1, 1.25, 1.5, 2, 2.5, 3];
+  var zi = 0;
+  var lastFocus = null;
+
+  function applyZoom(){
+    var z = zooms[zi];
+    if(z <= 1){
+      lbImg.style.maxWidth = '';
+      lbImg.style.maxHeight = '';
+      lbImg.style.width = '';
+      lbImg.style.height = '';
+    } else {
+      var naturalW = lbImg.naturalWidth || 1200;
+      lbImg.style.maxWidth = 'none';
+      lbImg.style.maxHeight = 'none';
+      lbImg.style.width = Math.round(naturalW * z) + 'px';
+      lbImg.style.height = 'auto';
+    }
+  }
+
+  function open(src, alt){
+    lastFocus = document.activeElement;
+    lbImg.src = src;
+    lbImg.alt = alt || 'Foto';
+    zi = 0;
+    lbImg.style.maxWidth = '';
+    lbImg.style.maxHeight = '';
+    lbImg.style.width = '';
+    lbImg.style.height = '';
+
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('lb-open');
+    lbStage.scrollTop = 0;
+    lbStage.scrollLeft = 0;
+
+    if(lbClose && typeof lbClose.focus === 'function') lbClose.focus();
+  }
+
+  function close(){
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('lb-open');
+
+    setTimeout(function(){
+      if(!lightbox.classList.contains('open')){
+        lbImg.src = '';
+        lbImg.style.maxWidth = '';
+        lbImg.style.maxHeight = '';
+        lbImg.style.width = '';
+        lbImg.style.height = '';
+      }
+    }, 320);
+
+    if(lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+  }
+
+  function zoomIn(){ if(zi < zooms.length - 1){ zi++; applyZoom(); } }
+  function zoomOut(){ if(zi > 0){ zi--; applyZoom(); } }
+  function reset(){ zi = 0; applyZoom(); }
+
+  lbImg.addEventListener('load', function(){
+    if(zi > 0) applyZoom();
+  });
+
+  if(lbClose) lbClose.addEventListener('click', close);
+  if(lbIn)    lbIn.addEventListener('click', zoomIn);
+  if(lbOut)   lbOut.addEventListener('click', zoomOut);
+  if(lbReset) lbReset.addEventListener('click', reset);
+
+  lightbox.addEventListener('click', function(e){
+    if(e.target === lightbox || e.target === lbStage) close();
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(!lightbox.classList.contains('open')) return;
+    if(e.key === 'Escape'){ close(); }
+    else if(e.key === '+' || e.key === '='){ zoomIn(); }
+    else if(e.key === '-' || e.key === '_'){ zoomOut(); }
+    else if(e.key === '0'){ reset(); }
+  });
+
+  // Hook thumbnail PROJECT → buka lightbox
+  document.querySelectorAll('.project-thumb').forEach(function(thumb){
+    thumb.addEventListener('click', function(e){
+      if(e.target.closest('.project-link')) return;
+
+      var img = thumb.querySelector('img');
+      if(!img) return;
+
+      e.preventDefault();
+      open(img.currentSrc || img.src, img.alt);
+    });
+  });
+
+  document.querySelectorAll('.project-zoom').forEach(function(zBtn){
+    zBtn.addEventListener('click', function(e){
+      e.stopPropagation();
+    });
+  });
+
+  // Hook thumbnail DESIGN KARTU → buka lightbox
+  document.querySelectorAll('.design-thumb').forEach(function(thumb){
+    thumb.addEventListener('click', function(e){
+      var img = thumb.querySelector('img');
+      if(!img) return;
+
+      e.preventDefault();
+      open(img.currentSrc || img.src, img.alt);
+    });
+  });
+
+  document.querySelectorAll('.design-zoom').forEach(function(zBtn){
+    zBtn.addEventListener('click', function(e){
+      e.stopPropagation();
+    });
+  });
+
+})();
+</script>
+</body>
+</html>
