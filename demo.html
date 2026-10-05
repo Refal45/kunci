@@ -396,17 +396,23 @@ p{color:var(--muted)}
 }
 .qr-card .qr-tag svg.lucide{width:13px;height:13px}
 
+/* Frame QR — pakai foto scan.png, biarkan aspect natural */
 .qr-frame{
   position:relative;
-  width:min(220px,65%);
+  width:min(240px,75%);
   margin:0 auto;
-  aspect-ratio:1/1;
   border-radius:20px;
   background:#ffffff;
   padding:14px;
   box-shadow:0 18px 40px rgba(3,6,22,.5),inset 0 0 0 1px rgba(0,0,0,.06);
+  overflow:hidden;
 }
-.qr-frame img{width:100%;height:100%;object-fit:contain;display:block}
+.qr-frame img{
+  width:100%;
+  height:auto;
+  display:block;
+  object-fit:contain;
+}
 
 /* garis scan animasi */
 .qr-scan-line{
@@ -418,10 +424,11 @@ p{color:var(--muted)}
   opacity:0;
   pointer-events:none;
   transition:opacity .3s ease;
+  z-index:2;
 }
 .qr-card.scanning .qr-scan-line{
   opacity:1;
-  animation:scanLine 1.5s var(--ease) infinite;
+  animation:scanLine 1.6s var(--ease) infinite;
 }
 @keyframes scanLine{
   0%{top:14px}
@@ -486,91 +493,77 @@ p{color:var(--muted)}
   width:100%;height:100%;
   border-radius:34px;
   overflow:hidden;
-  background:
-    radial-gradient(320px 220px at 50% 0%, rgba(124,58,237,.22), transparent 62%),
-    radial-gradient(280px 200px at 100% 100%, rgba(37,99,235,.18), transparent 62%),
-    #050b18;
+  background:#050b18;
   border:1px solid rgba(255,255,255,.08);
 }
 
-.phone-content{
+/* Tampilan default: layar kosong gelap dengan hint */
+.phone-idle{
   position:absolute;inset:0;
-  padding:52px 18px 22px;
-  display:flex;flex-direction:column;
-  overflow:hidden;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+  padding:24px;
+  text-align:center;
+  transition:opacity .5s var(--ease),visibility .5s var(--ease);
+  z-index:2;
+}
+.phone-idle .idle-ico{
+  width:64px;height:64px;border-radius:20px;
+  display:grid;place-items:center;
+  background:linear-gradient(135deg,rgba(56,189,248,.16),rgba(124,58,237,.24));
+  border:1px solid rgba(255,255,255,.14);
+  color:#c7d2fe;
+}
+.phone-idle .idle-ico svg.lucide{width:28px;height:28px}
+.phone-idle h4{
+  font-size:.92rem;font-weight:700;color:#fff;letter-spacing:-.005em;
+}
+.phone-idle p{
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted-2);
+  line-height:1.7;
+}
+.phone-screen.loaded .phone-idle{opacity:0;visibility:hidden}
+
+/* Gambar website hasil scan (gw.png) */
+.phone-web{
+  position:absolute;inset:0;
+  z-index:1;
+  opacity:0;
+  transform:scale(1.03);
+  transition:opacity .55s var(--ease),transform .55s var(--ease);
+  background:#050b18;
+}
+.phone-web img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:top center;
+  display:block;
+}
+.phone-screen.loaded .phone-web{
+  opacity:1;
+  transform:scale(1);
 }
 
-/* status bar mini */
+/* status bar mini (di atas) */
 .phone-status{
   position:absolute;top:0;left:0;right:0;height:36px;
   display:flex;align-items:center;justify-content:space-between;
   padding:0 22px;
   font-family:"JetBrains Mono",ui-monospace,monospace;
   font-size:.58rem;font-weight:700;letter-spacing:.06em;
-  color:rgba(226,232,240,.75);
-  z-index:3;
+  color:rgba(226,232,240,.85);
+  z-index:5;
+  pointer-events:none;
+  text-shadow:0 1px 6px rgba(0,0,0,.55);
 }
-
-.phone-body{
-  flex:1;
-  display:flex;flex-direction:column;
-  gap:14px;
-  opacity:0;
-  transform:translateY(14px);
-  transition:opacity .55s var(--ease),transform .55s var(--ease);
-}
-.phone-screen.loaded .phone-body{opacity:1;transform:none}
-
-.phone-avatar{
-  width:68px;height:68px;border-radius:22px;
-  background:var(--grad);
-  display:grid;place-items:center;
-  font-size:1.5rem;font-weight:800;color:#fff;
-  letter-spacing:-.02em;
-  box-shadow:0 12px 28px rgba(79,70,229,.5);
-  border:1px solid rgba(255,255,255,.22);
-}
-.phone-name{
-  font-size:1.05rem;font-weight:800;letter-spacing:-.01em;color:#fff;
-  line-height:1.2;
-}
-.phone-role{
-  margin-top:6px;
-  font-family:"JetBrains Mono",ui-monospace,monospace;
-  font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
-  color:#7dd3fc;
-}
-.phone-desc{
-  margin-top:4px;
-  font-size:.78rem;line-height:1.6;color:var(--muted);
-}
-
-.phone-buttons{
-  display:grid;grid-template-columns:1fr 1fr;gap:8px;
-  margin-top:auto;
-}
-.phone-buttons a{
-  display:flex;align-items:center;justify-content:center;gap:7px;
-  padding:11px 8px;border-radius:12px;
-  font-size:.72rem;font-weight:600;
-  background:rgba(255,255,255,.07);
-  border:1px solid rgba(255,255,255,.14);
-  color:#e0e7ff;
-  transition:background .25s ease,border-color .25s ease,transform .25s ease;
-}
-.phone-buttons a:hover{background:rgba(124,58,237,.28);border-color:rgba(167,139,250,.45)}
-.phone-buttons a svg.lucide{width:14px;height:14px}
-.phone-buttons a.primary{
-  background:var(--grad);border-color:rgba(255,255,255,.22);color:#fff;
-  grid-column:1 / -1;
-}
-.phone-buttons a.primary:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(124,58,237,.5)}
 
 /* overlay loading di ponsel */
 .phone-loading{
-  position:absolute;inset:0;z-index:5;
+  position:absolute;inset:0;z-index:6;
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
-  background:rgba(5,11,24,.85);
+  background:rgba(5,11,24,.9);
   backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
   opacity:0;visibility:hidden;
   transition:opacity .3s ease,visibility .3s ease;
@@ -598,7 +591,7 @@ p{color:var(--muted)}
 .tech-item p{margin-top:10px;font-size:.87rem;line-height:1.65}
 
 /* =========================================================
-   PROJECT GALLERY (reuse dari paket.html)
+   PROJECT GALLERY
    ========================================================= */
 .project-sec{
   background:
@@ -1053,14 +1046,14 @@ p{color:var(--muted)}
 
   /* DEMO stage mobile */
   .qr-card{padding:26px 22px 24px}
-  .qr-frame{width:min(190px,70%)}
+  .qr-frame{width:min(200px,75%)}
   .phone-frame{border-radius:38px;padding:10px}
   .phone-screen{border-radius:29px}
-  .phone-content{padding:46px 14px 18px}
-  .phone-avatar{width:60px;height:60px;border-radius:19px;font-size:1.3rem}
-  .phone-name{font-size:.96rem}
-  .phone-desc{font-size:.74rem}
-  .phone-buttons a{padding:10px 6px;font-size:.68rem}
+  .phone-idle{padding:18px}
+  .phone-idle .idle-ico{width:56px;height:56px;border-radius:18px}
+  .phone-idle .idle-ico svg.lucide{width:24px;height:24px}
+  .phone-idle h4{font-size:.86rem}
+  .phone-idle p{font-size:.56rem}
 
   /* Sidebar mobile lebih lega di layar kecil */
   .nav-links{
@@ -1178,12 +1171,12 @@ p{color:var(--muted)}
 
       <div class="demo-stage reveal">
 
-        <!-- KIRI: KARTU QR -->
+        <!-- KIRI: KARTU QR (pakai scan.png) -->
         <div class="qr-card" id="qrCard">
           <span class="qr-tag"><i data-lucide="qr-code"></i>QR Keychain Demo</span>
 
           <div class="qr-frame">
-            <img src="qr-demo.png" alt="Contoh QR Code Qriya" loading="lazy">
+            <img src="scan.png" alt="Contoh QR Code Qriya — scan.png" loading="lazy">
             <span class="qr-scan-line" aria-hidden="true"></span>
           </div>
 
@@ -1202,37 +1195,27 @@ p{color:var(--muted)}
           <p class="scan-status" id="scanStatus">Status: Siap dipindai</p>
         </div>
 
-        <!-- KANAN: PONSEL PREVIEW -->
+        <!-- KANAN: PONSEL PREVIEW (pakai gw.png) -->
         <div class="phone-wrap">
           <div class="phone-frame">
             <div class="phone-screen" id="phoneScreen">
+
+              <!-- Status bar mini -->
               <div class="phone-status">
                 <span>9:41</span>
-                <span>Qriya</span>
+                <span>qriya.id</span>
               </div>
 
-              <div class="phone-content">
-                <div class="phone-body">
-                  <div class="phone-avatar">QR</div>
-                  <div>
-                    <div class="phone-name">Rizky Pratama</div>
-                    <div class="phone-role">Front-End Developer</div>
-                  </div>
+              <!-- Tampilan idle (sebelum scan) -->
+              <div class="phone-idle">
+                <div class="idle-ico"><i data-lucide="smartphone"></i></div>
+                <h4>Menunggu Scan</h4>
+                <p>Scan QR untuk<br>membuka website</p>
+              </div>
 
-                  <p class="phone-desc">
-                    Portofolio, kontak, dan sosial media dalam satu halaman. Satu scan dari gantungan Qriya membuka semua identitas digital Anda.
-                  </p>
-
-                  <div class="phone-buttons">
-                    <a class="primary" href="#simulasi">
-                      <i data-lucide="globe"></i>Buka Website
-                    </a>
-                    <a href="#simulasi"><i data-lucide="mail"></i>Email</a>
-                    <a href="#simulasi"><i data-lucide="message-circle"></i>WhatsApp</a>
-                    <a href="#simulasi"><i data-lucide="instagram"></i>Instagram</a>
-                    <a href="#simulasi"><i data-lucide="github"></i>GitHub</a>
-                  </div>
-                </div>
+              <!-- Gambar website hasil scan (gw.png) -->
+              <div class="phone-web">
+                <img src="gw.png" alt="Preview website Qriya — gw.png" loading="lazy">
               </div>
 
               <!-- Loading overlay -->
@@ -1240,6 +1223,7 @@ p{color:var(--muted)}
                 <div class="spin" aria-hidden="true"></div>
                 <span>Membuka Website…</span>
               </div>
+
             </div>
           </div>
         </div>
@@ -1833,7 +1817,7 @@ p{color:var(--muted)}
       }
     }, 1600));
 
-    // 3. Setelah 2.8s → tampilkan halaman website
+    // 3. Setelah 2.8s → tampilkan halaman website (gw.png)
     timers.push(setTimeout(function(){
       phoneScreen.classList.remove('loading');
       phoneScreen.classList.add('loaded');
