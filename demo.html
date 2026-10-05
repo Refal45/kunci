@@ -3,13 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Demo — Portfolio QR Keychain</title>
-<meta name="description" content="Lihat website personal Anda secara langsung di dalam mockup smartphone. Scan QR Code, website terbuka di HP.">
+<title>Demo | Qriya — Gantungan QR &amp; Website Digital</title>
+<meta name="description" content="Lihat demo gantungan kunci QR Qriya: preview website asli di dalam mockup smartphone, simulasi scan, dan contoh halaman digital.">
 <meta name="theme-color" content="#050b18">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+<script>document.documentElement.classList.add('js');</script>
 
 <style>
 /* =========================================================
@@ -73,6 +76,8 @@ input{font-family:inherit}
 ::selection{background:rgba(124,58,237,.45);color:#fff}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
+svg.lucide{width:18px;height:18px;flex:none;stroke-width:1.8}
+
 /* =========================================================
    LAYOUT HELPERS
    ========================================================= */
@@ -107,21 +112,40 @@ p{color:var(--muted)}
    ========================================================= */
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:10px;
-  padding:14px 26px;border-radius:14px;
+  padding:15px 28px;border-radius:14px;
   font-size:.94rem;font-weight:600;letter-spacing:.005em;
   border:1px solid transparent;
   transition:transform .32s var(--ease),box-shadow .32s var(--ease),background .32s ease,border-color .32s ease,color .32s ease;
   white-space:nowrap;
   cursor:pointer;
 }
+.btn svg.lucide{width:18px;height:18px;transition:transform .32s var(--ease)}
 .btn-primary{background:var(--grad);color:#fff;border-color:rgba(255,255,255,.20);box-shadow:0 10px 28px rgba(79,70,229,.42)}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 42px rgba(124,58,237,.55)}
+.btn-primary:hover svg.lucide{transform:translateX(3px)}
 .btn-ghost{background:rgba(255,255,255,.06);color:#fff;border-color:rgba(255,255,255,.18);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .btn-ghost:hover{background:rgba(255,255,255,.12);transform:translateY(-2px)}
-.btn-lg{padding:16px 32px;font-size:1rem;border-radius:16px}
-.btn-sm{padding:10px 18px;font-size:.82rem;border-radius:12px}
+.btn-lg{padding:17px 34px;font-size:1rem;border-radius:16px}
 .btn-block{width:100%}
 .actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:var(--space-3)}
+
+/* =========================================================
+   CARD BASE
+   ========================================================= */
+.card{
+  position:relative;border-radius:var(--r-lg);padding:26px;
+  background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.018));
+  border:1px solid var(--line-2);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  transition:transform .42s var(--ease),border-color .42s ease,box-shadow .42s ease;
+}
+.card:hover{transform:translateY(-4px);border-color:rgba(139,92,246,.42);box-shadow:0 20px 44px rgba(3,7,22,.55),0 0 34px rgba(79,70,229,.16)}
+.ico{
+  width:46px;height:46px;flex:0 0 auto;border-radius:13px;display:grid;place-items:center;
+  background:linear-gradient(135deg,rgba(56,189,248,.16),rgba(124,58,237,.24));
+  border:1px solid rgba(255,255,255,.14);color:#bfdbfe;
+}
+.ico svg.lucide{width:21px;height:21px}
 
 /* =========================================================
    NAVBAR
@@ -163,27 +187,29 @@ p{color:var(--muted)}
   display:flex;align-items:center;gap:12px;flex-shrink:0;
   transition:transform .35s var(--ease);
 }
-.brand-mark{
-  width:44px;height:44px;border-radius:12px;display:grid;place-items:center;
-  background:var(--grad);
-  box-shadow:0 8px 22px rgba(79,70,229,.45);
-  border:1px solid rgba(255,255,255,.22);
-  flex-shrink:0;
+.brand img{
+  height:52px;width:auto;max-width:120px;object-fit:contain;
+  transition:transform .35s var(--ease),filter .35s ease;
+  filter:drop-shadow(0 0 14px rgba(79,70,229,.45));
 }
-.brand-mark svg{width:22px;height:22px;color:#fff;stroke-width:2}
-.brand-text{display:flex;flex-direction:column;line-height:1}
+.brand-text{
+  display:flex;flex-direction:column;line-height:1;
+  font-family:"Plus Jakarta Sans",system-ui,sans-serif;
+}
 .brand-text .b-name{
-  font-size:1.05rem;font-weight:800;letter-spacing:-.02em;
+  font-size:1.45rem;font-weight:800;letter-spacing:-.02em;
   background:linear-gradient(120deg,#ffffff 0%,#c4b5fd 55%,#a5b4fc 100%);
   -webkit-background-clip:text;background-clip:text;color:transparent;
+  text-shadow:0 0 22px rgba(124,58,237,.35);
 }
 .brand-text .b-tag{
-  margin-top:5px;
+  margin-top:6px;
   font-family:"JetBrains Mono",ui-monospace,monospace;
-  font-size:.54rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  font-size:.56rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
   color:rgba(165,180,252,.78);
 }
 .brand:hover{transform:scale(1.02)}
+.brand:hover img{filter:drop-shadow(0 0 22px rgba(124,58,237,.8))}
 
 .nav-links{display:flex;gap:2px;align-items:center}
 .nav-links a{
@@ -193,15 +219,18 @@ p{color:var(--muted)}
   background:transparent;border:none;border-radius:0;
   transition:color .3s ease;
 }
+.nav-links a svg.lucide{width:16px;height:16px;opacity:.8;transition:opacity .3s ease,color .3s ease}
 .nav-links a::after{
   content:"";position:absolute;left:15px;right:15px;bottom:4px;
   height:1.5px;border-radius:2px;background:var(--grad);
   transform:scaleX(0);transform-origin:left;transition:transform .32s var(--ease);
 }
 .nav-links a:hover{color:#fff}
+.nav-links a:hover svg.lucide{opacity:1}
 .nav-links a:hover::after{transform:scaleX(1)}
 .nav-links a.active{color:#fff;font-weight:600}
-.nav-links a.active::after{transform:scaleX(1);height:2px;box-shadow:0 0 12px rgba(124,58,237,.9)}
+.nav-links a.active svg.lucide{opacity:1;color:#c7d2fe;filter:drop-shadow(0 0 8px rgba(124,58,237,.85))}
+.nav-links a.active::after{transform:scaleX(1);height:2px;box-shadow:0 0 12px rgba(124,58,237,.9),0 0 4px rgba(56,189,248,.7)}
 
 .nav-cta{
   display:inline-flex;align-items:center;gap:8px;
@@ -214,6 +243,7 @@ p{color:var(--muted)}
   white-space:nowrap;
 }
 .nav-cta:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(124,58,237,.55)}
+.nav-cta svg{width:14px;height:14px;stroke-width:2.5}
 
 .menu-btn{
   display:none;width:46px;height:46px;border-radius:12px;
@@ -230,7 +260,6 @@ p{color:var(--muted)}
 .menu-btn[aria-expanded="true"] span:nth-child(3){top:22px;transform:rotate(-45deg)}
 .menu-btn[aria-expanded="true"]{background:rgba(124,58,237,.28);border-color:rgba(167,139,250,.55)}
 
-/* Overlay gelap di belakang sidebar */
 .nav-overlay{
   position:fixed;inset:0;z-index:65;
   background:rgba(2,6,16,.72);
@@ -239,10 +268,10 @@ p{color:var(--muted)}
   transition:opacity .42s ease,visibility .42s ease;
 }
 .nav-overlay.show{opacity:1;visibility:visible}
-@media (min-width:1025px){ .nav-overlay{display:none} }
+@media (min-width:881px){ .nav-overlay{display:none} }
 
 /* =========================================================
-   HERO
+   PAGE HERO
    ========================================================= */
 .page-hero{
   position:relative;
@@ -275,115 +304,124 @@ p{color:var(--muted)}
 .breadcrumb span{color:#c4b5fd}
 
 /* =========================================================
-   URL INPUT PANEL
-   ========================================================= */
-.url-panel{
-  position:relative;
-  padding:26px 28px;
-  border-radius:var(--r-lg);
-  background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.018));
-  border:1px solid var(--line-2);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  box-shadow:0 20px 44px rgba(3,7,22,.45);
-  margin-top:var(--space-3);
-  max-width:820px;
-  margin-inline:auto;
-}
-.url-panel .url-label{
-  display:flex;align-items:center;gap:8px;
-  font-family:"JetBrains Mono",ui-monospace,monospace;
-  font-size:.66rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
-  color:#c4b5fd;margin-bottom:12px;
-}
-.url-panel .url-label svg{width:14px;height:14px}
-.url-form{
-  display:flex;gap:10px;
-  align-items:stretch;
-}
-.url-input{
-  flex:1;min-width:0;
-  padding:15px 18px;
-  border-radius:12px;
-  background:rgba(5,11,24,.55);
-  border:1px solid rgba(255,255,255,.14);
-  color:#fff;
-  font-size:.92rem;
-  transition:border-color .3s ease,background .3s ease,box-shadow .3s ease;
-}
-.url-input::placeholder{color:rgba(148,163,184,.62)}
-.url-input:focus{
-  outline:none;
-  border-color:rgba(139,92,246,.75);
-  background:rgba(5,11,24,.8);
-  box-shadow:0 0 0 3px rgba(124,58,237,.18);
-}
-.url-submit{
-  display:inline-flex;align-items:center;justify-content:center;gap:8px;
-  padding:0 24px;
-  border-radius:12px;
-  font-size:.9rem;font-weight:600;color:#fff;
-  background:var(--grad);
-  border:1px solid rgba(255,255,255,.2);
-  box-shadow:0 10px 26px rgba(79,70,229,.42);
-  transition:transform .3s var(--ease),box-shadow .3s var(--ease);
-  white-space:nowrap;
-}
-.url-submit:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(124,58,237,.55)}
-.url-submit svg{width:16px;height:16px}
-
-/* Quick demo buttons */
-.quick-demos{
-  display:flex;flex-wrap:wrap;gap:10px;
-  margin-top:18px;
-  padding-top:18px;
-  border-top:1px solid var(--line);
-}
-.quick-demos .qd-label{
-  width:100%;
-  font-family:"JetBrains Mono",ui-monospace,monospace;
-  font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--muted-2);
-  margin-bottom:2px;
-}
-.quick-demos button{
-  display:inline-flex;align-items:center;gap:7px;
-  padding:9px 15px;
-  border-radius:999px;
-  font-size:.78rem;font-weight:600;
-  color:var(--muted);
-  background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.14);
-  transition:color .3s ease,background .3s ease,border-color .3s ease,transform .3s var(--ease);
-  cursor:pointer;
-}
-.quick-demos button:hover{
-  color:#fff;
-  background:rgba(124,58,237,.18);
-  border-color:rgba(167,139,250,.45);
-  transform:translateY(-2px);
-}
-.quick-demos button svg{width:14px;height:14px}
-
-/* =========================================================
-   DEMO STAGE — PHONE + INFO
+   DEMO STAGE — QR + PHONE
    ========================================================= */
 .demo-stage{
   display:grid;
-  grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);
+  grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);
   gap:var(--space-5);
   align-items:center;
   margin-top:var(--space-4);
 }
 
-/* Kolom kiri: phone wrapper */
+/* =====================================================
+   QR CARD (kiri) — sama seperti paket.html
+   ===================================================== */
+.qr-card{
+  position:relative;
+  padding:32px 28px 30px;
+  border-radius:var(--r-xl);
+  background:
+    radial-gradient(420px 260px at 50% 0%, rgba(56,189,248,.14), transparent 65%),
+    linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.018));
+  border:1px solid var(--line-2);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 30px 70px rgba(3,6,22,.5);
+  text-align:center;
+  transition:transform .42s var(--ease),border-color .42s ease,box-shadow .42s ease;
+}
+.qr-card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(139,92,246,.42);
+  box-shadow:0 34px 78px rgba(3,6,22,.6),0 0 40px rgba(79,70,229,.2);
+}
+.qr-card .qr-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:#c4b5fd;padding:6px 12px;border-radius:999px;
+  background:rgba(124,58,237,.12);border:1px solid rgba(167,139,250,.24);
+  margin-bottom:20px;
+}
+.qr-card .qr-tag svg.lucide{width:13px;height:13px}
+
+.qr-frame{
+  position:relative;
+  width:min(240px,78%);
+  margin:0 auto;
+  border-radius:20px;
+  background:#ffffff;
+  padding:14px;
+  box-shadow:0 18px 40px rgba(3,6,22,.5),inset 0 0 0 1px rgba(0,0,0,.06);
+  overflow:hidden;
+}
+.qr-frame img{
+  width:100%;
+  height:auto;
+  display:block;
+  object-fit:contain;
+}
+
+.qr-scan-line{
+  position:absolute;left:14px;right:14px;height:2px;
+  background:linear-gradient(90deg,transparent,#38bdf8,#7c3aed,#38bdf8,transparent);
+  border-radius:2px;
+  box-shadow:0 0 18px rgba(56,189,248,.9);
+  top:14px;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .3s ease;
+  z-index:2;
+}
+.qr-card.scanning .qr-scan-line{
+  opacity:1;
+  animation:scanLine 1.6s var(--ease) infinite;
+}
+@keyframes scanLine{
+  0%{top:14px}
+  50%{top:calc(100% - 16px)}
+  100%{top:14px}
+}
+
+.qr-card h3{
+  margin-top:24px;
+  font-size:1.06rem;font-weight:700;letter-spacing:-.005em;
+}
+.qr-card .qr-url{
+  margin-top:8px;
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:.72rem;letter-spacing:.04em;
+  color:#7dd3fc;
+  word-break:break-all;
+}
+
+.qr-actions{
+  display:flex;flex-direction:column;gap:10px;
+  margin-top:24px;
+}
+.qr-actions .btn{width:100%}
+
+.scan-status{
+  margin-top:16px;
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:.66rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted-2);
+  min-height:18px;
+  transition:color .3s ease;
+}
+.scan-status.active{color:#7dd3fc}
+.scan-status.success{color:#a7f3d0}
+
+/* =====================================================
+   PHONE MOCKUP (kanan) dengan iframe
+   ===================================================== */
 .phone-col{
   display:flex;
   flex-direction:column;
   align-items:center;
-  gap:22px;
+  gap:20px;
 }
 
-/* Status bar di atas phone */
 .phone-toolbar{
   display:flex;
   align-items:center;
@@ -429,16 +467,13 @@ p{color:var(--muted)}
   transition:background .3s ease,border-color .3s ease,transform .3s var(--ease),color .3s ease;
   cursor:pointer;
 }
-.tool-btn svg{width:16px;height:16px;stroke-width:2}
+.tool-btn svg{width:16px;height:16px;stroke-width:2.2}
 .tool-btn:hover{
   background:rgba(124,58,237,.3);
   border-color:rgba(167,139,250,.5);
   color:#fff;transform:translateY(-2px);
 }
 
-/* =========================================================
-   PHONE MOCKUP
-   ========================================================= */
 .phone{
   position:relative;
   width:320px;
@@ -459,7 +494,6 @@ p{color:var(--muted)}
 }
 .phone:hover{transform:translateY(-6px)}
 
-/* Dynamic island */
 .phone::before{
   content:"";
   position:absolute;
@@ -472,7 +506,6 @@ p{color:var(--muted)}
   border:1px solid rgba(255,255,255,.06);
   box-shadow:inset 0 0 6px rgba(0,0,0,.9);
 }
-/* Kamera lensa kiri di island */
 .phone::after{
   content:"";
   position:absolute;
@@ -485,7 +518,6 @@ p{color:var(--muted)}
   box-shadow:inset 0 0 4px rgba(56,189,248,.5);
 }
 
-/* Tombol samping kanan (power) */
 .phone-btn-power{
   position:absolute;
   right:-3px;top:170px;
@@ -494,7 +526,6 @@ p{color:var(--muted)}
   background:linear-gradient(180deg,#4b5563,#1f2937);
   box-shadow:inset 0 0 2px rgba(255,255,255,.2);
 }
-/* Tombol samping kiri (volume up) */
 .phone-btn-vol-up{
   position:absolute;
   left:-3px;top:150px;
@@ -503,7 +534,6 @@ p{color:var(--muted)}
   background:linear-gradient(180deg,#4b5563,#1f2937);
   box-shadow:inset 0 0 2px rgba(255,255,255,.2);
 }
-/* Tombol samping kiri (volume down) */
 .phone-btn-vol-down{
   position:absolute;
   left:-3px;top:216px;
@@ -512,7 +542,6 @@ p{color:var(--muted)}
   background:linear-gradient(180deg,#4b5563,#1f2937);
   box-shadow:inset 0 0 2px rgba(255,255,255,.2);
 }
-/* Silent switch */
 .phone-btn-silent{
   position:absolute;
   left:-3px;top:104px;
@@ -522,7 +551,6 @@ p{color:var(--muted)}
   box-shadow:inset 0 0 2px rgba(255,255,255,.2);
 }
 
-/* Screen area */
 .phone-screen{
   position:relative;
   width:100%;height:100%;
@@ -533,7 +561,6 @@ p{color:var(--muted)}
   box-shadow:inset 0 0 0 1px rgba(0,0,0,.6);
 }
 
-/* Iframe fullscreen di dalam phone screen */
 .phone-screen iframe{
   position:absolute;
   inset:0;
@@ -570,7 +597,7 @@ p{color:var(--muted)}
   color:#a5b4fc;
 }
 
-/* Error overlay — jika iframe diblokir */
+/* Error overlay */
 .screen-error{
   position:absolute;inset:0;z-index:5;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
@@ -604,7 +631,6 @@ p{color:var(--muted)}
   width:100%;max-width:220px;
 }
 
-/* Home indicator di bawah */
 .phone-home-bar{
   position:absolute;
   bottom:12px;left:50%;transform:translateX(-50%);
@@ -614,99 +640,120 @@ p{color:var(--muted)}
   pointer-events:none;
 }
 
-/* =========================================================
-   INFO COLUMN (kanan phone)
-   ========================================================= */
-.info-col{
-  display:flex;flex-direction:column;
-  gap:22px;
-}
-.info-card{
+/* URL form panel */
+.url-panel{
   position:relative;
-  padding:28px 26px;
+  padding:22px 24px;
   border-radius:var(--r-lg);
   background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015));
   border:1px solid var(--line-2);
   backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-  transition:transform .42s var(--ease),border-color .42s ease,box-shadow .42s ease;
+  box-shadow:0 20px 44px rgba(3,7,22,.45);
+  margin-top:var(--space-3);
+  width:100%;
+  max-width:560px;
 }
-.info-card:hover{
-  transform:translateY(-3px);
-  border-color:rgba(139,92,246,.4);
-  box-shadow:0 20px 44px rgba(3,7,22,.5),0 0 30px rgba(79,70,229,.16);
-}
-.info-card .ico{
-  width:48px;height:48px;border-radius:14px;
-  display:grid;place-items:center;
-  background:linear-gradient(135deg,rgba(56,189,248,.16),rgba(124,58,237,.24));
-  border:1px solid rgba(255,255,255,.14);color:#bfdbfe;
-  margin-bottom:20px;
-}
-.info-card .ico svg{width:22px;height:22px;stroke-width:1.8}
-.info-card h3{
-  font-size:1.15rem;font-weight:700;letter-spacing:-.01em;color:#fff;
-  margin-bottom:8px;
-}
-.info-card .info-sub{
+.url-panel .url-label{
+  display:flex;align-items:center;gap:8px;
   font-family:"JetBrains Mono",ui-monospace,monospace;
-  font-size:.66rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
-  color:#7dd3fc;
-  margin-bottom:18px;
+  font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:#c4b5fd;margin-bottom:12px;
 }
-.info-feats{
-  display:grid;gap:11px;
+.url-panel .url-label svg{width:14px;height:14px}
+.url-form{
+  display:flex;gap:10px;
+  align-items:stretch;
 }
-.info-feats li{
-  display:flex;gap:11px;align-items:flex-start;
-  font-size:.86rem;color:var(--muted);line-height:1.6;
-}
-.info-feats li svg{
-  width:16px;height:16px;color:#7dd3fc;flex-shrink:0;margin-top:4px;stroke-width:2.2;
-}
-
-/* URL info kecil di bawah phone */
-.current-url{
-  display:flex;align-items:center;gap:10px;
-  width:100%;max-width:420px;
-  padding:11px 16px;
+.url-input{
+  flex:1;min-width:0;
+  padding:14px 16px;
   border-radius:12px;
   background:rgba(5,11,24,.55);
-  border:1px solid rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.14);
+  color:#fff;
+  font-size:.9rem;
+  transition:border-color .3s ease,background .3s ease,box-shadow .3s ease;
+}
+.url-input::placeholder{color:rgba(148,163,184,.62)}
+.url-input:focus{
+  outline:none;
+  border-color:rgba(139,92,246,.75);
+  background:rgba(5,11,24,.8);
+  box-shadow:0 0 0 3px rgba(124,58,237,.18);
+}
+.url-submit{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:0 22px;
+  border-radius:12px;
+  font-size:.88rem;font-weight:600;color:#fff;
+  background:var(--grad);
+  border:1px solid rgba(255,255,255,.2);
+  box-shadow:0 10px 26px rgba(79,70,229,.42);
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease);
+  white-space:nowrap;
+  cursor:pointer;
+}
+.url-submit:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(124,58,237,.55)}
+.url-submit svg{width:16px;height:16px;stroke-width:2.5}
+
+.quick-demos{
+  display:flex;flex-wrap:wrap;gap:8px;
+  margin-top:16px;
+  padding-top:16px;
+  border-top:1px solid var(--line);
+}
+.quick-demos .qd-label{
+  width:100%;
   font-family:"JetBrains Mono",ui-monospace,monospace;
-  font-size:.72rem;
+  font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--muted-2);
+  margin-bottom:2px;
+}
+.quick-demos button{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:8px 14px;
+  border-radius:999px;
+  font-size:.76rem;font-weight:600;
   color:var(--muted);
-  overflow:hidden;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.14);
+  transition:color .3s ease,background .3s ease,border-color .3s ease,transform .3s var(--ease);
+  cursor:pointer;
 }
-.current-url svg{width:14px;height:14px;color:#7dd3fc;flex-shrink:0;stroke-width:2.2}
-.current-url .url-text{
-  flex:1;min-width:0;
-  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
-  color:#e0e7ff;
+.quick-demos button:hover{
+  color:#fff;
+  background:rgba(124,58,237,.18);
+  border-color:rgba(167,139,250,.45);
+  transform:translateY(-2px);
 }
+.quick-demos button svg{width:13px;height:13px}
 
 /* =========================================================
-   HOW IT WORKS
+   INFO LIST — kanan phone
    ========================================================= */
-.steps{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:22px;
-  margin-top:var(--space-3);
+.info-list{display:grid;gap:16px;margin-top:var(--space-3)}
+.info-item{
+  display:flex;gap:18px;align-items:flex-start;padding:22px 24px;border-radius:var(--r-md);
+  background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015));
+  border:1px solid var(--line-2);
+  transition:transform .38s var(--ease),border-color .38s ease,box-shadow .38s ease;
 }
+.info-item:hover{transform:translateX(3px);border-color:rgba(139,92,246,.40);box-shadow:0 14px 34px rgba(3,7,22,.42)}
+.info-item h3{font-size:.98rem}
+.info-item p{margin-top:8px;font-size:.86rem;line-height:1.65}
+
+/* =========================================================
+   STEPS
+   ========================================================= */
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:var(--space-3)}
 .step{
-  position:relative;
-  padding:34px 28px 30px;
-  border-radius:var(--r-lg);
+  position:relative;padding:34px 28px 30px;border-radius:var(--r-lg);
   background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015));
   border:1px solid var(--line-2);
   backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
   transition:transform .42s var(--ease),border-color .42s ease,box-shadow .42s ease;
 }
-.step:hover{
-  transform:translateY(-4px);
-  border-color:rgba(139,92,246,.42);
-  box-shadow:0 20px 44px rgba(3,7,22,.5),0 0 30px rgba(79,70,229,.16);
-}
+.step:hover{transform:translateY(-4px);border-color:rgba(139,92,246,.42);box-shadow:0 20px 44px rgba(3,7,22,.5),0 0 30px rgba(79,70,229,.16)}
 .step .num{
   display:inline-block;
   font-family:"JetBrains Mono",ui-monospace,monospace;
@@ -723,20 +770,110 @@ p{color:var(--muted)}
   border:1px solid rgba(255,255,255,.12);
   color:#bfdbfe;
 }
-.step .step-ico svg{width:19px;height:19px;stroke-width:1.9}
-.step h3{
-  font-size:1.06rem;font-weight:700;letter-spacing:-.005em;color:#fff;
-  margin-bottom:10px;
+.step .step-ico svg.lucide{width:19px;height:19px}
+.step h3{font-size:1.06rem;font-weight:700;letter-spacing:-.005em;color:#fff;margin-bottom:10px}
+.step p{font-size:.88rem;line-height:1.7}
+
+/* =========================================================
+   BUSINESS DETAIL (dari paket.html)
+   ========================================================= */
+.biz-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;align-items:start}
+.biz{
+  padding:36px 32px 34px;border-radius:var(--r-lg);
+  background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015));
+  border:1px solid var(--line-2);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  transition:transform .42s var(--ease),border-color .42s ease,box-shadow .42s ease;
 }
-.step p{font-size:.88rem;line-height:1.7;color:var(--muted)}
+.biz:hover{transform:translateY(-4px);border-color:rgba(139,92,246,.42);box-shadow:0 22px 50px rgba(3,7,22,.55)}
+.biz.mid{border-color:rgba(139,92,246,.45);background:linear-gradient(160deg,rgba(79,70,229,.14),rgba(37,99,235,.05))}
+.biz.high{border-color:rgba(167,139,250,.5);background:linear-gradient(160deg,rgba(124,58,237,.18),rgba(37,99,235,.06))}
+.biz h3{font-size:1rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+.biz .price{
+  margin-top:14px;font-size:1.65rem;font-weight:800;letter-spacing:-.02em;
+  background:linear-gradient(120deg,#fff,#c4b5fd);-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.biz .inherit{
+  margin-top:16px;font-size:.82rem;font-weight:600;color:#c7d2fe;
+  padding:10px 15px;border-radius:10px;background:rgba(124,58,237,.14);border:1px solid rgba(167,139,250,.28);
+  display:inline-block;
+}
+.feat-list{display:grid;gap:10px;margin-top:24px}
+.feat-list li{display:flex;gap:11px;align-items:flex-start;font-size:.86rem;color:var(--muted);line-height:1.6}
+.feat-list li svg.lucide{width:16px;height:16px;color:#7dd3fc;margin-top:4px}
+
+.note{
+  margin-top:var(--space-3);padding:22px 26px;border-radius:16px;
+  border-left:3px solid #7c3aed;
+  background:linear-gradient(100deg,rgba(124,58,237,.13),rgba(37,99,235,.05));
+  font-size:.88rem;color:rgba(226,232,240,.85);line-height:1.75;
+}
+
+/* Comparison table */
+.cmp-wrap{
+  margin-top:var(--space-3);border-radius:var(--r-xl);overflow:hidden;
+  border:1px solid var(--line-2);background:rgba(255,255,255,.02);
+}
+table.cmp{width:100%;border-collapse:collapse;font-size:.875rem}
+table.cmp thead th{
+  padding:24px 22px;text-align:left;vertical-align:bottom;
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:.66rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#c4b5fd;
+  background:linear-gradient(160deg,rgba(124,58,237,.16),rgba(37,99,235,.06));
+  border-bottom:1px solid var(--line-2);
+}
+table.cmp thead th span{
+  display:block;margin-top:10px;font-family:"Plus Jakarta Sans",sans-serif;
+  font-size:.98rem;font-weight:800;letter-spacing:-.01em;text-transform:none;color:#fff;
+}
+table.cmp tbody td{
+  padding:16px 22px;border-bottom:1px solid var(--line);
+  color:var(--muted);font-size:.855rem;
+}
+table.cmp tbody tr:last-child td{border-bottom:none}
+table.cmp tbody tr:hover td{background:rgba(124,58,237,.07)}
+table.cmp td:first-child{color:rgba(255,255,255,.9);font-weight:600}
+table.cmp td.val{color:#c7d2fe}
+table.cmp td .yes{color:#7dd3fc;display:inline-grid;place-items:center}
+table.cmp td .yes svg.lucide{width:17px;height:17px}
+table.cmp td .no{color:rgba(148,163,184,.42)}
+table.cmp tfoot td{
+  padding:22px;font-weight:800;color:#fff;font-size:.95rem;
+  background:linear-gradient(160deg,rgba(255,255,255,.05),rgba(255,255,255,.01));
+}
+
+/* =========================================================
+   FAQ
+   ========================================================= */
+.faq-list{display:grid;gap:14px;max-width:880px;margin-inline:auto}
+.faq-item{
+  border-radius:var(--r-md);border:1px solid var(--line-2);
+  background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015));
+  overflow:hidden;transition:border-color .38s ease,box-shadow .38s ease;
+}
+.faq-item:hover{border-color:rgba(139,92,246,.4)}
+.faq-item[open]{border-color:rgba(139,92,246,.5);box-shadow:0 16px 40px rgba(3,7,22,.45)}
+.faq-item summary{
+  display:flex;align-items:center;justify-content:space-between;gap:18px;
+  padding:22px 26px;cursor:pointer;list-style:none;
+  font-size:.96rem;font-weight:600;color:#fff;letter-spacing:-.01em;
+}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary .chev{
+  width:32px;height:32px;flex:0 0 auto;border-radius:10px;display:grid;place-items:center;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);color:#bfdbfe;
+  transition:transform .38s var(--ease),background .38s ease;
+}
+.faq-item summary .chev svg.lucide{width:16px;height:16px}
+.faq-item[open] summary .chev{transform:rotate(180deg);background:rgba(124,58,237,.2)}
+.faq-item .faq-body{padding:0 26px 24px;font-size:.88rem;line-height:1.75;color:var(--muted)}
 
 /* =========================================================
    CTA
    ========================================================= */
 .cta-panel{
   position:relative;overflow:hidden;text-align:center;
-  padding:var(--space-5) clamp(28px,5vw,72px);
-  border-radius:var(--r-xl);
+  padding:var(--space-5) clamp(28px,5vw,72px);border-radius:var(--r-xl);
   background:
     radial-gradient(700px 380px at 20% 10%, rgba(56,189,248,.18), transparent 60%),
     radial-gradient(700px 420px at 85% 95%, rgba(124,58,237,.26), transparent 62%),
@@ -758,25 +895,21 @@ p{color:var(--muted)}
   border-top:1px solid var(--line);
   background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0));
 }
-.footer-grid{
-  display:grid;
-  grid-template-columns:1.6fr 1fr 1fr;
-  gap:var(--space-4);
-  align-items:start;
-}
-.f-brand .brand{margin-bottom:20px}
-.f-brand p{font-size:.88rem;max-width:40ch;line-height:1.75}
+.footer-grid{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:var(--space-4)}
+.f-brand .brand{display:inline-flex;align-items:center;gap:14px}
+.f-brand .brand img{height:56px;width:auto;max-width:120px;object-fit:contain;filter:drop-shadow(0 0 16px rgba(79,70,229,.5))}
+.f-brand .brand .brand-text .b-name{font-size:1.6rem}
+.f-brand p{margin-top:20px;font-size:.88rem;max-width:36ch;line-height:1.75}
 .f-col h4{
   font-family:"JetBrains Mono",ui-monospace,monospace;
   font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
-  color:rgba(255,255,255,.9);margin-bottom:18px;
+  color:rgba(255,255,255,.9);margin-bottom:20px;
 }
-.f-col li + li{margin-top:11px}
+.f-col li + li{margin-top:12px}
 .f-col a,.f-col span{font-size:.88rem;color:var(--muted);transition:color .28s ease}
 .f-col a:hover{color:#fff}
 .footer-bottom{
-  margin-top:var(--space-4);padding-top:26px;
-  border-top:1px solid var(--line);
+  margin-top:var(--space-4);padding-top:28px;border-top:1px solid var(--line);
   display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   font-size:.8rem;color:var(--muted-2);
 }
@@ -797,16 +930,22 @@ p{color:var(--muted)}
    RESPONSIVE
    ========================================================= */
 @media (max-width:1120px){
-  .demo-stage{grid-template-columns:1fr;gap:var(--space-4)}
-  .phone-col{order:1}
-  .info-col{order:2;max-width:560px;margin-inline:auto;width:100%}
-  .steps{grid-template-columns:1fr;max-width:560px;margin-inline:auto;margin-top:var(--space-3)}
+  .biz-grid{grid-template-columns:1fr;max-width:560px;margin-inline:auto}
 }
-@media (max-width:1024px){
-  .menu-btn{display:block}
-  .nav-cta{display:none}
+@media (max-width:980px){
+  .demo-stage{grid-template-columns:1fr;gap:var(--space-4)}
+  .steps{grid-template-columns:1fr;max-width:560px;margin-inline:auto}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:36px}
+  .f-brand{grid-column:1 / -1}
+}
 
-  /* Sidebar kanan */
+/* =========================================================
+   MOBILE NAV — SIDEBAR DARI KANAN
+   ========================================================= */
+@media (max-width:880px){
+
+  .menu-btn{display:block}
+
   .nav-links{
     position:fixed;
     top:0;right:0;bottom:0;left:auto;
@@ -833,7 +972,9 @@ p{color:var(--muted)}
     z-index:70;
   }
   .nav-links.open{transform:translateX(0);visibility:visible}
+
   .nav-links li{width:100%}
+
   .nav-links a{
     width:100%;
     display:flex;
@@ -852,6 +993,12 @@ p{color:var(--muted)}
     transition:transform .3s var(--ease),background .3s ease,border-color .3s ease,color .3s ease,box-shadow .3s ease;
   }
   .nav-links a::after{display:none}
+
+  .nav-links a svg.lucide{
+    width:22px;height:22px;opacity:1;color:#bfdbfe;stroke-width:1.7;
+  }
+  .nav-links a span{flex:1;text-align:left}
+
   .nav-links a:hover,
   .nav-links a:active{
     color:#fff;
@@ -860,6 +1007,7 @@ p{color:var(--muted)}
     transform:translateX(-4px);
     box-shadow:0 12px 28px rgba(3,7,22,.45);
   }
+
   .nav-links a.active{
     color:#fff;
     font-weight:700;
@@ -869,42 +1017,68 @@ p{color:var(--muted)}
     border-color:rgba(167,139,250,.55);
     box-shadow:0 14px 32px rgba(79,70,229,.30),inset 0 1px 0 rgba(255,255,255,.10);
   }
+  .nav-links a.active svg.lucide{
+    color:#e0e7ff;
+    filter:drop-shadow(0 0 10px rgba(124,58,237,.9));
+  }
+
   .nav-links::-webkit-scrollbar{width:6px}
   .nav-links::-webkit-scrollbar-track{background:transparent}
   .nav-links::-webkit-scrollbar-thumb{background:rgba(148,163,184,.28);border-radius:99px}
 
-  /* Sidebar CTA di dalam menu */
-  .nav-links .menu-cta{
-    margin-top:14px;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
-    padding:18px 22px;
-    border-radius:16px;
-    background:var(--grad);
-    color:#fff;
-    font-weight:700;
-    font-size:1rem;
-    border:1px solid rgba(255,255,255,.22);
-    box-shadow:0 14px 32px rgba(79,70,229,.42);
+  .nav-cta{display:none}
+
+  /* Comparison table → kartu */
+  .cmp-wrap{border:none;background:none;border-radius:0}
+  table.cmp{display:block;font-size:.85rem}
+  table.cmp thead{display:none}
+  table.cmp tbody{display:grid;gap:16px}
+  table.cmp tbody tr{
+    display:block;padding:8px 20px 12px;border-radius:16px;
+    background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015));
+    border:1px solid var(--line-2);
+  }
+  table.cmp tbody tr:hover td{background:transparent}
+  table.cmp tbody td{
+    display:flex;align-items:center;justify-content:space-between;gap:14px;
+    padding:12px 0;border-bottom:1px solid rgba(255,255,255,.06);
+    font-size:.83rem;
+  }
+  table.cmp tbody td:first-child{
+    display:block;padding:16px 0 12px;font-size:.94rem;font-weight:700;color:#fff;
+    border-bottom:1px solid var(--line-2);
+  }
+  table.cmp tbody td:last-child{border-bottom:none}
+  table.cmp tbody td:not(:first-child)::before{
+    content:attr(data-label);
+    font-family:"JetBrains Mono",ui-monospace,monospace;
+    font-size:.64rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--muted-2);
+  }
+  table.cmp tfoot{display:block}
+  table.cmp tfoot tr{display:block;margin-top:16px;border-radius:16px;overflow:hidden;border:1px solid var(--line-2)}
+  table.cmp tfoot td{display:flex;justify-content:space-between;gap:14px;padding:18px 20px;border-bottom:1px solid var(--line)}
+  table.cmp tfoot td:last-child{border-bottom:none}
+  table.cmp tfoot td::before{
+    content:attr(data-label);
+    font-family:"JetBrains Mono",ui-monospace,monospace;
+    font-size:.64rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-2);
   }
 }
 
 @media (max-width:640px){
-  .brand-mark{width:40px;height:40px;border-radius:11px}
-  .brand-mark svg{width:20px;height:20px}
-  .brand-text .b-name{font-size:.96rem}
-  .brand-text .b-tag{font-size:.5rem}
-
-  .page-hero{padding-top:calc(140px + env(safe-area-inset-top,0px))}
+  .brand img{height:42px;max-width:100px}
+  .brand-text .b-name{font-size:1.2rem}
+  .brand-text .b-tag{font-size:.5rem;letter-spacing:.2em;margin-top:4px}
   .page-hero h1{max-width:100%}
   .actions{flex-direction:column;align-items:stretch}
   .actions .btn{width:100%}
-
-  .url-panel{padding:22px 20px}
-  .url-form{flex-direction:column;gap:12px}
-  .url-submit{width:100%;padding:15px 24px}
+  .cta-actions{flex-direction:column}
+  .cta-actions .btn{width:100%}
+  .footer-grid{grid-template-columns:1fr;gap:36px}
+  .footer-bottom{flex-direction:column;gap:10px}
+  .faq-item summary{padding:18px 20px;font-size:.9rem}
+  .faq-item .faq-body{padding:0 20px 20px}
 
   /* Phone diperkecil proporsional */
   .phone{
@@ -914,16 +1088,8 @@ p{color:var(--muted)}
     border-radius:46px;
     padding:12px;
   }
-  .phone::before{
-    top:22px;
-    width:92px;height:24px;
-    border-radius:14px;
-  }
-  .phone::after{
-    top:29px;
-    width:10px;height:10px;
-    left:calc(50% + 22px);
-  }
+  .phone::before{top:22px;width:92px;height:24px;border-radius:14px}
+  .phone::after{top:29px;width:10px;height:10px;left:calc(50% + 22px)}
   .phone-btn-power{top:150px;height:76px}
   .phone-btn-vol-up{top:134px;height:46px}
   .phone-btn-vol-down{top:190px;height:46px}
@@ -936,18 +1102,14 @@ p{color:var(--muted)}
   .tool-btn{width:32px;height:32px;border-radius:9px}
   .tool-btn svg{width:15px;height:15px}
 
-  .current-url{max-width:100%;font-size:.66rem;padding:10px 14px}
+  /* QR + URL form mobile */
+  .qr-card{padding:26px 22px 24px}
+  .qr-frame{width:min(200px,75%)}
+  .url-panel{padding:20px}
+  .url-form{flex-direction:column;gap:10px}
+  .url-submit{width:100%;padding:14px 22px}
+  .quick-demos button{font-size:.72rem;padding:7px 12px}
 
-  .info-card{padding:24px 22px}
-  .info-card h3{font-size:1.02rem}
-
-  .footer-grid{grid-template-columns:1fr;gap:36px}
-  .footer-bottom{flex-direction:column;gap:10px}
-
-  .cta-actions{flex-direction:column}
-  .cta-actions .btn{width:100%}
-
-  /* Sidebar mobile lebih lega di layar kecil */
   .nav-links{
     width:min(340px,90vw);
     gap:11px;
@@ -959,38 +1121,30 @@ p{color:var(--muted)}
     font-size:1rem;
     gap:14px;
   }
+  .nav-links a svg.lucide{width:21px;height:21px}
 }
 
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
   .js .reveal{opacity:1;transform:none}
+  .qr-scan-line{animation:none !important}
 }
 </style>
 </head>
 <body>
 
 <!-- =========================================================
-     HEADER
+     HEADER / NAVBAR
      ========================================================= -->
 <header class="site-header" id="siteHeader">
   <nav class="nav" aria-label="Navigasi utama">
 
-    <a class="brand" href="beranda.html" aria-label="Portfolio QR Keychain — Beranda">
-      <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="3" width="7" height="7" rx="1"/>
-          <rect x="14" y="3" width="7" height="7" rx="1"/>
-          <rect x="3" y="14" width="7" height="7" rx="1"/>
-          <path d="M14 14h3v3h-3z"/>
-          <path d="M18 18h3v3h-3z"/>
-          <path d="M14 21h2"/>
-          <path d="M21 14h-2"/>
-        </svg>
-      </span>
+    <a class="brand" href="beranda.html" aria-label="Qriya — Beranda">
+      <img src="foto1.jpg" alt="Logo Qriya">
       <span class="brand-text">
-        <span class="b-name">Portfolio QR Keychain</span>
-        <span class="b-tag">Digital Identity</span>
+        <span class="b-name">Qriya</span>
+        <span class="b-tag">QR Keychain</span>
       </span>
     </a>
 
@@ -999,18 +1153,17 @@ p{color:var(--muted)}
     </button>
 
     <ul class="nav-links" id="navLinks">
-      <li><a href="beranda.html"><span>Beranda</span></a></li>
-      <li><a href="cara-kerja.html"><span>Cara Kerja</span></a></li>
-      <li><a href="paket.html"><span>Paket</span></a></li>
-      <li><a href="demo.html" class="active" aria-current="page"><span>Demo</span></a></li>
-      <li><a href="tentang-kami.html"><span>Tentang Kami</span></a></li>
-      <li><a href="faq.html"><span>FAQ</span></a></li>
-      <li class="menu-cta-item"><a class="menu-cta" href="#cta"><span>Pesan Sekarang</span></a></li>
+      <li><a href="beranda.html"><i data-lucide="house"></i><span>Beranda</span></a></li>
+      <li><a href="cara-kerja.html"><i data-lucide="workflow"></i><span>Cara Kerja</span></a></li>
+      <li><a href="paket.html"><i data-lucide="gem"></i><span>Paket</span></a></li>
+      <li><a href="demo.html" class="active" aria-current="page"><i data-lucide="circle-play"></i><span>Demo</span></a></li>
+      <li><a href="tentang-kami.html"><i data-lucide="info"></i><span>Tentang Kami</span></a></li>
+      <li><a href="faq.html"><i data-lucide="circle-help"></i><span>FAQ</span></a></li>
     </ul>
 
     <a class="nav-cta" href="#cta">
       Pesan Sekarang
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
       </svg>
     </a>
@@ -1024,17 +1177,17 @@ p{color:var(--muted)}
 <main>
 
   <!-- =========================================================
-       HERO
+       PAGE HERO
        ========================================================= -->
-  <section class="page-hero" id="beranda" aria-label="Demo Portfolio QR Keychain">
+  <section class="page-hero" aria-label="Demo Qriya">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="beranda.html">Beranda</a>
-        <span>/</span>
+        <i data-lucide="chevron-right"></i>
         <span>Demo</span>
       </nav>
 
-      <span class="eyebrow reveal">Live Preview</span>
+      <span class="eyebrow reveal">Demo Interaktif</span>
       <h1 class="reveal" style="--d:.06s">
         Lihat Website Personal Anda <span class="grad-text">Secara Langsung.</span>
       </h1>
@@ -1043,83 +1196,93 @@ p{color:var(--muted)}
       </p>
 
       <div class="actions reveal" style="--d:.18s">
-        <a class="btn btn-primary btn-lg" href="#preview">
-          Lihat Demo
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
-          </svg>
-        </a>
-        <a class="btn btn-ghost btn-lg" href="#cta">Pesan Sekarang</a>
+        <a class="btn btn-primary btn-lg" href="#simulasi">Lihat Demo <i data-lucide="arrow-right"></i></a>
+        <a class="btn btn-ghost btn-lg" href="paket.html">Pesan Sekarang</a>
       </div>
-
-      <!-- URL Input Panel -->
-      <div class="url-panel reveal" style="--d:.26s">
-        <div class="url-label">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
-            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
-          </svg>
-          Masukkan link website demo
-        </div>
-
-        <form class="url-form" id="urlForm" autocomplete="off">
-          <input
-            type="url"
-            class="url-input"
-            id="urlInput"
-            placeholder="https://example.com"
-            aria-label="URL website demo"
-            spellcheck="false"
-          >
-          <button type="submit" class="url-submit" id="urlSubmit">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
-            </svg>
-            Tampilkan Demo
-          </button>
-        </form>
-
-        <div class="quick-demos">
-          <span class="qd-label">Contoh link</span>
-          <button type="button" data-demo="portfolio">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
-            Demo Portfolio
-          </button>
-          <button type="button" data-demo="cv">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h5"/></svg>
-            Demo CV Online
-          </button>
-          <button type="button" data-demo="personal">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
-            Demo Personal Branding
-          </button>
-          <button type="button" data-demo="umkm">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l1-5h16l1 5"/><path d="M4 9v11a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9"/><path d="M3 9h18"/></svg>
-            Demo UMKM
-          </button>
-        </div>
-      </div>
-
     </div>
   </section>
 
   <!-- =========================================================
-       MOBILE WEBSITE PREVIEW
+       SECTION — SIMULASI SCAN (QR KIRI + PHONE KANAN)
        ========================================================= -->
-  <section class="section" id="preview">
+  <section class="section" id="simulasi">
     <div class="container">
       <div class="sec-head center reveal">
-        <span class="eyebrow">Preview Langsung</span>
-        <h2>Website Asli di Dalam Smartphone.</h2>
-        <p class="lead">Bukan screenshot, bukan gambar. Ini adalah website asli yang dimuat langsung dari URL-nya melalui iframe.</p>
+        <span class="eyebrow">Simulasi Scan</span>
+        <h2>Scan QR, Website Terbuka.</h2>
+        <p class="lead">Contoh di bawah mensimulasikan proses saat pengunjung memindai QR Code pada gantungan Qriya. Perhatikan sisi kanan — halaman website asli akan muncul di layar ponsel.</p>
       </div>
 
       <div class="demo-stage reveal">
 
-        <!-- Kolom kiri: PHONE MOCKUP -->
+        <!-- KIRI: KARTU QR + URL FORM -->
+        <div>
+          <div class="qr-card" id="qrCard">
+            <span class="qr-tag"><i data-lucide="qr-code"></i>QR Keychain Demo</span>
+
+            <div class="qr-frame">
+              <img src="scan.png" alt="Contoh QR Code Qriya — scan.png" loading="lazy">
+              <span class="qr-scan-line" aria-hidden="true"></span>
+            </div>
+
+            <h3>Gantungan Qriya · Demo</h3>
+            <p class="qr-url" id="qrUrlText">refal45.github.io/portofolio</p>
+
+            <div class="qr-actions">
+              <button class="btn btn-primary btn-block" type="button" id="btnScan">
+                <i data-lucide="scan-line"></i>Simulasikan Scan QR
+              </button>
+              <button class="btn btn-ghost btn-block" type="button" id="btnReset">
+                <i data-lucide="rotate-ccw"></i>Reset Demo
+              </button>
+            </div>
+
+            <p class="scan-status" id="scanStatus">Status: Siap dipindai</p>
+          </div>
+
+          <!-- URL Input Panel -->
+          <div class="url-panel">
+            <div class="url-label">
+              <i data-lucide="link"></i>
+              Masukkan link website demo
+            </div>
+
+            <form class="url-form" id="urlForm" autocomplete="off">
+              <input
+                type="url"
+                class="url-input"
+                id="urlInput"
+                placeholder="https://example.com"
+                aria-label="URL website demo"
+                spellcheck="false"
+              >
+              <button type="submit" class="url-submit" id="urlSubmit">
+                <i data-lucide="external-link"></i>
+                Tampilkan Demo
+              </button>
+            </form>
+
+            <div class="quick-demos">
+              <span class="qd-label">Contoh link</span>
+              <button type="button" data-demo="portfolio">
+                <i data-lucide="layout-grid"></i>Portfolio
+              </button>
+              <button type="button" data-demo="cv">
+                <i data-lucide="file-text"></i>CV Online
+              </button>
+              <button type="button" data-demo="personal">
+                <i data-lucide="user"></i>Personal
+              </button>
+              <button type="button" data-demo="umkm">
+                <i data-lucide="store"></i>UMKM
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- KANAN: PHONE MOCKUP DENGAN IFRAME -->
         <div class="phone-col">
 
-          <!-- Toolbar Live Preview -->
           <div class="phone-toolbar">
             <span class="live idle" id="liveIndicator">
               <span class="dot"></span>
@@ -1127,24 +1290,14 @@ p{color:var(--muted)}
             </span>
             <div class="tool-actions">
               <button type="button" class="tool-btn" id="btnRefresh" aria-label="Refresh preview" title="Refresh Preview">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M3 12a9 9 0 0 1 15-6.7L21 8"/>
-                  <path d="M21 3v5h-5"/>
-                  <path d="M21 12a9 9 0 0 1-15 6.7L3 16"/>
-                  <path d="M3 21v-5h5"/>
-                </svg>
+                <i data-lucide="rotate-cw"></i>
               </button>
               <button type="button" class="tool-btn" id="btnOpenTab" aria-label="Buka di tab baru" title="Buka di Tab Baru">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                  <path d="M15 3h6v6"/>
-                  <path d="M10 14 21 3"/>
-                </svg>
+                <i data-lucide="external-link"></i>
               </button>
             </div>
           </div>
 
-          <!-- Phone Mockup -->
           <div class="phone">
             <span class="phone-btn-silent" aria-hidden="true"></span>
             <span class="phone-btn-vol-up" aria-hidden="true"></span>
@@ -1162,92 +1315,24 @@ p{color:var(--muted)}
                 sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
               ></iframe>
 
-              <!-- Loading Overlay -->
               <div class="screen-loading hidden" id="screenLoading">
                 <div class="ring" aria-hidden="true"></div>
                 <span>Memuat Website…</span>
               </div>
 
-              <!-- Error Overlay -->
               <div class="screen-error" id="screenError">
                 <div class="err-ico" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10"/>
-                    <path d="M12 8v4"/>
-                    <path d="M12 16h.01"/>
-                  </svg>
+                  <i data-lucide="alert-circle"></i>
                 </div>
                 <h4>Preview Tidak Tersedia</h4>
                 <p>Website ini tidak mengizinkan ditampilkan langsung di dalam preview.</p>
                 <a class="btn btn-primary" id="btnOpenFromError" href="#" target="_blank" rel="noopener">
-                  Buka Website
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                    <path d="M15 3h6v6"/>
-                    <path d="M10 14 21 3"/>
-                  </svg>
+                  Buka Website <i data-lucide="external-link"></i>
                 </a>
               </div>
 
               <span class="phone-home-bar" aria-hidden="true"></span>
             </div>
-          </div>
-
-          <!-- Current URL -->
-          <div class="current-url" id="currentUrl">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="12" cy="12" r="10"/>
-              <path d="M2 12h20"/>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-            </svg>
-            <span class="url-text" id="currentUrlText">Belum ada website dimuat</span>
-          </div>
-
-        </div>
-
-        <!-- Kolom kanan: INFO -->
-        <div class="info-col">
-
-          <div class="info-card">
-            <div class="ico" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="8" r="4"/>
-                <path d="M4 21c0-4 4-6 8-6s8 2 8 6"/>
-              </svg>
-            </div>
-            <h3>Website Personal</h3>
-            <div class="info-sub">Satu gantungan, satu identitas digital.</div>
-
-            <ul class="info-feats">
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                Profil personal
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                Portfolio
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                CV online
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                Link media sosial
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                WhatsApp
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                Responsive
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                Bisa dibuka melalui QR Code
-              </li>
-            </ul>
           </div>
 
         </div>
@@ -1257,7 +1342,57 @@ p{color:var(--muted)}
   </section>
 
   <!-- =========================================================
-       CARA KERJA
+       SECTION — INFORMASI WEBSITE PERSONAL
+       ========================================================= -->
+  <section class="section" id="info-website">
+    <div class="container split reverse">
+      <div>
+        <span class="eyebrow reveal">Website Personal</span>
+        <h2 class="reveal" style="--d:.06s">Satu Gantungan, Satu Identitas Digital.</h2>
+        <p class="lead reveal" style="--d:.12s">
+          Setiap gantungan Qriya terhubung ke satu website personal yang menampilkan profil, portfolio, kontak, dan media sosial Anda dalam satu halaman.
+        </p>
+
+        <div class="info-list">
+          <article class="info-item reveal" style="--d:.18s">
+            <div class="ico" aria-hidden="true"><i data-lucide="user-round"></i></div>
+            <div>
+              <h3>Profil Personal</h3>
+              <p>Nama, foto, deskripsi singkat, dan status profesional Anda dalam satu halaman.</p>
+            </div>
+          </article>
+          <article class="info-item reveal" style="--d:.24s">
+            <div class="ico" aria-hidden="true"><i data-lucide="briefcase"></i></div>
+            <div>
+              <h3>Portfolio &amp; CV Online</h3>
+              <p>Tampilkan project, pengalaman, skill, dan CV Anda secara digital.</p>
+            </div>
+          </article>
+          <article class="info-item reveal" style="--d:.30s">
+            <div class="ico" aria-hidden="true"><i data-lucide="smartphone"></i></div>
+            <div>
+              <h3>Responsive di Semua Perangkat</h3>
+              <p>Website tampil rapi di HP, tablet, dan laptop dengan performa cepat.</p>
+            </div>
+          </article>
+          <article class="info-item reveal" style="--d:.36s">
+            <div class="ico" aria-hidden="true"><i data-lucide="qr-code"></i></div>
+            <div>
+              <h3>Bisa Dibuka via QR Code</h3>
+              <p>Cukup satu scan dari gantungan Qriya, website langsung terbuka.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <figure class="split-media reveal" style="--d:.1s">
+        <img src="foto5.jpg" alt="Proses scan QR Code gantungan Qriya menggunakan smartphone" loading="lazy">
+      </figure>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION — CARA KERJA
        ========================================================= -->
   <section class="section" id="cara-kerja">
     <div class="container">
@@ -1270,40 +1405,21 @@ p{color:var(--muted)}
       <div class="steps">
         <article class="step reveal">
           <span class="num">01</span>
-          <div class="step-ico" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 7V5a2 2 0 0 1 2-2h2"/>
-              <path d="M17 3h2a2 2 0 0 1 2 2v2"/>
-              <path d="M21 17v2a2 2 0 0 1-2 2h-2"/>
-              <path d="M7 21H5a2 2 0 0 1-2-2v-2"/>
-              <path d="M7 12h10"/>
-            </svg>
-          </div>
+          <div class="step-ico" aria-hidden="true"><i data-lucide="scan-line"></i></div>
           <h3>Scan QR</h3>
           <p>Pengguna scan QR Code pada gantungan menggunakan kamera smartphone.</p>
         </article>
 
         <article class="step reveal" style="--d:.1s">
           <span class="num">02</span>
-          <div class="step-ico" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/>
-              <path d="M2 12h20"/>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-            </svg>
-          </div>
+          <div class="step-ico" aria-hidden="true"><i data-lucide="globe"></i></div>
           <h3>Website Terbuka</h3>
           <p>Browser langsung membuka website personal Anda di smartphone pengguna.</p>
         </article>
 
         <article class="step reveal" style="--d:.2s">
           <span class="num">03</span>
-          <div class="step-ico" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-              <circle cx="12" cy="7" r="4"/>
-            </svg>
-          </div>
+          <div class="step-ico" aria-hidden="true"><i data-lucide="user-round"></i></div>
           <h3>Tampilkan Profil</h3>
           <p>Pengguna dapat melihat informasi, portfolio, kontak, dan media sosial Anda.</p>
         </article>
@@ -1312,22 +1428,310 @@ p{color:var(--muted)}
   </section>
 
   <!-- =========================================================
-       CTA
+       SECTION — BUSINESS DETAIL
+       ========================================================= -->
+  <section class="section" id="business">
+    <div class="container">
+      <div class="sec-head center reveal">
+        <span class="eyebrow">Business Detail</span>
+        <h2>Rincian Paket Business.</h2>
+        <p class="lead">Tiga tingkatan sistem bisnis yang dapat disesuaikan dengan skala kebutuhan Anda.</p>
+      </div>
+
+      <div class="biz-grid">
+
+        <article class="biz reveal">
+          <h3>Business Basic</h3>
+          <div class="price">Rp1.500.000</div>
+          <ul class="feat-list">
+            <li><i data-lucide="check"></i>5 Gantungan QR</li>
+            <li><i data-lucide="check"></i>Custom Design Gantungan Kunci</li>
+            <li><i data-lucide="check"></i>5 Website Bisnis</li>
+            <li><i data-lucide="check"></i>Custom Domain</li>
+            <li><i data-lucide="check"></i>Hosting</li>
+            <li><i data-lucide="check"></i>Website Bisnis</li>
+            <li><i data-lucide="check"></i>Database</li>
+            <li><i data-lucide="check"></i>Login Admin</li>
+            <li><i data-lucide="check"></i>CRUD Data</li>
+            <li><i data-lucide="check"></i>Responsive di berbagai perangkat</li>
+          </ul>
+        </article>
+
+        <article class="biz mid reveal" style="--d:.1s">
+          <h3>Business Standard</h3>
+          <div class="price">Rp3.000.000</div>
+          <span class="inherit">Semua fitur Business Basic +</span>
+          <ul class="feat-list">
+            <li><i data-lucide="check"></i>Dashboard Admin</li>
+            <li><i data-lucide="check"></i>Pencarian Data</li>
+            <li><i data-lucide="check"></i>WhatsApp</li>
+            <li><i data-lucide="check"></i>Google Maps</li>
+            <li><i data-lucide="check"></i>Media Sosial</li>
+            <li><i data-lucide="check"></i>Desain Website Lebih Premium</li>
+            <li><i data-lucide="check"></i>Maintenance</li>
+            <li><i data-lucide="check"></i>Responsive di berbagai perangkat</li>
+          </ul>
+        </article>
+
+        <article class="biz high reveal" style="--d:.2s">
+          <h3>Business Custom</h3>
+          <div class="price">Rp4.000.000+</div>
+          <span class="inherit">Semua fitur Business Standard +</span>
+          <ul class="feat-list">
+            <li><i data-lucide="check"></i>Sistem sesuai kebutuhan bisnis</li>
+            <li><i data-lucide="check"></i>Dashboard lebih lengkap</li>
+            <li><i data-lucide="check"></i>Hak Akses Pengguna</li>
+            <li><i data-lucide="check"></i>Database lebih kompleks</li>
+            <li><i data-lucide="check"></i>Laporan &amp; Statistik</li>
+            <li><i data-lucide="check"></i>Maintenance &amp; Update Sistem</li>
+            <li><i data-lucide="check"></i>Pengembangan Fitur Tambahan</li>
+            <li><i data-lucide="check"></i>Design Lebih Premium</li>
+            <li><i data-lucide="check"></i>Google Login</li>
+            <li><i data-lucide="check"></i>Google Maps</li>
+            <li><i data-lucide="check"></i>Optimasi Sistem</li>
+            <li><i data-lucide="check"></i>Responsive di berbagai perangkat</li>
+          </ul>
+        </article>
+
+      </div>
+
+      <p class="note reveal">Harga Business Custom dapat menyesuaikan tingkat kompleksitas sistem dan kebutuhan fitur pelanggan.</p>
+
+      <!-- COMPARISON -->
+      <div class="sec-head center reveal" style="margin-top:var(--space-5)">
+        <span class="eyebrow">Perbandingan</span>
+        <h2>Business Comparison.</h2>
+        <p class="lead">Bandingkan fitur setiap tingkatan sebelum menentukan pilihan.</p>
+      </div>
+
+      <div class="cmp-wrap reveal">
+        <table class="cmp">
+          <thead>
+            <tr>
+              <th>Fitur</th>
+              <th>Business Basic <span>Rp1.500.000</span></th>
+              <th>Business Standard <span>Rp3.000.000</span></th>
+              <th>Business Custom <span>Rp4.000.000+</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Gantungan Kunci QR</td>
+              <td data-label="Basic" class="val">5</td>
+              <td data-label="Standard" class="val">5</td>
+              <td data-label="Custom" class="val">5</td>
+            </tr>
+            <tr>
+              <td>Custom Design Gantungan</td>
+              <td data-label="Basic"><span class="yes"><i data-lucide="check"></i></span></td>
+              <td data-label="Standard"><span class="yes"><i data-lucide="check"></i></span></td>
+              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
+            </tr>
+            <tr>
+              <td>Website Bisnis</td>
+              <td data-label="Basic" class="val">5</td>
+              <td data-label="Standard" class="val">5</td>
+              <td data-label="Custom" class="val">5</td>
+            </tr>
+            <tr>
+              <td>Custom Domain</td>
+              <td data-label="Basic"><span class="yes"><i data-lucide="check"></i></span></td>
+              <td data-label="Standard"><span class="yes"><i data-lucide="check"></i></span></td>
+              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
+            </tr>
+            <tr>
+              <td>Hosting</td>
+              <td data-label="Basic"><span class="yes"><i data-lucide="check"></i></span></td>
+              <td data-label="Standard"><span class="yes"><i data-lucide="check"></i></span></td>
+              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
+            </tr>
+            <tr>
+              <td>Database</td>
+              <td data-label="Basic"><span class="yes"><i data-lucide="check"></i></span></td>
+              <td data-label="Standard"><span class="yes"><i data-lucide="check"></i></span></td>
+              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
+            </tr>
+            <tr>
+              <td>Login Admin</td>
+              <td data-label="Basic"><span class="yes"><i data-lucide="check"></i></span></td>
+              <td data-label="Standard"><span class="yes"><i data-lucide="check"></i></span></td>
+              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
+            </tr>
+            <tr>
+              <td>CRUD Data</td>
+              <td data-label="Basic"><span class="yes"><i data-lucide="check"></i></span></td>
+              <td data-label="Standard"><span class="yes"><i data-lucide="check"></i></span></td>
+              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
+            </tr>
+            <tr>
+              <td>Dashboard Admin</td>
+              <td data-label="Basic"><span class="no">—</span></td>
+              <td data-label="Standard"><span class="yes"><i data-lucide="check"></i></span></td>
+              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
+            </tr>
+            <tr>
+              <td>Pencarian Data</td>
+              <td data-label="Basic"><span class="no">—</span></td>
+              <td data-label="Standard"><span class="yes"><i data-lucide="check"></i></span></td>
+              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
+            </tr>
+            <tr>
+              <td>WhatsApp</td>
+              <td data-label="Basic"><span class="no">—</span></td>
+              <td data-label="Standard"><span class="yes"><i data-lucide="check"></i></span></td>
+              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
+            </tr>
+            <tr>
+              <td>Google Maps</td>
+              <td data-label="Basic"><span class="no">—</span></td>
+              <td data-label="Standard"><span class="yes"><i data-lucide="check"></i></span></td>
+              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
+            </tr>
+            <tr>
+              <td>Media Sosial</td>
+              <td data-label="Basic"><span class="no">—</span></td>
+              <td data-label="Standard"><span class="yes"><i data-lucide="check"></i></span></td>
+              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
+            </tr>
+            <tr>
+              <td>Desain Website Lebih Premium</td>
+              <td data-label="Basic"><span class="no">—</span></td>
+              <td data-label="Standard"><span class="yes"><i data-lucide="check"></i></span></td>
+              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
+            </tr>
+            <tr>
+              <td>Maintenance</td>
+              <td data-label="Basic"><span class="no">—</span></td>
+              <td data-label="Standard"><span class="yes"><i data-lucide="check"></i></span></td>
+              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
+            </tr>
+            <tr>
+              <td>Hak Akses Pengguna</td>
+              <td data-label="Basic"><span class="no">—</span></td>
+              <td data-label="Standard"><span class="no">—</span></td>
+              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
+            </tr>
+            <tr>
+              <td>Laporan &amp; Statistik</td>
+              <td data-label="Basic"><span class="no">—</span></td>
+              <td data-label="Standard"><span class="no">—</span></td>
+              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
+            </tr>
+            <tr>
+              <td>Google Login</td>
+              <td data-label="Basic"><span class="no">—</span></td>
+              <td data-label="Standard"><span class="no">—</span></td>
+              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
+            </tr>
+            <tr>
+              <td>Optimasi Sistem</td>
+              <td data-label="Basic"><span class="no">—</span></td>
+              <td data-label="Standard"><span class="no">—</span></td>
+              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
+            </tr>
+            <tr>
+              <td>Pengembangan Fitur Tambahan</td>
+              <td data-label="Basic"><span class="no">—</span></td>
+              <td data-label="Standard"><span class="no">—</span></td>
+              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td data-label="Paket">Business Basic</td>
+              <td data-label="Harga">Rp1.500.000</td>
+              <td data-label="Business Standard">Rp3.000.000</td>
+              <td data-label="Business Custom">Rp4.000.000+</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION — FAQ
+       ========================================================= -->
+  <section class="section" id="faq-demo">
+    <div class="container">
+      <div class="sec-head center reveal">
+        <span class="eyebrow">Pertanyaan Umum</span>
+        <h2>Hal yang Sering Ditanyakan.</h2>
+        <p class="lead">Beberapa pertanyaan yang paling sering muncul seputar demo dan penggunaan Qriya.</p>
+      </div>
+
+      <div class="faq-list">
+        <details class="faq-item reveal">
+          <summary>
+            Apakah preview di halaman ini menampilkan website asli?
+            <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+          </summary>
+          <div class="faq-body">
+            Ya. Preview di dalam mockup smartphone menampilkan website asli yang dimuat langsung dari URL-nya melalui iframe — bukan screenshot atau gambar. Anda bisa memasukkan URL website Anda sendiri untuk melihatnya.
+          </div>
+        </details>
+
+        <details class="faq-item reveal" style="--d:.06s">
+          <summary>
+            Kenapa ada website yang tidak muncul di preview?
+            <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+          </summary>
+          <div class="faq-body">
+            Beberapa website mengirim header keamanan seperti <strong>X-Frame-Options</strong> atau <strong>Content-Security-Policy</strong> yang menolak ditampilkan di dalam iframe. Jika itu terjadi, akan muncul tombol "Buka Website" agar Anda bisa membukanya di tab baru.
+          </div>
+        </details>
+
+        <details class="faq-item reveal" style="--d:.12s">
+          <summary>
+            Apakah website Qriya bisa dibuka dari semua smartphone?
+            <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+          </summary>
+          <div class="faq-body">
+            Ya. Website Qriya dibangun responsif dan diuji di berbagai perangkat — Android, iPhone, tablet, hingga laptop. Selama ada kamera dan browser, halaman bisa diakses.
+          </div>
+        </details>
+
+        <details class="faq-item reveal" style="--d:.18s">
+          <summary>
+            Apakah bisa custom website sesuai kebutuhan?
+            <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+          </summary>
+          <div class="faq-body">
+            Bisa. Paket Starter dan Pro fokus ke website personal, sedangkan paket Business bisa disesuaikan dengan sistem dan fitur yang Anda butuhkan.
+          </div>
+        </details>
+
+        <details class="faq-item reveal" style="--d:.24s">
+          <summary>
+            Apakah ada batasan jumlah halaman di website?
+            <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+          </summary>
+          <div class="faq-body">
+            Untuk paket personal, biasanya berbentuk satu halaman landing page yang lengkap. Untuk paket Business, jumlah halaman dan fitur bisa disesuaikan dengan kebutuhan.
+          </div>
+        </details>
+      </div>
+
+      <div class="actions reveal" style="justify-content:center;--d:.3s">
+        <a class="btn btn-ghost btn-lg" href="faq.html">Lihat Semua FAQ <i data-lucide="arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION — CTA
        ========================================================= -->
   <section class="section" id="cta">
     <div class="container">
       <div class="cta-panel reveal">
         <span class="eyebrow" style="justify-content:center;display:inline-flex">Mulai Sekarang</span>
         <h2>Siap Punya Identitas Digital Sendiri?</h2>
-        <p>Pilih paket gantungan QR yang sesuai, dan ubah satu scan menjadi pengalaman digital milikmu.</p>
+        <p>Pilih paket Qriya yang sesuai, dan ubah satu scan menjadi pengalaman digital milikmu.</p>
         <div class="cta-actions">
           <a class="btn btn-primary btn-lg" href="paket.html">
-            Pesan Gantungan Sekarang
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
-            </svg>
+            Pesan Gantungan Sekarang <i data-lucide="arrow-right"></i>
           </a>
-          <a class="btn btn-ghost btn-lg" href="paket.html">Lihat Paket</a>
+          <a class="btn btn-ghost btn-lg" href="https://wa.me/6280000000000" target="_blank" rel="noopener">Order via WhatsApp</a>
         </div>
       </div>
     </div>
@@ -1342,22 +1746,14 @@ p{color:var(--muted)}
   <div class="container footer-grid">
 
     <div class="f-brand">
-      <a class="brand" href="beranda.html" aria-label="Portfolio QR Keychain — Beranda">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="3" width="7" height="7" rx="1"/>
-            <rect x="14" y="3" width="7" height="7" rx="1"/>
-            <rect x="3" y="14" width="7" height="7" rx="1"/>
-            <path d="M14 14h3v3h-3z"/>
-            <path d="M18 18h3v3h-3z"/>
-          </svg>
-        </span>
+      <a class="brand" href="beranda.html" aria-label="Qriya — Beranda">
+        <img src="foto1.jpg" alt="Logo Qriya">
         <span class="brand-text">
-          <span class="b-name">Portfolio QR Keychain</span>
-          <span class="b-tag">Digital Identity</span>
+          <span class="b-name">Qriya</span>
+          <span class="b-tag">QR Keychain</span>
         </span>
       </a>
-      <p>Gantungan QR yang menghubungkan dunia fisik dengan identitas digital. Satu scan untuk membuka website personal maupun bisnis Anda.</p>
+      <p>Qriya menghadirkan gantungan QR yang menghubungkan dunia fisik dengan identitas digital. Satu scan untuk membuka website personal maupun bisnis Anda.</p>
     </div>
 
     <div class="f-col">
@@ -1373,18 +1769,31 @@ p{color:var(--muted)}
     </div>
 
     <div class="f-col">
+      <h4>Produk</h4>
+      <ul>
+        <li><a href="paket.html">QR Keychain</a></li>
+        <li><a href="paket.html">Website Personal</a></li>
+        <li><a href="paket.html">Website Bisnis</a></li>
+        <li><a href="paket.html">Digital Identity</a></li>
+      </ul>
+    </div>
+
+    <div class="f-col">
       <h4>Kontak</h4>
       <ul>
-        <li><a href="mailto:email@domain.com">email@domain.com</a></li>
-        <li><a href="https://wa.me/6280000000000" target="_blank" rel="noopener">+62 8xx xxxx xxxx</a></li>
+        <li><span>Universitas Bina Sarana Informatika</span></li>
         <li><span>Kampus Margonda, Depok</span></li>
+        <li><span>Jl. Margonda Raya, Pondok Cina</span></li>
+        <li><span>Depok, Jawa Barat 16424</span></li>
+        <li><span>email@domain.com</span></li>
+        <li><span>+62 8xx xxxx xxxx</span></li>
       </ul>
     </div>
 
   </div>
 
   <div class="container footer-bottom">
-    <p>© 2026 Portfolio QR Keychain. All rights reserved.</p>
+    <p>© 2026 Qriya. All rights reserved.</p>
     <p>Gantungan → Scan → Website → Identitas Digital</p>
   </div>
 </footer>
@@ -1405,9 +1814,22 @@ const demoLinks = {
 /* URL default saat halaman pertama kali dibuka */
 const DEFAULT_DEMO_URL = demoLinks.portfolio;
 
-/* Timeout deteksi jika website memblokir iframe (ms).
-   Kalau website tidak merespon dalam waktu ini, kita tampilkan fallback. */
-const LOAD_TIMEOUT_MS = 7000;
+/* =========================================================
+   LUCIDE ICONS
+   ========================================================= */
+(function(){
+  function init(){
+    if(window.lucide && typeof window.lucide.createIcons === 'function'){
+      window.lucide.createIcons();
+    }
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+  window.addEventListener('load', init);
+})();
 
 /* =========================================================
    ELEMEN
@@ -1419,20 +1841,22 @@ const screenLoading  = document.getElementById('screenLoading');
 const screenError    = document.getElementById('screenError');
 const liveIndicator  = document.getElementById('liveIndicator');
 const liveText       = document.getElementById('liveText');
-const currentUrlText = document.getElementById('currentUrlText');
 const btnRefresh     = document.getElementById('btnRefresh');
 const btnOpenTab     = document.getElementById('btnOpenTab');
 const btnOpenFromErr = document.getElementById('btnOpenFromError');
+const qrUrlText      = document.getElementById('qrUrlText');
+const qrCard         = document.getElementById('qrCard');
+const btnScan        = document.getElementById('btnScan');
+const btnReset       = document.getElementById('btnReset');
+const scanStatus     = document.getElementById('scanStatus');
 const siteHeader     = document.getElementById('siteHeader');
 const menuBtn        = document.getElementById('menuBtn');
 const navLinks       = document.getElementById('navLinks');
 const navOverlay     = document.getElementById('navOverlay');
 
-/* Simpan URL aktif di variabel global */
 let activeUrl = "";
-
-/* Timer untuk deteksi timeout iframe */
 let loadTimer = null;
+let scanTimers = [];
 
 /* =========================================================
    UTILITY: Validasi & Normalisasi URL
@@ -1442,14 +1866,12 @@ function normalizeUrl(raw){
   let s = String(raw).trim();
   if(!s) return null;
 
-  // Jika belum ada protokol, tambahkan https://
   if(!/^https?:\/\//i.test(s)){
     s = "https://" + s;
   }
 
   try{
     const u = new URL(s);
-    // Hanya izinkan protokol http/https
     if(u.protocol !== "http:" && u.protocol !== "https:"){
       return null;
     }
@@ -1460,14 +1882,13 @@ function normalizeUrl(raw){
 }
 
 /* =========================================================
-   STATUS UI: Loading / Live / Error
+   STATUS UI
    ========================================================= */
 function setLoading(show){
   if(show){
     screenLoading.classList.remove('hidden');
     screenError.classList.remove('show');
     liveIndicator.classList.remove('idle','error');
-    liveIndicator.classList.add('active');
     liveText.textContent = 'Memuat…';
   } else {
     screenLoading.classList.add('hidden');
@@ -1489,87 +1910,54 @@ function setIdle(){
   liveText.textContent = 'Live Preview';
 }
 
-function setError(){
-  screenLoading.classList.add('hidden');
-  screenError.classList.add('show');
-  liveIndicator.classList.remove('idle');
-  liveIndicator.classList.add('error');
-  liveText.textContent = 'Tidak Bisa Ditampilkan';
-}
-
 /* =========================================================
    LOAD DEMO KE IFRAME
    ========================================================= */
-function loadDemo(rawUrl){
+function loadDemo(rawUrl, options){
+  options = options || {};
   const url = normalizeUrl(rawUrl);
   if(!url){
     alert('URL tidak valid. Contoh: https://example.com');
     return;
   }
 
-  // Simpan URL aktif
   activeUrl = url;
   urlInput.value = url;
-  currentUrlText.textContent = url;
-  btnOpenFromErr.href = url;
+  if(qrUrlText) qrUrlText.textContent = url.replace(/^https?:\/\//, '');
+  if(btnOpenFromErr) btnOpenFromErr.href = url;
 
-  // Reset state
   clearTimeout(loadTimer);
-
-  // Tampilkan loading
   setLoading(true);
 
-  // Set src iframe (memicu load)
   demoFrame.src = url;
-
-  // Deteksi timeout: jika website memblokir iframe,
-  // biasanya tidak akan memicu onload yang wajar. Kita beri batas waktu.
-  loadTimer = setTimeout(() => {
-    // Cek apakah iframe benar-benar memuat (best-effort).
-    // Kalau timeout tercapai dan belum ada onload handler yang menandai,
-    // kita anggap gagal karena kemungkinan diblokir oleh X-Frame-Options.
-    try{
-      // Coba akses contentDocument. Kalau cross-origin, akan throw.
-      const doc = demoFrame.contentDocument;
-      if(!doc){
-        // Tidak bisa diakses — bisa jadi karena cross-origin (normal)
-        // atau karena diblokir. Kita tidak bisa tahu pasti.
-        // Biarkan saja, karena onload biasanya tetap terpanggil.
-      }
-    }catch(e){
-      // Cross-origin error normal, abaikan.
-    }
-  }, LOAD_TIMEOUT_MS);
 }
 
 /* =========================================================
    HANDLER: iframe load
    ========================================================= */
-demoFrame.addEventListener('load', () => {
-  clearTimeout(loadTimer);
-
-  // Kalau src masih about:blank, jangan tampilkan live.
-  const src = demoFrame.getAttribute('src') || '';
-  if(!src || src === 'about:blank'){
-    setIdle();
-    return;
-  }
-
-  // Setelah iframe load, kita asumsikan berhasil.
-  // (Jika X-Frame-Options memblokir, browser tetap memicu load dengan
-  //  halaman error internal — tidak bisa dideteksi lewat JS.)
-  setLive();
-});
+if(demoFrame){
+  demoFrame.addEventListener('load', () => {
+    clearTimeout(loadTimer);
+    const src = demoFrame.getAttribute('src') || '';
+    if(!src || src === 'about:blank'){
+      setIdle();
+      return;
+    }
+    setLive();
+  });
+}
 
 /* =========================================================
    HANDLER: Form submit URL
    ========================================================= */
-urlForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const val = urlInput.value.trim();
-  if(!val) return;
-  loadDemo(val);
-});
+if(urlForm){
+  urlForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const val = urlInput.value.trim();
+    if(!val) return;
+    loadDemo(val);
+  });
+}
 
 /* =========================================================
    HANDLER: Quick demo buttons
@@ -1580,29 +1968,109 @@ document.querySelectorAll('[data-demo]').forEach(btn => {
     const url = demoLinks[key];
     if(!url) return;
     loadDemo(url);
-    // Scroll halus ke preview phone
-    document.getElementById('preview').scrollIntoView({behavior:'smooth', block:'start'});
+    const preview = document.getElementById('simulasi');
+    if(preview) preview.scrollIntoView({behavior:'smooth', block:'start'});
   });
 });
 
 /* =========================================================
    HANDLER: Refresh preview
    ========================================================= */
-btnRefresh.addEventListener('click', () => {
-  if(!activeUrl) return;
-  loadDemo(activeUrl);
-});
+if(btnRefresh){
+  btnRefresh.addEventListener('click', () => {
+    if(!activeUrl) return;
+    loadDemo(activeUrl);
+  });
+}
 
 /* =========================================================
    HANDLER: Buka di tab baru
    ========================================================= */
-btnOpenTab.addEventListener('click', () => {
-  if(!activeUrl){
-    alert('Belum ada website yang dimuat. Silakan masukkan URL terlebih dahulu.');
-    return;
+if(btnOpenTab){
+  btnOpenTab.addEventListener('click', () => {
+    if(!activeUrl){
+      alert('Belum ada website yang dimuat. Silakan masukkan URL terlebih dahulu.');
+      return;
+    }
+    window.open(activeUrl, '_blank', 'noopener,noreferrer');
+  });
+}
+
+/* =========================================================
+   SIMULASI SCAN QR
+   ========================================================= */
+(function(){
+  if(!qrCard || !btnScan) return;
+
+  let busy = false;
+
+  function clearScanTimers(){
+    scanTimers.forEach(t => clearTimeout(t));
+    scanTimers = [];
   }
-  window.open(activeUrl, '_blank', 'noopener,noreferrer');
-});
+
+  function resetScan(){
+    clearScanTimers();
+    busy = false;
+    qrCard.classList.remove('scanning');
+    if(scanStatus){
+      scanStatus.textContent = 'Status: Siap dipindai';
+      scanStatus.className = 'scan-status';
+    }
+  }
+
+  btnScan.addEventListener('click', () => {
+    if(busy) return;
+    busy = true;
+    clearScanTimers();
+
+    // 1. Mulai animasi scan
+    qrCard.classList.add('scanning');
+    if(scanStatus){
+      scanStatus.textContent = 'Status: Memindai QR…';
+      scanStatus.className = 'scan-status active';
+    }
+
+    // 2. Setelah 1.6s → tampilkan loading + muat iframe
+    scanTimers.push(setTimeout(() => {
+      qrCard.classList.remove('scanning');
+      if(scanStatus){
+        scanStatus.textContent = 'Status: Membuka website…';
+        scanStatus.className = 'scan-status active';
+      }
+      // Muat URL aktif (atau default)
+      const targetUrl = activeUrl || DEFAULT_DEMO_URL;
+      if(targetUrl){
+        loadDemo(targetUrl);
+      }
+    }, 1600));
+
+    // 3. Setelah 3.0s → selesai
+    scanTimers.push(setTimeout(() => {
+      if(scanStatus){
+        scanStatus.textContent = 'Status: Website terbuka ✓';
+        scanStatus.className = 'scan-status success';
+      }
+      busy = false;
+    }, 3000));
+  });
+
+  if(btnReset){
+    btnReset.addEventListener('click', () => {
+      resetScan();
+      // Kosongkan iframe
+      if(demoFrame){
+        demoFrame.src = 'about:blank';
+      }
+      activeUrl = "";
+      setIdle();
+      if(qrUrlText) qrUrlText.textContent = 'refal45.github.io/portofolio';
+      if(urlInput) urlInput.value = '';
+    });
+  }
+
+  window.addEventListener('beforeunload', clearScanTimers);
+})();
 
 /* =========================================================
    MENU MOBILE (sidebar kanan)
@@ -1653,9 +2121,11 @@ btnOpenTab.addEventListener('click', () => {
   window.addEventListener('resize', () => {
     clearTimeout(rt);
     rt = setTimeout(() => {
-      if(window.innerWidth > 1024) toggle(false);
+      if(window.innerWidth > 880) toggle(false);
     }, 120);
   });
+
+  window.addEventListener('orientationchange', () => toggle(false));
 })();
 
 /* =========================================================
