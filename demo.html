@@ -389,7 +389,6 @@ p{color:var(--muted)}
   100%{top:14px}
 }
 
-/* Indikator scan sukses */
 .qr-success{
   position:absolute;
   inset:0;
@@ -532,7 +531,7 @@ p{color:var(--muted)}
 .quick-demos button svg.lucide{width:13px;height:13px}
 
 /* =====================================================
-   PHONE MOCKUP (kanan) — TANPA kamera/island
+   PHONE MOCKUP (kanan) — proporsi rapi & profesional
    ===================================================== */
 .phone-col{
   display:flex;
@@ -547,7 +546,7 @@ p{color:var(--muted)}
   justify-content:space-between;
   gap:14px;
   width:100%;
-  max-width:420px;
+  max-width:400px;
   padding:12px 18px;
   border-radius:14px;
   background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015));
@@ -593,14 +592,14 @@ p{color:var(--muted)}
   color:#fff;transform:translateY(-2px);
 }
 
-/* Phone — tanpa kamera/island */
+/* Phone mockup dengan proporsi 19.5:9 (rasio iPhone) */
 .phone{
   position:relative;
-  width:320px;
-  height:660px;
-  flex-shrink:0;
-  border-radius:52px;
-  padding:14px;
+  width:100%;
+  max-width:360px;
+  aspect-ratio: 9 / 19.5;
+  border-radius:48px;
+  padding:11px;
   background:linear-gradient(160deg,#1a1a2e 0%,#0a0a15 55%,#05050a 100%);
   border:1px solid rgba(255,255,255,.18);
   box-shadow:
@@ -616,32 +615,32 @@ p{color:var(--muted)}
 /* Tombol samping */
 .phone-btn-power{
   position:absolute;
-  right:-3px;top:170px;
-  width:4px;height:88px;
+  right:-3px;top:26%;
+  width:4px;height:14%;
   border-radius:3px;
   background:linear-gradient(180deg,#4b5563,#1f2937);
   box-shadow:inset 0 0 2px rgba(255,255,255,.2);
 }
 .phone-btn-vol-up{
   position:absolute;
-  left:-3px;top:150px;
-  width:4px;height:52px;
+  left:-3px;top:22%;
+  width:4px;height:8%;
   border-radius:3px;
   background:linear-gradient(180deg,#4b5563,#1f2937);
   box-shadow:inset 0 0 2px rgba(255,255,255,.2);
 }
 .phone-btn-vol-down{
   position:absolute;
-  left:-3px;top:216px;
-  width:4px;height:52px;
+  left:-3px;top:32%;
+  width:4px;height:8%;
   border-radius:3px;
   background:linear-gradient(180deg,#4b5563,#1f2937);
   box-shadow:inset 0 0 2px rgba(255,255,255,.2);
 }
 .phone-btn-silent{
   position:absolute;
-  left:-3px;top:104px;
-  width:4px;height:26px;
+  left:-3px;top:15%;
+  width:4px;height:4%;
   border-radius:3px;
   background:linear-gradient(180deg,#4b5563,#1f2937);
   box-shadow:inset 0 0 2px rgba(255,255,255,.2);
@@ -650,7 +649,7 @@ p{color:var(--muted)}
 .phone-screen{
   position:relative;
   width:100%;height:100%;
-  border-radius:40px;
+  border-radius:38px;
   overflow:hidden;
   background:#0a0a15;
   border:1px solid rgba(255,255,255,.08);
@@ -676,7 +675,7 @@ p{color:var(--muted)}
   position:absolute;inset:0;z-index:2;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   gap:16px;
-  padding:36px 26px;
+  padding:36px 22px;
   text-align:center;
   background:
     radial-gradient(320px 240px at 50% 40%, rgba(124,58,237,.22), transparent 62%),
@@ -733,7 +732,7 @@ p{color:var(--muted)}
   position:absolute;inset:0;z-index:5;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   gap:16px;
-  padding:36px 26px;
+  padding:36px 22px;
   text-align:center;
   background:
     radial-gradient(360px 260px at 50% 30%, rgba(239,68,68,.14), transparent 65%),
@@ -751,13 +750,13 @@ p{color:var(--muted)}
 }
 .screen-error .err-ico svg.lucide{width:26px;height:26px}
 .screen-error h4{font-size:.95rem;font-weight:700;color:#fff;letter-spacing:-.005em}
-.screen-error p{font-size:.78rem;line-height:1.6;color:var(--muted);max-width:26ch}
+.screen-error p{font-size:.78rem;line-height:1.6;color:var(--muted);max-width:24ch}
 .screen-error .btn{padding:11px 20px;font-size:.82rem;border-radius:12px;width:100%;max-width:220px}
 
 .phone-home-bar{
   position:absolute;
-  bottom:12px;left:50%;transform:translateX(-50%);
-  width:120px;height:5px;border-radius:3px;
+  bottom:10px;left:50%;transform:translateX(-50%);
+  width:110px;height:4px;border-radius:3px;
   background:rgba(255,255,255,.28);
   z-index:6;
   pointer-events:none;
@@ -824,7 +823,7 @@ p{color:var(--muted)}
 .step p{font-size:.88rem;line-height:1.7}
 
 /* =========================================================
-   PROJECT GALLERY (Galeri Project)
+   PROJECT GALLERY
    ========================================================= */
 .project-sec{
   background:
@@ -1128,6 +1127,7 @@ p{color:var(--muted)}
   .split.reverse .split-media{order:0}
   .footer-grid{grid-template-columns:1fr 1fr;gap:36px}
   .f-brand{grid-column:1 / -1}
+  .phone{max-width:340px}
 }
 
 /* =========================================================
@@ -1233,20 +1233,14 @@ p{color:var(--muted)}
   .faq-item summary{padding:18px 20px;font-size:.9rem}
   .faq-item .faq-body{padding:0 20px 20px}
 
-  /* Phone diperkecil proporsional */
+  /* Phone — proporsi tetap rapi di mobile */
   .phone{
-    width:min(300px,88vw);
-    height:auto;
-    aspect-ratio:320/660;
-    border-radius:46px;
-    padding:12px;
+    max-width:300px;
+    border-radius:44px;
+    padding:10px;
   }
-  .phone-btn-power{top:150px;height:76px}
-  .phone-btn-vol-up{top:134px;height:46px}
-  .phone-btn-vol-down{top:190px;height:46px}
-  .phone-btn-silent{top:94px;height:22px}
-  .phone-screen{border-radius:36px}
-  .phone-home-bar{width:100px;height:4px;bottom:10px}
+  .phone-screen{border-radius:34px}
+  .phone-home-bar{width:90px;height:4px;bottom:8px}
 
   .phone-toolbar{max-width:100%;padding:10px 14px}
   .phone-toolbar .live{font-size:.58rem}
@@ -1260,11 +1254,9 @@ p{color:var(--muted)}
   .url-submit{width:100%;padding:14px 22px}
   .quick-demos button{font-size:.72rem;padding:7px 12px}
 
-  /* PROJECT mobile */
   .project-grid{grid-template-columns:1fr}
   .project-filter button{font-size:.6rem;padding:9px 14px;letter-spacing:.14em}
 
-  /* LIGHTBOX mobile */
   .lightbox{padding:78px 12px 78px}
   .lb-img{max-height:calc(100vh - 170px);border-radius:10px}
   .lb-btn{width:42px;height:42px;border-radius:12px}
@@ -1333,7 +1325,6 @@ p{color:var(--muted)}
   </nav>
 </header>
 
-<!-- Overlay gelap saat sidebar mobile terbuka -->
 <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
 
 <main>
@@ -1365,7 +1356,7 @@ p{color:var(--muted)}
   </section>
 
   <!-- =========================================================
-       SECTION — SIMULASI SCAN (QR kiri + PHONE kanan)
+       SECTION — SIMULASI SCAN
        ========================================================= -->
   <section class="section" id="simulasi">
     <div class="container">
@@ -1387,7 +1378,6 @@ p{color:var(--muted)}
               <img src="scan.png" alt="Contoh QR Code Qriya — scan.png" loading="lazy">
               <span class="qr-scan-line" aria-hidden="true"></span>
 
-              <!-- Indikator scan sukses -->
               <div class="qr-success" id="qrSuccess">
                 <div class="check">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
@@ -1412,7 +1402,6 @@ p{color:var(--muted)}
             <p class="scan-status" id="scanStatus">Status: Siap dipindai</p>
           </div>
 
-          <!-- URL Input Panel -->
           <div class="url-panel">
             <div class="url-label">
               <i data-lucide="link"></i>
@@ -1479,7 +1468,6 @@ p{color:var(--muted)}
 
             <div class="phone-screen" id="phoneScreen">
 
-              <!-- Idle state (sebelum scan) -->
               <div class="screen-idle" id="screenIdle">
                 <div class="idle-ico"><i data-lucide="smartphone"></i></div>
                 <h4>Menunggu Scan</h4>
@@ -1495,13 +1483,11 @@ p{color:var(--muted)}
                 sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
               ></iframe>
 
-              <!-- Loading overlay -->
               <div class="screen-loading hidden" id="screenLoading">
                 <div class="ring" aria-hidden="true"></div>
                 <span>Memuat Website…</span>
               </div>
 
-              <!-- Error overlay -->
               <div class="screen-error" id="screenError">
                 <div class="err-ico" aria-hidden="true">
                   <i data-lucide="alert-circle"></i>
@@ -1621,7 +1607,6 @@ p{color:var(--muted)}
         <p class="lead">Beberapa contoh halaman digital yang sudah dibuat untuk berbagai kebutuhan — personal, komunitas, hingga bisnis. Klik foto untuk melihat lebih jelas.</p>
       </div>
 
-      <!-- FILTER KATEGORI -->
       <div class="project-filter reveal" role="tablist" aria-label="Filter kategori project">
         <button type="button" class="active" data-filter="all">Semua</button>
         <button type="button" data-filter="personal">Personal</button>
@@ -1629,7 +1614,6 @@ p{color:var(--muted)}
         <button type="button" data-filter="komunitas">Komunitas</button>
       </div>
 
-      <!-- GRID PROJECT -->
       <div class="project-grid">
 
         <article class="project-card reveal" data-cat="personal">
@@ -1922,7 +1906,6 @@ const demoLinks = {
   umkm:      "https://umkmserangjuara.com/"
 };
 
-/* URL default saat tombol scan ditekan */
 const DEFAULT_DEMO_URL = demoLinks.portfolio;
 
 /* =========================================================
@@ -2030,18 +2013,6 @@ function showWebsite(){
     liveIndicator.classList.remove('idle','error');
   }
   if(liveText) liveText.textContent = 'Live Preview';
-}
-
-function showError(){
-  if(screenIdle) screenIdle.classList.add('hidden');
-  if(screenLoading) screenLoading.classList.add('hidden');
-  if(screenError) screenError.classList.add('show');
-  if(phoneScreen) phoneScreen.classList.remove('website-loaded');
-  if(liveIndicator){
-    liveIndicator.classList.remove('idle');
-    liveIndicator.classList.add('error');
-  }
-  if(liveText) liveText.textContent = 'Preview Gagal';
 }
 
 /* =========================================================
@@ -2164,7 +2135,6 @@ if(btnOpenTab){
     scanBusy = true;
     clearScanTimers();
 
-    // Mulai dari idle state
     showIdle();
 
     // 1. Mulai animasi scan
@@ -2175,7 +2145,7 @@ if(btnOpenTab){
       scanStatus.className = 'scan-status active';
     }
 
-    // 2. Setelah 2.0s → scan sukses (tampilkan centang)
+    // 2. Setelah 2.0s → scan sukses
     scanTimers.push(setTimeout(() => {
       qrCard.classList.remove('scanning');
       if(qrSuccess) qrSuccess.classList.add('show');
@@ -2199,7 +2169,7 @@ if(btnOpenTab){
       }
     }, 2800));
 
-    // 4. Setelah 4.5s → selesai (kalau website sudah tampil)
+    // 4. Setelah 4.5s → selesai
     scanTimers.push(setTimeout(() => {
       if(scanStatus){
         scanStatus.textContent = 'Status: Website terbuka ✓';
@@ -2217,7 +2187,7 @@ if(btnOpenTab){
 })();
 
 /* =========================================================
-   MENU MOBILE (sidebar kanan)
+   MENU MOBILE
    ========================================================= */
 (function(){
   if(!menuBtn || !navLinks) return;
@@ -2340,7 +2310,7 @@ if(btnOpenTab){
 })();
 
 /* =========================================================
-   LIGHTBOX — Zoom foto project
+   LIGHTBOX
    ========================================================= */
 (function(){
   const lightbox = document.getElementById('lightbox');
@@ -2407,7 +2377,7 @@ if(btnOpenTab){
 })();
 
 /* =========================================================
-   INISIALISASI — TAMPILKAN IDLE STATE
+   INISIALISASI
    ========================================================= */
 window.addEventListener('load', () => {
   showIdle();
