@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Demo | Qriya — Gantungan QR &amp; Website Digital</title>
-<meta name="description" content="Lihat demo gantungan kunci QR Qriya: preview website asli di dalam mockup smartphone, simulasi scan, dan contoh halaman digital.">
+<meta name="description" content="Lihat demo gantungan kunci QR Qriya: simulasi scan, preview website asli di dalam smartphone, dan galeri hasil project website.">
 <meta name="theme-color" content="#050b18">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -67,6 +67,7 @@ body{
   -moz-osx-font-smoothing:grayscale;
   text-rendering:optimizeLegibility;
 }
+body.lb-open{overflow:hidden}
 img{display:block;max-width:100%;height:auto}
 a{color:inherit;text-decoration:none}
 ul{list-style:none}
@@ -243,7 +244,7 @@ p{color:var(--muted)}
   white-space:nowrap;
 }
 .nav-cta:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(124,58,237,.55)}
-.nav-cta svg{width:14px;height:14px;stroke-width:2.5}
+.nav-cta svg.lucide{width:14px;height:14px}
 
 .menu-btn{
   display:none;width:46px;height:46px;border-radius:12px;
@@ -304,7 +305,7 @@ p{color:var(--muted)}
 .breadcrumb span{color:#c4b5fd}
 
 /* =========================================================
-   DEMO STAGE — QR + PHONE
+   DEMO STAGE — QR (kiri) + PHONE (kanan)
    ========================================================= */
 .demo-stage{
   display:grid;
@@ -315,8 +316,13 @@ p{color:var(--muted)}
 }
 
 /* =====================================================
-   QR CARD (kiri) — sama seperti paket.html
+   QR CARD (kiri)
    ===================================================== */
+.qr-col{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
 .qr-card{
   position:relative;
   padding:32px 28px 30px;
@@ -375,13 +381,41 @@ p{color:var(--muted)}
 }
 .qr-card.scanning .qr-scan-line{
   opacity:1;
-  animation:scanLine 1.6s var(--ease) infinite;
+  animation:scanLine 1.4s var(--ease) infinite;
 }
 @keyframes scanLine{
   0%{top:14px}
   50%{top:calc(100% - 16px)}
   100%{top:14px}
 }
+
+/* Indikator scan sukses */
+.qr-success{
+  position:absolute;
+  inset:0;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(5,11,24,.75);
+  backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+  border-radius:20px;
+  opacity:0;visibility:hidden;
+  transition:opacity .35s var(--ease),visibility .35s var(--ease);
+  z-index:3;
+  pointer-events:none;
+}
+.qr-success.show{opacity:1;visibility:visible}
+.qr-success .check{
+  width:64px;height:64px;border-radius:50%;
+  display:grid;place-items:center;
+  background:linear-gradient(135deg,#22c55e,#16a34a);
+  border:2px solid rgba(255,255,255,.35);
+  box-shadow:0 12px 32px rgba(34,197,94,.55);
+  animation:popIn .45s var(--ease) both;
+}
+@keyframes popIn{
+  0%{transform:scale(.5);opacity:0}
+  100%{transform:scale(1);opacity:1}
+}
+.qr-success .check svg{width:32px;height:32px;color:#fff;stroke-width:3}
 
 .qr-card h3{
   margin-top:24px;
@@ -412,8 +446,93 @@ p{color:var(--muted)}
 .scan-status.active{color:#7dd3fc}
 .scan-status.success{color:#a7f3d0}
 
+/* URL panel */
+.url-panel{
+  position:relative;
+  padding:22px 24px;
+  border-radius:var(--r-lg);
+  background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015));
+  border:1px solid var(--line-2);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  box-shadow:0 20px 44px rgba(3,7,22,.45);
+}
+.url-panel .url-label{
+  display:flex;align-items:center;gap:8px;
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:#c4b5fd;margin-bottom:12px;
+}
+.url-panel .url-label svg.lucide{width:14px;height:14px}
+.url-form{
+  display:flex;gap:10px;
+  align-items:stretch;
+}
+.url-input{
+  flex:1;min-width:0;
+  padding:14px 16px;
+  border-radius:12px;
+  background:rgba(5,11,24,.55);
+  border:1px solid rgba(255,255,255,.14);
+  color:#fff;
+  font-size:.9rem;
+  transition:border-color .3s ease,background .3s ease,box-shadow .3s ease;
+}
+.url-input::placeholder{color:rgba(148,163,184,.62)}
+.url-input:focus{
+  outline:none;
+  border-color:rgba(139,92,246,.75);
+  background:rgba(5,11,24,.8);
+  box-shadow:0 0 0 3px rgba(124,58,237,.18);
+}
+.url-submit{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:0 22px;
+  border-radius:12px;
+  font-size:.88rem;font-weight:600;color:#fff;
+  background:var(--grad);
+  border:1px solid rgba(255,255,255,.2);
+  box-shadow:0 10px 26px rgba(79,70,229,.42);
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease);
+  white-space:nowrap;
+  cursor:pointer;
+}
+.url-submit:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(124,58,237,.55)}
+.url-submit svg.lucide{width:16px;height:16px}
+
+.quick-demos{
+  display:flex;flex-wrap:wrap;gap:8px;
+  margin-top:16px;
+  padding-top:16px;
+  border-top:1px solid var(--line);
+}
+.quick-demos .qd-label{
+  width:100%;
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--muted-2);
+  margin-bottom:2px;
+}
+.quick-demos button{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:8px 14px;
+  border-radius:999px;
+  font-size:.76rem;font-weight:600;
+  color:var(--muted);
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.14);
+  transition:color .3s ease,background .3s ease,border-color .3s ease,transform .3s var(--ease);
+  cursor:pointer;
+}
+.quick-demos button:hover{
+  color:#fff;
+  background:rgba(124,58,237,.18);
+  border-color:rgba(167,139,250,.45);
+  transform:translateY(-2px);
+}
+.quick-demos button svg.lucide{width:13px;height:13px}
+
 /* =====================================================
-   PHONE MOCKUP (kanan) dengan iframe
+   PHONE MOCKUP (kanan) — TANPA kamera/island
    ===================================================== */
 .phone-col{
   display:flex;
@@ -467,13 +586,14 @@ p{color:var(--muted)}
   transition:background .3s ease,border-color .3s ease,transform .3s var(--ease),color .3s ease;
   cursor:pointer;
 }
-.tool-btn svg{width:16px;height:16px;stroke-width:2.2}
+.tool-btn svg.lucide{width:16px;height:16px}
 .tool-btn:hover{
   background:rgba(124,58,237,.3);
   border-color:rgba(167,139,250,.5);
   color:#fff;transform:translateY(-2px);
 }
 
+/* Phone — tanpa kamera/island */
 .phone{
   position:relative;
   width:320px;
@@ -481,8 +601,7 @@ p{color:var(--muted)}
   flex-shrink:0;
   border-radius:52px;
   padding:14px;
-  background:
-    linear-gradient(160deg,#1a1a2e 0%,#0a0a15 55%,#05050a 100%);
+  background:linear-gradient(160deg,#1a1a2e 0%,#0a0a15 55%,#05050a 100%);
   border:1px solid rgba(255,255,255,.18);
   box-shadow:
     0 50px 100px rgba(0,0,0,.7),
@@ -494,30 +613,7 @@ p{color:var(--muted)}
 }
 .phone:hover{transform:translateY(-6px)}
 
-.phone::before{
-  content:"";
-  position:absolute;
-  top:26px;left:50%;
-  transform:translateX(-50%);
-  width:104px;height:28px;
-  border-radius:16px;
-  background:#000;
-  z-index:5;
-  border:1px solid rgba(255,255,255,.06);
-  box-shadow:inset 0 0 6px rgba(0,0,0,.9);
-}
-.phone::after{
-  content:"";
-  position:absolute;
-  top:34px;left:calc(50% + 26px);
-  width:12px;height:12px;
-  border-radius:50%;
-  background:radial-gradient(circle at 30% 30%,#1e293b,#000 70%);
-  border:1px solid rgba(255,255,255,.06);
-  z-index:6;
-  box-shadow:inset 0 0 4px rgba(56,189,248,.5);
-}
-
+/* Tombol samping */
 .phone-btn-power{
   position:absolute;
   right:-3px;top:170px;
@@ -570,6 +666,41 @@ p{color:var(--muted)}
   display:block;
   background:#ffffff;
   z-index:1;
+  opacity:0;
+  transition:opacity .5s ease;
+}
+.phone-screen.website-loaded iframe{opacity:1}
+
+/* Idle state (sebelum scan) */
+.screen-idle{
+  position:absolute;inset:0;z-index:2;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:16px;
+  padding:36px 26px;
+  text-align:center;
+  background:
+    radial-gradient(320px 240px at 50% 40%, rgba(124,58,237,.22), transparent 62%),
+    #050b18;
+  transition:opacity .4s ease,visibility .4s ease;
+}
+.screen-idle.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.screen-idle .idle-ico{
+  width:64px;height:64px;border-radius:20px;
+  display:grid;place-items:center;
+  background:linear-gradient(135deg,rgba(56,189,248,.16),rgba(124,58,237,.24));
+  border:1px solid rgba(255,255,255,.14);
+  color:#c7d2fe;
+}
+.screen-idle .idle-ico svg.lucide{width:28px;height:28px}
+.screen-idle h4{
+  font-size:.95rem;font-weight:700;color:#fff;letter-spacing:-.005em;
+}
+.screen-idle p{
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted-2);
+  line-height:1.7;
+  max-width:24ch;
 }
 
 /* Loading overlay */
@@ -618,18 +749,10 @@ p{color:var(--muted)}
   border:1px solid rgba(239,68,68,.35);
   color:#fca5a5;
 }
-.screen-error .err-ico svg{width:26px;height:26px;stroke-width:1.8}
-.screen-error h4{
-  font-size:.95rem;font-weight:700;color:#fff;letter-spacing:-.005em;
-}
-.screen-error p{
-  font-size:.78rem;line-height:1.6;color:var(--muted);
-  max-width:26ch;
-}
-.screen-error .btn{
-  padding:11px 20px;font-size:.82rem;border-radius:12px;
-  width:100%;max-width:220px;
-}
+.screen-error .err-ico svg.lucide{width:26px;height:26px}
+.screen-error h4{font-size:.95rem;font-weight:700;color:#fff;letter-spacing:-.005em}
+.screen-error p{font-size:.78rem;line-height:1.6;color:var(--muted);max-width:26ch}
+.screen-error .btn{padding:11px 20px;font-size:.82rem;border-radius:12px;width:100%;max-width:220px}
 
 .phone-home-bar{
   position:absolute;
@@ -640,96 +763,8 @@ p{color:var(--muted)}
   pointer-events:none;
 }
 
-/* URL form panel */
-.url-panel{
-  position:relative;
-  padding:22px 24px;
-  border-radius:var(--r-lg);
-  background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015));
-  border:1px solid var(--line-2);
-  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-  box-shadow:0 20px 44px rgba(3,7,22,.45);
-  margin-top:var(--space-3);
-  width:100%;
-  max-width:560px;
-}
-.url-panel .url-label{
-  display:flex;align-items:center;gap:8px;
-  font-family:"JetBrains Mono",ui-monospace,monospace;
-  font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
-  color:#c4b5fd;margin-bottom:12px;
-}
-.url-panel .url-label svg{width:14px;height:14px}
-.url-form{
-  display:flex;gap:10px;
-  align-items:stretch;
-}
-.url-input{
-  flex:1;min-width:0;
-  padding:14px 16px;
-  border-radius:12px;
-  background:rgba(5,11,24,.55);
-  border:1px solid rgba(255,255,255,.14);
-  color:#fff;
-  font-size:.9rem;
-  transition:border-color .3s ease,background .3s ease,box-shadow .3s ease;
-}
-.url-input::placeholder{color:rgba(148,163,184,.62)}
-.url-input:focus{
-  outline:none;
-  border-color:rgba(139,92,246,.75);
-  background:rgba(5,11,24,.8);
-  box-shadow:0 0 0 3px rgba(124,58,237,.18);
-}
-.url-submit{
-  display:inline-flex;align-items:center;justify-content:center;gap:8px;
-  padding:0 22px;
-  border-radius:12px;
-  font-size:.88rem;font-weight:600;color:#fff;
-  background:var(--grad);
-  border:1px solid rgba(255,255,255,.2);
-  box-shadow:0 10px 26px rgba(79,70,229,.42);
-  transition:transform .3s var(--ease),box-shadow .3s var(--ease);
-  white-space:nowrap;
-  cursor:pointer;
-}
-.url-submit:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(124,58,237,.55)}
-.url-submit svg{width:16px;height:16px;stroke-width:2.5}
-
-.quick-demos{
-  display:flex;flex-wrap:wrap;gap:8px;
-  margin-top:16px;
-  padding-top:16px;
-  border-top:1px solid var(--line);
-}
-.quick-demos .qd-label{
-  width:100%;
-  font-family:"JetBrains Mono",ui-monospace,monospace;
-  font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--muted-2);
-  margin-bottom:2px;
-}
-.quick-demos button{
-  display:inline-flex;align-items:center;gap:7px;
-  padding:8px 14px;
-  border-radius:999px;
-  font-size:.76rem;font-weight:600;
-  color:var(--muted);
-  background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.14);
-  transition:color .3s ease,background .3s ease,border-color .3s ease,transform .3s var(--ease);
-  cursor:pointer;
-}
-.quick-demos button:hover{
-  color:#fff;
-  background:rgba(124,58,237,.18);
-  border-color:rgba(167,139,250,.45);
-  transform:translateY(-2px);
-}
-.quick-demos button svg{width:13px;height:13px}
-
 /* =========================================================
-   INFO LIST — kanan phone
+   INFO LIST
    ========================================================= */
 .info-list{display:grid;gap:16px;margin-top:var(--space-3)}
 .info-item{
@@ -741,6 +776,20 @@ p{color:var(--muted)}
 .info-item:hover{transform:translateX(3px);border-color:rgba(139,92,246,.40);box-shadow:0 14px 34px rgba(3,7,22,.42)}
 .info-item h3{font-size:.98rem}
 .info-item p{margin-top:8px;font-size:.86rem;line-height:1.65}
+
+/* =========================================================
+   SPLIT
+   ========================================================= */
+.split{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:var(--space-5);align-items:center}
+.split.reverse .split-media{order:2}
+.split-media{
+  position:relative;border-radius:var(--r-xl);overflow:hidden;
+  border:1px solid var(--line-2);background:rgba(255,255,255,.03);
+  box-shadow:0 30px 70px rgba(3,6,22,.55);
+}
+.split-media img{width:100%;height:auto;display:block;transition:transform 1.1s var(--ease)}
+.split-media:hover img{transform:scale(1.03)}
+.split-media::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(5,11,24,0) 55%,rgba(5,11,24,.45) 100%)}
 
 /* =========================================================
    STEPS
@@ -775,71 +824,211 @@ p{color:var(--muted)}
 .step p{font-size:.88rem;line-height:1.7}
 
 /* =========================================================
-   BUSINESS DETAIL (dari paket.html)
+   PROJECT GALLERY (Galeri Project)
    ========================================================= */
-.biz-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;align-items:start}
-.biz{
-  padding:36px 32px 34px;border-radius:var(--r-lg);
-  background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015));
+.project-sec{
+  background:
+    radial-gradient(720px 420px at 12% 0%, rgba(37,99,235,.14), transparent 62%),
+    radial-gradient(680px 400px at 92% 100%, rgba(124,58,237,.16), transparent 62%);
+}
+
+.project-filter{
+  display:flex;flex-wrap:wrap;gap:10px;justify-content:center;
+  margin-bottom:var(--space-4);
+}
+.project-filter button{
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);
+  padding:10px 18px;border-radius:999px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.14);
+  transition:color .3s ease,background .3s ease,border-color .3s ease,transform .3s var(--ease);
+  cursor:pointer;
+}
+.project-filter button:hover{
+  color:#fff;background:rgba(255,255,255,.08);
+  border-color:rgba(167,139,250,.42);transform:translateY(-2px);
+}
+.project-filter button.active{
+  color:#fff;
+  background:linear-gradient(135deg,rgba(37,99,235,.28),rgba(124,58,237,.28));
+  border-color:rgba(167,139,250,.6);
+  box-shadow:0 8px 22px rgba(79,70,229,.32);
+}
+
+.project-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:22px;
+  align-items:start;
+}
+.project-card{
+  position:relative;overflow:hidden;
+  border-radius:var(--r-lg);
   border:1px solid var(--line-2);
-  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  background:linear-gradient(160deg,rgba(255,255,255,.055),rgba(255,255,255,.012));
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  display:flex;flex-direction:column;
   transition:transform .42s var(--ease),border-color .42s ease,box-shadow .42s ease;
 }
-.biz:hover{transform:translateY(-4px);border-color:rgba(139,92,246,.42);box-shadow:0 22px 50px rgba(3,7,22,.55)}
-.biz.mid{border-color:rgba(139,92,246,.45);background:linear-gradient(160deg,rgba(79,70,229,.14),rgba(37,99,235,.05))}
-.biz.high{border-color:rgba(167,139,250,.5);background:linear-gradient(160deg,rgba(124,58,237,.18),rgba(37,99,235,.06))}
-.biz h3{font-size:1rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
-.biz .price{
-  margin-top:14px;font-size:1.65rem;font-weight:800;letter-spacing:-.02em;
-  background:linear-gradient(120deg,#fff,#c4b5fd);-webkit-background-clip:text;background-clip:text;color:transparent;
-}
-.biz .inherit{
-  margin-top:16px;font-size:.82rem;font-weight:600;color:#c7d2fe;
-  padding:10px 15px;border-radius:10px;background:rgba(124,58,237,.14);border:1px solid rgba(167,139,250,.28);
-  display:inline-block;
-}
-.feat-list{display:grid;gap:10px;margin-top:24px}
-.feat-list li{display:flex;gap:11px;align-items:flex-start;font-size:.86rem;color:var(--muted);line-height:1.6}
-.feat-list li svg.lucide{width:16px;height:16px;color:#7dd3fc;margin-top:4px}
-
-.note{
-  margin-top:var(--space-3);padding:22px 26px;border-radius:16px;
-  border-left:3px solid #7c3aed;
-  background:linear-gradient(100deg,rgba(124,58,237,.13),rgba(37,99,235,.05));
-  font-size:.88rem;color:rgba(226,232,240,.85);line-height:1.75;
+.project-card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(139,92,246,.45);
+  box-shadow:0 24px 54px rgba(3,7,22,.55),0 0 36px rgba(79,70,229,.18);
 }
 
-/* Comparison table */
-.cmp-wrap{
-  margin-top:var(--space-3);border-radius:var(--r-xl);overflow:hidden;
-  border:1px solid var(--line-2);background:rgba(255,255,255,.02);
+.project-thumb{
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(135deg,rgba(37,99,235,.14),rgba(124,58,237,.18));
+  cursor:zoom-in;
 }
-table.cmp{width:100%;border-collapse:collapse;font-size:.875rem}
-table.cmp thead th{
-  padding:24px 22px;text-align:left;vertical-align:bottom;
+.project-thumb img{
+  width:100%;
+  height:auto;
+  display:block;
+  transition:transform .55s var(--ease);
+}
+.project-card:hover .project-thumb img{transform:scale(1.02)}
+
+.project-cat{
+  position:absolute;top:16px;left:16px;z-index:2;
   font-family:"JetBrains Mono",ui-monospace,monospace;
-  font-size:.66rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#c4b5fd;
-  background:linear-gradient(160deg,rgba(124,58,237,.16),rgba(37,99,235,.06));
-  border-bottom:1px solid var(--line-2);
+  font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  padding:6px 12px;border-radius:999px;
+  background:rgba(5,11,24,.82);
+  border:1px solid rgba(167,139,250,.38);
+  color:#c4b5fd;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
 }
-table.cmp thead th span{
-  display:block;margin-top:10px;font-family:"Plus Jakarta Sans",sans-serif;
-  font-size:.98rem;font-weight:800;letter-spacing:-.01em;text-transform:none;color:#fff;
+
+.project-link{
+  position:absolute;top:16px;right:16px;z-index:3;
+  width:38px;height:38px;border-radius:12px;
+  display:grid;place-items:center;
+  background:rgba(5,11,24,.82);
+  border:1px solid rgba(255,255,255,.18);
+  color:#e0e7ff;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  transition:background .3s ease,border-color .3s ease,color .3s ease,transform .3s var(--ease);
 }
-table.cmp tbody td{
-  padding:16px 22px;border-bottom:1px solid var(--line);
-  color:var(--muted);font-size:.855rem;
+.project-link svg.lucide{width:16px;height:16px}
+.project-card:hover .project-link{
+  background:rgba(124,58,237,.75);
+  border-color:rgba(255,255,255,.28);
+  color:#fff;transform:translateY(-2px);
 }
-table.cmp tbody tr:last-child td{border-bottom:none}
-table.cmp tbody tr:hover td{background:rgba(124,58,237,.07)}
-table.cmp td:first-child{color:rgba(255,255,255,.9);font-weight:600}
-table.cmp td.val{color:#c7d2fe}
-table.cmp td .yes{color:#7dd3fc;display:inline-grid;place-items:center}
-table.cmp td .yes svg.lucide{width:17px;height:17px}
-table.cmp td .no{color:rgba(148,163,184,.42)}
-table.cmp tfoot td{
-  padding:22px;font-weight:800;color:#fff;font-size:.95rem;
-  background:linear-gradient(160deg,rgba(255,255,255,.05),rgba(255,255,255,.01));
+
+.project-zoom{
+  position:absolute;bottom:16px;right:16px;z-index:3;
+  width:38px;height:38px;border-radius:12px;
+  display:grid;place-items:center;
+  background:rgba(5,11,24,.82);
+  border:1px solid rgba(255,255,255,.18);
+  color:#e0e7ff;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  transition:background .3s ease,border-color .3s ease,color .3s ease,transform .3s var(--ease);
+  cursor:zoom-in;
+}
+.project-zoom svg.lucide{width:16px;height:16px}
+.project-card:hover .project-zoom{
+  background:rgba(37,99,235,.8);
+  border-color:rgba(255,255,255,.28);
+  color:#fff;transform:translateY(-2px);
+}
+
+.project-body{
+  padding:22px 24px 24px;
+  display:flex;flex-direction:column;flex:1;
+}
+.project-body h3{font-size:1.04rem;font-weight:700;letter-spacing:-.005em}
+.project-body p{margin-top:10px;font-size:.86rem;line-height:1.65;flex:1}
+
+.project-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.project-tags span{
+  font-size:.7rem;padding:5px 10px;border-radius:999px;
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.04);
+  color:var(--muted);
+}
+
+.project-cta{
+  margin-top:var(--space-4);
+  text-align:center;
+}
+
+/* =========================================================
+   LIGHTBOX
+   ========================================================= */
+.lightbox{
+  position:fixed;inset:0;z-index:200;
+  background:rgba(5,11,24,.96);
+  -webkit-backdrop-filter:blur(18px);
+  backdrop-filter:blur(18px);
+  opacity:0;visibility:hidden;
+  transition:opacity .3s ease,visibility .3s ease;
+  padding:88px 24px 88px;
+}
+.lightbox.open{opacity:1;visibility:visible}
+
+.lb-stage{
+  width:100%;height:100%;
+  overflow:auto;
+  scrollbar-width:thin;
+  scrollbar-color:rgba(255,255,255,.3) transparent;
+  -webkit-overflow-scrolling:touch;
+}
+.lb-stage::-webkit-scrollbar{width:10px;height:10px}
+.lb-stage::-webkit-scrollbar-thumb{background:rgba(255,255,255,.22);border-radius:6px}
+
+.lb-img{
+  display:block;
+  margin:0 auto;
+  width:auto;
+  height:auto;
+  max-width:100%;
+  max-height:calc(100vh - 200px);
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.16);
+  box-shadow:0 30px 90px rgba(0,0,0,.7);
+  background:rgba(255,255,255,.02);
+  user-select:none;
+  -webkit-user-drag:none;
+}
+
+.lb-btn{
+  position:absolute;z-index:3;
+  width:48px;height:48px;border-radius:14px;
+  display:grid;place-items:center;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.18);
+  color:#fff;
+  -webkit-backdrop-filter:blur(10px);
+  backdrop-filter:blur(10px);
+  transition:background .25s ease,transform .25s ease,border-color .25s ease;
+  cursor:pointer;
+}
+.lb-btn svg.lucide{width:20px;height:20px}
+.lb-btn:hover{
+  background:rgba(124,58,237,.65);
+  border-color:rgba(255,255,255,.32);
+  transform:translateY(-2px);
+}
+
+.lb-close{top:24px;right:24px}
+
+.lb-hint{
+  position:absolute;top:28px;left:50%;
+  transform:translateX(-50%);
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(226,232,240,.65);
+  padding:8px 14px;border-radius:999px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.10);
+  pointer-events:none;
+  z-index:3;
 }
 
 /* =========================================================
@@ -930,11 +1119,13 @@ table.cmp tfoot td{
    RESPONSIVE
    ========================================================= */
 @media (max-width:1120px){
-  .biz-grid{grid-template-columns:1fr;max-width:560px;margin-inline:auto}
+  .project-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:980px){
   .demo-stage{grid-template-columns:1fr;gap:var(--space-4)}
   .steps{grid-template-columns:1fr;max-width:560px;margin-inline:auto}
+  .split{grid-template-columns:1fr;gap:var(--space-4)}
+  .split.reverse .split-media{order:0}
   .footer-grid{grid-template-columns:1fr 1fr;gap:36px}
   .f-brand{grid-column:1 / -1}
 }
@@ -943,7 +1134,6 @@ table.cmp tfoot td{
    MOBILE NAV — SIDEBAR DARI KANAN
    ========================================================= */
 @media (max-width:880px){
-
   .menu-btn{display:block}
 
   .nav-links{
@@ -1027,43 +1217,6 @@ table.cmp tfoot td{
   .nav-links::-webkit-scrollbar-thumb{background:rgba(148,163,184,.28);border-radius:99px}
 
   .nav-cta{display:none}
-
-  /* Comparison table → kartu */
-  .cmp-wrap{border:none;background:none;border-radius:0}
-  table.cmp{display:block;font-size:.85rem}
-  table.cmp thead{display:none}
-  table.cmp tbody{display:grid;gap:16px}
-  table.cmp tbody tr{
-    display:block;padding:8px 20px 12px;border-radius:16px;
-    background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015));
-    border:1px solid var(--line-2);
-  }
-  table.cmp tbody tr:hover td{background:transparent}
-  table.cmp tbody td{
-    display:flex;align-items:center;justify-content:space-between;gap:14px;
-    padding:12px 0;border-bottom:1px solid rgba(255,255,255,.06);
-    font-size:.83rem;
-  }
-  table.cmp tbody td:first-child{
-    display:block;padding:16px 0 12px;font-size:.94rem;font-weight:700;color:#fff;
-    border-bottom:1px solid var(--line-2);
-  }
-  table.cmp tbody td:last-child{border-bottom:none}
-  table.cmp tbody td:not(:first-child)::before{
-    content:attr(data-label);
-    font-family:"JetBrains Mono",ui-monospace,monospace;
-    font-size:.64rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
-    color:var(--muted-2);
-  }
-  table.cmp tfoot{display:block}
-  table.cmp tfoot tr{display:block;margin-top:16px;border-radius:16px;overflow:hidden;border:1px solid var(--line-2)}
-  table.cmp tfoot td{display:flex;justify-content:space-between;gap:14px;padding:18px 20px;border-bottom:1px solid var(--line)}
-  table.cmp tfoot td:last-child{border-bottom:none}
-  table.cmp tfoot td::before{
-    content:attr(data-label);
-    font-family:"JetBrains Mono",ui-monospace,monospace;
-    font-size:.64rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-2);
-  }
 }
 
 @media (max-width:640px){
@@ -1088,8 +1241,6 @@ table.cmp tfoot td{
     border-radius:46px;
     padding:12px;
   }
-  .phone::before{top:22px;width:92px;height:24px;border-radius:14px}
-  .phone::after{top:29px;width:10px;height:10px;left:calc(50% + 22px)}
   .phone-btn-power{top:150px;height:76px}
   .phone-btn-vol-up{top:134px;height:46px}
   .phone-btn-vol-down{top:190px;height:46px}
@@ -1100,15 +1251,26 @@ table.cmp tfoot td{
   .phone-toolbar{max-width:100%;padding:10px 14px}
   .phone-toolbar .live{font-size:.58rem}
   .tool-btn{width:32px;height:32px;border-radius:9px}
-  .tool-btn svg{width:15px;height:15px}
+  .tool-btn svg.lucide{width:15px;height:15px}
 
-  /* QR + URL form mobile */
   .qr-card{padding:26px 22px 24px}
   .qr-frame{width:min(200px,75%)}
   .url-panel{padding:20px}
   .url-form{flex-direction:column;gap:10px}
   .url-submit{width:100%;padding:14px 22px}
   .quick-demos button{font-size:.72rem;padding:7px 12px}
+
+  /* PROJECT mobile */
+  .project-grid{grid-template-columns:1fr}
+  .project-filter button{font-size:.6rem;padding:9px 14px;letter-spacing:.14em}
+
+  /* LIGHTBOX mobile */
+  .lightbox{padding:78px 12px 78px}
+  .lb-img{max-height:calc(100vh - 170px);border-radius:10px}
+  .lb-btn{width:42px;height:42px;border-radius:12px}
+  .lb-btn svg.lucide{width:18px;height:18px}
+  .lb-close{top:14px;right:14px}
+  .lb-hint{top:18px;font-size:.56rem;padding:6px 12px}
 
   .nav-links{
     width:min(340px,90vw);
@@ -1163,7 +1325,7 @@ table.cmp tfoot td{
 
     <a class="nav-cta" href="#cta">
       Pesan Sekarang
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
       </svg>
     </a>
@@ -1203,26 +1365,36 @@ table.cmp tfoot td{
   </section>
 
   <!-- =========================================================
-       SECTION — SIMULASI SCAN (QR KIRI + PHONE KANAN)
+       SECTION — SIMULASI SCAN (QR kiri + PHONE kanan)
        ========================================================= -->
   <section class="section" id="simulasi">
     <div class="container">
       <div class="sec-head center reveal">
         <span class="eyebrow">Simulasi Scan</span>
         <h2>Scan QR, Website Terbuka.</h2>
-        <p class="lead">Contoh di bawah mensimulasikan proses saat pengunjung memindai QR Code pada gantungan Qriya. Perhatikan sisi kanan — halaman website asli akan muncul di layar ponsel.</p>
+        <p class="lead">Tekan tombol scan di bawah. Tunggu proses scan selesai, lalu website akan muncul di layar ponsel secara otomatis.</p>
       </div>
 
       <div class="demo-stage reveal">
 
         <!-- KIRI: KARTU QR + URL FORM -->
-        <div>
+        <div class="qr-col">
+
           <div class="qr-card" id="qrCard">
             <span class="qr-tag"><i data-lucide="qr-code"></i>QR Keychain Demo</span>
 
             <div class="qr-frame">
               <img src="scan.png" alt="Contoh QR Code Qriya — scan.png" loading="lazy">
               <span class="qr-scan-line" aria-hidden="true"></span>
+
+              <!-- Indikator scan sukses -->
+              <div class="qr-success" id="qrSuccess">
+                <div class="check">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                </div>
+              </div>
             </div>
 
             <h3>Gantungan Qriya · Demo</h3>
@@ -1278,9 +1450,10 @@ table.cmp tfoot td{
               </button>
             </div>
           </div>
+
         </div>
 
-        <!-- KANAN: PHONE MOCKUP DENGAN IFRAME -->
+        <!-- KANAN: PHONE MOCKUP -->
         <div class="phone-col">
 
           <div class="phone-toolbar">
@@ -1304,7 +1477,14 @@ table.cmp tfoot td{
             <span class="phone-btn-vol-down" aria-hidden="true"></span>
             <span class="phone-btn-power" aria-hidden="true"></span>
 
-            <div class="phone-screen">
+            <div class="phone-screen" id="phoneScreen">
+
+              <!-- Idle state (sebelum scan) -->
+              <div class="screen-idle" id="screenIdle">
+                <div class="idle-ico"><i data-lucide="smartphone"></i></div>
+                <h4>Menunggu Scan</h4>
+                <p>Tekan tombol scan QR untuk membuka website</p>
+              </div>
 
               <iframe
                 id="demoFrame"
@@ -1315,11 +1495,13 @@ table.cmp tfoot td{
                 sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
               ></iframe>
 
+              <!-- Loading overlay -->
               <div class="screen-loading hidden" id="screenLoading">
                 <div class="ring" aria-hidden="true"></div>
                 <span>Memuat Website…</span>
               </div>
 
+              <!-- Error overlay -->
               <div class="screen-error" id="screenError">
                 <div class="err-ico" aria-hidden="true">
                   <i data-lucide="alert-circle"></i>
@@ -1428,224 +1610,142 @@ table.cmp tfoot td{
   </section>
 
   <!-- =========================================================
-       SECTION — BUSINESS DETAIL
+       SECTION — GALERI PROJECT
        ========================================================= -->
-  <section class="section" id="business">
+  <section class="section project-sec" id="galeri-project" aria-label="Galeri project website Qriya">
     <div class="container">
+
       <div class="sec-head center reveal">
-        <span class="eyebrow">Business Detail</span>
-        <h2>Rincian Paket Business.</h2>
-        <p class="lead">Tiga tingkatan sistem bisnis yang dapat disesuaikan dengan skala kebutuhan Anda.</p>
+        <span class="eyebrow">Galeri Project</span>
+        <h2>Hasil Project Website Qriya.</h2>
+        <p class="lead">Beberapa contoh halaman digital yang sudah dibuat untuk berbagai kebutuhan — personal, komunitas, hingga bisnis. Klik foto untuk melihat lebih jelas.</p>
       </div>
 
-      <div class="biz-grid">
+      <!-- FILTER KATEGORI -->
+      <div class="project-filter reveal" role="tablist" aria-label="Filter kategori project">
+        <button type="button" class="active" data-filter="all">Semua</button>
+        <button type="button" data-filter="personal">Personal</button>
+        <button type="button" data-filter="bisnis">Bisnis</button>
+        <button type="button" data-filter="komunitas">Komunitas</button>
+      </div>
 
-        <article class="biz reveal">
-          <h3>Business Basic</h3>
-          <div class="price">Rp1.500.000</div>
-          <ul class="feat-list">
-            <li><i data-lucide="check"></i>5 Gantungan QR</li>
-            <li><i data-lucide="check"></i>Custom Design Gantungan Kunci</li>
-            <li><i data-lucide="check"></i>5 Website Bisnis</li>
-            <li><i data-lucide="check"></i>Custom Domain</li>
-            <li><i data-lucide="check"></i>Hosting</li>
-            <li><i data-lucide="check"></i>Website Bisnis</li>
-            <li><i data-lucide="check"></i>Database</li>
-            <li><i data-lucide="check"></i>Login Admin</li>
-            <li><i data-lucide="check"></i>CRUD Data</li>
-            <li><i data-lucide="check"></i>Responsive di berbagai perangkat</li>
-          </ul>
+      <!-- GRID PROJECT -->
+      <div class="project-grid">
+
+        <article class="project-card reveal" data-cat="personal">
+          <div class="project-thumb">
+            <span class="project-cat">Personal</span>
+            <a class="project-link" href="https://refal45.github.io/portofolio/index.html" aria-label="Buka project portofolio" target="_blank" rel="noopener">
+              <i data-lucide="arrow-up-right"></i>
+            </a>
+            <span class="project-zoom" aria-hidden="true"><i data-lucide="zoom-in"></i></span>
+            <img src="portofolio.png" alt="Project website portofolio Qriya" loading="lazy">
+          </div>
+          <div class="project-body">
+            <h3>Website Portofolio</h3>
+            <p>Landing page portofolio personal dengan profil, keahlian, teknologi yang digunakan, dan kontak dalam satu halaman responsif.</p>
+            <div class="project-tags">
+              <span>Portofolio</span><span>Personal</span><span>Landing Page</span>
+            </div>
+          </div>
         </article>
 
-        <article class="biz mid reveal" style="--d:.1s">
-          <h3>Business Standard</h3>
-          <div class="price">Rp3.000.000</div>
-          <span class="inherit">Semua fitur Business Basic +</span>
-          <ul class="feat-list">
-            <li><i data-lucide="check"></i>Dashboard Admin</li>
-            <li><i data-lucide="check"></i>Pencarian Data</li>
-            <li><i data-lucide="check"></i>WhatsApp</li>
-            <li><i data-lucide="check"></i>Google Maps</li>
-            <li><i data-lucide="check"></i>Media Sosial</li>
-            <li><i data-lucide="check"></i>Desain Website Lebih Premium</li>
-            <li><i data-lucide="check"></i>Maintenance</li>
-            <li><i data-lucide="check"></i>Responsive di berbagai perangkat</li>
-          </ul>
+        <article class="project-card reveal" style="--d:.06s" data-cat="bisnis">
+          <div class="project-thumb">
+            <span class="project-cat">Bisnis</span>
+            <a class="project-link" href="https://umkmserangjuara.com/" aria-label="Buka project UMKM" target="_blank" rel="noopener">
+              <i data-lucide="arrow-up-right"></i>
+            </a>
+            <span class="project-zoom" aria-hidden="true"><i data-lucide="zoom-in"></i></span>
+            <img src="umkm.png" alt="Project website UMKM Qriya" loading="lazy">
+          </div>
+          <div class="project-body">
+            <h3>Website UMKM Desa Serang</h3>
+            <p>Website komunitas UMKM digital Desa Serang — katalog produk, profil desa, peta lokasi, dan sistem informasi terintegrasi.</p>
+            <div class="project-tags">
+              <span>UMKM</span><span>Desa Digital</span><span>Katalog Produk</span>
+            </div>
+          </div>
         </article>
 
-        <article class="biz high reveal" style="--d:.2s">
-          <h3>Business Custom</h3>
-          <div class="price">Rp4.000.000+</div>
-          <span class="inherit">Semua fitur Business Standard +</span>
-          <ul class="feat-list">
-            <li><i data-lucide="check"></i>Sistem sesuai kebutuhan bisnis</li>
-            <li><i data-lucide="check"></i>Dashboard lebih lengkap</li>
-            <li><i data-lucide="check"></i>Hak Akses Pengguna</li>
-            <li><i data-lucide="check"></i>Database lebih kompleks</li>
-            <li><i data-lucide="check"></i>Laporan &amp; Statistik</li>
-            <li><i data-lucide="check"></i>Maintenance &amp; Update Sistem</li>
-            <li><i data-lucide="check"></i>Pengembangan Fitur Tambahan</li>
-            <li><i data-lucide="check"></i>Design Lebih Premium</li>
-            <li><i data-lucide="check"></i>Google Login</li>
-            <li><i data-lucide="check"></i>Google Maps</li>
-            <li><i data-lucide="check"></i>Optimasi Sistem</li>
-            <li><i data-lucide="check"></i>Responsive di berbagai perangkat</li>
-          </ul>
+        <article class="project-card reveal" style="--d:.12s" data-cat="bisnis">
+          <div class="project-thumb">
+            <span class="project-cat">Bisnis</span>
+            <a class="project-link" href="#" aria-label="Buka project kedai kopi" target="_blank" rel="noopener">
+              <i data-lucide="arrow-up-right"></i>
+            </a>
+            <span class="project-zoom" aria-hidden="true"><i data-lucide="zoom-in"></i></span>
+            <img src="kopi.png" alt="Project website kedai kopi Qriya" loading="lazy">
+          </div>
+          <div class="project-body">
+            <h3>Website Kedai Kopi</h3>
+            <p>Halaman bisnis untuk kedai kopi — menu, lokasi via Google Maps, kontak WhatsApp, dan media sosial.</p>
+            <div class="project-tags">
+              <span>Bisnis</span><span>Kedai Kopi</span><span>Google Maps</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card reveal" data-cat="komunitas">
+          <div class="project-thumb">
+            <span class="project-cat">Komunitas</span>
+            <a class="project-link" href="#" aria-label="Buka project komunitas" target="_blank" rel="noopener">
+              <i data-lucide="arrow-up-right"></i>
+            </a>
+            <span class="project-zoom" aria-hidden="true"><i data-lucide="zoom-in"></i></span>
+            <img src="komunitas.png" alt="Project website komunitas Qriya" loading="lazy">
+          </div>
+          <div class="project-body">
+            <h3>Website Komunitas</h3>
+            <p>Halaman komunitas dengan daftar anggota, jadwal kegiatan, dan link join komunitas.</p>
+            <div class="project-tags">
+              <span>Komunitas</span><span>Organisasi</span><span>Landing</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card reveal" style="--d:.06s" data-cat="personal">
+          <div class="project-thumb">
+            <span class="project-cat">Personal</span>
+            <a class="project-link" href="https://refal45.github.io/portofolio/index.html" aria-label="Buka project CV online" target="_blank" rel="noopener">
+              <i data-lucide="arrow-up-right"></i>
+            </a>
+            <span class="project-zoom" aria-hidden="true"><i data-lucide="zoom-in"></i></span>
+            <img src="cv.png" alt="Project website CV online Qriya" loading="lazy">
+          </div>
+          <div class="project-body">
+            <h3>Website CV Online</h3>
+            <p>Halaman CV online untuk fresh graduate — profil, skill, pengalaman, dan tombol download CV.</p>
+            <div class="project-tags">
+              <span>CV Online</span><span>Portofolio</span><span>Fresh Graduate</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card reveal" style="--d:.12s" data-cat="bisnis">
+          <div class="project-thumb">
+            <span class="project-cat">Bisnis</span>
+            <a class="project-link" href="#" aria-label="Buka project properti rumah" target="_blank" rel="noopener">
+              <i data-lucide="arrow-up-right"></i>
+            </a>
+            <span class="project-zoom" aria-hidden="true"><i data-lucide="zoom-in"></i></span>
+            <img src="rumah.png" alt="Project website properti rumah Qriya" loading="lazy">
+          </div>
+          <div class="project-body">
+            <h3>Website Properti Rumah</h3>
+            <p>Halaman listing properti rumah dengan galeri foto, detail spesifikasi, harga, dan kontak pemasaran.</p>
+            <div class="project-tags">
+              <span>Properti</span><span>Listing</span><span>Bisnis</span>
+            </div>
+          </div>
         </article>
 
       </div>
 
-      <p class="note reveal">Harga Business Custom dapat menyesuaikan tingkat kompleksitas sistem dan kebutuhan fitur pelanggan.</p>
-
-      <!-- COMPARISON -->
-      <div class="sec-head center reveal" style="margin-top:var(--space-5)">
-        <span class="eyebrow">Perbandingan</span>
-        <h2>Business Comparison.</h2>
-        <p class="lead">Bandingkan fitur setiap tingkatan sebelum menentukan pilihan.</p>
+      <div class="project-cta reveal">
+        <a class="btn btn-ghost btn-lg" href="paket.html">Lihat Paket &amp; Harga <i data-lucide="arrow-right"></i></a>
       </div>
 
-      <div class="cmp-wrap reveal">
-        <table class="cmp">
-          <thead>
-            <tr>
-              <th>Fitur</th>
-              <th>Business Basic <span>Rp1.500.000</span></th>
-              <th>Business Standard <span>Rp3.000.000</span></th>
-              <th>Business Custom <span>Rp4.000.000+</span></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Gantungan Kunci QR</td>
-              <td data-label="Basic" class="val">5</td>
-              <td data-label="Standard" class="val">5</td>
-              <td data-label="Custom" class="val">5</td>
-            </tr>
-            <tr>
-              <td>Custom Design Gantungan</td>
-              <td data-label="Basic"><span class="yes"><i data-lucide="check"></i></span></td>
-              <td data-label="Standard"><span class="yes"><i data-lucide="check"></i></span></td>
-              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
-            </tr>
-            <tr>
-              <td>Website Bisnis</td>
-              <td data-label="Basic" class="val">5</td>
-              <td data-label="Standard" class="val">5</td>
-              <td data-label="Custom" class="val">5</td>
-            </tr>
-            <tr>
-              <td>Custom Domain</td>
-              <td data-label="Basic"><span class="yes"><i data-lucide="check"></i></span></td>
-              <td data-label="Standard"><span class="yes"><i data-lucide="check"></i></span></td>
-              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
-            </tr>
-            <tr>
-              <td>Hosting</td>
-              <td data-label="Basic"><span class="yes"><i data-lucide="check"></i></span></td>
-              <td data-label="Standard"><span class="yes"><i data-lucide="check"></i></span></td>
-              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
-            </tr>
-            <tr>
-              <td>Database</td>
-              <td data-label="Basic"><span class="yes"><i data-lucide="check"></i></span></td>
-              <td data-label="Standard"><span class="yes"><i data-lucide="check"></i></span></td>
-              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
-            </tr>
-            <tr>
-              <td>Login Admin</td>
-              <td data-label="Basic"><span class="yes"><i data-lucide="check"></i></span></td>
-              <td data-label="Standard"><span class="yes"><i data-lucide="check"></i></span></td>
-              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
-            </tr>
-            <tr>
-              <td>CRUD Data</td>
-              <td data-label="Basic"><span class="yes"><i data-lucide="check"></i></span></td>
-              <td data-label="Standard"><span class="yes"><i data-lucide="check"></i></span></td>
-              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
-            </tr>
-            <tr>
-              <td>Dashboard Admin</td>
-              <td data-label="Basic"><span class="no">—</span></td>
-              <td data-label="Standard"><span class="yes"><i data-lucide="check"></i></span></td>
-              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
-            </tr>
-            <tr>
-              <td>Pencarian Data</td>
-              <td data-label="Basic"><span class="no">—</span></td>
-              <td data-label="Standard"><span class="yes"><i data-lucide="check"></i></span></td>
-              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
-            </tr>
-            <tr>
-              <td>WhatsApp</td>
-              <td data-label="Basic"><span class="no">—</span></td>
-              <td data-label="Standard"><span class="yes"><i data-lucide="check"></i></span></td>
-              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
-            </tr>
-            <tr>
-              <td>Google Maps</td>
-              <td data-label="Basic"><span class="no">—</span></td>
-              <td data-label="Standard"><span class="yes"><i data-lucide="check"></i></span></td>
-              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
-            </tr>
-            <tr>
-              <td>Media Sosial</td>
-              <td data-label="Basic"><span class="no">—</span></td>
-              <td data-label="Standard"><span class="yes"><i data-lucide="check"></i></span></td>
-              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
-            </tr>
-            <tr>
-              <td>Desain Website Lebih Premium</td>
-              <td data-label="Basic"><span class="no">—</span></td>
-              <td data-label="Standard"><span class="yes"><i data-lucide="check"></i></span></td>
-              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
-            </tr>
-            <tr>
-              <td>Maintenance</td>
-              <td data-label="Basic"><span class="no">—</span></td>
-              <td data-label="Standard"><span class="yes"><i data-lucide="check"></i></span></td>
-              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
-            </tr>
-            <tr>
-              <td>Hak Akses Pengguna</td>
-              <td data-label="Basic"><span class="no">—</span></td>
-              <td data-label="Standard"><span class="no">—</span></td>
-              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
-            </tr>
-            <tr>
-              <td>Laporan &amp; Statistik</td>
-              <td data-label="Basic"><span class="no">—</span></td>
-              <td data-label="Standard"><span class="no">—</span></td>
-              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
-            </tr>
-            <tr>
-              <td>Google Login</td>
-              <td data-label="Basic"><span class="no">—</span></td>
-              <td data-label="Standard"><span class="no">—</span></td>
-              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
-            </tr>
-            <tr>
-              <td>Optimasi Sistem</td>
-              <td data-label="Basic"><span class="no">—</span></td>
-              <td data-label="Standard"><span class="no">—</span></td>
-              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
-            </tr>
-            <tr>
-              <td>Pengembangan Fitur Tambahan</td>
-              <td data-label="Basic"><span class="no">—</span></td>
-              <td data-label="Standard"><span class="no">—</span></td>
-              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td data-label="Paket">Business Basic</td>
-              <td data-label="Harga">Rp1.500.000</td>
-              <td data-label="Business Standard">Rp3.000.000</td>
-              <td data-label="Business Custom">Rp4.000.000+</td>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
     </div>
   </section>
 
@@ -1673,7 +1773,7 @@ table.cmp tfoot td{
 
         <details class="faq-item reveal" style="--d:.06s">
           <summary>
-            Kenapa ada website yang tidak muncul di preview?
+            Kenapa website tidak muncul setelah scan selesai?
             <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
           </summary>
           <div class="faq-body">
@@ -1798,6 +1898,17 @@ table.cmp tfoot td{
   </div>
 </footer>
 
+<!-- =========================================================
+     LIGHTBOX
+     ========================================================= -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Zoom foto" aria-hidden="true">
+  <span class="lb-hint">Klik luar untuk tutup · ESC</span>
+  <button class="lb-btn lb-close" type="button" aria-label="Tutup"><i data-lucide="x"></i></button>
+  <div class="lb-stage">
+    <img class="lb-img" src="" alt="">
+  </div>
+</div>
+
 <script>
 /* =========================================================
    KONFIGURASI DEMO LINK
@@ -1811,7 +1922,7 @@ const demoLinks = {
   umkm:      "https://umkmserangjuara.com/"
 };
 
-/* URL default saat halaman pertama kali dibuka */
+/* URL default saat tombol scan ditekan */
 const DEFAULT_DEMO_URL = demoLinks.portfolio;
 
 /* =========================================================
@@ -1837,8 +1948,10 @@ const DEFAULT_DEMO_URL = demoLinks.portfolio;
 const demoFrame      = document.getElementById('demoFrame');
 const urlForm        = document.getElementById('urlForm');
 const urlInput       = document.getElementById('urlInput');
+const screenIdle     = document.getElementById('screenIdle');
 const screenLoading  = document.getElementById('screenLoading');
 const screenError    = document.getElementById('screenError');
+const phoneScreen    = document.getElementById('phoneScreen');
 const liveIndicator  = document.getElementById('liveIndicator');
 const liveText       = document.getElementById('liveText');
 const btnRefresh     = document.getElementById('btnRefresh');
@@ -1846,6 +1959,7 @@ const btnOpenTab     = document.getElementById('btnOpenTab');
 const btnOpenFromErr = document.getElementById('btnOpenFromError');
 const qrUrlText      = document.getElementById('qrUrlText');
 const qrCard         = document.getElementById('qrCard');
+const qrSuccess      = document.getElementById('qrSuccess');
 const btnScan        = document.getElementById('btnScan');
 const btnReset       = document.getElementById('btnReset');
 const scanStatus     = document.getElementById('scanStatus');
@@ -1855,7 +1969,7 @@ const navLinks       = document.getElementById('navLinks');
 const navOverlay     = document.getElementById('navOverlay');
 
 let activeUrl = "";
-let loadTimer = null;
+let scanBusy = false;
 let scanTimers = [];
 
 /* =========================================================
@@ -1884,37 +1998,56 @@ function normalizeUrl(raw){
 /* =========================================================
    STATUS UI
    ========================================================= */
-function setLoading(show){
-  if(show){
-    screenLoading.classList.remove('hidden');
-    screenError.classList.remove('show');
-    liveIndicator.classList.remove('idle','error');
-    liveText.textContent = 'Memuat…';
-  } else {
-    screenLoading.classList.add('hidden');
+function showIdle(){
+  if(screenIdle) screenIdle.classList.remove('hidden');
+  if(screenLoading) screenLoading.classList.add('hidden');
+  if(screenError) screenError.classList.remove('show');
+  if(phoneScreen) phoneScreen.classList.remove('website-loaded');
+  if(liveIndicator){
+    liveIndicator.classList.remove('error');
+    liveIndicator.classList.add('idle');
   }
+  if(liveText) liveText.textContent = 'Live Preview';
 }
 
-function setLive(){
-  screenLoading.classList.add('hidden');
-  screenError.classList.remove('show');
-  liveIndicator.classList.remove('idle','error');
-  liveText.textContent = 'Live Preview';
+function showLoading(){
+  if(screenIdle) screenIdle.classList.add('hidden');
+  if(screenLoading) screenLoading.classList.remove('hidden');
+  if(screenError) screenError.classList.remove('show');
+  if(phoneScreen) phoneScreen.classList.remove('website-loaded');
+  if(liveIndicator){
+    liveIndicator.classList.remove('idle','error');
+  }
+  if(liveText) liveText.textContent = 'Memuat…';
 }
 
-function setIdle(){
-  screenLoading.classList.add('hidden');
-  screenError.classList.remove('show');
-  liveIndicator.classList.remove('error');
-  liveIndicator.classList.add('idle');
-  liveText.textContent = 'Live Preview';
+function showWebsite(){
+  if(screenIdle) screenIdle.classList.add('hidden');
+  if(screenLoading) screenLoading.classList.add('hidden');
+  if(screenError) screenError.classList.remove('show');
+  if(phoneScreen) phoneScreen.classList.add('website-loaded');
+  if(liveIndicator){
+    liveIndicator.classList.remove('idle','error');
+  }
+  if(liveText) liveText.textContent = 'Live Preview';
+}
+
+function showError(){
+  if(screenIdle) screenIdle.classList.add('hidden');
+  if(screenLoading) screenLoading.classList.add('hidden');
+  if(screenError) screenError.classList.add('show');
+  if(phoneScreen) phoneScreen.classList.remove('website-loaded');
+  if(liveIndicator){
+    liveIndicator.classList.remove('idle');
+    liveIndicator.classList.add('error');
+  }
+  if(liveText) liveText.textContent = 'Preview Gagal';
 }
 
 /* =========================================================
    LOAD DEMO KE IFRAME
    ========================================================= */
-function loadDemo(rawUrl, options){
-  options = options || {};
+function loadDemo(rawUrl){
   const url = normalizeUrl(rawUrl);
   if(!url){
     alert('URL tidak valid. Contoh: https://example.com');
@@ -1922,13 +2055,11 @@ function loadDemo(rawUrl, options){
   }
 
   activeUrl = url;
-  urlInput.value = url;
+  if(urlInput) urlInput.value = url;
   if(qrUrlText) qrUrlText.textContent = url.replace(/^https?:\/\//, '');
   if(btnOpenFromErr) btnOpenFromErr.href = url;
 
-  clearTimeout(loadTimer);
-  setLoading(true);
-
+  showLoading();
   demoFrame.src = url;
 }
 
@@ -1937,13 +2068,12 @@ function loadDemo(rawUrl, options){
    ========================================================= */
 if(demoFrame){
   demoFrame.addEventListener('load', () => {
-    clearTimeout(loadTimer);
     const src = demoFrame.getAttribute('src') || '';
     if(!src || src === 'about:blank'){
-      setIdle();
+      showIdle();
       return;
     }
-    setLive();
+    showWebsite();
   });
 }
 
@@ -1974,7 +2104,7 @@ document.querySelectorAll('[data-demo]').forEach(btn => {
 });
 
 /* =========================================================
-   HANDLER: Refresh preview
+   HANDLER: Refresh & Buka Tab Baru
    ========================================================= */
 if(btnRefresh){
   btnRefresh.addEventListener('click', () => {
@@ -1983,13 +2113,10 @@ if(btnRefresh){
   });
 }
 
-/* =========================================================
-   HANDLER: Buka di tab baru
-   ========================================================= */
 if(btnOpenTab){
   btnOpenTab.addEventListener('click', () => {
     if(!activeUrl){
-      alert('Belum ada website yang dimuat. Silakan masukkan URL terlebih dahulu.');
+      alert('Belum ada website yang dimuat. Silakan scan QR atau masukkan URL terlebih dahulu.');
       return;
     }
     window.open(activeUrl, '_blank', 'noopener,noreferrer');
@@ -1998,11 +2125,11 @@ if(btnOpenTab){
 
 /* =========================================================
    SIMULASI SCAN QR
+   ---------------------------------------------------------
+   Alur: scan → scan sukses → loading → tampil website
    ========================================================= */
 (function(){
   if(!qrCard || !btnScan) return;
-
-  let busy = false;
 
   function clearScanTimers(){
     scanTimers.forEach(t => clearTimeout(t));
@@ -2011,62 +2138,79 @@ if(btnOpenTab){
 
   function resetScan(){
     clearScanTimers();
-    busy = false;
+    scanBusy = false;
+
     qrCard.classList.remove('scanning');
+    if(qrSuccess) qrSuccess.classList.remove('show');
     if(scanStatus){
       scanStatus.textContent = 'Status: Siap dipindai';
       scanStatus.className = 'scan-status';
     }
   }
 
+  function fullReset(){
+    resetScan();
+    if(demoFrame){
+      demoFrame.src = 'about:blank';
+    }
+    activeUrl = "";
+    showIdle();
+    if(qrUrlText) qrUrlText.textContent = 'refal45.github.io/portofolio';
+    if(urlInput) urlInput.value = '';
+  }
+
   btnScan.addEventListener('click', () => {
-    if(busy) return;
-    busy = true;
+    if(scanBusy) return;
+    scanBusy = true;
     clearScanTimers();
+
+    // Mulai dari idle state
+    showIdle();
 
     // 1. Mulai animasi scan
     qrCard.classList.add('scanning');
+    if(qrSuccess) qrSuccess.classList.remove('show');
     if(scanStatus){
       scanStatus.textContent = 'Status: Memindai QR…';
       scanStatus.className = 'scan-status active';
     }
 
-    // 2. Setelah 1.6s → tampilkan loading + muat iframe
+    // 2. Setelah 2.0s → scan sukses (tampilkan centang)
     scanTimers.push(setTimeout(() => {
       qrCard.classList.remove('scanning');
+      if(qrSuccess) qrSuccess.classList.add('show');
+      if(scanStatus){
+        scanStatus.textContent = 'Status: Scan berhasil ✓';
+        scanStatus.className = 'scan-status success';
+      }
+    }, 2000));
+
+    // 3. Setelah 2.8s → mulai load website
+    scanTimers.push(setTimeout(() => {
+      if(qrSuccess) qrSuccess.classList.remove('show');
       if(scanStatus){
         scanStatus.textContent = 'Status: Membuka website…';
         scanStatus.className = 'scan-status active';
       }
-      // Muat URL aktif (atau default)
+
       const targetUrl = activeUrl || DEFAULT_DEMO_URL;
       if(targetUrl){
         loadDemo(targetUrl);
       }
-    }, 1600));
+    }, 2800));
 
-    // 3. Setelah 3.0s → selesai
+    // 4. Setelah 4.5s → selesai (kalau website sudah tampil)
     scanTimers.push(setTimeout(() => {
       if(scanStatus){
         scanStatus.textContent = 'Status: Website terbuka ✓';
         scanStatus.className = 'scan-status success';
       }
-      busy = false;
-    }, 3000));
+      scanBusy = false;
+    }, 4500));
   });
 
   if(btnReset){
-    btnReset.addEventListener('click', () => {
-      resetScan();
-      // Kosongkan iframe
-      if(demoFrame){
-        demoFrame.src = 'about:blank';
-      }
-      activeUrl = "";
-      setIdle();
-      if(qrUrlText) qrUrlText.textContent = 'refal45.github.io/portofolio';
-      if(urlInput) urlInput.value = '';
-    });
+    btnReset.addEventListener('click', fullReset);
   }
 
   window.addEventListener('beforeunload', clearScanTimers);
@@ -2173,14 +2317,100 @@ if(btnOpenTab){
 })();
 
 /* =========================================================
-   AUTO-LOAD DEFAULT DEMO SAAT HALAMAN DIBUKA
+   FILTER GALERI PROJECT
+   ========================================================= */
+(function(){
+  const filterBtns = document.querySelectorAll('.project-filter button');
+  const cards = document.querySelectorAll('.project-card');
+  if(!filterBtns.length || !cards.length) return;
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.getAttribute('data-filter') || 'all';
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      cards.forEach(card => {
+        const cat = card.getAttribute('data-cat') || '';
+        const match = (filter === 'all' || cat === filter);
+        card.style.display = match ? '' : 'none';
+      });
+    });
+  });
+})();
+
+/* =========================================================
+   LIGHTBOX — Zoom foto project
+   ========================================================= */
+(function(){
+  const lightbox = document.getElementById('lightbox');
+  if(!lightbox) return;
+
+  const lbImg   = lightbox.querySelector('.lb-img');
+  const lbStage = lightbox.querySelector('.lb-stage');
+  const lbClose = lightbox.querySelector('.lb-close');
+
+  if(!lbImg || !lbStage) return;
+
+  let lastFocus = null;
+
+  function open(src, alt){
+    lastFocus = document.activeElement;
+    lbImg.src = src;
+    lbImg.alt = alt || 'Foto';
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('lb-open');
+    lbStage.scrollTop = 0;
+    lbStage.scrollLeft = 0;
+    if(lbClose && typeof lbClose.focus === 'function') lbClose.focus();
+  }
+
+  function close(){
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('lb-open');
+    setTimeout(() => {
+      if(!lightbox.classList.contains('open')){
+        lbImg.src = '';
+      }
+    }, 320);
+    if(lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+  }
+
+  if(lbClose) lbClose.addEventListener('click', close);
+
+  lightbox.addEventListener('click', (e) => {
+    if(e.target === lightbox || e.target === lbStage) close();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if(!lightbox.classList.contains('open')) return;
+    if(e.key === 'Escape'){ close(); }
+  });
+
+  document.querySelectorAll('.project-thumb').forEach(thumb => {
+    thumb.addEventListener('click', (e) => {
+      if(e.target.closest('.project-link')) return;
+      const img = thumb.querySelector('img');
+      if(!img) return;
+      e.preventDefault();
+      open(img.currentSrc || img.src, img.alt);
+    });
+  });
+
+  document.querySelectorAll('.project-zoom').forEach(zBtn => {
+    zBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+  });
+})();
+
+/* =========================================================
+   INISIALISASI — TAMPILKAN IDLE STATE
    ========================================================= */
 window.addEventListener('load', () => {
-  if(DEFAULT_DEMO_URL){
-    loadDemo(DEFAULT_DEMO_URL);
-  } else {
-    setIdle();
-  }
+  showIdle();
 });
 </script>
 </body>
