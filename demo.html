@@ -305,7 +305,7 @@ p{color:var(--muted)}
 .breadcrumb span{color:#c4b5fd}
 
 /* =========================================================
-   DEMO STAGE — QR (kiri) + PHONE (kanan)
+   DEMO STAGE
    ========================================================= */
 .demo-stage{
   display:grid;
@@ -366,6 +366,7 @@ p{color:var(--muted)}
   height:auto;
   display:block;
   object-fit:contain;
+  transition:opacity .3s ease;
 }
 
 .qr-scan-line{
@@ -528,10 +529,19 @@ p{color:var(--muted)}
   border-color:rgba(167,139,250,.45);
   transform:translateY(-2px);
 }
+.quick-demos button.active{
+  color:#fff;
+  background:linear-gradient(135deg,rgba(37,99,235,.32),rgba(124,58,237,.32));
+  border-color:rgba(167,139,250,.65);
+  box-shadow:0 6px 18px rgba(79,70,229,.35);
+}
 .quick-demos button svg.lucide{width:13px;height:13px}
 
 /* =====================================================
-   PHONE MOCKUP (kanan) — proporsi rapi & profesional
+   PHONE MOCKUP — Google Pixel 10
+   -----------------------------------------------------
+   Rasio layar 20:9 (Pixel 10), punch-hole camera,
+   tombol power + volume di sisi kanan.
    ===================================================== */
 .phone-col{
   display:flex;
@@ -592,16 +602,16 @@ p{color:var(--muted)}
   color:#fff;transform:translateY(-2px);
 }
 
-/* Phone mockup dengan proporsi 19.5:9 (rasio iPhone) */
+/* Phone frame — Google Pixel 10 style */
 .phone{
   position:relative;
   width:100%;
-  max-width:360px;
-  aspect-ratio: 9 / 19.5;
-  border-radius:48px;
-  padding:11px;
-  background:linear-gradient(160deg,#1a1a2e 0%,#0a0a15 55%,#05050a 100%);
-  border:1px solid rgba(255,255,255,.18);
+  max-width:340px;
+  aspect-ratio: 9 / 20;  /* Pixel 10: 20:9 */
+  border-radius:38px;
+  padding:10px;
+  background:linear-gradient(160deg,#232733 0%,#13161e 55%,#0a0c12 100%);
+  border:1px solid rgba(255,255,255,.16);
   box-shadow:
     0 50px 100px rgba(0,0,0,.7),
     0 20px 50px rgba(0,0,0,.5),
@@ -612,35 +622,40 @@ p{color:var(--muted)}
 }
 .phone:hover{transform:translateY(-6px)}
 
-/* Tombol samping */
+/* Punch-hole camera (Pixel 10 style) */
+.phone-punch{
+  position:absolute;
+  top:20px;left:50%;
+  transform:translateX(-50%);
+  width:12px;height:12px;
+  border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,#1a1e28,#000 72%);
+  border:1px solid rgba(255,255,255,.10);
+  z-index:5;
+  box-shadow:inset 0 0 4px rgba(0,0,0,.9),0 0 0 1px rgba(0,0,0,.6);
+}
+
+/* Tombol sisi kanan: power + volume (Pixel layout) */
 .phone-btn-power{
   position:absolute;
-  right:-3px;top:26%;
-  width:4px;height:14%;
+  right:-3px;top:28%;
+  width:4px;height:13%;
   border-radius:3px;
   background:linear-gradient(180deg,#4b5563,#1f2937);
   box-shadow:inset 0 0 2px rgba(255,255,255,.2);
 }
 .phone-btn-vol-up{
   position:absolute;
-  left:-3px;top:22%;
-  width:4px;height:8%;
+  right:-3px;top:17%;
+  width:4px;height:7%;
   border-radius:3px;
   background:linear-gradient(180deg,#4b5563,#1f2937);
   box-shadow:inset 0 0 2px rgba(255,255,255,.2);
 }
 .phone-btn-vol-down{
   position:absolute;
-  left:-3px;top:32%;
-  width:4px;height:8%;
-  border-radius:3px;
-  background:linear-gradient(180deg,#4b5563,#1f2937);
-  box-shadow:inset 0 0 2px rgba(255,255,255,.2);
-}
-.phone-btn-silent{
-  position:absolute;
-  left:-3px;top:15%;
-  width:4px;height:4%;
+  right:-3px;top:25%;
+  width:4px;height:7%;
   border-radius:3px;
   background:linear-gradient(180deg,#4b5563,#1f2937);
   box-shadow:inset 0 0 2px rgba(255,255,255,.2);
@@ -649,10 +664,10 @@ p{color:var(--muted)}
 .phone-screen{
   position:relative;
   width:100%;height:100%;
-  border-radius:38px;
+  border-radius:29px;
   overflow:hidden;
   background:#0a0a15;
-  border:1px solid rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.06);
   box-shadow:inset 0 0 0 1px rgba(0,0,0,.6);
 }
 
@@ -670,7 +685,7 @@ p{color:var(--muted)}
 }
 .phone-screen.website-loaded iframe{opacity:1}
 
-/* Idle state (sebelum scan) */
+/* Idle state */
 .screen-idle{
   position:absolute;inset:0;z-index:2;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
@@ -755,8 +770,8 @@ p{color:var(--muted)}
 
 .phone-home-bar{
   position:absolute;
-  bottom:10px;left:50%;transform:translateX(-50%);
-  width:110px;height:4px;border-radius:3px;
+  bottom:9px;left:50%;transform:translateX(-50%);
+  width:100px;height:4px;border-radius:3px;
   background:rgba(255,255,255,.28);
   z-index:6;
   pointer-events:none;
@@ -1127,7 +1142,7 @@ p{color:var(--muted)}
   .split.reverse .split-media{order:0}
   .footer-grid{grid-template-columns:1fr 1fr;gap:36px}
   .f-brand{grid-column:1 / -1}
-  .phone{max-width:340px}
+  .phone{max-width:320px}
 }
 
 /* =========================================================
@@ -1233,14 +1248,15 @@ p{color:var(--muted)}
   .faq-item summary{padding:18px 20px;font-size:.9rem}
   .faq-item .faq-body{padding:0 20px 20px}
 
-  /* Phone — proporsi tetap rapi di mobile */
+  /* Phone Pixel proporsional di mobile */
   .phone{
-    max-width:300px;
-    border-radius:44px;
-    padding:10px;
+    max-width:290px;
+    border-radius:34px;
+    padding:9px;
   }
-  .phone-screen{border-radius:34px}
-  .phone-home-bar{width:90px;height:4px;bottom:8px}
+  .phone-punch{width:10px;height:10px;top:17px}
+  .phone-screen{border-radius:26px}
+  .phone-home-bar{width:86px;height:4px;bottom:8px}
 
   .phone-toolbar{max-width:100%;padding:10px 14px}
   .phone-toolbar .live{font-size:.58rem}
@@ -1375,7 +1391,7 @@ p{color:var(--muted)}
             <span class="qr-tag"><i data-lucide="qr-code"></i>QR Keychain Demo</span>
 
             <div class="qr-frame">
-              <img src="scan.png" alt="Contoh QR Code Qriya — scan.png" loading="lazy">
+              <img id="qrImage" src="scan.png" alt="Contoh QR Code Qriya" loading="lazy">
               <span class="qr-scan-line" aria-hidden="true"></span>
 
               <div class="qr-success" id="qrSuccess">
@@ -1387,7 +1403,7 @@ p{color:var(--muted)}
               </div>
             </div>
 
-            <h3>Gantungan Qriya · Demo</h3>
+            <h3 id="qrTitle">Gantungan Qriya · Demo</h3>
             <p class="qr-url" id="qrUrlText">refal45.github.io/portofolio</p>
 
             <div class="qr-actions">
@@ -1425,7 +1441,7 @@ p{color:var(--muted)}
 
             <div class="quick-demos">
               <span class="qd-label">Contoh link</span>
-              <button type="button" data-demo="portfolio">
+              <button type="button" data-demo="portfolio" class="active">
                 <i data-lucide="layout-grid"></i>Portfolio
               </button>
               <button type="button" data-demo="cv">
@@ -1442,7 +1458,7 @@ p{color:var(--muted)}
 
         </div>
 
-        <!-- KANAN: PHONE MOCKUP -->
+        <!-- KANAN: PHONE MOCKUP (Google Pixel 10) -->
         <div class="phone-col">
 
           <div class="phone-toolbar">
@@ -1461,7 +1477,9 @@ p{color:var(--muted)}
           </div>
 
           <div class="phone">
-            <span class="phone-btn-silent" aria-hidden="true"></span>
+            <!-- Punch-hole camera Pixel 10 -->
+            <span class="phone-punch" aria-hidden="true"></span>
+            <!-- Tombol sisi kanan (Pixel layout) -->
             <span class="phone-btn-vol-up" aria-hidden="true"></span>
             <span class="phone-btn-vol-down" aria-hidden="true"></span>
             <span class="phone-btn-power" aria-hidden="true"></span>
@@ -1906,7 +1924,24 @@ const demoLinks = {
   umkm:      "https://umkmserangjuara.com/"
 };
 
-const DEFAULT_DEMO_URL = demoLinks.portfolio;
+/* QR image per demo — UMKM pakai scan2.png */
+const demoQRImages = {
+  portfolio: "scan.png",
+  cv:        "scan.png",
+  personal:  "scan.png",
+  umkm:      "scan2.png"
+};
+
+/* Judul QR per demo */
+const demoQRTitles = {
+  portfolio: "Gantungan Qriya · Portfolio",
+  cv:        "Gantungan Qriya · CV Online",
+  personal:  "Gantungan Qriya · Personal",
+  umkm:      "Gantungan Qriya · UMKM"
+};
+
+const DEFAULT_DEMO_KEY = "portfolio";
+const DEFAULT_DEMO_URL = demoLinks[DEFAULT_DEMO_KEY];
 
 /* =========================================================
    LUCIDE ICONS
@@ -1941,6 +1976,8 @@ const btnRefresh     = document.getElementById('btnRefresh');
 const btnOpenTab     = document.getElementById('btnOpenTab');
 const btnOpenFromErr = document.getElementById('btnOpenFromError');
 const qrUrlText      = document.getElementById('qrUrlText');
+const qrTitle        = document.getElementById('qrTitle');
+const qrImage        = document.getElementById('qrImage');
 const qrCard         = document.getElementById('qrCard');
 const qrSuccess      = document.getElementById('qrSuccess');
 const btnScan        = document.getElementById('btnScan');
@@ -1952,6 +1989,7 @@ const navLinks       = document.getElementById('navLinks');
 const navOverlay     = document.getElementById('navOverlay');
 
 let activeUrl = "";
+let activeKey = DEFAULT_DEMO_KEY;
 let scanBusy = false;
 let scanTimers = [];
 
@@ -2016,6 +2054,30 @@ function showWebsite(){
 }
 
 /* =========================================================
+   UPDATE QR CARD berdasarkan key
+   ========================================================= */
+function updateQRCard(key){
+  if(!key) return;
+  activeKey = key;
+
+  // Update QR image
+  const img = demoQRImages[key] || "scan.png";
+  if(qrImage) qrImage.src = img;
+
+  // Update title
+  if(qrTitle) qrTitle.textContent = demoQRTitles[key] || "Gantungan Qriya · Demo";
+
+  // Update URL text
+  const url = demoLinks[key];
+  if(url && qrUrlText) qrUrlText.textContent = url.replace(/^https?:\/\//, '');
+
+  // Update active button state
+  document.querySelectorAll('[data-demo]').forEach(b => {
+    b.classList.toggle('active', b.getAttribute('data-demo') === key);
+  });
+}
+
+/* =========================================================
    LOAD DEMO KE IFRAME
    ========================================================= */
 function loadDemo(rawUrl){
@@ -2061,14 +2123,20 @@ if(urlForm){
 }
 
 /* =========================================================
-   HANDLER: Quick demo buttons
+   HANDLER: Quick demo buttons (termasuk ganti QR ke scan2.png untuk UMKM)
    ========================================================= */
 document.querySelectorAll('[data-demo]').forEach(btn => {
   btn.addEventListener('click', () => {
     const key = btn.getAttribute('data-demo');
     const url = demoLinks[key];
     if(!url) return;
+
+    // Update QR card (image, title, url) sesuai key
+    updateQRCard(key);
+
+    // Load website ke iframe
     loadDemo(url);
+
     const preview = document.getElementById('simulasi');
     if(preview) preview.scrollIntoView({behavior:'smooth', block:'start'});
   });
@@ -2096,7 +2164,6 @@ if(btnOpenTab){
 
 /* =========================================================
    SIMULASI SCAN QR
-   ---------------------------------------------------------
    Alur: scan → scan sukses → loading → tampil website
    ========================================================= */
 (function(){
@@ -2126,7 +2193,9 @@ if(btnOpenTab){
     }
     activeUrl = "";
     showIdle();
-    if(qrUrlText) qrUrlText.textContent = 'refal45.github.io/portofolio';
+
+    // Kembalikan ke default (portfolio)
+    updateQRCard(DEFAULT_DEMO_KEY);
     if(urlInput) urlInput.value = '';
   }
 
@@ -2163,7 +2232,7 @@ if(btnOpenTab){
         scanStatus.className = 'scan-status active';
       }
 
-      const targetUrl = activeUrl || DEFAULT_DEMO_URL;
+      const targetUrl = activeUrl || demoLinks[activeKey] || DEFAULT_DEMO_URL;
       if(targetUrl){
         loadDemo(targetUrl);
       }
@@ -2381,6 +2450,7 @@ if(btnOpenTab){
    ========================================================= */
 window.addEventListener('load', () => {
   showIdle();
+  updateQRCard(DEFAULT_DEMO_KEY);
 });
 </script>
 </body>
