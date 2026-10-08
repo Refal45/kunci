@@ -541,7 +541,7 @@ p{color:var(--muted)}
   justify-content:space-between;
   gap:14px;
   width:100%;
-  max-width:400px;
+  max-width:420px;
   padding:12px 18px;
   border-radius:14px;
   background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015));
@@ -591,27 +591,24 @@ p{color:var(--muted)}
 .phone{
   position:relative;
   width:100%;
-  max-width:340px;
-  border-radius:38px;
-  padding:10px;
-  background:linear-gradient(160deg,#232733 0%,#13161e 55%,#0a0c12 100%);
-  border:1px solid rgba(255,255,255,.16);
+  max-width:400px;
+  border-radius:44px;
+  padding:11px;
+  background:linear-gradient(160deg,#2a2f3d 0%,#161a24 55%,#0b0e14 100%);
+  border:1px solid rgba(255,255,255,.18);
   box-shadow:
     0 50px 100px rgba(0,0,0,.7),
     0 20px 50px rgba(0,0,0,.5),
     inset 0 0 0 1px rgba(255,255,255,.04),
-    inset 0 1px 0 rgba(255,255,255,.16),
+    inset 0 1px 0 rgba(255,255,255,.18),
     0 0 80px rgba(79,70,229,.28);
-  transition:transform .5s var(--ease);
 }
-.phone:hover{transform:translateY(-6px)}
 
-/* Punch-hole camera */
 .phone-punch{
   position:absolute;
-  top:20px;left:50%;
+  top:22px;left:50%;
   transform:translateX(-50%);
-  width:12px;height:12px;
+  width:13px;height:13px;
   border-radius:50%;
   background:radial-gradient(circle at 35% 35%,#1a1e28,#000 72%);
   border:1px solid rgba(255,255,255,.10);
@@ -619,7 +616,6 @@ p{color:var(--muted)}
   box-shadow:inset 0 0 4px rgba(0,0,0,.9),0 0 0 1px rgba(0,0,0,.6);
 }
 
-/* Tombol sisi kanan */
 .phone-btn-power,
 .phone-btn-vol-up,
 .phone-btn-vol-down{
@@ -639,23 +635,32 @@ p{color:var(--muted)}
   position:relative;
   width:100%;
   aspect-ratio:412 / 924;
-  border-radius:29px;
+  border-radius:34px;
   overflow:hidden;
   background:#0a0a15;
-  border:1px solid rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.07);
   box-shadow:inset 0 0 0 1px rgba(0,0,0,.6);
 }
 
-/* IFRAME: dirender di ukuran asli Pixel 10 (412x924),
-   lalu diperkecil via JS (transform: scale) agar pas di mockup.
-
-   ▸ BISA DI-SCROLL (mouse wheel / drag / sentuh)
-   ▸ SCROLLBAR TIDAK TERLIHAT:
-     iframe dibuat sedikit lebih lebar dari layar HP (412 + lebar scrollbar
-     platform). Bagian kanan iframe — tempat scrollbar berada — jatuh di
-     luar area .phone-screen dan otomatis terpotong oleh overflow:hidden.
-     Kalau platform memakai overlay scrollbar (Android/iOS/macOS), lebar
-     tambahan = 0 sehingga tidak ada bagian konten yang terpotong. */
+/* =========================================================
+   IFRAME — viewport internal PAS 412 × 924 (Pixel 10)
+   ---------------------------------------------------------
+   METODE HD (anti-burik):
+   • Konten iframe TIDAK di-`transform: scale()` (itulah yang
+     membuat teks jadi blur karena di-raster 1x lalu diperbesar).
+   • Scaling memakai properti CSS `zoom`, yang mengubah skala
+     render di dalam frame itu sendiri — sama seperti fitur
+     zoom browser, sehingga teks dirender ulang di resolusi
+     akhir dan tetap TAJAM / HD.
+   • Karena `zoom` memengaruhi layout, lebar iframe tetap
+     ditulis 412px di dalam ruang zoom-nya, jadi website di
+     dalamnya TETAP melihat viewport 412 × 924 persis.
+   • Scrollbar disembunyikan dengan melebarkan iframe
+     +SCROLLBAR_W ke kanan; bagian itu di-clip oleh
+     .phone-screen { overflow:hidden }.
+   • Jika browser tidak mendukung `zoom`, otomatis jatuh ke
+     fallback transform: scale() (via JS).
+   ========================================================= */
 .phone-screen iframe{
   position:absolute;
   top:0;left:0;
@@ -665,13 +670,16 @@ p{color:var(--muted)}
   display:block;
   background:#ffffff;
   z-index:1;
-  opacity:0;
   transform-origin:0 0;
-  transform:scale(.75);
-  transition:opacity .5s ease;
-  overscroll-behavior:contain;
+  transform:none;
+  visibility:hidden;
+  overflow:visible;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
 }
-.phone-screen.website-loaded iframe{opacity:1}
+.phone-screen.website-loaded iframe{
+  visibility:visible;
+}
 
 /* Idle state */
 .screen-idle{
@@ -683,7 +691,7 @@ p{color:var(--muted)}
   background:
     radial-gradient(320px 240px at 50% 40%, rgba(124,58,237,.22), transparent 62%),
     #050b18;
-  transition:opacity .4s ease,visibility .4s ease;
+  transition:opacity .35s ease,visibility .35s ease;
   pointer-events:none;
 }
 .screen-idle.hidden{opacity:0;visibility:hidden}
@@ -714,7 +722,7 @@ p{color:var(--muted)}
   background:
     radial-gradient(320px 240px at 50% 40%, rgba(124,58,237,.22), transparent 62%),
     #050b18;
-  transition:opacity .4s ease,visibility .4s ease;
+  transition:opacity .35s ease,visibility .35s ease;
   pointer-events:none;
 }
 .screen-loading.hidden{opacity:0;visibility:hidden}
@@ -743,7 +751,7 @@ p{color:var(--muted)}
     radial-gradient(360px 260px at 50% 30%, rgba(239,68,68,.14), transparent 65%),
     #050b18;
   opacity:0;visibility:hidden;
-  transition:opacity .4s ease,visibility .4s ease;
+  transition:opacity .35s ease,visibility .35s ease;
 }
 .screen-error.show{opacity:1;visibility:visible}
 .screen-error .err-ico{
@@ -760,9 +768,9 @@ p{color:var(--muted)}
 
 .phone-home-bar{
   position:absolute;
-  bottom:9px;left:50%;transform:translateX(-50%);
-  width:100px;height:4px;border-radius:3px;
-  background:rgba(255,255,255,.28);
+  bottom:10px;left:50%;transform:translateX(-50%);
+  width:110px;height:4px;border-radius:3px;
+  background:rgba(255,255,255,.30);
   z-index:6;
   pointer-events:none;
 }
@@ -1132,7 +1140,7 @@ p{color:var(--muted)}
   .split.reverse .split-media{order:0}
   .footer-grid{grid-template-columns:1fr 1fr;gap:36px}
   .f-brand{grid-column:1 / -1}
-  .phone{max-width:320px}
+  .phone{max-width:360px}
 }
 
 /* =========================================================
@@ -1237,13 +1245,13 @@ p{color:var(--muted)}
   .faq-item .faq-body{padding:0 20px 20px}
 
   .phone{
-    max-width:290px;
-    border-radius:34px;
-    padding:9px;
+    max-width:320px;
+    border-radius:38px;
+    padding:10px;
   }
-  .phone-punch{width:10px;height:10px;top:17px}
-  .phone-screen{border-radius:26px}
-  .phone-home-bar{width:86px;height:4px;bottom:8px}
+  .phone-punch{width:11px;height:11px;top:19px}
+  .phone-screen{border-radius:29px}
+  .phone-home-bar{width:96px;height:4px;bottom:9px}
 
   .phone-toolbar{max-width:100%;padding:10px 14px}
   .phone-toolbar .live{font-size:.58rem}
@@ -1359,7 +1367,7 @@ p{color:var(--muted)}
       <div class="sec-head center reveal">
         <span class="eyebrow">Simulasi Scan</span>
         <h2>Scan QR, Website Terbuka.</h2>
-        <p class="lead">Pilih contoh website, tekan tombol scan, lalu tunggu proses scan selesai. Website akan muncul di layar ponsel dengan ukuran Google Pixel 10.</p>
+        <p class="lead">Pilih contoh website, tekan tombol scan, lalu tunggu proses scan selesai. Website akan muncul di layar ponsel dengan ukuran Google Pixel 10 (412 × 924).</p>
       </div>
 
       <div class="demo-stage reveal">
@@ -1444,7 +1452,7 @@ p{color:var(--muted)}
           <div class="phone-toolbar">
             <span class="live idle" id="liveIndicator">
               <span class="dot"></span>
-              <span id="liveText">Live Preview</span>
+              <span id="liveText">Live Preview · 412 × 924</span>
             </span>
             <div class="tool-actions">
               <button type="button" class="tool-btn" id="btnRefresh" aria-label="Refresh preview" title="Refresh Preview">
@@ -1467,12 +1475,11 @@ p{color:var(--muted)}
               <div class="screen-idle" id="screenIdle">
                 <div class="idle-ico"><i data-lucide="smartphone"></i></div>
                 <h4>Menunggu Scan</h4>
-                <p>Tekan tombol scan QR untuk membuka website</p>
+                <p>Viewport 412 × 924 · Tekan tombol scan</p>
               </div>
 
-              <!-- IFRAME ukuran asli Pixel 10 (412x924), di-scale via JS.
-                   Bisa di-scroll, tapi scrollbar-nya disembunyikan
-                   (lihat komentar CSS .phone-screen iframe). -->
+              <!-- IFRAME — viewport internal PERSIS 412 × 924 (Pixel 10)
+                   Di-scale pakai CSS `zoom` (HD, teks tajam) via JS. -->
               <iframe
                 id="demoFrame"
                 src="about:blank"
@@ -1917,7 +1924,11 @@ const demoQRTitles = {
   umkm:      "Gantungan Qriya · UMKM"
 };
 
-/* Ukuran layar Google Pixel 10 (CSS px) */
+/* =========================================================
+   VIEWPORT TARGET: Google Pixel 10
+   Lebar & tinggi ini = ukuran "layar" yang dilihat website
+   di dalam iframe (bukan ukuran tampilan di halaman).
+   ========================================================= */
 const PIXEL_W = 412;
 const PIXEL_H = 924;
 
@@ -1993,29 +2004,68 @@ const SCROLLBAR_W = (function(){
 })();
 
 /* =========================================================
-   SKALA IFRAME — render di 412x924, perkecil agar pas di mockup
+   DETEKSI DUKUNGAN CSS `zoom`
    ---------------------------------------------------------
-   iframe dibuat LEBIH LEBAR dari layar HP sebanyak lebar scrollbar.
-   Scrollbar berada di sisi paling kanan iframe, dan karena
-   .phone-screen memakai overflow:hidden, sisi itu otomatis
-   terpotong → konten tetap bisa di-scroll, tapi scrollbar
-   tidak pernah terlihat.
+   `zoom` dipakai karena mengubah skala render DI DALAM frame,
+   sehingga teks dirender ulang pada resolusi akhir → TAJAM/HD.
+   (Beda dengan transform: scale() yang me-raster 1x lalu
+   diperbesar, sehingga teks terlihat blur.)
+   ========================================================= */
+const USE_CSS_ZOOM = (function(){
+  try{
+    if(typeof CSS !== 'undefined' && CSS && typeof CSS.supports === 'function'){
+      if(CSS.supports('zoom', '0.5')) return true;
+    }
+    return ('zoom' in document.documentElement.style);
+  }catch(e){
+    return false;
+  }
+})();
+
+/* =========================================================
+   AUTO-FIT IFRAME KE LAYAR MOCKUP  (HD / TAJAM)
+   ---------------------------------------------------------
+   iframe selalu dirender dengan viewport internal:
+       width  = 412px (+ SCROLLBAR_W) , height = 924px
+   Lalu diskalakan dengan:
+       • CSS `zoom`  → teks dirender ulang di skala akhir (HD)
+       • fallback transform: scale() bila zoom tidak didukung
    ========================================================= */
 function fitPhoneFrame(){
   if(!phoneScreen || !demoFrame) return;
-  const w = phoneScreen.clientWidth;
-  if(!w) return;
 
-  const scale = w / PIXEL_W;
+  const screenW = phoneScreen.clientWidth;
+  if(!screenW) return;
 
-  demoFrame.style.width     = (PIXEL_W + SCROLLBAR_W) + 'px';
-  demoFrame.style.height    = PIXEL_H + 'px';
-  demoFrame.style.transform = 'scale(' + scale + ')';
+  const baseW = PIXEL_W + SCROLLBAR_W;
+  const scale = screenW / PIXEL_W;
+
+  // Dimensi viewport internal iframe (yang dilihat website).
+  demoFrame.style.width  = baseW + 'px';
+  demoFrame.style.height = PIXEL_H + 'px';
+
+  if(USE_CSS_ZOOM){
+    // HD: zoom me-render ulang isi frame pada skala akhir.
+    demoFrame.style.transform = 'none';
+    demoFrame.style.willChange = 'auto';
+    demoFrame.style.setProperty('zoom', String(scale));
+    demoFrame.style.setProperty('-webkit-zoom', String(scale));
+  }else{
+    // Fallback: transform scale (kompatibilitas maksimal).
+    demoFrame.style.removeProperty('zoom');
+    demoFrame.style.removeProperty('-webkit-zoom');
+    demoFrame.style.transformOrigin = '0 0';
+    demoFrame.style.transform = 'scale(' + scale + ')';
+    demoFrame.style.willChange = 'transform';
+  }
 }
 
 fitPhoneFrame();
 window.addEventListener('resize', fitPhoneFrame);
 window.addEventListener('load', fitPhoneFrame);
+window.addEventListener('orientationchange', () => {
+  setTimeout(fitPhoneFrame, 150);
+});
 if('ResizeObserver' in window && phoneScreen){
   new ResizeObserver(fitPhoneFrame).observe(phoneScreen);
 }
@@ -2053,7 +2103,7 @@ function showIdle(){
     liveIndicator.classList.remove('error');
     liveIndicator.classList.add('idle');
   }
-  if(liveText) liveText.textContent = 'Live Preview';
+  if(liveText) liveText.textContent = 'Live Preview · 412 × 924';
 }
 
 function showLoading(){
@@ -2071,7 +2121,7 @@ function showWebsite(){
   if(screenError) screenError.classList.remove('show');
   if(phoneScreen) phoneScreen.classList.add('website-loaded');
   if(liveIndicator) liveIndicator.classList.remove('idle','error');
-  if(liveText) liveText.textContent = 'Live Preview';
+  if(liveText) liveText.textContent = 'Live Preview · 412 × 924';
 }
 
 /* =========================================================
@@ -2133,6 +2183,8 @@ if(demoFrame){
       showIdle();
       return;
     }
+    // Paksa fit ulang setiap iframe selesai load (font/layout berubah).
+    fitPhoneFrame();
     showWebsite();
   });
 }

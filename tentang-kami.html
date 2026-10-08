@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>FAQ | Qriya — Gantungan QR &amp; Website Digital</title>
-<meta name="description" content="Pertanyaan yang sering diajukan tentang Qriya — paket, harga, proses pemesanan, teknis QR &amp; NFC, pengiriman, dan layanan bisnis.">
+<title>Tentang Kami | Qriya — Gantungan QR &amp; Website Digital</title>
+<meta name="description" content="Kenali Qriya lebih dekat — visi, misi, nilai, dan tim di balik gantungan QR yang menghubungkan dunia fisik dengan identitas digital.">
 <meta name="theme-color" content="#050b18">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -295,143 +295,11 @@ p{color:var(--muted)}
 .breadcrumb svg.lucide{width:14px;height:14px;opacity:.5}
 
 /* =========================================================
-   SEARCH BOX FAQ
+   FEATURE LIST
    ========================================================= */
-.faq-search{
-  max-width:560px;margin:0 auto var(--space-4);
-  position:relative;
-}
-.faq-search input{
-  width:100%;
-  font-family:inherit;
-  font-size:.95rem;
-  color:#fff;
-  padding:16px 20px 16px 52px;
-  border-radius:16px;
-  background:rgba(255,255,255,.05);
-  border:1px solid var(--line-2);
-  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-  transition:border-color .3s ease,background .3s ease,box-shadow .3s ease;
-}
-.faq-search input::placeholder{color:rgba(148,163,184,.7)}
-.faq-search input:focus{
-  outline:none;
-  border-color:rgba(167,139,250,.6);
-  background:rgba(255,255,255,.07);
-  box-shadow:0 0 0 4px rgba(124,58,237,.15);
-}
-.faq-search .search-ico{
-  position:absolute;left:18px;top:50%;transform:translateY(-50%);
-  color:#a5b4fc;pointer-events:none;display:grid;place-items:center;
-}
-.faq-search .search-ico svg.lucide{width:20px;height:20px}
-
-/* =========================================================
-   KATEGORI FAQ
-   ========================================================= */
-.faq-filter{
-  display:flex;flex-wrap:wrap;gap:10px;justify-content:center;
-  margin-bottom:var(--space-4);
-}
-.faq-filter button{
-  font-family:"JetBrains Mono",ui-monospace,monospace;
-  font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--muted);
-  padding:10px 18px;border-radius:999px;
-  background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.14);
-  transition:color .3s ease,background .3s ease,border-color .3s ease,transform .3s var(--ease);
-  cursor:pointer;
-}
-.faq-filter button:hover{
-  color:#fff;background:rgba(255,255,255,.08);
-  border-color:rgba(167,139,250,.42);transform:translateY(-2px);
-}
-.faq-filter button.active{
-  color:#fff;
-  background:linear-gradient(135deg,rgba(37,99,235,.28),rgba(124,58,237,.28));
-  border-color:rgba(167,139,250,.6);
-  box-shadow:0 8px 22px rgba(79,70,229,.32);
-}
-
-/* =========================================================
-   FAQ LIST
-   ========================================================= */
-.faq-list{
-  display:grid;
-  gap:14px;
-  max-width:880px;
-  margin-inline:auto;
-}
-.faq-item{
-  border-radius:var(--r-md);border:1px solid var(--line-2);
-  background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015));
-  overflow:hidden;
-  transition:border-color .38s ease,box-shadow .38s ease,transform .38s var(--ease);
-}
-.faq-item:hover{border-color:rgba(139,92,246,.4)}
-.faq-item[open]{
-  border-color:rgba(139,92,246,.5);
-  box-shadow:0 16px 40px rgba(3,7,22,.45);
-}
-.faq-item summary{
-  display:flex;align-items:center;justify-content:space-between;gap:18px;
-  padding:22px 26px;cursor:pointer;list-style:none;
-  font-size:.96rem;font-weight:600;color:#fff;letter-spacing:-.01em;
-  line-height:1.5;
-}
-.faq-item summary::-webkit-details-marker{display:none}
-.faq-item summary .chev{
-  width:32px;height:32px;flex:0 0 auto;border-radius:10px;display:grid;place-items:center;
-  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);color:#bfdbfe;
-  transition:transform .38s var(--ease),background .38s ease;
-}
-.faq-item summary .chev svg.lucide{width:16px;height:16px}
-.faq-item[open] summary .chev{transform:rotate(180deg);background:rgba(124,58,237,.2)}
-.faq-item .faq-body{
-  padding:0 26px 24px;font-size:.88rem;line-height:1.8;color:var(--muted);
-}
-.faq-item .faq-body strong{color:#fff}
-.faq-item .faq-body a{
-  color:#a5b4fc;
-  border-bottom:1px dashed rgba(165,180,252,.5);
-  transition:color .25s ease,border-color .25s ease;
-}
-.faq-item .faq-body a:hover{color:#fff;border-color:#fff}
-.faq-item .faq-body ul{
-  margin-top:12px;
-  display:grid;
-  gap:8px;
-}
-.faq-item .faq-body ul li{
-  display:flex;gap:10px;align-items:flex-start;
-  font-size:.86rem;color:var(--muted);line-height:1.6;
-}
-.faq-item .faq-body ul li::before{
-  content:"";
-  width:5px;height:5px;border-radius:50%;
-  background:var(--grad);
-  flex:0 0 auto;
-  margin-top:9px;
-  box-shadow:0 0 8px rgba(124,58,237,.8);
-}
-
-.faq-empty{
-  display:none;
-  text-align:center;
-  padding:var(--space-4) 20px;
-  border-radius:var(--r-lg);
-  border:1px dashed var(--line-2);
-  background:rgba(255,255,255,.02);
-  max-width:640px;
-  margin-inline:auto;
-}
-.faq-empty.show{display:block}
-.faq-empty svg.lucide{
-  width:38px;height:38px;color:#a5b4fc;margin:0 auto 14px;
-}
-.faq-empty h3{font-size:1.05rem;color:#fff;margin-bottom:8px}
-.faq-empty p{font-size:.88rem}
+.feat-list{display:grid;gap:10px;margin-top:24px}
+.feat-list li{display:flex;gap:11px;align-items:flex-start;font-size:.86rem;color:var(--muted);line-height:1.6}
+.feat-list li svg.lucide{width:16px;height:16px;color:#7dd3fc;margin-top:4px}
 
 /* =========================================================
    CTA
@@ -493,9 +361,206 @@ p{color:var(--muted)}
 .js .reveal.in{opacity:1;transform:none}
 
 /* =========================================================
+   ABOUT — SPLIT (CERITA + STATISTIK)
+   ========================================================= */
+.about-sec{
+  background:
+    radial-gradient(760px 420px at 15% 0%, rgba(37,99,235,.14), transparent 60%),
+    radial-gradient(700px 420px at 88% 100%, rgba(124,58,237,.16), transparent 62%);
+}
+.about-split{
+  display:grid;
+  grid-template-columns:1.12fr .88fr;
+  gap:var(--space-4);
+  align-items:center;
+}
+.about-copy h2{margin-bottom:22px}
+.about-copy p{font-size:.94rem;line-height:1.85}
+.about-copy p + p{margin-top:16px}
+.about-copy strong{color:#fff}
+
+.about-visual{
+  position:relative;
+  border-radius:var(--r-xl);
+  padding:30px;
+  border:1px solid var(--line-2);
+  background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.015));
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 24px 60px rgba(3,7,22,.5);
+  overflow:hidden;
+}
+.about-visual::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(520px 220px at 15% 0%, rgba(56,189,248,.14), transparent 70%);
+}
+.about-visual > *{position:relative}
+
+.stat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.stat{
+  padding:22px 20px;border-radius:16px;
+  background:rgba(255,255,255,.04);border:1px solid var(--line-2);
+}
+.stat b{
+  display:block;font-size:1.72rem;font-weight:800;letter-spacing:-.025em;line-height:1.1;
+  background:linear-gradient(120deg,#fff,#c4b5fd);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.stat span{
+  display:block;margin-top:8px;
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted-2);line-height:1.5;
+}
+
+/* =========================================================
+   VISI & MISI
+   ========================================================= */
+.vm-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:22px;
+  align-items:start;
+}
+.vm-card{
+  position:relative;border-radius:var(--r-lg);padding:36px 32px 34px;
+  background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015));
+  border:1px solid var(--line-2);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  transition:transform .42s var(--ease),border-color .42s ease,box-shadow .42s ease;
+}
+.vm-card:hover{transform:translateY(-4px);border-color:rgba(139,92,246,.42);box-shadow:0 22px 50px rgba(3,7,22,.55)}
+.vm-card.featured{
+  border-color:rgba(139,92,246,.5);
+  background:linear-gradient(160deg,rgba(124,58,237,.16),rgba(37,99,235,.06));
+  box-shadow:0 22px 54px rgba(79,70,229,.24);
+}
+.vm-card .ico{margin-bottom:20px}
+.vm-card h3{
+  font-size:1rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;
+}
+.vm-card p{margin-top:16px;font-size:.9rem;line-height:1.8}
+.vm-card .feat-list{margin-top:20px}
+
+/* =========================================================
+   NILAI / VALUES
+   ========================================================= */
+.value-sec{
+  background:
+    radial-gradient(720px 420px at 12% 0%, rgba(37,99,235,.13), transparent 62%),
+    radial-gradient(680px 400px at 92% 100%, rgba(124,58,237,.15), transparent 62%);
+}
+.value-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:22px;
+  align-items:start;
+}
+.value-card{
+  position:relative;border-radius:var(--r-lg);padding:30px 26px 28px;
+  background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015));
+  border:1px solid var(--line-2);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  transition:transform .42s var(--ease),border-color .42s ease,box-shadow .42s ease;
+}
+.value-card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(139,92,246,.45);
+  box-shadow:0 24px 54px rgba(3,7,22,.55),0 0 36px rgba(79,70,229,.18);
+}
+.value-card .ico{margin-bottom:18px}
+.value-card h3{font-size:1rem;font-weight:700}
+.value-card p{margin-top:12px;font-size:.85rem;line-height:1.7}
+
+/* =========================================================
+   TIM
+   ========================================================= */
+.team-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:22px;
+  align-items:stretch;
+}
+.team-card{
+  position:relative;
+  padding:36px 30px 32px;
+  border-radius:var(--r-xl);
+  border:1px solid var(--line-2);
+  background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015));
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+  transition:transform .42s var(--ease),border-color .42s ease,box-shadow .42s ease;
+}
+.team-card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(139,92,246,.45);
+  box-shadow:0 24px 54px rgba(3,7,22,.55),0 0 36px rgba(79,70,229,.18);
+}
+.team-card.featured{
+  border-color:rgba(167,139,250,.5);
+  background:linear-gradient(160deg,rgba(124,58,237,.16),rgba(37,99,235,.06));
+  box-shadow:0 22px 54px rgba(79,70,229,.24);
+}
+.team-avatar{
+  width:96px;height:96px;border-radius:50%;
+  display:grid;place-items:center;
+  font-size:1.65rem;font-weight:800;letter-spacing:-.02em;color:#fff;
+  background:var(--grad);
+  border:1px solid rgba(255,255,255,.22);
+  box-shadow:0 14px 34px rgba(79,70,229,.42);
+  margin-bottom:22px;
+}
+.team-card h3{font-size:1.08rem;font-weight:700;letter-spacing:-.01em}
+.team-role{
+  margin-top:10px;
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:#c4b5fd;
+  line-height:1.6;
+}
+.team-card p{margin-top:16px;font-size:.86rem;line-height:1.75;flex:1}
+.team-card .feat-list{
+  width:100%;
+  text-align:left;
+  margin-top:18px;
+}
+.team-card .feat-list li{font-size:.82rem}
+
+.team-ig{
+  margin-top:24px;
+  display:inline-flex;align-items:center;gap:10px;
+  padding:13px 22px;border-radius:14px;
+  font-size:.85rem;font-weight:600;color:#fff;
+  background:linear-gradient(135deg,#f58529 0%,#dd2a7b 46%,#8134af 78%,#515bd4 100%);
+  border:1px solid rgba(255,255,255,.22);
+  box-shadow:0 10px 26px rgba(221,42,123,.32);
+  transition:transform .32s var(--ease),box-shadow .32s var(--ease);
+  white-space:nowrap;
+}
+.team-ig:hover{
+  transform:translateY(-2px);
+  box-shadow:0 16px 38px rgba(221,42,123,.48);
+}
+.team-ig svg.lucide{width:17px;height:17px}
+
+/* Note / highlight box */
+.note{
+  margin-top:var(--space-3);padding:22px 26px;border-radius:16px;
+  border-left:3px solid #7c3aed;
+  background:linear-gradient(100deg,rgba(124,58,237,.13),rgba(37,99,235,.05));
+  font-size:.88rem;color:rgba(226,232,240,.85);line-height:1.75;
+}
+.note strong{color:#fff}
+
+/* =========================================================
    RESPONSIVE
    ========================================================= */
+@media (max-width:1120px){
+  .value-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
 @media (max-width:980px){
+  .about-split{grid-template-columns:1fr;gap:var(--space-3)}
+  .vm-grid{grid-template-columns:1fr}
+  .team-grid{grid-template-columns:1fr;max-width:560px;margin-inline:auto}
   .footer-grid{grid-template-columns:1fr 1fr;gap:36px}
   .f-brand{grid-column:1 / -1}
 }
@@ -612,11 +677,13 @@ p{color:var(--muted)}
   .footer-grid{grid-template-columns:1fr;gap:36px}
   .footer-bottom{flex-direction:column;gap:10px}
 
-  .faq-item summary{padding:18px 20px;font-size:.9rem}
-  .faq-item .faq-body{padding:0 20px 20px;font-size:.85rem}
-  .faq-filter button{font-size:.6rem;padding:9px 14px;letter-spacing:.14em}
-  .faq-search input{font-size:.9rem;padding:15px 18px 15px 48px}
-  .faq-search .search-ico{left:16px}
+  .value-grid{grid-template-columns:1fr;max-width:520px;margin-inline:auto}
+  .stat-grid{grid-template-columns:1fr}
+  .vm-card{padding:30px 24px 28px}
+  .team-card{padding:32px 24px 28px}
+  .team-avatar{width:84px;height:84px;font-size:1.45rem}
+  .team-ig{width:100%;justify-content:center}
+  .about-visual{padding:22px}
 
   .nav-links{
     width:min(340px,90vw);
@@ -664,8 +731,8 @@ p{color:var(--muted)}
       <li><a href="cara-kerja.html"><i data-lucide="workflow"></i><span>Cara Kerja</span></a></li>
       <li><a href="paket.html"><i data-lucide="gem"></i><span>Paket</span></a></li>
       <li><a href="demo.html"><i data-lucide="circle-play"></i><span>Demo</span></a></li>
-      <li><a href="tentang-kami.html"><i data-lucide="info"></i><span>Tentang Kami</span></a></li>
-      <li><a href="faq.html" class="active" aria-current="page"><i data-lucide="circle-help"></i><span>FAQ</span></a></li>
+      <li><a href="tentang-kami.html" class="active" aria-current="page"><i data-lucide="info"></i><span>Tentang Kami</span></a></li>
+      <li><a href="faq.html"><i data-lucide="circle-help"></i><span>FAQ</span></a></li>
     </ul>
 
   </nav>
@@ -678,361 +745,250 @@ p{color:var(--muted)}
   <!-- =========================================================
        PAGE HERO
        ========================================================= -->
-  <section class="page-hero" aria-label="FAQ Qriya">
+  <section class="page-hero" aria-label="Tentang Qriya">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="beranda.html">Beranda</a>
         <i data-lucide="chevron-right"></i>
-        <span>FAQ</span>
+        <span>Tentang Kami</span>
       </nav>
 
-      <span class="eyebrow reveal">Pertanyaan Umum</span>
+      <span class="eyebrow reveal">Tentang Kami</span>
       <h1 class="reveal" style="--d:.06s">
-        Semua yang Perlu <span class="grad-text">Kamu Tahu.</span>
+        Gantungan Kecil, <span class="grad-text">Identitas Digital Tanpa Batas.</span>
       </h1>
       <p class="lead reveal" style="--d:.12s">
-        Kumpulan pertanyaan yang paling sering ditanyakan seputar Qriya — dari paket, harga, teknis QR &amp; NFC, hingga pengiriman.
+        Qriya lahir dari ide sederhana: menghubungkan dunia fisik dengan dunia digital lewat satu gantungan QR. Satu scan, satu identitas, tanpa ribet.
       </p>
 
       <div class="actions reveal" style="--d:.18s">
-        <a class="btn btn-primary btn-lg" href="#faq-list">Lihat Pertanyaan <i data-lucide="arrow-right"></i></a>
-        <a class="btn btn-ghost btn-lg" href="https://wa.me/6280000000000" target="_blank" rel="noopener">Tanya Langsung</a>
+        <a class="btn btn-primary btn-lg" href="#cerita">Kenali Kami <i data-lucide="arrow-right"></i></a>
+        <a class="btn btn-ghost btn-lg" href="#tim">Lihat Tim</a>
       </div>
     </div>
   </section>
 
   <!-- =========================================================
-       SECTION — FAQ
+       SECTION — CERITA QRIYA
        ========================================================= -->
-  <section class="section" id="faq-list">
+  <section class="section about-sec" id="cerita">
     <div class="container">
 
+      <div class="about-split">
+
+        <div class="about-copy reveal">
+          <span class="eyebrow">Cerita Kami</span>
+          <h2>Dari Sebuah Gantungan, Menjadi Pintu Identitas Digital.</h2>
+
+          <p>
+            Semua berawal dari satu pertanyaan: <strong>kenapa berbagi kontak, portofolio, atau sosial media masih harus ribet?</strong>
+            Kartu nama mudah hilang, link panjang susah diingat, dan mengetik username satu per satu melelahkan.
+          </p>
+
+          <p>
+            Qriya hadir sebagai jawabannya. Kami membuat <strong>gantungan kunci ber-QR Code</strong> yang langsung terhubung
+            ke sebuah website digital — bisa berisi profil, portofolio, CV online, katalog bisnis, hingga kumpulan sosial media.
+            Cukup satu scan, semua informasi terbuka.
+          </p>
+
+          <p>
+            Setiap gantungan Qriya dikerjakan dengan <strong>desain custom</strong>, dicetak dengan QR yang sudah diuji,
+            lalu dihubungkan ke website yang dibangun khusus sesuai kebutuhan pemiliknya. Bukan sekadar produk fisik —
+            ini adalah identitas digital yang bisa dibawa ke mana saja.
+          </p>
+
+          <div class="actions">
+            <a class="btn btn-ghost" href="cara-kerja.html">Lihat Cara Kerjanya <i data-lucide="arrow-right"></i></a>
+          </div>
+        </div>
+
+        <aside class="about-visual reveal" style="--d:.12s" aria-label="Statistik Qriya">
+          <div class="stat-grid">
+            <div class="stat">
+              <b>1 Scan</b>
+              <span>Langsung Terhubung</span>
+            </div>
+            <div class="stat">
+              <b>100%</b>
+              <span>Desain Custom</span>
+            </div>
+            <div class="stat">
+              <b>Responsive</b>
+              <span>HP · Tablet · Laptop</span>
+            </div>
+            <div class="stat">
+              <b>QR Unik</b>
+              <span>1 Gantungan = 1 Website</span>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION — VISI & MISI
+       ========================================================= -->
+  <section class="section" id="visi-misi">
+    <div class="container">
       <div class="sec-head center reveal">
-        <span class="eyebrow">FAQ Qriya</span>
-        <h2>Pertanyaan yang Sering Diajukan.</h2>
-        <p class="lead">Cari jawaban dengan mengetik kata kunci, atau filter berdasarkan kategori di bawah ini.</p>
+        <span class="eyebrow">Visi &amp; Misi</span>
+        <h2>Arah yang Kami Tuju.</h2>
+        <p class="lead">Kami percaya identitas digital seharusnya bisa dimiliki siapa saja — mudah, terjangkau, dan berkelas.</p>
       </div>
 
-      <!-- SEARCH -->
-      <div class="faq-search reveal">
-        <span class="search-ico"><i data-lucide="search"></i></span>
-        <input
-          type="search"
-          id="faqSearch"
-          placeholder="Cari pertanyaan… (contoh: harga, NFC, pengiriman)"
-          aria-label="Cari pertanyaan FAQ"
-          autocomplete="off"
-        >
+      <div class="vm-grid">
+
+        <article class="vm-card featured reveal">
+          <span class="ico"><i data-lucide="target"></i></span>
+          <h3>Visi</h3>
+          <p>
+            Menjadi brand identitas digital paling praktis di Indonesia — menghubungkan setiap orang, komunitas, dan bisnis
+            dengan satu sentuhan fisik yang sederhana namun berdampak besar.
+          </p>
+        </article>
+
+        <article class="vm-card reveal" style="--d:.1s">
+          <span class="ico"><i data-lucide="list-checks"></i></span>
+          <h3>Misi</h3>
+          <ul class="feat-list">
+            <li><i data-lucide="check"></i>Menyediakan gantungan QR dengan desain custom yang rapi dan berkualitas.</li>
+            <li><i data-lucide="check"></i>Membangun website personal &amp; bisnis yang cepat, responsif, dan mudah dipakai.</li>
+            <li><i data-lucide="check"></i>Membuat teknologi identitas digital jadi terjangkau untuk semua kalangan.</li>
+            <li><i data-lucide="check"></i>Mendampingi pelanggan dari desain, produksi, hingga website siap pakai.</li>
+            <li><i data-lucide="check"></i>Menjaga kualitas QR Code dan performa website agar selalu berfungsi dengan baik.</li>
+          </ul>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION — NILAI / VALUES
+       ========================================================= -->
+  <section class="section value-sec" id="nilai">
+    <div class="container">
+      <div class="sec-head center reveal">
+        <span class="eyebrow">Nilai Kami</span>
+        <h2>Prinsip yang Kami Pegang.</h2>
+        <p class="lead">Empat hal yang selalu jadi dasar setiap project Qriya — dari desain gantungan sampai website jadi.</p>
       </div>
 
-      <!-- FILTER KATEGORI -->
-      <div class="faq-filter reveal" role="tablist" aria-label="Filter kategori FAQ">
-        <button type="button" class="active" data-filter="all">Semua</button>
-        <button type="button" data-filter="umum">Umum</button>
-        <button type="button" data-filter="produk">Produk</button>
-        <button type="button" data-filter="paket">Paket &amp; Harga</button>
-        <button type="button" data-filter="teknis">Teknis</button>
-        <button type="button" data-filter="pengiriman">Pengiriman</button>
-        <button type="button" data-filter="bisnis">Bisnis</button>
-      </div>
+      <div class="value-grid">
 
-      <!-- LIST FAQ -->
-      <div class="faq-list" id="faqItems">
+        <article class="value-card reveal">
+          <span class="ico"><i data-lucide="sparkles"></i></span>
+          <h3>Simpel</h3>
+          <p>Satu scan, langsung terbuka. Tanpa aplikasi tambahan, tanpa langkah berbelit.</p>
+        </article>
 
-        <!-- ====== UMUM ====== -->
-        <details class="faq-item reveal" data-cat="umum">
-          <summary>
-            Apa itu Qriya dan bagaimana cara kerjanya?
-            <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
-          </summary>
-          <div class="faq-body">
-            <strong>Qriya</strong> adalah gantungan kunci ber-QR Code yang terhubung ke sebuah website digital. Cukup
-            <strong>scan QR</strong> menggunakan kamera HP atau <strong>tap NFC</strong> ke smartphone, maka halaman website
-            kamu langsung terbuka — berisi profil, portofolio, CV online, katalog bisnis, atau kumpulan sosial media.
-            <ul>
-              <li>1 Gantungan = 1 QR Code = 1 Website</li>
-              <li>Tanpa aplikasi tambahan, cukup browser HP</li>
-              <li>Bisa diakses kapan saja dan di mana saja</li>
-            </ul>
-          </div>
-        </details>
+        <article class="value-card reveal" style="--d:.06s">
+          <span class="ico"><i data-lucide="palette"></i></span>
+          <h3>Custom</h3>
+          <p>Setiap gantungan dan website dibuat sesuai karakter, tema, dan kebutuhan pemiliknya.</p>
+        </article>
 
-        <details class="faq-item reveal" data-cat="umum" style="--d:.04s">
-          <summary>
-            Apa perbedaan QR Code dan NFC?
-            <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
-          </summary>
-          <div class="faq-body">
-            <strong>QR Code</strong> dibaca lewat kamera smartphone — semua HP modern bisa membaca QR.
-            Sedangkan <strong>NFC</strong> (Near Field Communication) cukup ditempelkan ke HP yang mendukung NFC
-            (biasanya HP mid-range ke atas) dan langsung membuka link tanpa perlu scan.
-            <ul>
-              <li>QR Code: lebih universal, cocok untuk semua HP</li>
-              <li>NFC: lebih cepat, cukup tap tanpa buka kamera</li>
-              <li>Keduanya bisa digabung dalam satu gantungan atau kartu</li>
-            </ul>
-          </div>
-        </details>
+        <article class="value-card reveal" style="--d:.12s">
+          <span class="ico"><i data-lucide="shield-check"></i></span>
+          <h3>Teruji</h3>
+          <p>QR Code diuji sebelum dikirim. Website dipastikan responsif di HP, tablet, dan laptop.</p>
+        </article>
 
-        <details class="faq-item reveal" data-cat="umum" style="--d:.08s">
-          <summary>
-            Apakah bisa request jumlah gantungan custom?
-            <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
-          </summary>
-          <div class="faq-body">
-            Bisa. Paket <strong>Starter</strong>, <strong>Pro</strong>, dan <strong>Business</strong> punya jumlah default,
-            tapi Anda bisa request jumlah khusus. Silakan hubungi kami lewat
-            <a href="https://wa.me/6280000000000" target="_blank" rel="noopener">WhatsApp</a>
-            untuk kebutuhan custom sesuai jumlah dan skala yang diinginkan.
-          </div>
-        </details>
-
-        <details class="faq-item reveal" data-cat="umum" style="--d:.12s">
-          <summary>
-            Apakah Qriya bisa dipakai untuk keperluan pribadi saja?
-            <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
-          </summary>
-          <div class="faq-body">
-            Tentu. Qriya cocok untuk keperluan <strong>personal branding</strong>, portofolio, CV online, kartu ucapan digital,
-            sampai media sosial dalam satu halaman. Paket <strong>Starter</strong> dan <strong>NFC Card</strong> paling pas
-            untuk penggunaan personal.
-          </div>
-        </details>
-
-        <!-- ====== PRODUK ====== -->
-        <details class="faq-item reveal" data-cat="produk" style="--d:.16s">
-          <summary>
-            Apa perbedaan Paket Utama dan NFC Card?
-            <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
-          </summary>
-          <div class="faq-body">
-            <strong>Paket Utama</strong> fokus ke website personal atau bisnis lengkap dengan QR Code — cocok untuk
-            portofolio, CV online, atau website bisnis.<br><br>
-            <strong>NFC Card</strong> fokus ke identitas digital praktis — tersedia varian
-            <strong>Gaming Card</strong> untuk identitas gaming dan varian <strong>Sosmed Card</strong> yang langsung
-            terhubung ke sosial media masing-masing orang.
-          </div>
-        </details>
-
-        <details class="faq-item reveal" data-cat="produk" style="--d:.2s">
-          <summary>
-            Bisa request desain gantungan sesuai tema?
-            <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
-          </summary>
-          <div class="faq-body">
-            Tentu. Semua paket sudah termasuk <strong>custom design gantungan</strong>. Anda bisa kirim preferensi warna,
-            gaya, atau referensi desain yang diinginkan. Untuk kartu gaming, bisa request gambar atau art game favorit
-            sebagai identitas visual.
-          </div>
-        </details>
-
-        <details class="faq-item reveal" data-cat="produk" style="--d:.24s">
-          <summary>
-            Apa bahan gantungan dan kartu NFC-nya?
-            <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
-          </summary>
-          <div class="faq-body">
-            Gantungan Qriya menggunakan bahan <strong>akrilik / PVC</strong> dengan cetakan QR yang tajam dan tahan lama.
-            Untuk kartu NFC menggunakan bahan <strong>PVC card</strong> standar kartu akses, dengan chip NFC di dalamnya.
-            Detail bahan dan finishing bisa disesuaikan dengan paket yang dipilih.
-          </div>
-        </details>
-
-        <!-- ====== PAKET & HARGA ====== -->
-        <details class="faq-item reveal" data-cat="paket" style="--d:.28s">
-          <summary>
-            Apakah harga sudah termasuk hosting dan domain?
-            <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
-          </summary>
-          <div class="faq-body">
-            Untuk paket <strong>Starter</strong> menggunakan hosting Vercel <strong>tanpa custom domain</strong>.
-            Untuk paket <strong>Pro</strong> dan <strong>Business</strong> sudah termasuk hosting dan custom domain
-            sesuai fitur paketnya. Detailnya bisa dilihat di <a href="paket.html">halaman Paket</a>.
-          </div>
-        </details>
-
-        <details class="faq-item reveal" data-cat="paket" style="--d:.32s">
-          <summary>
-            Apakah ada biaya bulanan atau tahunan?
-            <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
-          </summary>
-          <div class="faq-body">
-            <strong>Tidak ada biaya bulanan.</strong> Paket Pro dan Business sudah termasuk hosting &amp; domain
-            <strong>1 tahun pertama</strong>. Setelah 1 tahun, perpanjangan domain dan hosting opsional — kami akan
-            info terlebih dahulu sebelum jatuh tempo.
-          </div>
-        </details>
-
-        <details class="faq-item reveal" data-cat="paket" style="--d:.36s">
-          <summary>
-            Bisa upgrade paket di tengah jalan?
-            <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
-          </summary>
-          <div class="faq-body">
-            Bisa. Anda bisa upgrade dari paket <strong>Starter</strong> ke <strong>Pro</strong> atau
-            <strong>Business</strong> dengan membayar selisih harga. Hubungi kami lewat
-            <a href="https://wa.me/6280000000000" target="_blank" rel="noopener">WhatsApp</a>
-            untuk proses upgrade.
-          </div>
-        </details>
-
-        <!-- ====== TEKNIS ====== -->
-        <details class="faq-item reveal" data-cat="teknis" style="--d:.4s">
-          <summary>
-            Apakah ada garansi jika QR Code tidak berfungsi?
-            <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
-          </summary>
-          <div class="faq-body">
-            Setiap QR Code <strong>diuji sebelum dikirim</strong>, dan kami pastikan berfungsi dengan baik.
-            Jika ada kendala setelah diterima, hubungi kami untuk pengecekan dan perbaikan.
-            <ul>
-              <li>Garansi QR tidak terbaca saat pertama kali diterima</li>
-              <li>Perbaikan gratis jika terjadi kerusakan produksi</li>
-              <li>Penggantian unit jika QR benar-benar tidak bisa dipakai</li>
-            </ul>
-          </div>
-        </details>
-
-        <details class="faq-item reveal" data-cat="teknis" style="--d:.44s">
-          <summary>
-            HP saya tidak punya NFC, apakah tetap bisa pakai?
-            <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
-          </summary>
-          <div class="faq-body">
-            Tetap bisa. Setiap kartu NFC Qriya <strong>juga dilengkapi QR Code</strong>. Jadi kalau HP kamu tidak
-            mendukung NFC, cukup scan QR Code-nya menggunakan kamera HP. Semua HP modern bisa scan QR.
-          </div>
-        </details>
-
-        <details class="faq-item reveal" data-cat="teknis" style="--d:.48s">
-          <summary>
-            Apakah website bisa diedit sendiri setelah jadi?
-            <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
-          </summary>
-          <div class="faq-body">
-            Bisa. Untuk paket <strong>Starter</strong> dan <strong>Pro</strong>, kami bisa ajarkan cara edit teks dan
-            gambar sederhana. Untuk paket <strong>Business</strong>, tersedia <strong>Admin Dashboard</strong> dengan
-            fitur tambah / edit / hapus data tanpa perlu coding.
-          </div>
-        </details>
-
-        <details class="faq-item reveal" data-cat="teknis" style="--d:.52s">
-          <summary>
-            Apakah link QR bisa diganti kalau website pindah domain?
-            <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
-          </summary>
-          <div class="faq-body">
-            Bisa. Kami menggunakan sistem <strong>redirect fleksibel</strong> sehingga QR Code yang sudah tercetak
-            tetap bisa diarahkan ke domain baru tanpa perlu cetak ulang gantungan.
-          </div>
-        </details>
-
-        <!-- ====== PENGIRIMAN ====== -->
-        <details class="faq-item reveal" data-cat="pengiriman" style="--d:.56s">
-          <summary>
-            Berapa lama proses pembuatan sampai gantungan dikirim?
-            <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
-          </summary>
-          <div class="faq-body">
-            Estimasi proses:
-            <ul>
-              <li><strong>3–5 hari kerja</strong> untuk desain dan revisi</li>
-              <li><strong>2–4 hari kerja</strong> untuk produksi gantungan / kartu</li>
-              <li><strong>1–3 hari kerja</strong> untuk pengiriman (tergantung lokasi)</li>
-            </ul>
-            Total estimasi <strong>7–12 hari kerja</strong> setelah pembayaran dan data lengkap.
-          </div>
-        </details>
-
-        <details class="faq-item reveal" data-cat="pengiriman" style="--d:.6s">
-          <summary>
-            Apakah bisa kirim ke seluruh Indonesia?
-            <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
-          </summary>
-          <div class="faq-body">
-            Ya, kami mengirim ke <strong>seluruh Indonesia</strong> melalui ekspedisi terpercaya
-            (JNE, J&amp;T, SiCepat, atau kurir pilihan Anda). Ongkos kirim dihitung terpisah sesuai
-            lokasi dan berat paket.
-          </div>
-        </details>
-
-        <details class="faq-item reveal" data-cat="pengiriman" style="--d:.64s">
-          <summary>
-            Bagaimana cara melacak pesanan saya?
-            <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
-          </summary>
-          <div class="faq-body">
-            Setelah paket dikirim, kami akan mengirim <strong>nomor resi</strong> lewat WhatsApp atau email.
-            Anda bisa melacak status pengiriman langsung melalui website ekspedisi yang digunakan.
-          </div>
-        </details>
-
-        <!-- ====== BISNIS ====== -->
-        <details class="faq-item reveal" data-cat="bisnis" style="--d:.68s">
-          <summary>
-            Apa saja yang didapat di Paket Business?
-            <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
-          </summary>
-          <div class="faq-body">
-            Paket <strong>Business</strong> mencakup:
-            <ul>
-              <li>5 Gantungan Kunci QR + 5 Website Bisnis</li>
-              <li>Custom Design Gantungan Kunci</li>
-              <li>Custom Domain + Hosting 1 Tahun</li>
-              <li>Database, Login Admin, dan CRUD Data</li>
-              <li>WhatsApp, Google Maps, Media Sosial</li>
-              <li>Maintenance, Bug Fixing, Update Sistem</li>
-            </ul>
-            Untuk fitur lengkap setiap tingkatan, lihat <a href="paket.html#business">halaman Paket</a>.
-          </div>
-        </details>
-
-        <details class="faq-item reveal" data-cat="bisnis" style="--d:.72s">
-          <summary>
-            Apakah bisa buat sistem sesuai kebutuhan bisnis saya?
-            <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
-          </summary>
-          <div class="faq-body">
-            Bisa. Paket <strong>Business Custom</strong> (Rp4.000.000+) dirancang untuk kebutuhan spesifik —
-            mulai dari dashboard lebih lengkap, hak akses pengguna, laporan &amp; statistik, Google Login,
-            hingga optimasi sistem. Diskusikan kebutuhan Anda lewat
-            <a href="https://wa.me/6280000000000" target="_blank" rel="noopener">WhatsApp</a>.
-          </div>
-        </details>
-
-        <details class="faq-item reveal" data-cat="bisnis" style="--d:.76s">
-          <summary>
-            Apakah ada layanan maintenance bulanan?
-            <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
-          </summary>
-          <div class="faq-body">
-            Ada. Untuk paket Business, maintenance sudah termasuk dalam paket. Untuk paket lain,
-            tersedia opsi <strong>maintenance terpisah</strong> yang mencakup bug fixing, backup database,
-            dan update sistem. Hubungi kami untuk info paket maintenance.
-          </div>
-        </details>
-
-        <details class="faq-item reveal" data-cat="bisnis" style="--d:.8s">
-          <summary>
-            Bisa kerja sama untuk reseller atau komunitas?
-            <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
-          </summary>
-          <div class="faq-body">
-            Tentu! Kami membuka peluang <strong>kerja sama reseller</strong> dan <strong>project komunitas</strong>.
-            Cocok untuk organisasi, sekolah, kampus, atau komunitas yang ingin membuat identitas digital massal.
-            Hubungi kami untuk penawaran khusus.
-          </div>
-        </details>
+        <article class="value-card reveal" style="--d:.18s">
+          <span class="ico"><i data-lucide="handshake"></i></span>
+          <h3>Terjangkau</h3>
+          <p>Harga jelas dan transparan, dari paket personal sampai sistem bisnis lengkap.</p>
+        </article>
 
       </div>
 
-      <!-- EMPTY STATE -->
-      <div class="faq-empty" id="faqEmpty">
-        <i data-lucide="search-x"></i>
-        <h3>Pertanyaan tidak ditemukan</h3>
-        <p>Coba kata kunci lain, atau langsung tanya kami lewat WhatsApp.</p>
+      <p class="note reveal">
+        <strong>Qriya bukan sekadar gantungan.</strong> Ini adalah jembatan antara kamu dan dunia digital —
+        dibuat agar siapa pun bisa punya identitas online yang rapi, cepat diakses, dan mudah dibagikan.
+      </p>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION — TIM
+       ========================================================= -->
+  <section class="section" id="tim">
+    <div class="container">
+      <div class="sec-head center reveal">
+        <span class="eyebrow">Tim Kami</span>
+        <h2>Orang di Balik Qriya.</h2>
+        <p class="lead">Tim kecil dengan pembagian peran yang jelas — dari merakit otak chip NFC, membuat website portofolio, sampai mendesain kartu gaming dan gantungan.</p>
       </div>
 
+      <div class="team-grid">
+
+        <!-- TEAM 1 — P. PRATAMA -->
+        <article class="team-card featured reveal">
+          <span class="team-avatar" aria-hidden="true">PP</span>
+          <h3>P. Pratama</h3>
+          <span class="team-role">NFC Programmer &amp; Web Portofolio</span>
+          <p>
+            Membuat kodingan otak di chip NFC, membuat website portofolio, dan mempromosikan
+            barang-barang Qriya ke orang banyak.
+          </p>
+          <ul class="feat-list">
+            <li><i data-lucide="check"></i>Membuat kodingan otak di chip NFC</li>
+            <li><i data-lucide="check"></i>Membuat website portofolio</li>
+            <li><i data-lucide="check"></i>Mempromosikan barangnya ke orang banyak</li>
+          </ul>
+          <a class="team-ig" href="https://www.instagram.com/ppratamaaa24/" target="_blank" rel="noopener" aria-label="Instagram P. Pratama">
+            <i data-lucide="instagram"></i> @ppratamaaa24
+          </a>
+        </article>
+
+        <!-- TEAM 2 — REFAL -->
+        <article class="team-card reveal" style="--d:.08s">
+          <span class="team-avatar" aria-hidden="true">R</span>
+          <h3>Refal</h3>
+          <span class="team-role">Website Promosi &amp; Portofolio</span>
+          <p>
+            Membuat website ini untuk mempromosikan jasa pembuatan website portofolio dan otak kodingan chip NFC,
+            sekaligus membuat portofolio untuk orang-orang.
+          </p>
+          <ul class="feat-list">
+            <li><i data-lucide="check"></i>Membuat website promosi ini</li>
+            <li><i data-lucide="check"></i>Mempromosikan jasa website portofolio</li>
+            <li><i data-lucide="check"></i>Mempromosikan otak kodingan chip NFC</li>
+            <li><i data-lucide="check"></i>Membuat portofolio orang-orang</li>
+          </ul>
+          <a class="team-ig" href="https://www.instagram.com/refal_3434/" target="_blank" rel="noopener" aria-label="Instagram Refal">
+            <i data-lucide="instagram"></i> @refal_3434
+          </a>
+        </article>
+
+        <!-- TEAM 3 — BIMZ ZESA -->
+        <article class="team-card reveal" style="--d:.16s">
+          <span class="team-avatar" aria-hidden="true">BZ</span>
+          <h3>Bimz Zesa</h3>
+          <span class="team-role">Desainer Kartu &amp; Gantungan</span>
+          <p>
+            Mendesain kartu gaming dan gantungan Qriya — mulai dari pemilihan gambar, tata letak,
+            hingga tampilan akhir yang siap diproduksi dan dipakai pelanggan.
+          </p>
+          <ul class="feat-list">
+            <li><i data-lucide="check"></i>Mendesain kartu gaming NFC</li>
+            <li><i data-lucide="check"></i>Mendesain gantungan kunci QR</li>
+            <li><i data-lucide="check"></i>Menyiapkan file siap produksi</li>
+          </ul>
+          <a class="team-ig" href="https://www.instagram.com/bimzzesa_/" target="_blank" rel="noopener" aria-label="Instagram Bimz Zesa">
+            <i data-lucide="instagram"></i> @bimzzesa_
+          </a>
+        </article>
+
+      </div>
+
+      <div class="actions reveal" style="justify-content:center;--d:.22s">
+        <a class="btn btn-ghost btn-lg" href="https://www.instagram.com/ppratamaaa24/" target="_blank" rel="noopener">
+          <i data-lucide="instagram"></i> Ikuti Kami di Instagram
+        </a>
+      </div>
     </div>
   </section>
 
@@ -1042,11 +998,11 @@ p{color:var(--muted)}
   <section class="section" id="kontak">
     <div class="container">
       <div class="cta-panel reveal">
-        <span class="eyebrow" style="justify-content:center;display:inline-flex">Masih Ada Pertanyaan?</span>
-        <h2>Belum Menemukan Jawabannya?</h2>
-        <p>Tim Qriya siap bantu jawab pertanyaanmu langsung. Chat kami kapan saja lewat WhatsApp.</p>
+        <span class="eyebrow" style="justify-content:center;display:inline-flex">Mulai Sekarang</span>
+        <h2>Siap Punya Identitas Digitalmu Sendiri?</h2>
+        <p>Pilih paket yang sesuai, dan biarkan gantungan kecil Anda membuka pintu menuju identitas digital.</p>
         <div class="cta-actions">
-          <a class="btn btn-primary btn-lg" href="https://wa.me/6280000000000" target="_blank" rel="noopener">Tanya via WhatsApp <i data-lucide="arrow-right"></i></a>
+          <a class="btn btn-primary btn-lg" href="https://wa.me/6280000000000" target="_blank" rel="noopener">Order via WhatsApp <i data-lucide="arrow-right"></i></a>
           <a class="btn btn-ghost btn-lg" href="paket.html">Lihat Paket</a>
         </div>
       </div>
@@ -1231,59 +1187,6 @@ p{color:var(--muted)}
   }, {threshold:0.14, rootMargin:'0px 0px -8% 0px'});
 
   items.forEach(function(el){ io.observe(el); });
-})();
-
-/* ===== Filter kategori FAQ + Search ===== */
-(function(){
-  var filterBtns = document.querySelectorAll('.faq-filter button');
-  var searchIn   = document.getElementById('faqSearch');
-  var items      = document.querySelectorAll('.faq-item');
-  var empty      = document.getElementById('faqEmpty');
-  if(!items.length) return;
-
-  var activeFilter = 'all';
-  var keyword = '';
-
-  function apply(){
-    var shown = 0;
-    items.forEach(function(item){
-      var cat = item.getAttribute('data-cat') || '';
-      var text = item.textContent.toLowerCase();
-
-      var matchCat = (activeFilter === 'all' || cat === activeFilter);
-      var matchKw  = (keyword === '' || text.indexOf(keyword) !== -1);
-
-      if(matchCat && matchKw){
-        item.style.display = '';
-        shown++;
-      } else {
-        item.style.display = 'none';
-      }
-    });
-    if(empty) empty.classList.toggle('show', shown === 0);
-  }
-
-  filterBtns.forEach(function(btn){
-    btn.addEventListener('click', function(){
-      filterBtns.forEach(function(b){ b.classList.remove('active'); });
-      btn.classList.add('active');
-      activeFilter = btn.getAttribute('data-filter') || 'all';
-      apply();
-    });
-  });
-
-  if(searchIn){
-    var t;
-    searchIn.addEventListener('input', function(){
-      clearTimeout(t);
-      t = setTimeout(function(){
-        keyword = searchIn.value.trim().toLowerCase();
-        apply();
-      }, 120);
-    });
-  }
-
-  apply();
 })();
 </script>
 </body>

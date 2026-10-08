@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Paket &amp; Harga | Qriya — Gantungan QR &amp; Website Digital</title>
-<meta name="description" content="Pilih paket Qriya: Starter, Pro, Business, dan NFC Gaming Card. Harga jelas, fitur lengkap, plus galeri hasil project website.">
+<meta name="description" content="Pilih paket Qriya: Starter, Pro, Business, dan NFC Card (Gaming &amp; Sosmed). Harga jelas, fitur lengkap, plus galeri hasil project website.">
 <meta name="theme-color" content="#050b18">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -168,7 +168,6 @@ p{color:var(--muted)}
 }
 .site-header.scrolled::before{opacity:0}
 
-/* Header saat sidebar mobile terbuka */
 .site-header.menu-open{
   background:rgba(5,11,24,.94);
   backdrop-filter:blur(20px) saturate(140%);
@@ -253,7 +252,6 @@ p{color:var(--muted)}
 .menu-btn[aria-expanded="true"] span:nth-child(3){top:22px;transform:rotate(-45deg)}
 .menu-btn[aria-expanded="true"]{background:rgba(124,58,237,.28);border-color:rgba(167,139,250,.55)}
 
-/* Overlay gelap di belakang sidebar */
 .nav-overlay{
   position:fixed;inset:0;z-index:65;
   background:rgba(2,6,16,.72);
@@ -357,7 +355,7 @@ p{color:var(--muted)}
 .plan .btn{margin-top:28px}
 
 /* =========================================================
-   STARTER — NFC GAMING CARD
+   STARTER — NFC CARD
    ========================================================= */
 .starter-sec{
   background:
@@ -465,15 +463,23 @@ p{color:var(--muted)}
 .starter-card .feat-list{margin-top:22px;flex:1}
 .starter-card .btn{margin-top:26px}
 
+.starter-note{
+  max-width:880px;margin:var(--space-3) auto 0;text-align:center;
+  font-size:.86rem;color:rgba(226,232,240,.82);line-height:1.75;
+  padding:18px 22px;border-radius:14px;
+  background:rgba(255,255,255,.03);border:1px solid var(--line-2);
+}
+.starter-note strong{color:#fff}
+
 /* =========================================================
-   DESIGN KARTU NFC — PREVIEW MOCKUP
+   DESIGN KARTU NFC — PREVIEW MOCKUP (SINGLE)
    ========================================================= */
 .design-sec{margin-top:var(--space-5)}
 .design-grid{
   display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
+  grid-template-columns:1fr;
   gap:24px;
-  max-width:960px;
+  max-width:560px;
   margin-inline:auto;
   align-items:stretch;
 }
@@ -938,7 +944,6 @@ table.cmp tfoot td{
 
   .menu-btn{display:block}
 
-  /* Panel sidebar */
   .nav-links{
     position:fixed;
     top:0;
@@ -974,7 +979,6 @@ table.cmp tfoot td{
     visibility:visible;
   }
 
-  /* Kartu navigasi — ukuran nyaman, tidak kecil */
   .nav-links li{width:100%}
 
   .nav-links a{
@@ -1028,12 +1032,10 @@ table.cmp tfoot td{
     filter:drop-shadow(0 0 10px rgba(124,58,237,.9));
   }
 
-  /* Scrollbar halus di sidebar */
   .nav-links::-webkit-scrollbar{width:6px}
   .nav-links::-webkit-scrollbar-track{background:transparent}
   .nav-links::-webkit-scrollbar-thumb{background:rgba(148,163,184,.28);border-radius:99px}
 
-  /* Comparison table → kartu */
   .cmp-wrap{border:none;background:none;border-radius:0}
   table.cmp{display:block;font-size:.85rem}
   table.cmp thead{display:none}
@@ -1085,7 +1087,6 @@ table.cmp tfoot td{
   .faq-item summary{padding:18px 20px;font-size:.9rem}
   .faq-item .faq-body{padding:0 20px 20px}
 
-  /* STARTER mobile */
   .starter-card{padding:30px 24px 28px}
   .starter-card .btn{width:100%}
   .starter-badge{right:16px;font-size:.56rem;padding:6px 12px}
@@ -1095,11 +1096,9 @@ table.cmp tfoot td{
   .starter-quota{padding:10px 16px;font-size:.66rem}
   .starter-quota strong{font-size:.92rem}
 
-  /* PROJECT mobile */
   .project-grid{grid-template-columns:1fr}
   .project-filter button{font-size:.6rem;padding:9px 14px;letter-spacing:.14em}
 
-  /* LIGHTBOX mobile */
   .lightbox{padding:78px 12px 78px}
   .lb-img{max-height:calc(100vh - 170px);border-radius:10px}
   .lb-btn{width:42px;height:42px;border-radius:12px}
@@ -1110,7 +1109,6 @@ table.cmp tfoot td{
   .lb-reset{bottom:14px;right:110px}
   .lb-hint{top:18px;font-size:.56rem;padding:6px 12px}
 
-  /* Sidebar mobile lebih lega di layar kecil */
   .nav-links{
     width:min(340px,90vw);
     gap:11px;
@@ -1164,7 +1162,6 @@ table.cmp tfoot td{
   </nav>
 </header>
 
-<!-- Overlay gelap saat sidebar mobile terbuka -->
 <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
 
 <main>
@@ -1350,15 +1347,15 @@ table.cmp tfoot td{
   </section>
 
   <!-- =========================================================
-       SECTION — NFC GAMING CARD
+       SECTION — NFC CARD (GAMING & SOSMED)
        ========================================================= -->
-  <section class="section starter-sec" id="nfc-gaming" aria-label="NFC Gaming Card Qriya">
+  <section class="section starter-sec" id="nfc-gaming" aria-label="NFC Card Qriya">
     <div class="container">
 
       <div class="sec-head center reveal">
-        <span class="eyebrow">Starter · NFC Gaming</span>
-        <h2>🎮 STARTER — NFC Gaming Card</h2>
-        <p class="lead">Satu kartu, satu identitas gaming. Cukup <strong>tap NFC</strong> menggunakan smartphone untuk membuka <strong>Gaming Profile</strong> dan mengakses informasi game kamu dengan cepat.</p>
+        <span class="eyebrow">Starter · NFC Card</span>
+        <h2>📡 STARTER — NFC Card</h2>
+        <p class="lead">Satu kartu, satu identitas digital. Cukup <strong>tap NFC</strong> atau <strong>scan QR</strong> menggunakan smartphone untuk membuka <strong>Gaming Profile</strong> atau <strong>Sosial Media</strong> kamu dengan cepat.</p>
       </div>
 
       <div class="starter-launch reveal">
@@ -1377,13 +1374,13 @@ table.cmp tfoot td{
 
       <div class="starter-grid">
 
-        <!-- STARTER NFC -->
+        <!-- STARTER NFC GAMING -->
         <article class="starter-card reveal">
-          <span class="starter-tag">🟢 Harga Normal</span>
-          <h3>Starter</h3>
+          <span class="starter-tag">🎮 NFC Gaming Card</span>
+          <h3>Gaming</h3>
           <div class="starter-price">
             Rp39.000
-            <small>Harga Normal</small>
+            <small>NFC Gaming Card</small>
           </div>
           <p class="starter-desc">
             Cocok untuk gamer yang ingin memiliki kartu NFC dengan <strong>gambar game favorit</strong>
@@ -1399,42 +1396,42 @@ table.cmp tfoot td{
             <li><i data-lucide="zap"></i>Quick Access</li>
           </ul>
 
-          <a class="btn btn-ghost btn-block" href="#order">Ambil Starter</a>
+          <a class="btn btn-ghost btn-block" href="#order">Ambil Gaming Card</a>
         </article>
 
-        <!-- CUSTOM NFC -->
+        <!-- NFC + QR SOSMED -->
         <article class="starter-card featured reveal" style="--d:.1s">
           <span class="starter-badge">⭐ Rekomendasi</span>
-          <span class="starter-tag">⭐ Custom Gaming Card</span>
-          <h3>Custom</h3>
+          <span class="starter-tag">📱QR Sosmed</span>
+          <h3>Sosmed</h3>
           <div class="starter-price">
-            Rp49.000
-            <small>Custom Gaming Card</small>
+            Rp29.000
+            <small>QR Sosmed</small>
           </div>
           <p class="starter-desc">
-            Buat kartu NFC dengan desain gaming custom <strong>plus halaman Gaming Profile</strong>
-            sesuai karakter, nickname, atau tema game favoritmu.
+            QR Code yang langsung terhubung ke <strong>sosial media masing-masing orang</strong>.
+            Cukup scan QR untuk membuka semua akun sosial media kamu dalam satu halaman.
           </p>
 
           <ul class="feat-list">
-            <li><i data-lucide="radio"></i>Semua fitur Starter</li>
-            <li><i data-lucide="palette"></i>Desain Gaming Custom</li>
-            <li><i data-lucide="gamepad-2"></i>Custom Gaming Profile</li>
-            <li><i data-lucide="id-card"></i>Game ID &amp; Username</li>
-            <li><i data-lucide="layers"></i>Multiple Game Profile</li>
-            <li><i data-lucide="link"></i>Link Gaming</li>
-            <li><i data-lucide="tag"></i>Custom Nickname / Branding</li>
-            <li><i data-lucide="zap"></i>NFC Quick Access</li>
+            <li><i data-lucide="qr-code"></i>QR Code Unik</li>
+            <li><i data-lucide="share-2"></i>Halaman Sosial Media</li>
+            <li><i data-lucide="instagram"></i>Instagram</li>
+            <li><i data-lucide="music-2"></i>TikTok</li>
+            <li><i data-lucide="facebook"></i>Facebook</li>
+            <li><i data-lucide="message-circle"></i>WhatsApp</li>
+            <li><i data-lucide="youtube"></i>YouTube</li>
+            <li><i data-lucide="link"></i>Custom Link</li>
           </ul>
 
-          <a class="btn btn-primary btn-block" href="#order">Pre-Order Custom <i data-lucide="arrow-right"></i></a>
+          <a class="btn btn-primary btn-block" href="#order">Pre-Order Sosmed <i data-lucide="arrow-right"></i></a>
         </article>
 
       </div>
 
       <p class="starter-note reveal">
-        <strong>NFC Quick Access ke Game.</strong> Ketuk NFC untuk membuka halaman/link game atau profil gaming.
-        Fitur login otomatis bergantung pada dukungan game, perangkat, dan sistem autentikasi yang digunakan.
+        <strong>NFC + QR Quick Access.</strong> Ketuk NFC atau scan QR untuk membuka halaman gaming atau sosial media kamu.
+        Fitur login otomatis bergantung pada dukungan platform, perangkat, dan sistem autentikasi yang digunakan.
       </p>
 
       <!-- =====================================================
@@ -1444,36 +1441,22 @@ table.cmp tfoot td{
         <div class="sec-head center reveal" style="margin-top:var(--space-5)">
           <span class="eyebrow">Design Kartu</span>
           <h2>Preview Design Kartu NFC.</h2>
-          <p class="lead">Gambaran visual kartu NFC Gaming — Starter dengan gambar/art game, dan Custom dengan desain gaming sesuai tema favoritmu. Klik gambar untuk melihat lebih jelas.</p>
+          <p class="lead">Gambaran visual kartu NFC Gaming — dengan gambar/art game favorit sebagai identitas visual. Klik gambar untuk melihat lebih jelas.</p>
         </div>
 
         <div class="design-grid">
 
-          <!-- DESIGN STARTER -->
-          <article class="design-item reveal">
-            <div class="design-thumb" data-lb="Gambar design kartu NFC Starter">
-              <span class="design-label">🟢 Starter Card</span>
+          <!-- DESIGN STARTER GAMING -->
+          <article class="design-item featured reveal">
+            <div class="design-thumb" data-lb="Gambar design kartu NFC Gaming">
+              <span class="design-label">🎮 Gaming Card</span>
               <span class="design-zoom" aria-hidden="true"><i data-lucide="zoom-in"></i></span>
-              <!-- Ganti src dengan foto design kartu Starter Anda -->
+              <!-- Ganti src dengan foto design kartu NFC Anda -->
               <img src="design-starter.png" alt="Design kartu NFC Gaming Starter Qriya" loading="lazy">
             </div>
             <div class="design-body">
-              <h3>Design Starter — Gambar / Art Game</h3>
+              <h3>Design Gaming — Gambar / Art Game</h3>
               <p>Kartu NFC dengan gambar atau art dari game favoritmu sebagai identitas visual. Simple, clean, dan tetap memperlihatkan Game ID serta username.</p>
-            </div>
-          </article>
-
-          <!-- DESIGN CUSTOM -->
-          <article class="design-item featured reveal" style="--d:.1s">
-            <div class="design-thumb" data-lb="Gambar design kartu NFC Custom">
-              <span class="design-label">⭐ Custom Card</span>
-              <span class="design-zoom" aria-hidden="true"><i data-lucide="zoom-in"></i></span>
-              <!-- Ganti src dengan foto design kartu Custom Anda -->
-              <img src="design-custom.png" alt="Design kartu NFC Gaming Custom Qriya" loading="lazy">
-            </div>
-            <div class="design-body">
-              <h3>Design Custom — Full Gaming Theme</h3>
-              <p>Desain gaming custom sesuai karakter, nickname, atau tema game favoritmu. Ditambah halaman Gaming Profile dengan multiple game profile dan custom branding.</p>
             </div>
           </article>
 
@@ -1873,11 +1856,11 @@ table.cmp tfoot td{
 
         <details class="faq-item reveal" style="--d:.06s">
           <summary>
-            Apa perbedaan Paket Utama dan NFC Gaming Card?
+            Apa perbedaan Paket Utama dan NFC Card?
             <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
           </summary>
           <div class="faq-body">
-            Paket Utama fokus ke website personal/bisnis lengkap dengan QR Code. Sedangkan NFC Gaming Card fokus ke identitas gaming dengan teknologi tap NFC — cocok untuk kamu yang ingin membagikan profil gaming dengan cepat.
+            Paket Utama fokus ke website personal/bisnis lengkap dengan QR Code. Sedangkan NFC Card fokus ke identitas digital praktis — tersedia varian <strong>Gaming Card</strong> untuk identitas gaming dan varian <strong>Sosmed Card</strong> yang langsung terhubung ke sosial media masing-masing orang.
           </div>
         </details>
 
@@ -2068,14 +2051,12 @@ table.cmp tfoot td{
     if(e.key === 'Escape' && isOpen) toggle(false);
   });
 
-  /* Klik di luar header & sidebar menutup menu */
   document.addEventListener('click', function(e){
     if(!isOpen) return;
     if(e.target.closest('#navLinks') || e.target.closest('.site-header')) return;
     toggle(false);
   });
 
-  /* Tutup saat resize ke desktop */
   var rt;
   window.addEventListener('resize', function(){
     clearTimeout(rt);
@@ -2084,7 +2065,6 @@ table.cmp tfoot td{
     }, 120);
   });
 
-  /* Tutup saat orientasi berubah */
   window.addEventListener('orientationchange', function(){ toggle(false); });
 })();
 
@@ -2168,7 +2148,6 @@ table.cmp tfoot td{
 
   if(!lbImg || !lbStage) return;
 
-  // Tingkatan zoom
   var zooms = [1, 1.25, 1.5, 2, 2.5, 3];
   var zi = 0;
   var lastFocus = null;
@@ -2251,7 +2230,6 @@ table.cmp tfoot td{
     else if(e.key === '0'){ reset(); }
   });
 
-  // Hook thumbnail PROJECT → buka lightbox
   document.querySelectorAll('.project-thumb').forEach(function(thumb){
     thumb.addEventListener('click', function(e){
       if(e.target.closest('.project-link')) return;
@@ -2270,7 +2248,6 @@ table.cmp tfoot td{
     });
   });
 
-  // Hook thumbnail DESIGN KARTU → buka lightbox
   document.querySelectorAll('.design-thumb').forEach(function(thumb){
     thumb.addEventListener('click', function(e){
       var img = thumb.querySelector('img');
