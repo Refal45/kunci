@@ -182,36 +182,66 @@ p{color:var(--muted)}
   display:flex;align-items:center;justify-content:space-between;gap:24px;
 }
 
+/* =========================================================
+   BRAND — LOCKED (tidak bisa diubah/diedit)
+   Brand text dikunci agar konsisten dengan logo di foto
+   ========================================================= */
 .brand{
   display:flex;align-items:center;gap:12px;flex-shrink:0;
   transition:transform .35s var(--ease);
+  user-select:none;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  -webkit-touch-callout:none;
+  -webkit-user-modify:read-only;
+  cursor:pointer;
 }
 .brand img{
   height:52px;width:auto;max-width:120px;object-fit:contain;
   transition:transform .35s var(--ease),filter .35s ease;
   filter:drop-shadow(0 0 14px rgba(79,70,229,.45));
+  user-select:none;
+  -webkit-user-select:none;
+  -webkit-user-drag:none;
+  pointer-events:none;
 }
 .brand-text{
   display:flex;flex-direction:column;line-height:1;
   font-family:"Plus Jakarta Sans",system-ui,sans-serif;
+  user-select:none;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  -webkit-touch-callout:none;
+  -webkit-user-modify:read-only;
+  pointer-events:none;
 }
 .brand-text .b-name{
   font-size:1.45rem;font-weight:800;letter-spacing:-.02em;
   background:linear-gradient(120deg,#ffffff 0%,#c4b5fd 55%,#a5b4fc 100%);
   -webkit-background-clip:text;background-clip:text;color:transparent;
   text-shadow:0 0 22px rgba(124,58,237,.35);
+  white-space:nowrap;
 }
 .brand-text .b-tag{
   margin-top:6px;
   font-family:"JetBrains Mono",ui-monospace,monospace;
   font-size:.56rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
   color:rgba(165,180,252,.78);
+  white-space:nowrap;
 }
 .brand:hover{transform:scale(1.02)}
 .brand:hover img{filter:drop-shadow(0 0 22px rgba(124,58,237,.8))}
 .brand:hover .brand-text .b-name{
   background:linear-gradient(120deg,#ffffff 0%,#a5b4fc 45%,#7dd3fc 100%);
   -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+/* Cegah ekstensi/editor mengubah brand */
+.brand [contenteditable="true"],
+.brand [contenteditable=""]{
+  -webkit-user-modify:read-only;
+  pointer-events:none;
 }
 
 .nav-links{display:flex;gap:2px;align-items:center}
@@ -777,7 +807,6 @@ table.cmp tfoot td{
     radial-gradient(700px 420px at 88% 100%, rgba(124,58,237,.16), transparent 62%);
 }
 
-/* Pre-order banner */
 .starter-launch{
   display:grid;
   grid-template-columns:auto 1fr auto;
@@ -839,7 +868,6 @@ table.cmp tfoot td{
   -webkit-background-clip:text;background-clip:text;color:transparent;
 }
 
-/* Pricing grid */
 .starter-grid{
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
@@ -908,7 +936,6 @@ table.cmp tfoot td{
 .starter-card .feat-list{margin-top:22px;flex:1}
 .starter-card .btn{margin-top:26px}
 
-/* Card preview (depan & belakang) */
 .starter-preview{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -946,7 +973,6 @@ table.cmp tfoot td{
   border:1px solid rgba(255,255,255,.16);color:#e0e7ff;
 }
 
-/* Feature grid */
 .starter-feat-grid{
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
@@ -969,7 +995,6 @@ table.cmp tfoot td{
 .starter-feat h3{margin-top:18px;font-size:1rem;letter-spacing:.01em}
 .starter-feat p{margin-top:10px;font-size:.86rem;line-height:1.65}
 
-/* Brand row in feature card */
 .brand-row{
   display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;
 }
@@ -982,7 +1007,6 @@ table.cmp tfoot td{
 .brand-row span:hover{transform:translateY(-2px);background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.24)}
 .brand-row .bi{width:18px;height:18px}
 
-/* Note */
 .starter-note{
   margin-top:var(--space-3);
   padding:20px 24px;
@@ -1126,16 +1150,12 @@ table.cmp tfoot td{
   .location-wrap{grid-template-columns:1fr}
   .map-frame{min-height:340px}
 
-  /* STARTER tablet */
   .starter-grid{grid-template-columns:1fr;max-width:560px}
   .starter-feat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .starter-launch{grid-template-columns:1fr;}
   .starter-quota{justify-self:start}
 }
 
-/* =========================================================
-   MOBILE NAV — SIDEBAR DARI KANAN
-   ========================================================= */
 @media (max-width:880px){
 
   .menu-btn{display:block}
@@ -1232,7 +1252,6 @@ table.cmp tfoot td{
   .nav-links::-webkit-scrollbar-track{background:transparent}
   .nav-links::-webkit-scrollbar-thumb{background:rgba(148,163,184,.28);border-radius:99px}
 
-  /* Comparison table → kartu */
   .cmp-wrap{border:none;background:none;border-radius:0}
   table.cmp{display:block;font-size:.85rem}
   table.cmp thead{display:none}
@@ -1292,7 +1311,6 @@ table.cmp tfoot td{
   .map-frame{min-height:300px}
   .location-info{padding:26px 22px}
 
-  /* STARTER mobile */
   .starter-feat-grid{grid-template-columns:1fr}
   .starter-card{padding:30px 24px 28px}
   .starter-card .btn{width:100%}
@@ -1334,9 +1352,16 @@ table.cmp tfoot td{
 <header class="site-header" id="siteHeader">
   <nav class="nav" aria-label="Navigasi utama">
 
-    <a class="brand" href="beranda.html" aria-label="NEXORA — Beranda">
-      <img src="foto1.jpg" alt="Logo NEXORA">
-      <span class="brand-text">
+    <!-- BRAND LOCKED: teks NEXORA tidak bisa diubah/diedit -->
+    <a class="brand"
+       href="beranda.html"
+       aria-label="NEXORA — Beranda"
+       data-brand-lock="true"
+       contenteditable="false"
+       spellcheck="false"
+       translate="no">
+      <img src="foto1.jpg" alt="Logo NEXORA" draggable="false" oncontextmenu="return false">
+      <span class="brand-text" contenteditable="false" translate="no">
         <span class="b-name">NEXORA</span>
         <span class="b-tag">NFC Card</span>
       </span>
@@ -1544,14 +1569,12 @@ table.cmp tfoot td{
   <section class="section starter-sec" id="starter" aria-label="NFC Card NEXORA — Sosmed dan Bisnis">
     <div class="container">
 
-      <!-- HEADER -->
       <div class="sec-head center reveal">
         <span class="eyebrow">NFC Card · Sosmed &amp; Bisnis</span>
         <h2>📡 NFC CARD — Sosmed &amp; Bisnis</h2>
         <p class="lead">Satu kartu, satu identitas digital. Cukup <strong>tap NFC</strong> atau <strong>scan QR</strong> menggunakan smartphone untuk membuka <strong>halaman Sosial Media</strong> atau <strong>profil Bisnis</strong> kamu dengan cepat. <br>Klik pada foto kartu untuk melihat <strong>detail desain lebih besar</strong>.</p>
       </div>
 
-      <!-- PRE-ORDER BANNER -->
       <div class="starter-launch reveal">
         <span class="starter-fire">🔥 PRE-ORDER 15 UNIT</span>
 
@@ -1566,7 +1589,6 @@ table.cmp tfoot td{
         </div>
       </div>
 
-      <!-- PRICING CARDS -->
       <div class="starter-grid">
 
         <!-- CARD 1: NFC SOSMED -->
@@ -1675,7 +1697,6 @@ table.cmp tfoot td{
 
       </div>
 
-      <!-- FITUR NFC CARD -->
       <div class="sec-head center reveal" style="margin-top:var(--space-5)">
         <span class="eyebrow">Fitur NFC Card</span>
         <h2>Yang Kamu Dapatkan.</h2>
@@ -1737,7 +1758,6 @@ table.cmp tfoot td{
         </article>
       </div>
 
-      <!-- CATATAN NFC -->
       <p class="starter-note reveal">
         <strong>NFC + QR Quick Access.</strong> Ketuk NFC atau scan QR untuk membuka halaman sosial media atau profil bisnis kamu.
         Fitur login otomatis bergantung pada dukungan platform, perangkat, dan sistem autentikasi yang digunakan.
@@ -1788,7 +1808,6 @@ table.cmp tfoot td{
 
       <div class="pricing">
 
-        <!-- STARTER -->
         <article class="plan reveal">
           <span class="tag">Starter Project</span>
           <h3>Starter</h3>
@@ -1824,7 +1843,6 @@ table.cmp tfoot td{
           <a class="btn btn-ghost btn-block" href="paket.html">Lihat Detail Paket</a>
         </article>
 
-        <!-- PRO -->
         <article class="plan featured reveal" style="--d:.1s">
           <span class="tag">Pro Project · Populer</span>
           <h3>Pro</h3>
@@ -1862,7 +1880,6 @@ table.cmp tfoot td{
           <a class="btn btn-primary btn-block" href="paket.html">Lihat Detail Paket <i data-lucide="arrow-right"></i></a>
         </article>
 
-        <!-- BUSINESS -->
         <article class="plan reveal" style="--d:.2s">
           <span class="tag">Business Project</span>
           <h3>Business</h3>
@@ -2001,7 +2018,6 @@ table.cmp tfoot td{
 
       <p class="note reveal">Harga Business Custom dapat menyesuaikan tingkat kompleksitas sistem dan kebutuhan fitur pelanggan.</p>
 
-      <!-- COMPARISON -->
       <div class="sec-head center reveal" style="margin-top:var(--space-5)">
         <span class="eyebrow">Perbandingan</span>
         <h2>Business Comparison.</h2>
@@ -2337,9 +2353,16 @@ table.cmp tfoot td{
   <div class="container footer-grid">
 
     <div class="f-brand">
-      <a class="brand" href="beranda.html" aria-label="NEXORA — Beranda">
-        <img src="foto1.jpg" alt="Logo NEXORA">
-        <span class="brand-text">
+      <!-- BRAND LOCKED di footer -->
+      <a class="brand"
+         href="beranda.html"
+         aria-label="NEXORA — Beranda"
+         data-brand-lock="true"
+         contenteditable="false"
+         spellcheck="false"
+         translate="no">
+        <img src="foto1.jpg" alt="Logo NEXORA" draggable="false" oncontextmenu="return false">
+        <span class="brand-text" contenteditable="false" translate="no">
           <span class="b-name">NEXORA</span>
           <span class="b-tag">NFC Card</span>
         </span>
@@ -2408,7 +2431,7 @@ table.cmp tfoot td{
   </div>
 
   <div class="lightbox-stage" id="lbStage">
-    <img id="lbImg" src="" alt="">
+    <img id="lbImg" src="" alt="" draggable="false">
   </div>
 
   <div class="lightbox-caption" id="lbCaption"></div>
@@ -2533,6 +2556,78 @@ table.cmp tfoot td{
   items.forEach(function(el){ io.observe(el); });
 })();
 
+/* ===== BRAND LOCK =====
+   Lindungi brand NEXORA agar tidak bisa diubah / diedit
+   (oleh CMS, visual editor, ekstensi browser, maupun script lain)
+*/
+(function(){
+  var LOCKED_BRAND = 'NEXORA';
+  var LOCKED_TAG   = 'NFC Card';
+
+  function lockBrand(){
+    document.querySelectorAll('.brand[data-brand-lock="true"]').forEach(function(brand){
+      // Nonaktifkan contenteditable secara paksa
+      brand.setAttribute('contenteditable', 'false');
+      brand.setAttribute('spellcheck', 'false');
+      brand.setAttribute('translate', 'no');
+
+      var text = brand.querySelector('.brand-text');
+      if(text){
+        text.setAttribute('contenteditable', 'false');
+        text.setAttribute('translate', 'no');
+      }
+
+      var bName = brand.querySelector('.b-name');
+      if(bName){
+        bName.setAttribute('contenteditable', 'false');
+        // Paksa teks tetap NEXORA jika ada yang coba ubah
+        if(bName.textContent.trim() !== LOCKED_BRAND){
+          bName.textContent = LOCKED_BRAND;
+        }
+        // MutationObserver: cegah perubahan isi teks
+        if(!bName.__lockObserver){
+          bName.__lockObserver = new MutationObserver(function(){
+            if(bName.textContent.trim() !== LOCKED_BRAND){
+              bName.textContent = LOCKED_BRAND;
+            }
+          });
+          bName.__lockObserver.observe(bName, {childList:true, characterData:true, subtree:true});
+        }
+      }
+
+      var bTag = brand.querySelector('.b-tag');
+      if(bTag){
+        bTag.setAttribute('contenteditable', 'false');
+        if(bTag.textContent.trim() !== LOCKED_TAG){
+          bTag.textContent = LOCKED_TAG;
+        }
+        if(!bTag.__lockObserver){
+          bTag.__lockObserver = new MutationObserver(function(){
+            if(bTag.textContent.trim() !== LOCKED_TAG){
+              bTag.textContent = LOCKED_TAG;
+            }
+          });
+          bTag.__lockObserver.observe(bTag, {childList:true, characterData:true, subtree:true});
+        }
+      }
+
+      // Cegah drag pada gambar logo
+      var img = brand.querySelector('img');
+      if(img){
+        img.setAttribute('draggable', 'false');
+        img.addEventListener('dragstart', function(e){ e.preventDefault(); });
+      }
+    });
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', lockBrand);
+  } else {
+    lockBrand();
+  }
+  window.addEventListener('load', lockBrand);
+})();
+
 /* ===== Lightbox / Image Zoom ===== */
 (function(){
   var lb        = document.getElementById('lightbox');
@@ -2590,7 +2685,6 @@ table.cmp tfoot td{
       scale = 1;
       applyScale();
     } else {
-      // zoom ke arah klik
       var rect = lbImg.getBoundingClientRect();
       var cx = ((ev.clientX - rect.left) / rect.width) * 100;
       var cy = ((ev.clientY - rect.top) / rect.height) * 100;
@@ -2602,17 +2696,14 @@ table.cmp tfoot td{
     }
   }
 
-  // Klik pada element dengan [data-zoom]
   document.querySelectorAll('[data-zoom]').forEach(function(el){
     el.addEventListener('click', function(e){
-      // cegah trigger jika klik tombol/link di dalam
       if(e.target.closest('a,button')) return;
       var img = el.tagName === 'IMG' ? el : el.querySelector('img');
       if(!img) return;
       var caption = el.getAttribute('data-caption') || img.alt || '';
       open(img.src, img.alt, caption);
     });
-    // tambah tabindex agar bisa diakses keyboard
     if(!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '0');
     el.setAttribute('role', 'button');
     el.addEventListener('keydown', function(e){
@@ -2636,12 +2727,10 @@ table.cmp tfoot td{
     }
   });
 
-  // klik backdrop menutup
   lb.addEventListener('click', function(e){
     if(e.target === lb) close();
   });
 
-  // keyboard
   document.addEventListener('keydown', function(e){
     if(!isOpen) return;
     if(e.key === 'Escape') close();
@@ -2650,7 +2739,6 @@ table.cmp tfoot td{
     else if(e.key === '0'){ scale = 1; applyScale(); }
   });
 
-  // swipe / wheel zoom
   lbStage.addEventListener('wheel', function(e){
     if(!isOpen) return;
     if(e.ctrlKey){ e.preventDefault(); return; }
