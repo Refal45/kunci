@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Demo | Qriya — Gantungan QR &amp; Website Digital</title>
-<meta name="description" content="Lihat demo gantungan kunci QR Qriya: simulasi scan, preview website asli di dalam smartphone, dan galeri hasil project website.">
+<title>Demo | NEXORA — NFC Card &amp; Website Digital</title>
+<meta name="description" content="Lihat demo NFC Card NEXORA: simulasi tap NFC / scan QR, preview website asli di dalam smartphone, dan galeri hasil project website.">
 <meta name="theme-color" content="#050b18">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -187,30 +187,59 @@ p{color:var(--muted)}
 .brand{
   display:flex;align-items:center;gap:12px;flex-shrink:0;
   transition:transform .35s var(--ease);
+  user-select:none;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  -webkit-touch-callout:none;
+  -webkit-user-modify:read-only;
+  cursor:pointer;
 }
 .brand img{
   height:52px;width:auto;max-width:120px;object-fit:contain;
   transition:transform .35s var(--ease),filter .35s ease;
   filter:drop-shadow(0 0 14px rgba(79,70,229,.45));
+  user-select:none;
+  -webkit-user-select:none;
+  -webkit-user-drag:none;
+  pointer-events:none;
 }
 .brand-text{
   display:flex;flex-direction:column;line-height:1;
   font-family:"Plus Jakarta Sans",system-ui,sans-serif;
+  user-select:none;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  -webkit-touch-callout:none;
+  -webkit-user-modify:read-only;
+  pointer-events:none;
 }
 .brand-text .b-name{
   font-size:1.45rem;font-weight:800;letter-spacing:-.02em;
   background:linear-gradient(120deg,#ffffff 0%,#c4b5fd 55%,#a5b4fc 100%);
   -webkit-background-clip:text;background-clip:text;color:transparent;
   text-shadow:0 0 22px rgba(124,58,237,.35);
+  white-space:nowrap;
 }
 .brand-text .b-tag{
   margin-top:6px;
   font-family:"JetBrains Mono",ui-monospace,monospace;
   font-size:.56rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
   color:rgba(165,180,252,.78);
+  white-space:nowrap;
 }
 .brand:hover{transform:scale(1.02)}
 .brand:hover img{filter:drop-shadow(0 0 22px rgba(124,58,237,.8))}
+.brand:hover .brand-text .b-name{
+  background:linear-gradient(120deg,#ffffff 0%,#a5b4fc 45%,#7dd3fc 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.brand [contenteditable="true"],
+.brand [contenteditable=""]{
+  -webkit-user-modify:read-only;
+  pointer-events:none;
+}
 
 .nav-links{display:flex;gap:2px;align-items:center}
 .nav-links a{
@@ -630,7 +659,6 @@ p{color:var(--muted)}
 .phone-btn-vol-down{top:25%;height:7%}
 .phone-btn-power{top:34%;height:11%}
 
-/* Layar: rasio persis 412 x 924 (Pixel 10) */
 .phone-screen{
   position:relative;
   width:100%;
@@ -642,25 +670,6 @@ p{color:var(--muted)}
   box-shadow:inset 0 0 0 1px rgba(0,0,0,.6);
 }
 
-/* =========================================================
-   IFRAME — viewport internal PAS 412 × 924 (Pixel 10)
-   ---------------------------------------------------------
-   METODE HD (anti-burik):
-   • Konten iframe TIDAK di-`transform: scale()` (itulah yang
-     membuat teks jadi blur karena di-raster 1x lalu diperbesar).
-   • Scaling memakai properti CSS `zoom`, yang mengubah skala
-     render di dalam frame itu sendiri — sama seperti fitur
-     zoom browser, sehingga teks dirender ulang di resolusi
-     akhir dan tetap TAJAM / HD.
-   • Karena `zoom` memengaruhi layout, lebar iframe tetap
-     ditulis 412px di dalam ruang zoom-nya, jadi website di
-     dalamnya TETAP melihat viewport 412 × 924 persis.
-   • Scrollbar disembunyikan dengan melebarkan iframe
-     +SCROLLBAR_W ke kanan; bagian itu di-clip oleh
-     .phone-screen { overflow:hidden }.
-   • Jika browser tidak mendukung `zoom`, otomatis jatuh ke
-     fallback transform: scale() (via JS).
-   ========================================================= */
 .phone-screen iframe{
   position:absolute;
   top:0;left:0;
@@ -681,7 +690,6 @@ p{color:var(--muted)}
   visibility:visible;
 }
 
-/* Idle state */
 .screen-idle{
   position:absolute;inset:0;z-index:2;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
@@ -714,7 +722,6 @@ p{color:var(--muted)}
   max-width:24ch;
 }
 
-/* Loading overlay */
 .screen-loading{
   position:absolute;inset:0;z-index:4;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
@@ -740,7 +747,6 @@ p{color:var(--muted)}
   color:#a5b4fc;
 }
 
-/* Error overlay */
 .screen-error{
   position:absolute;inset:0;z-index:5;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
@@ -1305,11 +1311,17 @@ p{color:var(--muted)}
 <header class="site-header" id="siteHeader">
   <nav class="nav" aria-label="Navigasi utama">
 
-    <a class="brand" href="beranda.html" aria-label="Qriya — Beranda">
-      <img src="foto1.jpg" alt="Logo Qriya">
-      <span class="brand-text">
-        <span class="b-name">Qriya</span>
-        <span class="b-tag">QR Keychain</span>
+    <a class="brand"
+       href="beranda.html"
+       aria-label="NEXORA — Beranda"
+       data-brand-lock="true"
+       contenteditable="false"
+       spellcheck="false"
+       translate="no">
+      <img src="foto1.jpg" alt="Logo NEXORA" draggable="false" oncontextmenu="return false">
+      <span class="brand-text" contenteditable="false" translate="no">
+        <span class="b-name">NEXORA</span>
+        <span class="b-tag">NFC Card</span>
       </span>
     </a>
 
@@ -1336,7 +1348,7 @@ p{color:var(--muted)}
   <!-- =========================================================
        PAGE HERO
        ========================================================= -->
-  <section class="page-hero" aria-label="Demo Qriya">
+  <section class="page-hero" aria-label="Demo NEXORA">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="beranda.html">Beranda</a>
@@ -1349,7 +1361,7 @@ p{color:var(--muted)}
         Lihat Website Personal Anda <span class="grad-text">Secara Langsung.</span>
       </h1>
       <p class="lead reveal" style="--d:.12s">
-        Scan QR Code pada gantungan dan langsung buka website personal Anda. Lihat bagaimana website tampil di perangkat mobile secara nyata.
+        Tap NFC atau scan QR Code pada kartu NEXORA dan langsung buka website personal Anda. Lihat bagaimana website tampil di perangkat mobile secara nyata.
       </p>
 
       <div class="actions reveal" style="--d:.18s">
@@ -1365,9 +1377,9 @@ p{color:var(--muted)}
   <section class="section" id="simulasi">
     <div class="container">
       <div class="sec-head center reveal">
-        <span class="eyebrow">Simulasi Scan</span>
-        <h2>Scan QR, Website Terbuka.</h2>
-        <p class="lead">Pilih contoh website, tekan tombol scan, lalu tunggu proses scan selesai. Website akan muncul di layar ponsel dengan ukuran Google Pixel 10 (412 × 924).</p>
+        <span class="eyebrow">Simulasi Tap / Scan</span>
+        <h2>Tap NFC atau Scan QR, Website Terbuka.</h2>
+        <p class="lead">Pilih contoh website, tekan tombol simulasi, lalu tunggu proses selesai. Website akan muncul di layar ponsel dengan ukuran Google Pixel 10 (412 × 924).</p>
       </div>
 
       <div class="demo-stage reveal">
@@ -1376,10 +1388,10 @@ p{color:var(--muted)}
         <div class="qr-col">
 
           <div class="qr-card" id="qrCard">
-            <span class="qr-tag"><i data-lucide="qr-code"></i>QR Keychain Demo</span>
+            <span class="qr-tag"><i data-lucide="credit-card"></i>NFC Card Demo</span>
 
             <div class="qr-frame">
-              <img id="qrImage" src="scan.png" alt="Contoh QR Code Qriya">
+              <img id="qrImage" src="scan.png" alt="Contoh QR Code NEXORA">
               <span class="qr-scan-line" aria-hidden="true"></span>
 
               <div class="qr-success" id="qrSuccess">
@@ -1391,19 +1403,19 @@ p{color:var(--muted)}
               </div>
             </div>
 
-            <h3 id="qrTitle">Gantungan Qriya · Portfolio</h3>
+            <h3 id="qrTitle">NFC Card NEXORA · Portfolio</h3>
             <p class="qr-url" id="qrUrlText">refal45.github.io/portofolio/index.html</p>
 
             <div class="qr-actions">
               <button class="btn btn-primary btn-block" type="button" id="btnScan">
-                <i data-lucide="scan-line"></i>Simulasikan Scan QR
+                <i data-lucide="scan-line"></i>Simulasikan Tap / Scan
               </button>
               <button class="btn btn-ghost btn-block" type="button" id="btnReset">
                 <i data-lucide="rotate-ccw"></i>Reset Demo
               </button>
             </div>
 
-            <p class="scan-status" id="scanStatus">Status: Siap dipindai</p>
+            <p class="scan-status" id="scanStatus">Status: Siap di-tap / dipindai</p>
           </div>
 
           <div class="url-panel">
@@ -1474,12 +1486,10 @@ p{color:var(--muted)}
 
               <div class="screen-idle" id="screenIdle">
                 <div class="idle-ico"><i data-lucide="smartphone"></i></div>
-                <h4>Menunggu Scan</h4>
-                <p>Viewport 412 × 924 · Tekan tombol scan</p>
+                <h4>Menunggu Tap / Scan</h4>
+                <p>Viewport 412 × 924 · Tekan tombol simulasi</p>
               </div>
 
-              <!-- IFRAME — viewport internal PERSIS 412 × 924 (Pixel 10)
-                   Di-scale pakai CSS `zoom` (HD, teks tajam) via JS. -->
               <iframe
                 id="demoFrame"
                 src="about:blank"
@@ -1521,9 +1531,9 @@ p{color:var(--muted)}
     <div class="container split reverse">
       <div>
         <span class="eyebrow reveal">Website Personal</span>
-        <h2 class="reveal" style="--d:.06s">Satu Gantungan, Satu Identitas Digital.</h2>
+        <h2 class="reveal" style="--d:.06s">Satu Kartu, Satu Identitas Digital.</h2>
         <p class="lead reveal" style="--d:.12s">
-          Setiap gantungan Qriya terhubung ke satu website personal yang menampilkan profil, portfolio, kontak, dan media sosial Anda dalam satu halaman.
+          Setiap NFC Card NEXORA terhubung ke satu website personal yang menampilkan profil, portfolio, kontak, dan media sosial Anda dalam satu halaman.
         </p>
 
         <div class="info-list">
@@ -1549,17 +1559,17 @@ p{color:var(--muted)}
             </div>
           </article>
           <article class="info-item reveal" style="--d:.36s">
-            <div class="ico" aria-hidden="true"><i data-lucide="qr-code"></i></div>
+            <div class="ico" aria-hidden="true"><i data-lucide="nfc"></i></div>
             <div>
-              <h3>Bisa Dibuka via QR Code</h3>
-              <p>Cukup satu scan dari gantungan Qriya, website langsung terbuka.</p>
+              <h3>Bisa Dibuka via NFC &amp; QR Code</h3>
+              <p>Cukup satu tap atau scan dari kartu NEXORA, website langsung terbuka.</p>
             </div>
           </article>
         </div>
       </div>
 
       <figure class="split-media reveal" style="--d:.1s">
-        <img src="foto5.jpg" alt="Proses scan QR Code gantungan Qriya menggunakan smartphone" loading="lazy">
+        <img src="foto5.jpg" alt="Proses tap NFC Card NEXORA menggunakan smartphone" loading="lazy">
       </figure>
     </div>
   </section>
@@ -1572,15 +1582,15 @@ p{color:var(--muted)}
       <div class="sec-head center reveal">
         <span class="eyebrow">Cara Kerja</span>
         <h2>Semudah 3 Langkah.</h2>
-        <p class="lead">Dari gantungan fisik menuju halaman digital, tanpa proses yang rumit.</p>
+        <p class="lead">Dari kartu fisik menuju halaman digital, tanpa proses yang rumit.</p>
       </div>
 
       <div class="steps">
         <article class="step reveal">
           <span class="num">01</span>
           <div class="step-ico" aria-hidden="true"><i data-lucide="scan-line"></i></div>
-          <h3>Scan QR</h3>
-          <p>Pengguna scan QR Code pada gantungan menggunakan kamera smartphone.</p>
+          <h3>Tap / Scan</h3>
+          <p>Pengguna tap NFC atau scan QR Code pada kartu menggunakan smartphone.</p>
         </article>
 
         <article class="step reveal" style="--d:.1s">
@@ -1603,12 +1613,12 @@ p{color:var(--muted)}
   <!-- =========================================================
        SECTION — GALERI PROJECT
        ========================================================= -->
-  <section class="section project-sec" id="galeri-project" aria-label="Galeri project website Qriya">
+  <section class="section project-sec" id="galeri-project" aria-label="Galeri project website NEXORA">
     <div class="container">
 
       <div class="sec-head center reveal">
         <span class="eyebrow">Galeri Project</span>
-        <h2>Hasil Project Website Qriya.</h2>
+        <h2>Hasil Project Website NEXORA.</h2>
         <p class="lead">Beberapa contoh halaman digital yang sudah dibuat untuk berbagai kebutuhan — personal, komunitas, hingga bisnis. Klik foto untuk melihat lebih jelas.</p>
       </div>
 
@@ -1628,7 +1638,7 @@ p{color:var(--muted)}
               <i data-lucide="arrow-up-right"></i>
             </a>
             <span class="project-zoom" aria-hidden="true"><i data-lucide="zoom-in"></i></span>
-            <img src="portofolio.png" alt="Project website portofolio Qriya" loading="lazy">
+            <img src="portofolio.png" alt="Project website portofolio NEXORA" loading="lazy">
           </div>
           <div class="project-body">
             <h3>Website Portofolio</h3>
@@ -1646,7 +1656,7 @@ p{color:var(--muted)}
               <i data-lucide="arrow-up-right"></i>
             </a>
             <span class="project-zoom" aria-hidden="true"><i data-lucide="zoom-in"></i></span>
-            <img src="umkm.png" alt="Project website UMKM Qriya" loading="lazy">
+            <img src="umkm.png" alt="Project website UMKM NEXORA" loading="lazy">
           </div>
           <div class="project-body">
             <h3>Website UMKM Desa Serang</h3>
@@ -1664,7 +1674,7 @@ p{color:var(--muted)}
               <i data-lucide="arrow-up-right"></i>
             </a>
             <span class="project-zoom" aria-hidden="true"><i data-lucide="zoom-in"></i></span>
-            <img src="kopi.png" alt="Project website kedai kopi Qriya" loading="lazy">
+            <img src="kopi.png" alt="Project website kedai kopi NEXORA" loading="lazy">
           </div>
           <div class="project-body">
             <h3>Website Kedai Kopi</h3>
@@ -1682,7 +1692,7 @@ p{color:var(--muted)}
               <i data-lucide="arrow-up-right"></i>
             </a>
             <span class="project-zoom" aria-hidden="true"><i data-lucide="zoom-in"></i></span>
-            <img src="komunitas.png" alt="Project website komunitas Qriya" loading="lazy">
+            <img src="komunitas.png" alt="Project website komunitas NEXORA" loading="lazy">
           </div>
           <div class="project-body">
             <h3>Website Komunitas</h3>
@@ -1700,7 +1710,7 @@ p{color:var(--muted)}
               <i data-lucide="arrow-up-right"></i>
             </a>
             <span class="project-zoom" aria-hidden="true"><i data-lucide="zoom-in"></i></span>
-            <img src="cv.png" alt="Project website CV online Qriya" loading="lazy">
+            <img src="cv.png" alt="Project website CV online NEXORA" loading="lazy">
           </div>
           <div class="project-body">
             <h3>Website CV Online</h3>
@@ -1718,7 +1728,7 @@ p{color:var(--muted)}
               <i data-lucide="arrow-up-right"></i>
             </a>
             <span class="project-zoom" aria-hidden="true"><i data-lucide="zoom-in"></i></span>
-            <img src="rumah.png" alt="Project website properti rumah Qriya" loading="lazy">
+            <img src="rumah.png" alt="Project website properti rumah NEXORA" loading="lazy">
           </div>
           <div class="project-body">
             <h3>Website Properti Rumah</h3>
@@ -1746,7 +1756,7 @@ p{color:var(--muted)}
       <div class="sec-head center reveal">
         <span class="eyebrow">Pertanyaan Umum</span>
         <h2>Hal yang Sering Ditanyakan.</h2>
-        <p class="lead">Beberapa pertanyaan yang paling sering muncul seputar demo dan penggunaan Qriya.</p>
+        <p class="lead">Beberapa pertanyaan yang paling sering muncul seputar demo dan penggunaan NEXORA.</p>
       </div>
 
       <div class="faq-list">
@@ -1762,7 +1772,7 @@ p{color:var(--muted)}
 
         <details class="faq-item reveal" style="--d:.06s">
           <summary>
-            Kenapa website tidak muncul setelah scan selesai?
+            Kenapa website tidak muncul setelah tap atau scan selesai?
             <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
           </summary>
           <div class="faq-body">
@@ -1772,11 +1782,11 @@ p{color:var(--muted)}
 
         <details class="faq-item reveal" style="--d:.12s">
           <summary>
-            Apakah website Qriya bisa dibuka dari semua smartphone?
+            Apakah website NEXORA bisa dibuka dari semua smartphone?
             <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
           </summary>
           <div class="faq-body">
-            Ya. Website Qriya dibangun responsif dan diuji di berbagai perangkat — Android, iPhone, tablet, hingga laptop. Selama ada kamera dan browser, halaman bisa diakses.
+            Ya. Website NEXORA dibangun responsif dan diuji di berbagai perangkat — Android, iPhone, tablet, hingga laptop. Untuk tap NFC, dibutuhkan smartphone yang mendukung NFC. Untuk QR Code, cukup gunakan kamera bawaan.
           </div>
         </details>
 
@@ -1815,10 +1825,10 @@ p{color:var(--muted)}
       <div class="cta-panel reveal">
         <span class="eyebrow" style="justify-content:center;display:inline-flex">Mulai Sekarang</span>
         <h2>Siap Punya Identitas Digital Sendiri?</h2>
-        <p>Pilih paket Qriya yang sesuai, dan ubah satu scan menjadi pengalaman digital milikmu.</p>
+        <p>Pilih paket NEXORA yang sesuai, dan ubah satu tap menjadi pengalaman digital milikmu.</p>
         <div class="cta-actions">
           <a class="btn btn-primary btn-lg" href="paket.html">
-            Pesan Gantungan Sekarang <i data-lucide="arrow-right"></i>
+            Pesan NFC Card Sekarang <i data-lucide="arrow-right"></i>
           </a>
           <a class="btn btn-ghost btn-lg" href="https://wa.me/6280000000000" target="_blank" rel="noopener">Order via WhatsApp</a>
         </div>
@@ -1835,14 +1845,20 @@ p{color:var(--muted)}
   <div class="container footer-grid">
 
     <div class="f-brand">
-      <a class="brand" href="beranda.html" aria-label="Qriya — Beranda">
-        <img src="foto1.jpg" alt="Logo Qriya">
-        <span class="brand-text">
-          <span class="b-name">Qriya</span>
-          <span class="b-tag">QR Keychain</span>
+      <a class="brand"
+         href="beranda.html"
+         aria-label="NEXORA — Beranda"
+         data-brand-lock="true"
+         contenteditable="false"
+         spellcheck="false"
+         translate="no">
+        <img src="foto1.jpg" alt="Logo NEXORA" draggable="false" oncontextmenu="return false">
+        <span class="brand-text" contenteditable="false" translate="no">
+          <span class="b-name">NEXORA</span>
+          <span class="b-tag">NFC Card</span>
         </span>
       </a>
-      <p>Qriya menghadirkan gantungan QR yang menghubungkan dunia fisik dengan identitas digital. Satu scan untuk membuka website personal maupun bisnis Anda.</p>
+      <p>NEXORA menghadirkan NFC Card yang menghubungkan dunia fisik dengan identitas digital. Satu tap untuk membuka website personal maupun bisnis Anda.</p>
     </div>
 
     <div class="f-col">
@@ -1860,10 +1876,10 @@ p{color:var(--muted)}
     <div class="f-col">
       <h4>Produk</h4>
       <ul>
-        <li><a href="paket.html">QR Keychain</a></li>
+        <li><a href="paket.html">NFC Card Sosmed</a></li>
+        <li><a href="paket.html">NFC Card Bisnis</a></li>
         <li><a href="paket.html">Website Personal</a></li>
         <li><a href="paket.html">Website Bisnis</a></li>
-        <li><a href="paket.html">Digital Identity</a></li>
       </ul>
     </div>
 
@@ -1882,8 +1898,8 @@ p{color:var(--muted)}
   </div>
 
   <div class="container footer-bottom">
-    <p>© 2026 Qriya. All rights reserved.</p>
-    <p>Gantungan → Scan → Website → Identitas Digital</p>
+    <p>© 2026 NEXORA. All rights reserved.</p>
+    <p>NFC Card → Tap / Scan → Website → Identitas Digital</p>
   </div>
 </footer>
 
@@ -1909,7 +1925,6 @@ const demoLinks = {
   umkm:      "https://umkmserangjuara.com/"
 };
 
-/* Gambar QR per demo — UMKM memakai scan2.png */
 const demoQRImages = {
   portfolio: "scan.png",
   cv:        "scan.png",
@@ -1918,17 +1933,12 @@ const demoQRImages = {
 };
 
 const demoQRTitles = {
-  portfolio: "Gantungan Qriya · Portfolio",
-  cv:        "Gantungan Qriya · CV Online",
-  personal:  "Gantungan Qriya · Personal",
-  umkm:      "Gantungan Qriya · UMKM"
+  portfolio: "NFC Card NEXORA · Portfolio",
+  cv:        "NFC Card NEXORA · CV Online",
+  personal:  "NFC Card NEXORA · Personal",
+  umkm:      "NFC Card NEXORA · UMKM"
 };
 
-/* =========================================================
-   VIEWPORT TARGET: Google Pixel 10
-   Lebar & tinggi ini = ukuran "layar" yang dilihat website
-   di dalam iframe (bukan ukuran tampilan di halaman).
-   ========================================================= */
 const PIXEL_W = 412;
 const PIXEL_H = 924;
 
@@ -1984,11 +1994,6 @@ let activeKey  = DEFAULT_DEMO_KEY;
 let scanBusy   = false;
 let scanTimers = [];
 
-/* =========================================================
-   LEBAR SCROLLBAR PLATFORM
-   0  = overlay scrollbar (Android / iOS / macOS) → tidak perlu gutter
-   >0 = classic scrollbar (Windows / Linux)        → perlu gutter
-   ========================================================= */
 const SCROLLBAR_W = (function(){
   try{
     const probe = document.createElement('div');
@@ -2003,14 +2008,6 @@ const SCROLLBAR_W = (function(){
   }
 })();
 
-/* =========================================================
-   DETEKSI DUKUNGAN CSS `zoom`
-   ---------------------------------------------------------
-   `zoom` dipakai karena mengubah skala render DI DALAM frame,
-   sehingga teks dirender ulang pada resolusi akhir → TAJAM/HD.
-   (Beda dengan transform: scale() yang me-raster 1x lalu
-   diperbesar, sehingga teks terlihat blur.)
-   ========================================================= */
 const USE_CSS_ZOOM = (function(){
   try{
     if(typeof CSS !== 'undefined' && CSS && typeof CSS.supports === 'function'){
@@ -2022,15 +2019,6 @@ const USE_CSS_ZOOM = (function(){
   }
 })();
 
-/* =========================================================
-   AUTO-FIT IFRAME KE LAYAR MOCKUP  (HD / TAJAM)
-   ---------------------------------------------------------
-   iframe selalu dirender dengan viewport internal:
-       width  = 412px (+ SCROLLBAR_W) , height = 924px
-   Lalu diskalakan dengan:
-       • CSS `zoom`  → teks dirender ulang di skala akhir (HD)
-       • fallback transform: scale() bila zoom tidak didukung
-   ========================================================= */
 function fitPhoneFrame(){
   if(!phoneScreen || !demoFrame) return;
 
@@ -2040,18 +2028,15 @@ function fitPhoneFrame(){
   const baseW = PIXEL_W + SCROLLBAR_W;
   const scale = screenW / PIXEL_W;
 
-  // Dimensi viewport internal iframe (yang dilihat website).
   demoFrame.style.width  = baseW + 'px';
   demoFrame.style.height = PIXEL_H + 'px';
 
   if(USE_CSS_ZOOM){
-    // HD: zoom me-render ulang isi frame pada skala akhir.
     demoFrame.style.transform = 'none';
     demoFrame.style.willChange = 'auto';
     demoFrame.style.setProperty('zoom', String(scale));
     demoFrame.style.setProperty('-webkit-zoom', String(scale));
   }else{
-    // Fallback: transform scale (kompatibilitas maksimal).
     demoFrame.style.removeProperty('zoom');
     demoFrame.style.removeProperty('-webkit-zoom');
     demoFrame.style.transformOrigin = '0 0';
@@ -2070,9 +2055,6 @@ if('ResizeObserver' in window && phoneScreen){
   new ResizeObserver(fitPhoneFrame).observe(phoneScreen);
 }
 
-/* =========================================================
-   UTILITY: Validasi & Normalisasi URL
-   ========================================================= */
 function normalizeUrl(raw){
   if(!raw) return null;
   let s = String(raw).trim();
@@ -2091,9 +2073,6 @@ function normalizeUrl(raw){
   }
 }
 
-/* =========================================================
-   STATUS UI
-   ========================================================= */
 function showIdle(){
   if(screenIdle) screenIdle.classList.remove('hidden');
   if(screenLoading) screenLoading.classList.add('hidden');
@@ -2124,9 +2103,6 @@ function showWebsite(){
   if(liveText) liveText.textContent = 'Live Preview · 412 × 924';
 }
 
-/* =========================================================
-   UPDATE QR CARD (gambar QR berganti sesuai pilihan demo)
-   ========================================================= */
 function setQRImage(src){
   if(!qrImage) return;
   const current = qrImage.getAttribute('src');
@@ -2147,7 +2123,7 @@ function updateQRCard(key){
 
   setQRImage(demoQRImages[key] || "scan.png");
 
-  if(qrTitle) qrTitle.textContent = demoQRTitles[key] || "Gantungan Qriya · Demo";
+  if(qrTitle) qrTitle.textContent = demoQRTitles[key] || "NFC Card NEXORA · Demo";
 
   const url = demoLinks[key];
   if(url && qrUrlText) qrUrlText.textContent = url.replace(/^https?:\/\//, '');
@@ -2157,9 +2133,6 @@ function updateQRCard(key){
   });
 }
 
-/* =========================================================
-   LOAD DEMO KE IFRAME
-   ========================================================= */
 function loadDemo(rawUrl){
   const url = normalizeUrl(rawUrl);
   if(!url){
@@ -2183,15 +2156,11 @@ if(demoFrame){
       showIdle();
       return;
     }
-    // Paksa fit ulang setiap iframe selesai load (font/layout berubah).
     fitPhoneFrame();
     showWebsite();
   });
 }
 
-/* =========================================================
-   SIMULASI SCAN QR
-   ========================================================= */
 function clearScanTimers(){
   scanTimers.forEach(t => clearTimeout(t));
   scanTimers = [];
@@ -2203,7 +2172,7 @@ function resetScan(){
   if(qrCard) qrCard.classList.remove('scanning');
   if(qrSuccess) qrSuccess.classList.remove('show');
   if(scanStatus){
-    scanStatus.textContent = 'Status: Siap dipindai';
+    scanStatus.textContent = 'Status: Siap di-tap / dipindai';
     scanStatus.className = 'scan-status';
   }
 }
@@ -2229,25 +2198,22 @@ if(qrCard && btnScan){
 
     showIdle();
 
-    // 1. Animasi scan
     qrCard.classList.add('scanning');
     if(qrSuccess) qrSuccess.classList.remove('show');
     if(scanStatus){
-      scanStatus.textContent = 'Status: Memindai QR…';
+      scanStatus.textContent = 'Status: Memindai…';
       scanStatus.className = 'scan-status active';
     }
 
-    // 2. Scan sukses
     scanTimers.push(setTimeout(() => {
       qrCard.classList.remove('scanning');
       if(qrSuccess) qrSuccess.classList.add('show');
       if(scanStatus){
-        scanStatus.textContent = 'Status: Scan berhasil ✓';
+        scanStatus.textContent = 'Status: Berhasil ✓';
         scanStatus.className = 'scan-status success';
       }
     }, 2000));
 
-    // 3. Load website
     scanTimers.push(setTimeout(() => {
       if(qrSuccess) qrSuccess.classList.remove('show');
       if(scanStatus){
@@ -2258,7 +2224,6 @@ if(qrCard && btnScan){
       if(targetUrl) loadDemo(targetUrl);
     }, 2800));
 
-    // 4. Selesai
     scanTimers.push(setTimeout(() => {
       if(scanStatus){
         scanStatus.textContent = 'Status: Website terbuka ✓';
@@ -2272,9 +2237,6 @@ if(qrCard && btnScan){
 if(btnReset) btnReset.addEventListener('click', fullReset);
 window.addEventListener('beforeunload', clearScanTimers);
 
-/* =========================================================
-   FORM URL (langsung tampilkan website di HP)
-   ========================================================= */
 if(urlForm){
   urlForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -2285,11 +2247,6 @@ if(urlForm){
   });
 }
 
-/* =========================================================
-   TOMBOL CONTOH LINK (Portfolio / CV / Personal / UMKM)
-   Pilih contoh -> gambar QR berganti (UMKM = scan2.png),
-   HP kembali ke "Menunggu Scan", lalu tekan "Simulasikan Scan QR".
-   ========================================================= */
 document.querySelectorAll('[data-demo]').forEach(btn => {
   btn.addEventListener('click', () => {
     const key = btn.getAttribute('data-demo');
@@ -2306,7 +2263,6 @@ document.querySelectorAll('[data-demo]').forEach(btn => {
   });
 });
 
-/* Refresh & Buka Tab Baru */
 if(btnRefresh){
   btnRefresh.addEventListener('click', () => {
     if(!activeUrl) return;
@@ -2398,6 +2354,73 @@ if(btnOpenTab){
     }
   }, {passive:true});
   update();
+})();
+
+/* =========================================================
+   BRAND LOCK
+   ========================================================= */
+(function(){
+  var LOCKED_BRAND = 'NEXORA';
+  var LOCKED_TAG   = 'NFC Card';
+
+  function lockBrand(){
+    document.querySelectorAll('.brand[data-brand-lock="true"]').forEach(function(brand){
+      brand.setAttribute('contenteditable', 'false');
+      brand.setAttribute('spellcheck', 'false');
+      brand.setAttribute('translate', 'no');
+
+      var text = brand.querySelector('.brand-text');
+      if(text){
+        text.setAttribute('contenteditable', 'false');
+        text.setAttribute('translate', 'no');
+      }
+
+      var bName = brand.querySelector('.b-name');
+      if(bName){
+        bName.setAttribute('contenteditable', 'false');
+        if(bName.textContent.trim() !== LOCKED_BRAND){
+          bName.textContent = LOCKED_BRAND;
+        }
+        if(!bName.__lockObserver){
+          bName.__lockObserver = new MutationObserver(function(){
+            if(bName.textContent.trim() !== LOCKED_BRAND){
+              bName.textContent = LOCKED_BRAND;
+            }
+          });
+          bName.__lockObserver.observe(bName, {childList:true, characterData:true, subtree:true});
+        }
+      }
+
+      var bTag = brand.querySelector('.b-tag');
+      if(bTag){
+        bTag.setAttribute('contenteditable', 'false');
+        if(bTag.textContent.trim() !== LOCKED_TAG){
+          bTag.textContent = LOCKED_TAG;
+        }
+        if(!bTag.__lockObserver){
+          bTag.__lockObserver = new MutationObserver(function(){
+            if(bTag.textContent.trim() !== LOCKED_TAG){
+              bTag.textContent = LOCKED_TAG;
+            }
+          });
+          bTag.__lockObserver.observe(bTag, {childList:true, characterData:true, subtree:true});
+        }
+      }
+
+      var img = brand.querySelector('img');
+      if(img){
+        img.setAttribute('draggable', 'false');
+        img.addEventListener('dragstart', function(e){ e.preventDefault(); });
+      }
+    });
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', lockBrand);
+  } else {
+    lockBrand();
+  }
+  window.addEventListener('load', lockBrand);
 })();
 
 /* =========================================================

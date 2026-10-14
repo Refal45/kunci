@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Tentang Kami | Qriya — Gantungan QR &amp; Website Digital</title>
-<meta name="description" content="Kenali Qriya lebih dekat — visi, misi, nilai, dan tim di balik gantungan QR yang menghubungkan dunia fisik dengan identitas digital.">
+<title>Tentang Kami | NEXORA — NFC Card &amp; Website Digital</title>
+<meta name="description" content="Kenali NEXORA lebih dekat — visi, misi, nilai, dan tim di balik NFC Card yang menghubungkan dunia fisik dengan identitas digital. Tap Into the Future.">
 <meta name="theme-color" content="#050b18">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -186,33 +186,42 @@ p{color:var(--muted)}
 .brand{
   display:flex;align-items:center;gap:12px;flex-shrink:0;
   transition:transform .35s var(--ease);
+  user-select:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;
+  -webkit-touch-callout:none;-webkit-user-modify:read-only;cursor:pointer;
 }
 .brand img{
   height:52px;width:auto;max-width:120px;object-fit:contain;
   transition:transform .35s var(--ease),filter .35s ease;
   filter:drop-shadow(0 0 14px rgba(79,70,229,.45));
+  user-select:none;-webkit-user-select:none;-webkit-user-drag:none;pointer-events:none;
 }
 .brand-text{
   display:flex;flex-direction:column;line-height:1;
   font-family:"Plus Jakarta Sans",system-ui,sans-serif;
+  user-select:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;
+  -webkit-touch-callout:none;-webkit-user-modify:read-only;pointer-events:none;
 }
 .brand-text .b-name{
   font-size:1.45rem;font-weight:800;letter-spacing:-.02em;
   background:linear-gradient(120deg,#ffffff 0%,#c4b5fd 55%,#a5b4fc 100%);
   -webkit-background-clip:text;background-clip:text;color:transparent;
-  text-shadow:0 0 22px rgba(124,58,237,.35);
+  text-shadow:0 0 22px rgba(124,58,237,.35);white-space:nowrap;
 }
 .brand-text .b-tag{
   margin-top:6px;
   font-family:"JetBrains Mono",ui-monospace,monospace;
   font-size:.56rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
-  color:rgba(165,180,252,.78);
+  color:rgba(165,180,252,.78);white-space:nowrap;
 }
 .brand:hover{transform:scale(1.02)}
 .brand:hover img{filter:drop-shadow(0 0 22px rgba(124,58,237,.8))}
 .brand:hover .brand-text .b-name{
   background:linear-gradient(120deg,#ffffff 0%,#a5b4fc 45%,#7dd3fc 100%);
   -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.brand [contenteditable="true"],
+.brand [contenteditable=""]{
+  -webkit-user-modify:read-only;pointer-events:none;
 }
 
 .nav-links{display:flex;gap:2px;align-items:center}
@@ -552,15 +561,108 @@ p{color:var(--muted)}
 .note strong{color:#fff}
 
 /* =========================================================
+   MAKNA NAMA — 3 KARTU (Next · Aura · NFC)
+   ========================================================= */
+.name-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:22px;
+  align-items:stretch;
+  margin-top:var(--space-3);
+}
+.name-card{
+  position:relative;
+  padding:34px 30px 32px;
+  border-radius:var(--r-xl);
+  border:1px solid var(--line-2);
+  background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015));
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  transition:transform .42s var(--ease),border-color .42s ease,box-shadow .42s ease;
+  overflow:hidden;
+}
+.name-card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(139,92,246,.45);
+  box-shadow:0 24px 54px rgba(3,7,22,.55),0 0 36px rgba(79,70,229,.18);
+}
+.name-card::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(420px 200px at 20% 0%, rgba(56,189,248,.12), transparent 70%);
+}
+.name-card > *{position:relative}
+.name-card .name-tag{
+  display:inline-block;
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:#7dd3fc;margin-bottom:14px;
+}
+.name-card h3{
+  font-size:1.45rem;font-weight:800;letter-spacing:-.025em;
+  background:linear-gradient(120deg,#fff,#c4b5fd);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  line-height:1.15;
+}
+.name-card h3 small{
+  display:block;margin-top:8px;
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  -webkit-text-fill-color:initial;color:#a5b4fc;
+}
+.name-card p{margin-top:16px;font-size:.88rem;line-height:1.75}
+
+/* =========================================================
+   SLOGAN PANEL
+   ========================================================= */
+.slogan-panel{
+  position:relative;overflow:hidden;
+  padding:var(--space-5) clamp(28px,5vw,72px);
+  border-radius:var(--r-xl);
+  border:1px solid rgba(255,255,255,.16);
+  background:
+    radial-gradient(700px 380px at 20% 10%, rgba(56,189,248,.20), transparent 60%),
+    radial-gradient(700px 420px at 85% 95%, rgba(124,58,237,.28), transparent 62%),
+    linear-gradient(135deg,rgba(37,99,235,.18),rgba(124,58,237,.16));
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  box-shadow:0 30px 80px rgba(3,6,22,.55),inset 0 1px 0 rgba(255,255,255,.12);
+  text-align:center;
+}
+.slogan-panel > *{position:relative}
+.slogan-panel h2{
+  max-width:26ch;margin-inline:auto;
+  font-size:clamp(1.8rem,4vw,2.8rem);
+  letter-spacing:-.03em;
+}
+.slogan-quote{
+  display:inline-flex;align-items:center;gap:12px;
+  margin-top:22px;
+  padding:12px 24px;border-radius:999px;
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:#e0e7ff;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.18);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+}
+.slogan-quote svg.lucide{width:15px;height:15px;color:#a5b4fc}
+.slogan-panel p{
+  margin:22px auto 0;
+  font-size:clamp(.94rem,1.2vw,1.04rem);
+  max-width:56ch;
+  line-height:1.85;
+}
+
+/* =========================================================
    RESPONSIVE
    ========================================================= */
 @media (max-width:1120px){
   .value-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .name-grid{grid-template-columns:1fr 1fr}
 }
 @media (max-width:980px){
   .about-split{grid-template-columns:1fr;gap:var(--space-3)}
   .vm-grid{grid-template-columns:1fr}
   .team-grid{grid-template-columns:1fr;max-width:560px;margin-inline:auto}
+  .name-grid{grid-template-columns:1fr;max-width:560px;margin-inline:auto}
   .footer-grid{grid-template-columns:1fr 1fr;gap:36px}
   .f-brand{grid-column:1 / -1}
 }
@@ -684,6 +786,9 @@ p{color:var(--muted)}
   .team-avatar{width:84px;height:84px;font-size:1.45rem}
   .team-ig{width:100%;justify-content:center}
   .about-visual{padding:22px}
+  .name-card{padding:28px 24px 26px}
+  .name-card h3{font-size:1.28rem}
+  .slogan-panel{padding:var(--space-4) clamp(24px,5vw,40px)}
 
   .nav-links{
     width:min(340px,90vw);
@@ -714,11 +819,17 @@ p{color:var(--muted)}
 <header class="site-header" id="siteHeader">
   <nav class="nav" aria-label="Navigasi utama">
 
-    <a class="brand" href="beranda.html" aria-label="Qriya — Beranda">
-      <img src="foto1.jpg" alt="Logo Qriya">
-      <span class="brand-text">
-        <span class="b-name">Qriya</span>
-        <span class="b-tag">QR Keychain</span>
+    <a class="brand"
+       href="beranda.html"
+       aria-label="NEXORA — Beranda"
+       data-brand-lock="true"
+       contenteditable="false"
+       spellcheck="false"
+       translate="no">
+      <img src="foto1.jpg" alt="Logo NEXORA" draggable="false" oncontextmenu="return false">
+      <span class="brand-text" contenteditable="false" translate="no">
+        <span class="b-name">NEXORA</span>
+        <span class="b-tag">NFC Card</span>
       </span>
     </a>
 
@@ -745,7 +856,7 @@ p{color:var(--muted)}
   <!-- =========================================================
        PAGE HERO
        ========================================================= -->
-  <section class="page-hero" aria-label="Tentang Qriya">
+  <section class="page-hero" aria-label="Tentang NEXORA">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="beranda.html">Beranda</a>
@@ -755,10 +866,10 @@ p{color:var(--muted)}
 
       <span class="eyebrow reveal">Tentang Kami</span>
       <h1 class="reveal" style="--d:.06s">
-        Gantungan Kecil, <span class="grad-text">Identitas Digital Tanpa Batas.</span>
+        Tap Into <span class="grad-text">the Future.</span>
       </h1>
       <p class="lead reveal" style="--d:.12s">
-        Qriya lahir dari ide sederhana: menghubungkan dunia fisik dengan dunia digital lewat satu gantungan QR. Satu scan, satu identitas, tanpa ribet.
+        NEXORA melambangkan inovasi, konektivitas, dan masa depan digital — menghubungkan dunia fisik dengan dunia digital melalui satu sentuhan.
       </p>
 
       <div class="actions reveal" style="--d:.18s">
@@ -769,7 +880,7 @@ p{color:var(--muted)}
   </section>
 
   <!-- =========================================================
-       SECTION — CERITA QRIYA
+       SECTION — CERITA NEXORA
        ========================================================= -->
   <section class="section about-sec" id="cerita">
     <div class="container">
@@ -778,7 +889,7 @@ p{color:var(--muted)}
 
         <div class="about-copy reveal">
           <span class="eyebrow">Cerita Kami</span>
-          <h2>Dari Sebuah Gantungan, Menjadi Pintu Identitas Digital.</h2>
+          <h2>Dari Sebuah Kartu, Menjadi Pintu Identitas Digital.</h2>
 
           <p>
             Semua berawal dari satu pertanyaan: <strong>kenapa berbagi kontak, portofolio, atau sosial media masih harus ribet?</strong>
@@ -786,13 +897,13 @@ p{color:var(--muted)}
           </p>
 
           <p>
-            Qriya hadir sebagai jawabannya. Kami membuat <strong>gantungan kunci ber-QR Code</strong> yang langsung terhubung
+            NEXORA hadir sebagai jawabannya. Kami membuat <strong>NFC Card ber-QR Code</strong> yang langsung terhubung
             ke sebuah website digital — bisa berisi profil, portofolio, CV online, katalog bisnis, hingga kumpulan sosial media.
-            Cukup satu scan, semua informasi terbuka.
+            Cukup satu tap atau satu scan, semua informasi terbuka.
           </p>
 
           <p>
-            Setiap gantungan Qriya dikerjakan dengan <strong>desain custom</strong>, dicetak dengan QR yang sudah diuji,
+            Setiap NFC Card NEXORA dikerjakan dengan <strong>desain custom</strong>, diprogram dengan NFC yang sudah diuji,
             lalu dihubungkan ke website yang dibangun khusus sesuai kebutuhan pemiliknya. Bukan sekadar produk fisik —
             ini adalah identitas digital yang bisa dibawa ke mana saja.
           </p>
@@ -802,10 +913,10 @@ p{color:var(--muted)}
           </div>
         </div>
 
-        <aside class="about-visual reveal" style="--d:.12s" aria-label="Statistik Qriya">
+        <aside class="about-visual reveal" style="--d:.12s" aria-label="Statistik NEXORA">
           <div class="stat-grid">
             <div class="stat">
-              <b>1 Scan</b>
+              <b>1 Tap</b>
               <span>Langsung Terhubung</span>
             </div>
             <div class="stat">
@@ -817,11 +928,58 @@ p{color:var(--muted)}
               <span>HP · Tablet · Laptop</span>
             </div>
             <div class="stat">
-              <b>QR Unik</b>
-              <span>1 Gantungan = 1 Website</span>
+              <b>NFC Unik</b>
+              <span>1 Kartu = 1 Website</span>
             </div>
           </div>
         </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION — MAKNA NAMA NEXORA
+       ========================================================= -->
+  <section class="section" id="makna-nama">
+    <div class="container">
+      <div class="sec-head center reveal">
+        <span class="eyebrow">Makna Nama</span>
+        <h2>Next + Aura.</h2>
+        <p class="lead">
+          Nama <strong>NEXORA</strong> dapat dimaknai sebagai perpaduan <strong>Next</strong> — generasi berikutnya,
+          dan <strong>Aura</strong> — karakter serta identitas unik seseorang.
+        </p>
+      </div>
+
+      <div class="name-grid">
+
+        <article class="name-card reveal">
+          <span class="name-tag">01 — Next</span>
+          <h3>Masa Depan<small>Innovation</small></h3>
+          <p>
+            Menggambarkan semangat untuk terus berinovasi dan menghadirkan pengalaman digital yang lebih praktis
+            dalam kehidupan sehari-hari.
+          </p>
+        </article>
+
+        <article class="name-card reveal" style="--d:.08s">
+          <span class="name-tag">02 — Aura</span>
+          <h3>Identitas<small>Character</small></h3>
+          <p>
+            Melambangkan keunikan setiap individu yang dapat diekspresikan melalui desain dan fungsi kartu
+            yang sepenuhnya dapat dipersonalisasi.
+          </p>
+        </article>
+
+        <article class="name-card reveal" style="--d:.16s">
+          <span class="name-tag">03 — NFC Card</span>
+          <h3>Konektivitas<small>Connection</small></h3>
+          <p>
+            Merepresentasikan teknologi yang menghubungkan dunia fisik dengan dunia digital hanya melalui
+            satu sentuhan sederhana.
+          </p>
+        </article>
 
       </div>
     </div>
@@ -844,8 +1002,8 @@ p{color:var(--muted)}
           <span class="ico"><i data-lucide="target"></i></span>
           <h3>Visi</h3>
           <p>
-            Menjadi brand identitas digital paling praktis di Indonesia — menghubungkan setiap orang, komunitas, dan bisnis
-            dengan satu sentuhan fisik yang sederhana namun berdampak besar.
+            Menjadi brand kartu NFC yang inovatif dan modern untuk menghubungkan manusia
+            dengan pengalaman digital secara praktis dan kreatif.
           </p>
         </article>
 
@@ -853,14 +1011,35 @@ p{color:var(--muted)}
           <span class="ico"><i data-lucide="list-checks"></i></span>
           <h3>Misi</h3>
           <ul class="feat-list">
-            <li><i data-lucide="check"></i>Menyediakan gantungan QR dengan desain custom yang rapi dan berkualitas.</li>
-            <li><i data-lucide="check"></i>Membangun website personal &amp; bisnis yang cepat, responsif, dan mudah dipakai.</li>
-            <li><i data-lucide="check"></i>Membuat teknologi identitas digital jadi terjangkau untuk semua kalangan.</li>
-            <li><i data-lucide="check"></i>Mendampingi pelanggan dari desain, produksi, hingga website siap pakai.</li>
-            <li><i data-lucide="check"></i>Menjaga kualitas QR Code dan performa website agar selalu berfungsi dengan baik.</li>
+            <li><i data-lucide="check"></i>Menghadirkan produk kartu NFC dengan desain menarik dan fungsional.</li>
+            <li><i data-lucide="check"></i>Mempermudah akses ke profil digital, media sosial, informasi, maupun fitur lain yang didukung perangkat.</li>
+            <li><i data-lucide="check"></i>Menggabungkan teknologi, kreativitas, dan personalisasi dalam satu produk.</li>
+            <li><i data-lucide="check"></i>Mendorong penggunaan teknologi digital yang praktis dalam kehidupan sehari-hari.</li>
           </ul>
         </article>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION — SLOGAN "TAP INTO THE FUTURE"
+       ========================================================= -->
+  <section class="section" id="slogan">
+    <div class="container">
+      <div class="slogan-panel reveal">
+        <span class="eyebrow" style="justify-content:center;display:inline-flex">Slogan Kami</span>
+        <h2>Tap Into <span class="grad-text">the Future.</span></h2>
+
+        <div class="slogan-quote">
+          <i data-lucide="sparkles"></i>
+          Sentuh untuk memasuki masa depan
+        </div>
+
+        <p>
+          Satu kali tap menjadi simbol kemudahan dalam mengakses informasi dan layanan digital
+          tanpa proses yang rumit. <strong>Sederhana, cepat, dan berkelas.</strong>
+        </p>
       </div>
     </div>
   </section>
@@ -873,7 +1052,7 @@ p{color:var(--muted)}
       <div class="sec-head center reveal">
         <span class="eyebrow">Nilai Kami</span>
         <h2>Prinsip yang Kami Pegang.</h2>
-        <p class="lead">Empat hal yang selalu jadi dasar setiap project Qriya — dari desain gantungan sampai website jadi.</p>
+        <p class="lead">Empat hal yang selalu jadi dasar setiap project NEXORA — dari desain kartu sampai website jadi.</p>
       </div>
 
       <div class="value-grid">
@@ -881,19 +1060,19 @@ p{color:var(--muted)}
         <article class="value-card reveal">
           <span class="ico"><i data-lucide="sparkles"></i></span>
           <h3>Simpel</h3>
-          <p>Satu scan, langsung terbuka. Tanpa aplikasi tambahan, tanpa langkah berbelit.</p>
+          <p>Satu tap, langsung terbuka. Tanpa aplikasi tambahan, tanpa langkah berbelit.</p>
         </article>
 
         <article class="value-card reveal" style="--d:.06s">
           <span class="ico"><i data-lucide="palette"></i></span>
           <h3>Custom</h3>
-          <p>Setiap gantungan dan website dibuat sesuai karakter, tema, dan kebutuhan pemiliknya.</p>
+          <p>Setiap kartu dan website dibuat sesuai karakter, tema, dan kebutuhan pemiliknya.</p>
         </article>
 
         <article class="value-card reveal" style="--d:.12s">
           <span class="ico"><i data-lucide="shield-check"></i></span>
           <h3>Teruji</h3>
-          <p>QR Code diuji sebelum dikirim. Website dipastikan responsif di HP, tablet, dan laptop.</p>
+          <p>NFC &amp; QR Code diuji sebelum dikirim. Website dipastikan responsif di HP, tablet, dan laptop.</p>
         </article>
 
         <article class="value-card reveal" style="--d:.18s">
@@ -905,7 +1084,7 @@ p{color:var(--muted)}
       </div>
 
       <p class="note reveal">
-        <strong>Qriya bukan sekadar gantungan.</strong> Ini adalah jembatan antara kamu dan dunia digital —
+        <strong>NEXORA bukan sekadar kartu.</strong> Ini adalah jembatan antara kamu dan dunia digital —
         dibuat agar siapa pun bisa punya identitas online yang rapi, cepat diakses, dan mudah dibagikan.
       </p>
     </div>
@@ -918,8 +1097,8 @@ p{color:var(--muted)}
     <div class="container">
       <div class="sec-head center reveal">
         <span class="eyebrow">Tim Kami</span>
-        <h2>Orang di Balik Qriya.</h2>
-        <p class="lead">Tim kecil dengan pembagian peran yang jelas — dari merakit otak chip NFC, membuat website portofolio, sampai mendesain kartu gaming dan gantungan.</p>
+        <h2>Orang di Balik NEXORA.</h2>
+        <p class="lead">Tim kecil dengan pembagian peran yang jelas — dari merakit otak chip NFC, membuat website portofolio, sampai mendesain kartu NFC.</p>
       </div>
 
       <div class="team-grid">
@@ -931,12 +1110,12 @@ p{color:var(--muted)}
           <span class="team-role">NFC Programmer &amp; Web Portofolio</span>
           <p>
             Membuat kodingan otak di chip NFC, membuat website portofolio, dan mempromosikan
-            barang-barang Qriya ke orang banyak.
+            produk-produk NEXORA ke orang banyak.
           </p>
           <ul class="feat-list">
             <li><i data-lucide="check"></i>Membuat kodingan otak di chip NFC</li>
             <li><i data-lucide="check"></i>Membuat website portofolio</li>
-            <li><i data-lucide="check"></i>Mempromosikan barangnya ke orang banyak</li>
+            <li><i data-lucide="check"></i>Mempromosikan produknya ke orang banyak</li>
           </ul>
           <a class="team-ig" href="https://www.instagram.com/ppratamaaa24/" target="_blank" rel="noopener" aria-label="Instagram P. Pratama">
             <i data-lucide="instagram"></i> @ppratamaaa24
@@ -967,14 +1146,14 @@ p{color:var(--muted)}
         <article class="team-card reveal" style="--d:.16s">
           <span class="team-avatar" aria-hidden="true">BZ</span>
           <h3>Bimz Zesa</h3>
-          <span class="team-role">Desainer Kartu &amp; Gantungan</span>
+          <span class="team-role">Desainer Kartu NFC</span>
           <p>
-            Mendesain kartu gaming dan gantungan Qriya — mulai dari pemilihan gambar, tata letak,
+            Mendesain kartu NFC NEXORA — mulai dari pemilihan gambar, tata letak,
             hingga tampilan akhir yang siap diproduksi dan dipakai pelanggan.
           </p>
           <ul class="feat-list">
-            <li><i data-lucide="check"></i>Mendesain kartu gaming NFC</li>
-            <li><i data-lucide="check"></i>Mendesain gantungan kunci QR</li>
+            <li><i data-lucide="check"></i>Mendesain NFC Card</li>
+            <li><i data-lucide="check"></i>Menyusun layout depan &amp; belakang</li>
             <li><i data-lucide="check"></i>Menyiapkan file siap produksi</li>
           </ul>
           <a class="team-ig" href="https://www.instagram.com/bimzzesa_/" target="_blank" rel="noopener" aria-label="Instagram Bimz Zesa">
@@ -999,8 +1178,8 @@ p{color:var(--muted)}
     <div class="container">
       <div class="cta-panel reveal">
         <span class="eyebrow" style="justify-content:center;display:inline-flex">Mulai Sekarang</span>
-        <h2>Siap Punya Identitas Digitalmu Sendiri?</h2>
-        <p>Pilih paket yang sesuai, dan biarkan gantungan kecil Anda membuka pintu menuju identitas digital.</p>
+        <h2>Siap Tap Into the Future?</h2>
+        <p>Pilih paket yang sesuai, dan biarkan NFC Card Anda membuka pintu menuju identitas digital.</p>
         <div class="cta-actions">
           <a class="btn btn-primary btn-lg" href="https://wa.me/6280000000000" target="_blank" rel="noopener">Order via WhatsApp <i data-lucide="arrow-right"></i></a>
           <a class="btn btn-ghost btn-lg" href="paket.html">Lihat Paket</a>
@@ -1018,14 +1197,20 @@ p{color:var(--muted)}
   <div class="container footer-grid">
 
     <div class="f-brand">
-      <a class="brand" href="beranda.html" aria-label="Qriya — Beranda">
-        <img src="foto1.jpg" alt="Logo Qriya">
-        <span class="brand-text">
-          <span class="b-name">Qriya</span>
-          <span class="b-tag">QR Keychain</span>
+      <a class="brand"
+         href="beranda.html"
+         aria-label="NEXORA — Beranda"
+         data-brand-lock="true"
+         contenteditable="false"
+         spellcheck="false"
+         translate="no">
+        <img src="foto1.jpg" alt="Logo NEXORA" draggable="false" oncontextmenu="return false">
+        <span class="brand-text" contenteditable="false" translate="no">
+          <span class="b-name">NEXORA</span>
+          <span class="b-tag">NFC Card</span>
         </span>
       </a>
-      <p>Qriya menghadirkan gantungan QR yang menghubungkan dunia fisik dengan identitas digital. Satu scan untuk membuka website personal maupun bisnis Anda.</p>
+      <p>NEXORA menghadirkan NFC Card yang menghubungkan dunia fisik dengan identitas digital. Satu tap untuk membuka website personal maupun bisnis Anda. Tap Into the Future.</p>
     </div>
 
     <div class="f-col">
@@ -1043,10 +1228,10 @@ p{color:var(--muted)}
     <div class="f-col">
       <h4>Produk</h4>
       <ul>
-        <li><a href="paket.html">QR Keychain</a></li>
+        <li><a href="paket.html">NFC Card Sosmed</a></li>
+        <li><a href="paket.html">NFC Card Bisnis</a></li>
         <li><a href="paket.html">Website Personal</a></li>
         <li><a href="paket.html">Website Bisnis</a></li>
-        <li><a href="paket.html">Digital Identity</a></li>
       </ul>
     </div>
 
@@ -1065,8 +1250,8 @@ p{color:var(--muted)}
   </div>
 
   <div class="container footer-bottom">
-    <p>© 2026 Qriya. All rights reserved.</p>
-    <p>Gantungan → Scan → Website → Identitas Digital</p>
+    <p>© 2026 NEXORA. All rights reserved.</p>
+    <p>NFC Card → Tap / Scan → Website → Identitas Digital</p>
   </div>
 </footer>
 
@@ -1145,7 +1330,7 @@ p{color:var(--muted)}
   window.addEventListener('orientationchange', function(){ toggle(false); });
 })();
 
-/* ===== Navbar: transparan di atas, solid setelah scroll ===== */
+/* ===== Navbar scroll ===== */
 (function(){
   var header = document.getElementById('siteHeader');
   if(!header) return;
@@ -1164,6 +1349,71 @@ p{color:var(--muted)}
   }, {passive:true});
 
   update();
+})();
+
+/* ===== BRAND LOCK ===== */
+(function(){
+  var LOCKED_BRAND = 'NEXORA';
+  var LOCKED_TAG   = 'NFC Card';
+
+  function lockBrand(){
+    document.querySelectorAll('.brand[data-brand-lock="true"]').forEach(function(brand){
+      brand.setAttribute('contenteditable', 'false');
+      brand.setAttribute('spellcheck', 'false');
+      brand.setAttribute('translate', 'no');
+
+      var text = brand.querySelector('.brand-text');
+      if(text){
+        text.setAttribute('contenteditable', 'false');
+        text.setAttribute('translate', 'no');
+      }
+
+      var bName = brand.querySelector('.b-name');
+      if(bName){
+        bName.setAttribute('contenteditable', 'false');
+        if(bName.textContent.trim() !== LOCKED_BRAND){
+          bName.textContent = LOCKED_BRAND;
+        }
+        if(!bName.__lockObserver){
+          bName.__lockObserver = new MutationObserver(function(){
+            if(bName.textContent.trim() !== LOCKED_BRAND){
+              bName.textContent = LOCKED_BRAND;
+            }
+          });
+          bName.__lockObserver.observe(bName, {childList:true, characterData:true, subtree:true});
+        }
+      }
+
+      var bTag = brand.querySelector('.b-tag');
+      if(bTag){
+        bTag.setAttribute('contenteditable', 'false');
+        if(bTag.textContent.trim() !== LOCKED_TAG){
+          bTag.textContent = LOCKED_TAG;
+        }
+        if(!bTag.__lockObserver){
+          bTag.__lockObserver = new MutationObserver(function(){
+            if(bTag.textContent.trim() !== LOCKED_TAG){
+              bTag.textContent = LOCKED_TAG;
+            }
+          });
+          bTag.__lockObserver.observe(bTag, {childList:true, characterData:true, subtree:true});
+        }
+      }
+
+      var img = brand.querySelector('img');
+      if(img){
+        img.setAttribute('draggable', 'false');
+        img.addEventListener('dragstart', function(e){ e.preventDefault(); });
+      }
+    });
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', lockBrand);
+  } else {
+    lockBrand();
+  }
+  window.addEventListener('load', lockBrand);
 })();
 
 /* ===== Reveal on scroll ===== */

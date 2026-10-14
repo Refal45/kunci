@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>FAQ | Qriya — Gantungan QR &amp; Website Digital</title>
-<meta name="description" content="Pertanyaan yang sering diajukan tentang Qriya — paket, harga, proses pemesanan, teknis QR &amp; NFC, pengiriman, dan layanan bisnis.">
+<title>FAQ | NEXORA — NFC Card &amp; Website Digital</title>
+<meta name="description" content="Pertanyaan yang sering diajukan tentang NEXORA — paket, harga, proses pemesanan, teknis NFC &amp; QR, pengiriman, dan layanan bisnis.">
 <meta name="theme-color" content="#050b18">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -186,33 +186,42 @@ p{color:var(--muted)}
 .brand{
   display:flex;align-items:center;gap:12px;flex-shrink:0;
   transition:transform .35s var(--ease);
+  user-select:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;
+  -webkit-touch-callout:none;-webkit-user-modify:read-only;cursor:pointer;
 }
 .brand img{
   height:52px;width:auto;max-width:120px;object-fit:contain;
   transition:transform .35s var(--ease),filter .35s ease;
   filter:drop-shadow(0 0 14px rgba(79,70,229,.45));
+  user-select:none;-webkit-user-select:none;-webkit-user-drag:none;pointer-events:none;
 }
 .brand-text{
   display:flex;flex-direction:column;line-height:1;
   font-family:"Plus Jakarta Sans",system-ui,sans-serif;
+  user-select:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;
+  -webkit-touch-callout:none;-webkit-user-modify:read-only;pointer-events:none;
 }
 .brand-text .b-name{
   font-size:1.45rem;font-weight:800;letter-spacing:-.02em;
   background:linear-gradient(120deg,#ffffff 0%,#c4b5fd 55%,#a5b4fc 100%);
   -webkit-background-clip:text;background-clip:text;color:transparent;
-  text-shadow:0 0 22px rgba(124,58,237,.35);
+  text-shadow:0 0 22px rgba(124,58,237,.35);white-space:nowrap;
 }
 .brand-text .b-tag{
   margin-top:6px;
   font-family:"JetBrains Mono",ui-monospace,monospace;
   font-size:.56rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
-  color:rgba(165,180,252,.78);
+  color:rgba(165,180,252,.78);white-space:nowrap;
 }
 .brand:hover{transform:scale(1.02)}
 .brand:hover img{filter:drop-shadow(0 0 22px rgba(124,58,237,.8))}
 .brand:hover .brand-text .b-name{
   background:linear-gradient(120deg,#ffffff 0%,#a5b4fc 45%,#7dd3fc 100%);
   -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.brand [contenteditable="true"],
+.brand [contenteditable=""]{
+  -webkit-user-modify:read-only;pointer-events:none;
 }
 
 .nav-links{display:flex;gap:2px;align-items:center}
@@ -647,11 +656,17 @@ p{color:var(--muted)}
 <header class="site-header" id="siteHeader">
   <nav class="nav" aria-label="Navigasi utama">
 
-    <a class="brand" href="beranda.html" aria-label="Qriya — Beranda">
-      <img src="foto1.jpg" alt="Logo Qriya">
-      <span class="brand-text">
-        <span class="b-name">Qriya</span>
-        <span class="b-tag">QR Keychain</span>
+    <a class="brand"
+       href="beranda.html"
+       aria-label="NEXORA — Beranda"
+       data-brand-lock="true"
+       contenteditable="false"
+       spellcheck="false"
+       translate="no">
+      <img src="foto1.jpg" alt="Logo NEXORA" draggable="false" oncontextmenu="return false">
+      <span class="brand-text" contenteditable="false" translate="no">
+        <span class="b-name">NEXORA</span>
+        <span class="b-tag">NFC Card</span>
       </span>
     </a>
 
@@ -678,7 +693,7 @@ p{color:var(--muted)}
   <!-- =========================================================
        PAGE HERO
        ========================================================= -->
-  <section class="page-hero" aria-label="FAQ Qriya">
+  <section class="page-hero" aria-label="FAQ NEXORA">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="beranda.html">Beranda</a>
@@ -691,7 +706,7 @@ p{color:var(--muted)}
         Semua yang Perlu <span class="grad-text">Kamu Tahu.</span>
       </h1>
       <p class="lead reveal" style="--d:.12s">
-        Kumpulan pertanyaan yang paling sering ditanyakan seputar Qriya — dari paket, harga, teknis QR &amp; NFC, hingga pengiriman.
+        Kumpulan pertanyaan yang paling sering ditanyakan seputar NEXORA — dari paket, harga, teknis NFC &amp; QR, hingga pengiriman.
       </p>
 
       <div class="actions reveal" style="--d:.18s">
@@ -708,7 +723,7 @@ p{color:var(--muted)}
     <div class="container">
 
       <div class="sec-head center reveal">
-        <span class="eyebrow">FAQ Qriya</span>
+        <span class="eyebrow">FAQ NEXORA</span>
         <h2>Pertanyaan yang Sering Diajukan.</h2>
         <p class="lead">Cari jawaban dengan mengetik kata kunci, atau filter berdasarkan kategori di bawah ini.</p>
       </div>
@@ -742,15 +757,15 @@ p{color:var(--muted)}
         <!-- ====== UMUM ====== -->
         <details class="faq-item reveal" data-cat="umum">
           <summary>
-            Apa itu Qriya dan bagaimana cara kerjanya?
+            Apa itu NEXORA dan bagaimana cara kerjanya?
             <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
           </summary>
           <div class="faq-body">
-            <strong>Qriya</strong> adalah gantungan kunci ber-QR Code yang terhubung ke sebuah website digital. Cukup
-            <strong>scan QR</strong> menggunakan kamera HP atau <strong>tap NFC</strong> ke smartphone, maka halaman website
+            <strong>NEXORA</strong> adalah NFC Card ber-QR Code yang terhubung ke sebuah website digital. Cukup
+            <strong>tap NFC</strong> ke smartphone atau <strong>scan QR</strong> menggunakan kamera HP, maka halaman website
             kamu langsung terbuka — berisi profil, portofolio, CV online, katalog bisnis, atau kumpulan sosial media.
             <ul>
-              <li>1 Gantungan = 1 QR Code = 1 Website</li>
+              <li>1 Kartu = 1 NFC &amp; QR Code = 1 Website</li>
               <li>Tanpa aplikasi tambahan, cukup browser HP</li>
               <li>Bisa diakses kapan saja dan di mana saja</li>
             </ul>
@@ -759,24 +774,24 @@ p{color:var(--muted)}
 
         <details class="faq-item reveal" data-cat="umum" style="--d:.04s">
           <summary>
-            Apa perbedaan QR Code dan NFC?
+            Apa perbedaan NFC dan QR Code?
             <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
           </summary>
           <div class="faq-body">
-            <strong>QR Code</strong> dibaca lewat kamera smartphone — semua HP modern bisa membaca QR.
-            Sedangkan <strong>NFC</strong> (Near Field Communication) cukup ditempelkan ke HP yang mendukung NFC
+            <strong>NFC</strong> (Near Field Communication) cukup ditempelkan ke HP yang mendukung NFC
             (biasanya HP mid-range ke atas) dan langsung membuka link tanpa perlu scan.
+            Sedangkan <strong>QR Code</strong> dibaca lewat kamera smartphone — semua HP modern bisa membaca QR.
             <ul>
-              <li>QR Code: lebih universal, cocok untuk semua HP</li>
               <li>NFC: lebih cepat, cukup tap tanpa buka kamera</li>
-              <li>Keduanya bisa digabung dalam satu gantungan atau kartu</li>
+              <li>QR Code: lebih universal, cocok untuk semua HP</li>
+              <li>Keduanya digabung dalam satu NFC Card NEXORA</li>
             </ul>
           </div>
         </details>
 
         <details class="faq-item reveal" data-cat="umum" style="--d:.08s">
           <summary>
-            Apakah bisa request jumlah gantungan custom?
+            Apakah bisa request jumlah NFC Card custom?
             <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
           </summary>
           <div class="faq-body">
@@ -789,11 +804,11 @@ p{color:var(--muted)}
 
         <details class="faq-item reveal" data-cat="umum" style="--d:.12s">
           <summary>
-            Apakah Qriya bisa dipakai untuk keperluan pribadi saja?
+            Apakah NEXORA bisa dipakai untuk keperluan pribadi saja?
             <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
           </summary>
           <div class="faq-body">
-            Tentu. Qriya cocok untuk keperluan <strong>personal branding</strong>, portofolio, CV online, kartu ucapan digital,
+            Tentu. NEXORA cocok untuk keperluan <strong>personal branding</strong>, portofolio, CV online, kartu ucapan digital,
             sampai media sosial dalam satu halaman. Paket <strong>Starter</strong> dan <strong>NFC Card</strong> paling pas
             untuk penggunaan personal.
           </div>
@@ -806,35 +821,35 @@ p{color:var(--muted)}
             <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
           </summary>
           <div class="faq-body">
-            <strong>Paket Utama</strong> fokus ke website personal atau bisnis lengkap dengan QR Code — cocok untuk
+            <strong>Paket Utama</strong> fokus ke website personal atau bisnis lengkap dengan NFC &amp; QR Code — cocok untuk
             portofolio, CV online, atau website bisnis.<br><br>
             <strong>NFC Card</strong> fokus ke identitas digital praktis — tersedia varian
-            <strong>Gaming Card</strong> untuk identitas gaming dan varian <strong>Sosmed Card</strong> yang langsung
-            terhubung ke sosial media masing-masing orang.
+            <strong>Sosmed Card</strong> yang langsung terhubung ke sosial media masing-masing orang, dan
+            <strong>Bisnis Card</strong> untuk profil usaha beserta portofolio.
           </div>
         </details>
 
         <details class="faq-item reveal" data-cat="produk" style="--d:.2s">
           <summary>
-            Bisa request desain gantungan sesuai tema?
+            Bisa request desain NFC Card sesuai tema?
             <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
           </summary>
           <div class="faq-body">
-            Tentu. Semua paket sudah termasuk <strong>custom design gantungan</strong>. Anda bisa kirim preferensi warna,
-            gaya, atau referensi desain yang diinginkan. Untuk kartu gaming, bisa request gambar atau art game favorit
-            sebagai identitas visual.
+            Tentu. Semua paket sudah termasuk <strong>custom design NFC Card</strong>. Anda bisa kirim preferensi warna,
+            gaya, atau referensi desain yang diinginkan. Desain depan dan belakang kartu bisa disesuaikan dengan
+            karakter atau identitas bisnismu.
           </div>
         </details>
 
         <details class="faq-item reveal" data-cat="produk" style="--d:.24s">
           <summary>
-            Apa bahan gantungan dan kartu NFC-nya?
+            Apa bahan NFC Card NEXORA?
             <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
           </summary>
           <div class="faq-body">
-            Gantungan Qriya menggunakan bahan <strong>akrilik / PVC</strong> dengan cetakan QR yang tajam dan tahan lama.
-            Untuk kartu NFC menggunakan bahan <strong>PVC card</strong> standar kartu akses, dengan chip NFC di dalamnya.
-            Detail bahan dan finishing bisa disesuaikan dengan paket yang dipilih.
+            NFC Card NEXORA menggunakan bahan <strong>PVC card</strong> standar kartu akses, dengan chip NFC di dalamnya
+            dan QR Code tercetak presisi di permukaan kartu. Detail bahan dan finishing bisa disesuaikan dengan paket
+            yang dipilih.
           </div>
         </details>
 
@@ -879,16 +894,16 @@ p{color:var(--muted)}
         <!-- ====== TEKNIS ====== -->
         <details class="faq-item reveal" data-cat="teknis" style="--d:.4s">
           <summary>
-            Apakah ada garansi jika QR Code tidak berfungsi?
+            Apakah ada garansi jika NFC atau QR Code tidak berfungsi?
             <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
           </summary>
           <div class="faq-body">
-            Setiap QR Code <strong>diuji sebelum dikirim</strong>, dan kami pastikan berfungsi dengan baik.
+            Setiap chip NFC &amp; QR Code <strong>diuji sebelum dikirim</strong>, dan kami pastikan berfungsi dengan baik.
             Jika ada kendala setelah diterima, hubungi kami untuk pengecekan dan perbaikan.
             <ul>
-              <li>Garansi QR tidak terbaca saat pertama kali diterima</li>
+              <li>Garansi NFC &amp; QR tidak terbaca saat pertama kali diterima</li>
               <li>Perbaikan gratis jika terjadi kerusakan produksi</li>
-              <li>Penggantian unit jika QR benar-benar tidak bisa dipakai</li>
+              <li>Penggantian unit jika benar-benar tidak bisa dipakai</li>
             </ul>
           </div>
         </details>
@@ -899,7 +914,7 @@ p{color:var(--muted)}
             <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
           </summary>
           <div class="faq-body">
-            Tetap bisa. Setiap kartu NFC Qriya <strong>juga dilengkapi QR Code</strong>. Jadi kalau HP kamu tidak
+            Tetap bisa. Setiap NFC Card NEXORA <strong>juga dilengkapi QR Code</strong>. Jadi kalau HP kamu tidak
             mendukung NFC, cukup scan QR Code-nya menggunakan kamera HP. Semua HP modern bisa scan QR.
           </div>
         </details>
@@ -918,26 +933,26 @@ p{color:var(--muted)}
 
         <details class="faq-item reveal" data-cat="teknis" style="--d:.52s">
           <summary>
-            Apakah link QR bisa diganti kalau website pindah domain?
+            Apakah link NFC &amp; QR bisa diganti kalau website pindah domain?
             <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
           </summary>
           <div class="faq-body">
-            Bisa. Kami menggunakan sistem <strong>redirect fleksibel</strong> sehingga QR Code yang sudah tercetak
-            tetap bisa diarahkan ke domain baru tanpa perlu cetak ulang gantungan.
+            Bisa. Kami menggunakan sistem <strong>redirect fleksibel</strong> sehingga NFC dan QR Code yang sudah
+            tercetak di kartu tetap bisa diarahkan ke domain baru tanpa perlu cetak ulang NFC Card.
           </div>
         </details>
 
         <!-- ====== PENGIRIMAN ====== -->
         <details class="faq-item reveal" data-cat="pengiriman" style="--d:.56s">
           <summary>
-            Berapa lama proses pembuatan sampai gantungan dikirim?
+            Berapa lama proses pembuatan sampai NFC Card dikirim?
             <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
           </summary>
           <div class="faq-body">
             Estimasi proses:
             <ul>
               <li><strong>3–5 hari kerja</strong> untuk desain dan revisi</li>
-              <li><strong>2–4 hari kerja</strong> untuk produksi gantungan / kartu</li>
+              <li><strong>2–4 hari kerja</strong> untuk produksi NFC Card</li>
               <li><strong>1–3 hari kerja</strong> untuk pengiriman (tergantung lokasi)</li>
             </ul>
             Total estimasi <strong>7–12 hari kerja</strong> setelah pembayaran dan data lengkap.
@@ -976,8 +991,8 @@ p{color:var(--muted)}
           <div class="faq-body">
             Paket <strong>Business</strong> mencakup:
             <ul>
-              <li>5 Gantungan Kunci QR + 5 Website Bisnis</li>
-              <li>Custom Design Gantungan Kunci</li>
+              <li>5 NFC Card Bisnis + 5 Website Bisnis</li>
+              <li>Custom Design NFC Card</li>
               <li>Custom Domain + Hosting 1 Tahun</li>
               <li>Database, Login Admin, dan CRUD Data</li>
               <li>WhatsApp, Google Maps, Media Sosial</li>
@@ -1044,7 +1059,7 @@ p{color:var(--muted)}
       <div class="cta-panel reveal">
         <span class="eyebrow" style="justify-content:center;display:inline-flex">Masih Ada Pertanyaan?</span>
         <h2>Belum Menemukan Jawabannya?</h2>
-        <p>Tim Qriya siap bantu jawab pertanyaanmu langsung. Chat kami kapan saja lewat WhatsApp.</p>
+        <p>Tim NEXORA siap bantu jawab pertanyaanmu langsung. Chat kami kapan saja lewat WhatsApp.</p>
         <div class="cta-actions">
           <a class="btn btn-primary btn-lg" href="https://wa.me/6280000000000" target="_blank" rel="noopener">Tanya via WhatsApp <i data-lucide="arrow-right"></i></a>
           <a class="btn btn-ghost btn-lg" href="paket.html">Lihat Paket</a>
@@ -1062,14 +1077,20 @@ p{color:var(--muted)}
   <div class="container footer-grid">
 
     <div class="f-brand">
-      <a class="brand" href="beranda.html" aria-label="Qriya — Beranda">
-        <img src="foto1.jpg" alt="Logo Qriya">
-        <span class="brand-text">
-          <span class="b-name">Qriya</span>
-          <span class="b-tag">QR Keychain</span>
+      <a class="brand"
+         href="beranda.html"
+         aria-label="NEXORA — Beranda"
+         data-brand-lock="true"
+         contenteditable="false"
+         spellcheck="false"
+         translate="no">
+        <img src="foto1.jpg" alt="Logo NEXORA" draggable="false" oncontextmenu="return false">
+        <span class="brand-text" contenteditable="false" translate="no">
+          <span class="b-name">NEXORA</span>
+          <span class="b-tag">NFC Card</span>
         </span>
       </a>
-      <p>Qriya menghadirkan gantungan QR yang menghubungkan dunia fisik dengan identitas digital. Satu scan untuk membuka website personal maupun bisnis Anda.</p>
+      <p>NEXORA menghadirkan NFC Card yang menghubungkan dunia fisik dengan identitas digital. Satu tap untuk membuka website personal maupun bisnis Anda.</p>
     </div>
 
     <div class="f-col">
@@ -1087,10 +1108,10 @@ p{color:var(--muted)}
     <div class="f-col">
       <h4>Produk</h4>
       <ul>
-        <li><a href="paket.html">QR Keychain</a></li>
+        <li><a href="paket.html">NFC Card Sosmed</a></li>
+        <li><a href="paket.html">NFC Card Bisnis</a></li>
         <li><a href="paket.html">Website Personal</a></li>
         <li><a href="paket.html">Website Bisnis</a></li>
-        <li><a href="paket.html">Digital Identity</a></li>
       </ul>
     </div>
 
@@ -1109,8 +1130,8 @@ p{color:var(--muted)}
   </div>
 
   <div class="container footer-bottom">
-    <p>© 2026 Qriya. All rights reserved.</p>
-    <p>Gantungan → Scan → Website → Identitas Digital</p>
+    <p>© 2026 NEXORA. All rights reserved.</p>
+    <p>NFC Card → Tap / Scan → Website → Identitas Digital</p>
   </div>
 </footer>
 
@@ -1208,6 +1229,71 @@ p{color:var(--muted)}
   }, {passive:true});
 
   update();
+})();
+
+/* ===== BRAND LOCK ===== */
+(function(){
+  var LOCKED_BRAND = 'NEXORA';
+  var LOCKED_TAG   = 'NFC Card';
+
+  function lockBrand(){
+    document.querySelectorAll('.brand[data-brand-lock="true"]').forEach(function(brand){
+      brand.setAttribute('contenteditable', 'false');
+      brand.setAttribute('spellcheck', 'false');
+      brand.setAttribute('translate', 'no');
+
+      var text = brand.querySelector('.brand-text');
+      if(text){
+        text.setAttribute('contenteditable', 'false');
+        text.setAttribute('translate', 'no');
+      }
+
+      var bName = brand.querySelector('.b-name');
+      if(bName){
+        bName.setAttribute('contenteditable', 'false');
+        if(bName.textContent.trim() !== LOCKED_BRAND){
+          bName.textContent = LOCKED_BRAND;
+        }
+        if(!bName.__lockObserver){
+          bName.__lockObserver = new MutationObserver(function(){
+            if(bName.textContent.trim() !== LOCKED_BRAND){
+              bName.textContent = LOCKED_BRAND;
+            }
+          });
+          bName.__lockObserver.observe(bName, {childList:true, characterData:true, subtree:true});
+        }
+      }
+
+      var bTag = brand.querySelector('.b-tag');
+      if(bTag){
+        bTag.setAttribute('contenteditable', 'false');
+        if(bTag.textContent.trim() !== LOCKED_TAG){
+          bTag.textContent = LOCKED_TAG;
+        }
+        if(!bTag.__lockObserver){
+          bTag.__lockObserver = new MutationObserver(function(){
+            if(bTag.textContent.trim() !== LOCKED_TAG){
+              bTag.textContent = LOCKED_TAG;
+            }
+          });
+          bTag.__lockObserver.observe(bTag, {childList:true, characterData:true, subtree:true});
+        }
+      }
+
+      var img = brand.querySelector('img');
+      if(img){
+        img.setAttribute('draggable', 'false');
+        img.addEventListener('dragstart', function(e){ e.preventDefault(); });
+      }
+    });
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', lockBrand);
+  } else {
+    lockBrand();
+  }
+  window.addEventListener('load', lockBrand);
 })();
 
 /* ===== Reveal on scroll ===== */
