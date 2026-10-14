@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Qriya | Gantungan QR &amp; Website Digital — Satu Scan Langsung ke Website</title>
-<meta name="description" content="Qriya menghadirkan gantungan kunci QR yang terhubung langsung ke website personal dan bisnis. Satu gantungan. Satu scan. Langsung ke website.">
+<title>NEXORA | NFC Card Bisnis &amp; Sosmed — Satu Tap Langsung ke Website</title>
+<meta name="description" content="NEXORA menghadirkan NFC Card untuk bisnis dan sosial media. Satu kartu. Satu tap. Langsung ke website.">
 <meta name="theme-color" content="#050b18">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -415,15 +415,56 @@ p{color:var(--muted)}
 /* =========================================================
    PRODUCT
    ========================================================= */
-.product-media-pair{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.product-media-pair{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+  align-items:start;
+}
 .product-media-pair figure{
-  position:relative;border-radius:var(--r-lg);overflow:hidden;
-  border:1px solid var(--line-2);background:rgba(255,255,255,.03);
+  position:relative;
+  border-radius:var(--r-lg);
+  overflow:hidden;
+  border:1px solid var(--line-2);
+  background:rgba(255,255,255,.03);
   transition:border-color .45s ease,box-shadow .45s ease;
+  cursor:zoom-in;
 }
 .product-media-pair figure:hover{border-color:rgba(139,92,246,.42);box-shadow:0 0 40px rgba(79,70,229,.28)}
-.product-media-pair img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.1s var(--ease)}
-.product-media-pair figure:hover img{transform:scale(1.05)}
+.product-media-pair img{
+  width:100%;
+  height:auto;
+  display:block;
+  transition:transform 1.1s var(--ease);
+}
+.product-media-pair figure:hover img{transform:scale(1.04)}
+.product-media-pair figcaption{
+  position:absolute;left:12px;bottom:12px;z-index:2;
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:.58rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  padding:6px 11px;border-radius:999px;
+  background:rgba(5,11,24,.72);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,.16);color:#e0e7ff;
+}
+
+/* Zoom badge */
+.zoom-badge{
+  position:absolute;top:10px;right:10px;z-index:3;
+  width:34px;height:34px;border-radius:10px;
+  background:rgba(5,11,24,.72);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,.20);
+  display:grid;place-items:center;color:#e0e7ff;
+  opacity:0;transform:translateY(-4px);
+  transition:opacity .3s ease,transform .3s ease;
+  pointer-events:none;
+}
+.zoom-badge svg.lucide{width:16px;height:16px}
+.product-media-pair figure:hover .zoom-badge,
+.starter-preview figure:hover .zoom-badge,
+.split-media:hover .zoom-badge,
+.demo-media:hover .zoom-badge{opacity:1;transform:translateY(0)}
 
 .info-list{display:grid;gap:16px;margin-top:var(--space-3)}
 .info-item{
@@ -494,6 +535,14 @@ p{color:var(--muted)}
 .feat-list{display:grid;gap:10px;margin-top:24px}
 .feat-list li{display:flex;gap:11px;align-items:flex-start;font-size:.86rem;color:var(--muted);line-height:1.6}
 .feat-list li svg.lucide{width:16px;height:16px;color:#7dd3fc;margin-top:4px}
+
+/* Brand icons in feature list */
+.feat-list li .bi{width:17px;height:17px;flex:none;margin-top:3px;display:block}
+.bi-instagram{color:#e1306c}
+.bi-facebook{color:#1877f2}
+.bi-youtube{color:#ff2d2d}
+.bi-tiktok{color:#ffffff}
+.bi-whatsapp{color:#25d366}
 
 .group-title{
   margin-top:26px;
@@ -720,7 +769,7 @@ table.cmp tfoot td{
 .footer-bottom p{color:var(--muted-2)}
 
 /* =========================================================
-   STARTER — NFC CARD (GAMING & SOSMED)
+   STARTER — NFC CARD (BISNIS & SOSMED)
    ========================================================= */
 .starter-sec{
   background:
@@ -830,6 +879,7 @@ table.cmp tfoot td{
   background:var(--grad);
   box-shadow:0 8px 22px rgba(124,58,237,.5);
   border:1px solid rgba(255,255,255,.2);
+  z-index:3;
 }
 
 .starter-tag{
@@ -858,6 +908,44 @@ table.cmp tfoot td{
 .starter-card .feat-list{margin-top:22px;flex:1}
 .starter-card .btn{margin-top:26px}
 
+/* Card preview (depan & belakang) */
+.starter-preview{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-bottom:22px;
+  align-items:start;
+}
+.starter-preview figure{
+  position:relative;
+  border-radius:14px;
+  overflow:hidden;
+  border:1px solid var(--line-2);
+  background:rgba(255,255,255,.03);
+  transition:border-color .4s ease,box-shadow .4s ease;
+  cursor:zoom-in;
+}
+.starter-preview figure:hover{
+  border-color:rgba(139,92,246,.5);
+  box-shadow:0 0 26px rgba(79,70,229,.32);
+}
+.starter-preview img{
+  width:100%;
+  height:auto;
+  display:block;
+  transition:transform .9s var(--ease);
+}
+.starter-preview figure:hover img{transform:scale(1.04)}
+.starter-preview figcaption{
+  position:absolute;left:8px;bottom:8px;z-index:2;
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:.54rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  padding:5px 9px;border-radius:999px;
+  background:rgba(5,11,24,.74);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,.16);color:#e0e7ff;
+}
+
 /* Feature grid */
 .starter-feat-grid{
   display:grid;
@@ -881,6 +969,19 @@ table.cmp tfoot td{
 .starter-feat h3{margin-top:18px;font-size:1rem;letter-spacing:.01em}
 .starter-feat p{margin-top:10px;font-size:.86rem;line-height:1.65}
 
+/* Brand row in feature card */
+.brand-row{
+  display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;
+}
+.brand-row span{
+  width:34px;height:34px;border-radius:10px;display:grid;place-items:center;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.12);
+  transition:transform .3s ease,border-color .3s ease,background .3s ease;
+}
+.brand-row span:hover{transform:translateY(-2px);background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.24)}
+.brand-row .bi{width:18px;height:18px}
+
 /* Note */
 .starter-note{
   margin-top:var(--space-3);
@@ -892,6 +993,110 @@ table.cmp tfoot td{
   line-height:1.75;
 }
 .starter-note strong{color:#fff;font-weight:700}
+
+/* =========================================================
+   LIGHTBOX / IMAGE ZOOM
+   ========================================================= */
+.lightbox{
+  position:fixed;inset:0;z-index:200;
+  background:rgba(2,6,16,.94);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  display:grid;
+  place-items:center;
+  opacity:0;
+  visibility:hidden;
+  transition:opacity .35s ease,visibility .35s ease;
+  padding:clamp(16px,4vw,60px);
+}
+.lightbox.open{opacity:1;visibility:visible}
+
+.lightbox-stage{
+  position:relative;
+  width:100%;
+  height:100%;
+  display:grid;
+  place-items:center;
+  overflow:auto;
+  overscroll-behavior:contain;
+  cursor:zoom-in;
+}
+.lightbox-stage.zoomed{cursor:zoom-out}
+
+.lightbox img{
+  max-width:min(94vw,1200px);
+  max-height:84vh;
+  width:auto;height:auto;
+  display:block;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.14);
+  box-shadow:0 40px 100px rgba(0,0,0,.75);
+  transition:transform .4s var(--ease);
+  transform-origin:center center;
+  user-select:none;
+  -webkit-user-drag:none;
+  will-change:transform;
+}
+
+.lightbox-controls{
+  position:absolute;
+  top:calc(16px + env(safe-area-inset-top,0px));
+  right:clamp(16px,4vw,36px);
+  display:flex;gap:10px;z-index:3;
+}
+.lightbox-btn{
+  width:46px;height:46px;border-radius:12px;
+  border:1px solid rgba(255,255,255,.20);
+  background:rgba(255,255,255,.08);
+  color:#fff;
+  display:grid;place-items:center;
+  cursor:pointer;
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  transition:background .3s ease,border-color .3s ease,transform .3s ease;
+  font-weight:700;
+}
+.lightbox-btn:hover{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.32);transform:translateY(-1px)}
+.lightbox-btn svg.lucide{width:20px;height:20px}
+
+.lightbox-caption{
+  position:absolute;
+  left:50%;
+  bottom:calc(20px + env(safe-area-inset-bottom,0px));
+  transform:translateX(-50%);
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:#e0e7ff;
+  padding:11px 20px;border-radius:999px;
+  background:rgba(5,11,24,.75);
+  border:1px solid rgba(255,255,255,.16);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  white-space:nowrap;
+  max-width:90vw;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  z-index:3;
+}
+
+.lightbox-hint{
+  position:absolute;
+  left:50%;
+  top:calc(18px + env(safe-area-inset-top,0px));
+  transform:translateX(-50%);
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(226,232,240,.7);
+  padding:8px 14px;border-radius:999px;
+  background:rgba(5,11,24,.65);
+  border:1px solid rgba(255,255,255,.12);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  z-index:3;
+  pointer-events:none;
+  opacity:.9;
+}
+@media (max-width:640px){
+  .lightbox-hint{display:none}
+  .lightbox-btn{width:42px;height:42px}
+}
 
 /* =========================================================
    REVEAL
@@ -935,7 +1140,6 @@ table.cmp tfoot td{
 
   .menu-btn{display:block}
 
-  /* Panel sidebar */
   .nav-links{
     position:fixed;
     top:0;
@@ -971,7 +1175,6 @@ table.cmp tfoot td{
     visibility:visible;
   }
 
-  /* Kartu navigasi — ukuran nyaman, tidak kecil */
   .nav-links li{width:100%}
 
   .nav-links a{
@@ -1025,7 +1228,6 @@ table.cmp tfoot td{
     filter:drop-shadow(0 0 10px rgba(124,58,237,.9));
   }
 
-  /* Scrollbar halus di sidebar */
   .nav-links::-webkit-scrollbar{width:6px}
   .nav-links::-webkit-scrollbar-track{background:transparent}
   .nav-links::-webkit-scrollbar-thumb{background:rgba(148,163,184,.28);border-radius:99px}
@@ -1100,8 +1302,9 @@ table.cmp tfoot td{
   .starter-price{font-size:1.85rem}
   .starter-quota{padding:10px 16px;font-size:.66rem}
   .starter-quota strong{font-size:.92rem}
+  .starter-preview{gap:8px}
+  .starter-preview figcaption{font-size:.5rem;padding:4px 8px;left:6px;bottom:6px}
 
-  /* Sidebar mobile lebih lega di layar kecil */
   .nav-links{
     width:min(340px,90vw);
     gap:11px;
@@ -1131,11 +1334,11 @@ table.cmp tfoot td{
 <header class="site-header" id="siteHeader">
   <nav class="nav" aria-label="Navigasi utama">
 
-    <a class="brand" href="beranda.html" aria-label="Qriya — Beranda">
-      <img src="foto1.jpg" alt="Logo Qriya">
+    <a class="brand" href="beranda.html" aria-label="NEXORA — Beranda">
+      <img src="foto1.jpg" alt="Logo NEXORA">
       <span class="brand-text">
-        <span class="b-name">Qriya</span>
-        <span class="b-tag">QR Keychain</span>
+        <span class="b-name">NEXORA</span>
+        <span class="b-tag">NFC Card</span>
       </span>
     </a>
 
@@ -1163,27 +1366,27 @@ table.cmp tfoot td{
   <!-- =========================================================
        HERO
        ========================================================= -->
-  <section class="hero" id="beranda" aria-label="Gantungan QR dan website digital Qriya">
+  <section class="hero" id="beranda" aria-label="NFC Card NEXORA untuk bisnis dan sosial media">
     <div class="hero-media">
-      <img src="foto.jpg" alt="Visual QR Keychain Qriya terhubung ke smartphone dan website personal">
+      <img src="foto.jpg" alt="Visual NFC Card NEXORA terhubung ke smartphone dan website personal">
     </div>
-    <h1 class="sr-only">Satu Gantungan. Satu Scan. Langsung ke Website.</h1>
+    <h1 class="sr-only">Satu Kartu. Satu Tap. Langsung ke Website.</h1>
   </section>
 
   <!-- =========================================================
        INTRO
        ========================================================= -->
-  <section class="intro" aria-label="Pengantar QR Keychain Qriya">
+  <section class="intro" aria-label="Pengantar NFC Card NEXORA">
     <div class="intro-inner">
-      <span class="eyebrow reveal">Qriya × Website</span>
+      <span class="eyebrow reveal">NEXORA × Website</span>
 
       <h1 class="reveal" style="--d:.06s">
-        Satu Gantungan. Satu Scan.
+        Satu Kartu. Satu Tap.
         <span class="grad-text">Langsung ke Website.</span>
       </h1>
 
       <p class="intro-sub reveal" style="--d:.12s">
-        <strong>Qriya</strong> menghadirkan gantungan kunci QR yang menghubungkan identitas fisik dengan website personal maupun bisnis.
+        <strong>NEXORA</strong> menghadirkan NFC Card untuk kebutuhan bisnis dan sosial media — menghubungkan identitas fisik dengan website personal maupun bisnis Anda.
       </p>
 
       <div class="actions reveal" style="--d:.18s">
@@ -1191,15 +1394,15 @@ table.cmp tfoot td{
         <a class="btn btn-ghost btn-lg" href="demo.html">Lihat Demo</a>
       </div>
 
-      <div class="intro-flow reveal" style="--d:.26s" aria-label="Alur gantungan menuju website">
+      <div class="intro-flow reveal" style="--d:.26s" aria-label="Alur kartu menuju website">
         <div class="hf">
-          <span class="ring"><i data-lucide="key-round"></i></span>
-          <span>Gantungan</span>
+          <span class="ring"><i data-lucide="credit-card"></i></span>
+          <span>NFC Card</span>
         </div>
         <span class="sep" aria-hidden="true"><i data-lucide="arrow-right"></i></span>
         <div class="hf">
           <span class="ring pulse"><i data-lucide="scan-line"></i></span>
-          <span>Scan QR</span>
+          <span>Tap / Scan</span>
         </div>
         <span class="sep" aria-hidden="true"><i data-lucide="arrow-right"></i></span>
         <div class="hf">
@@ -1217,25 +1420,25 @@ table.cmp tfoot td{
     <div class="container">
       <div class="sec-head reveal">
         <span class="eyebrow">Konsep</span>
-        <h2>Bukan Sekadar Gantungan Kunci.</h2>
-        <p class="lead">Satu benda kecil dari Qriya yang menghubungkan dunia fisik dengan identitas digital Anda.</p>
+        <h2>Bukan Sekadar Kartu Biasa.</h2>
+        <p class="lead">Satu kartu kecil dari NEXORA yang menghubungkan dunia fisik dengan identitas digital Anda.</p>
       </div>
 
       <div class="value-grid">
         <article class="value-item reveal">
           <span class="vnum">01 — Physical</span>
           <h3>Physical</h3>
-          <p>Gantungan QR yang dapat dibawa ke mana saja.</p>
+          <p>NFC Card yang dapat dibawa ke mana saja.</p>
         </article>
         <article class="value-item reveal" style="--d:.1s">
           <span class="vnum">02 — Digital</span>
           <h3>Digital</h3>
-          <p>QR Code unik yang terhubung ke website.</p>
+          <p>NFC &amp; QR Code unik yang terhubung ke website.</p>
         </article>
         <article class="value-item reveal" style="--d:.2s">
           <span class="vnum">03 — Connected</span>
           <h3>Connected</h3>
-          <p>Satu scan untuk membuka informasi digital.</p>
+          <p>Satu tap untuk membuka informasi digital.</p>
         </article>
       </div>
     </div>
@@ -1249,7 +1452,7 @@ table.cmp tfoot td{
       <div class="sec-head center reveal">
         <span class="eyebrow">Cara Kerja</span>
         <h2>Semudah 3 Langkah.</h2>
-        <p class="lead">Dari gantungan fisik menuju halaman digital, tanpa proses yang rumit.</p>
+        <p class="lead">Dari kartu fisik menuju halaman digital, tanpa proses yang rumit.</p>
       </div>
 
       <div class="steps">
@@ -1257,13 +1460,13 @@ table.cmp tfoot td{
           <span class="num">01</span>
           <div class="step-ico" aria-hidden="true"><i data-lucide="package"></i></div>
           <h3>Dapatkan</h3>
-          <p>Pilih paket gantungan dan website Qriya yang sesuai dengan kebutuhan Anda.</p>
+          <p>Pilih paket NFC Card dan website NEXORA yang sesuai dengan kebutuhan Anda.</p>
         </article>
         <article class="step reveal" style="--d:.1s">
           <span class="num">02</span>
           <div class="step-ico" aria-hidden="true"><i data-lucide="scan-line"></i></div>
-          <h3>Scan</h3>
-          <p>Scan QR Code menggunakan kamera smartphone Anda.</p>
+          <h3>Tap / Scan</h3>
+          <p>Tap NFC atau scan QR Code menggunakan kamera smartphone Anda.</p>
         </article>
         <article class="step reveal" style="--d:.2s">
           <span class="num">03</span>
@@ -1282,52 +1485,70 @@ table.cmp tfoot td{
     <div class="container split reverse">
       <div>
         <span class="eyebrow reveal">Produk</span>
-        <h2 class="reveal" style="--d:.06s">Dari Gantungan Fisik Menjadi Identitas Digital.</h2>
-        <p class="lead reveal" style="--d:.12s">Setiap gantungan Qriya membawa satu alamat digital yang dapat Anda tentukan sendiri.</p>
+        <h2 class="reveal" style="--d:.06s">Dari Kartu Fisik Menjadi Identitas Digital.</h2>
+        <p class="lead reveal" style="--d:.12s">Setiap NFC Card NEXORA membawa satu alamat digital yang dapat Anda tentukan sendiri — tersedia varian Sosmed dan Bisnis.</p>
 
         <div class="info-list">
           <article class="info-item reveal" style="--d:.18s">
-            <div class="ico" aria-hidden="true"><i data-lucide="qr-code"></i></div>
+            <div class="ico" aria-hidden="true"><i data-lucide="radio"></i></div>
             <div>
-              <h3>QR Code Unik</h3>
-              <p>Setiap gantungan memiliki QR Code unik yang terhubung ke website.</p>
+              <h3>NFC + QR Code Unik</h3>
+              <p>Setiap kartu memiliki chip NFC dan QR Code unik yang terhubung ke website.</p>
             </div>
           </article>
           <article class="info-item reveal" style="--d:.24s">
-            <div class="ico" aria-hidden="true"><i data-lucide="user-round"></i></div>
+            <div class="ico" aria-hidden="true"><i data-lucide="share-2"></i></div>
             <div>
-              <h3>Website Personal</h3>
-              <p>Profil, portfolio, CV, sosial media, dan kontak dalam satu halaman.</p>
+              <h3>NFC Card Sosmed</h3>
+              <p>Instagram, TikTok, Facebook, WhatsApp, YouTube, dan custom link dalam satu halaman.</p>
             </div>
           </article>
           <article class="info-item reveal" style="--d:.30s">
             <div class="ico" aria-hidden="true"><i data-lucide="briefcase"></i></div>
             <div>
-              <h3>Website Bisnis</h3>
-              <p>Website bisnis dengan fitur sesuai kebutuhan usaha Anda.</p>
+              <h3>NFC Card Bisnis</h3>
+              <p>Kartu bisnis digital dengan profil usaha, portofolio, kontak, dan informasi lengkap.</p>
             </div>
           </article>
         </div>
       </div>
 
       <div class="product-media-pair reveal" style="--d:.1s">
-        <figure><img src="foto8.jpg" alt="Gantungan kunci QR Qriya tampak depan" loading="lazy"></figure>
-        <figure><img src="foto3.jpg" alt="Gantungan kunci QR Qriya tampak samping" loading="lazy"></figure>
+        <figure data-zoom data-caption="NFC Card Sosmed · Depan">
+          <img src="medsos.jpg" alt="NFC Card Sosmed NEXORA tampak depan" loading="lazy">
+          <figcaption>Sosmed · Depan</figcaption>
+          <span class="zoom-badge" aria-hidden="true"><i data-lucide="zoom-in"></i></span>
+        </figure>
+        <figure data-zoom data-caption="NFC Card Sosmed · Belakang">
+          <img src="medsos2.jpg" alt="NFC Card Sosmed NEXORA tampak belakang" loading="lazy">
+          <figcaption>Sosmed · Belakang</figcaption>
+          <span class="zoom-badge" aria-hidden="true"><i data-lucide="zoom-in"></i></span>
+        </figure>
+        <figure data-zoom data-caption="NFC Card Bisnis · Depan">
+          <img src="design1.jpg" alt="NFC Card Bisnis NEXORA tampak depan" loading="lazy">
+          <figcaption>Bisnis · Depan</figcaption>
+          <span class="zoom-badge" aria-hidden="true"><i data-lucide="zoom-in"></i></span>
+        </figure>
+        <figure data-zoom data-caption="NFC Card Bisnis · Belakang">
+          <img src="design2.jpg" alt="NFC Card Bisnis NEXORA tampak belakang" loading="lazy">
+          <figcaption>Bisnis · Belakang</figcaption>
+          <span class="zoom-badge" aria-hidden="true"><i data-lucide="zoom-in"></i></span>
+        </figure>
       </div>
     </div>
   </section>
 
   <!-- =========================================================
-       SECTION STARTER — NFC CARD (GAMING & SOSMED)
+       SECTION STARTER — NFC CARD (SOSMED & BISNIS)
        ========================================================= -->
-  <section class="section starter-sec" id="starter" aria-label="Paket Starter NFC Card Qriya">
+  <section class="section starter-sec" id="starter" aria-label="NFC Card NEXORA — Sosmed dan Bisnis">
     <div class="container">
 
       <!-- HEADER -->
       <div class="sec-head center reveal">
-        <span class="eyebrow">Starter · NFC Card</span>
-        <h2>📡 STARTER — NFC Card</h2>
-        <p class="lead">Satu kartu, satu identitas digital. Cukup <strong>tap NFC</strong> atau <strong>scan QR</strong> menggunakan smartphone untuk membuka <strong>Gaming Profile</strong> atau <strong>Sosial Media</strong> kamu dengan cepat.</p>
+        <span class="eyebrow">NFC Card · Sosmed &amp; Bisnis</span>
+        <h2>📡 NFC CARD — Sosmed &amp; Bisnis</h2>
+        <p class="lead">Satu kartu, satu identitas digital. Cukup <strong>tap NFC</strong> atau <strong>scan QR</strong> menggunakan smartphone untuk membuka <strong>halaman Sosial Media</strong> atau <strong>profil Bisnis</strong> kamu dengan cepat. <br>Klik pada foto kartu untuk melihat <strong>detail desain lebih besar</strong>.</p>
       </div>
 
       <!-- PRE-ORDER BANNER -->
@@ -1348,57 +1569,108 @@ table.cmp tfoot td{
       <!-- PRICING CARDS -->
       <div class="starter-grid">
 
-        <!-- CARD 1: NFC GAMING -->
-        <article class="starter-card reveal">
-          <span class="starter-tag">🎮 NFC Gaming Card</span>
-          <h3>Gaming</h3>
-          <div class="starter-price">
-            Rp39.000
-            <small>NFC Gaming Card</small>
-          </div>
-          <p class="starter-desc">
-            Cocok untuk gamer yang ingin memiliki kartu NFC dengan <strong>gambar game favorit</strong>
-            sebagai identitas, dan mempermudah teman menemukan akun game.
-          </p>
-
-          <ul class="feat-list">
-            <li><i data-lucide="radio"></i>NFC Gaming Card</li>
-            <li><i data-lucide="image"></i>Gambar / Art Game</li>
-            <li><i data-lucide="id-card"></i>Game ID</li>
-            <li><i data-lucide="user-round"></i>Username Game</li>
-            <li><i data-lucide="target"></i>Link / Add Friend</li>
-            <li><i data-lucide="zap"></i>Quick Access</li>
-          </ul>
-
-          <a class="btn btn-ghost btn-block" href="paket.html">Ambil Gaming Card</a>
-        </article>
-
-        <!-- CARD 2: NFC + QR SOSMED -->
-        <article class="starter-card featured reveal" style="--d:.1s">
+        <!-- CARD 1: NFC SOSMED -->
+        <article class="starter-card featured reveal">
           <span class="starter-badge">⭐ Rekomendasi</span>
-          <span class="starter-tag">📱 QR Sosmed</span>
+          <span class="starter-tag">📱 NFC Card Sosmed</span>
+
+          <div class="starter-preview">
+            <figure data-zoom data-caption="NFC Card Sosmed · Depan">
+              <img src="medsos.jpg" alt="NFC Card Sosmed tampak depan" loading="lazy">
+              <figcaption>Depan</figcaption>
+              <span class="zoom-badge" aria-hidden="true"><i data-lucide="zoom-in"></i></span>
+            </figure>
+            <figure data-zoom data-caption="NFC Card Sosmed · Belakang">
+              <img src="medsos2.jpg" alt="NFC Card Sosmed tampak belakang" loading="lazy">
+              <figcaption>Belakang</figcaption>
+              <span class="zoom-badge" aria-hidden="true"><i data-lucide="zoom-in"></i></span>
+            </figure>
+          </div>
+
           <h3>Sosmed</h3>
           <div class="starter-price">
             Rp29.000
-            <small>QR Sosmed</small>
+            <small>NFC Card Sosmed</small>
           </div>
           <p class="starter-desc">
-            QR Code yang langsung terhubung ke <strong>sosial media masing-masing orang</strong>.
-            Cukup scan QR untuk membuka semua akun sosial media kamu dalam satu halaman.
+            Kartu NFC &amp; QR Code yang langsung terhubung ke <strong>sosial media masing-masing orang</strong>.
+            Cukup tap atau scan untuk membuka semua akun sosial media kamu dalam satu halaman.
           </p>
 
           <ul class="feat-list">
+            <li><i data-lucide="radio"></i>NFC Card</li>
             <li><i data-lucide="qr-code"></i>QR Code Unik</li>
             <li><i data-lucide="share-2"></i>Halaman Sosial Media</li>
-            <li><i data-lucide="instagram"></i>Instagram</li>
-            <li><i data-lucide="music-2"></i>TikTok</li>
-            <li><i data-lucide="facebook"></i>Facebook</li>
-            <li><i data-lucide="message-circle"></i>WhatsApp</li>
-            <li><i data-lucide="youtube"></i>YouTube</li>
+            <li>
+              <svg class="bi bi-instagram" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+              Instagram
+            </li>
+            <li>
+              <svg class="bi bi-tiktok" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+              TikTok
+            </li>
+            <li>
+              <svg class="bi bi-facebook" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              Facebook
+            </li>
+            <li>
+              <svg class="bi bi-whatsapp" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              WhatsApp
+            </li>
+            <li>
+              <svg class="bi bi-youtube" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              YouTube
+            </li>
             <li><i data-lucide="link"></i>Custom Link</li>
           </ul>
 
           <a class="btn btn-primary btn-block" href="paket.html">Pre-Order Sosmed <i data-lucide="arrow-right"></i></a>
+        </article>
+
+        <!-- CARD 2: NFC BISNIS -->
+        <article class="starter-card reveal" style="--d:.1s">
+          <span class="starter-tag">💼 NFC Card Bisnis</span>
+
+          <div class="starter-preview">
+            <figure data-zoom data-caption="NFC Card Bisnis · Depan">
+              <img src="design1.jpg" alt="NFC Card Bisnis tampak depan" loading="lazy">
+              <figcaption>Depan</figcaption>
+              <span class="zoom-badge" aria-hidden="true"><i data-lucide="zoom-in"></i></span>
+            </figure>
+            <figure data-zoom data-caption="NFC Card Bisnis · Belakang">
+              <img src="design2.jpg" alt="NFC Card Bisnis tampak belakang" loading="lazy">
+              <figcaption>Belakang</figcaption>
+              <span class="zoom-badge" aria-hidden="true"><i data-lucide="zoom-in"></i></span>
+            </figure>
+          </div>
+
+          <h3>Bisnis</h3>
+          <div class="starter-price">
+            Rp49.000
+            <small>NFC Card Bisnis</small>
+          </div>
+          <p class="starter-desc">
+            Kartu NFC &amp; QR Code untuk <strong>identitas bisnis</strong> Anda. Cukup tap atau scan untuk membuka
+            profil usaha, <strong>portofolio</strong>, kontak, dan informasi bisnis dalam satu halaman profesional.
+          </p>
+
+          <ul class="feat-list">
+            <li><i data-lucide="radio"></i>NFC Card</li>
+            <li><i data-lucide="qr-code"></i>QR Code Unik</li>
+            <li><i data-lucide="briefcase"></i>Profil Bisnis</li>
+            <li><i data-lucide="images"></i>Galeri &amp; Portofolio</li>
+            <li><i data-lucide="store"></i>Nama Usaha &amp; Logo</li>
+            <li><i data-lucide="map-pin"></i>Alamat &amp; Google Maps</li>
+            <li>
+              <svg class="bi bi-whatsapp" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              WhatsApp Bisnis
+            </li>
+            <li><i data-lucide="globe"></i>Website Bisnis</li>
+            <li><i data-lucide="share-2"></i>Media Sosial Usaha</li>
+            <li><i data-lucide="link"></i>Custom Link</li>
+          </ul>
+
+          <a class="btn btn-ghost btn-block" href="paket.html">Ambil Bisnis Card</a>
         </article>
 
       </div>
@@ -1407,38 +1679,55 @@ table.cmp tfoot td{
       <div class="sec-head center reveal" style="margin-top:var(--space-5)">
         <span class="eyebrow">Fitur NFC Card</span>
         <h2>Yang Kamu Dapatkan.</h2>
-        <p class="lead">Fitur inti yang membuat kartu NFC ini praktis dipakai untuk gaming maupun sosial media sehari-hari.</p>
+        <p class="lead">Fitur inti yang membuat NFC Card ini praktis dipakai untuk bisnis maupun sosial media sehari-hari.</p>
       </div>
 
       <div class="starter-feat-grid">
         <article class="starter-feat reveal">
           <div class="ico" aria-hidden="true"><i data-lucide="radio"></i></div>
           <h3>Kartu NFC</h3>
-          <p>Kartu/gantungan dengan chip NFC yang dapat dipindai oleh smartphone yang mendukung NFC.</p>
+          <p>Kartu dengan chip NFC yang dapat dipindai oleh smartphone yang mendukung NFC.</p>
         </article>
 
         <article class="starter-feat reveal" style="--d:.06s">
-          <div class="ico" aria-hidden="true"><i data-lucide="image"></i></div>
-          <h3>Gambar / Art Game</h3>
-          <p>Kartu menampilkan gambar atau art dari game favoritmu sebagai identitas visual.</p>
-        </article>
-
-        <article class="starter-feat reveal" style="--d:.12s">
           <div class="ico" aria-hidden="true"><i data-lucide="qr-code"></i></div>
           <h3>QR Code Unik</h3>
           <p>Setiap kartu memiliki QR Code unik yang terhubung ke halaman digital kamu.</p>
         </article>
 
-        <article class="starter-feat reveal" style="--d:.18s">
+        <article class="starter-feat reveal" style="--d:.12s">
           <div class="ico" aria-hidden="true"><i data-lucide="share-2"></i></div>
           <h3>Sosial Media</h3>
-          <p>Varian Sosmed: tampilkan Instagram, TikTok, Facebook, WhatsApp, YouTube, dan custom link dalam satu halaman.</p>
+          <p>Tampilkan akun sosial media kamu dalam satu halaman — cukup tap atau scan.</p>
+          <div class="brand-row" aria-label="Platform sosial media yang didukung">
+            <span title="Instagram">
+              <svg class="bi bi-instagram" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </span>
+            <span title="Facebook">
+              <svg class="bi bi-facebook" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </span>
+            <span title="YouTube">
+              <svg class="bi bi-youtube" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </span>
+            <span title="TikTok">
+              <svg class="bi bi-tiktok" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+            </span>
+            <span title="WhatsApp">
+              <svg class="bi bi-whatsapp" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </span>
+          </div>
+        </article>
+
+        <article class="starter-feat reveal" style="--d:.18s">
+          <div class="ico" aria-hidden="true"><i data-lucide="briefcase"></i></div>
+          <h3>Profil Bisnis</h3>
+          <p>Varian Bisnis: menampilkan profil usaha, portofolio, kontak, alamat, dan informasi bisnis secara profesional.</p>
         </article>
 
         <article class="starter-feat reveal" style="--d:.24s">
-          <div class="ico" aria-hidden="true"><i data-lucide="id-card"></i></div>
-          <h3>Game ID &amp; Username</h3>
-          <p>Varian Gaming: menampilkan Game ID dan username agar teman mudah menemukan dan menambahkanmu.</p>
+          <div class="ico" aria-hidden="true"><i data-lucide="palette"></i></div>
+          <h3>Custom Design</h3>
+          <p>Desain depan dan belakang kartu dapat disesuaikan dengan identitas kamu atau bisnismu.</p>
         </article>
 
         <article class="starter-feat reveal" style="--d:.30s">
@@ -1450,7 +1739,7 @@ table.cmp tfoot td{
 
       <!-- CATATAN NFC -->
       <p class="starter-note reveal">
-        <strong>NFC + QR Quick Access.</strong> Ketuk NFC atau scan QR untuk membuka halaman gaming atau sosial media kamu.
+        <strong>NFC + QR Quick Access.</strong> Ketuk NFC atau scan QR untuk membuka halaman sosial media atau profil bisnis kamu.
         Fitur login otomatis bergantung pada dukungan platform, perangkat, dan sistem autentikasi yang digunakan.
       </p>
 
@@ -1494,7 +1783,7 @@ table.cmp tfoot td{
       <div class="sec-head center reveal">
         <span class="eyebrow">Paket &amp; Harga</span>
         <h2>Pilih Titik Mulai Anda.</h2>
-        <p class="lead">Harga jelas, fitur lengkap. Setiap gantungan Qriya selalu terhubung ke satu website.</p>
+        <p class="lead">Harga jelas, fitur lengkap. Setiap NFC Card NEXORA selalu terhubung ke satu website.</p>
       </div>
 
       <div class="pricing">
@@ -1507,14 +1796,14 @@ table.cmp tfoot td{
 
           <div class="preorder">
             <span class="po-badge">Pre-Order</span>
-            <strong>15 Gantungan + 15 Website</strong>
-            <span>1 Gantungan = 1 Website Personal</span>
+            <strong>15 NFC Card + 15 Website</strong>
+            <span>1 Kartu = 1 Website Personal</span>
           </div>
 
           <div class="group-title">Fitur</div>
           <ul class="feat-list">
-            <li><i data-lucide="check"></i>15 Gantungan Kunci QR</li>
-            <li><i data-lucide="check"></i>Custom Design Gantungan Kunci</li>
+            <li><i data-lucide="check"></i>15 NFC Card (Sosmed / Bisnis)</li>
+            <li><i data-lucide="check"></i>Custom Design Kartu</li>
             <li><i data-lucide="check"></i>15 QR Code Unik</li>
             <li><i data-lucide="check"></i>15 Website Personal</li>
             <li><i data-lucide="check"></i>Landing Page</li>
@@ -1522,7 +1811,7 @@ table.cmp tfoot td{
             <li><i data-lucide="check"></i>Link Media Sosial</li>
             <li><i data-lucide="check"></i>Responsive di HP, Tablet &amp; Laptop</li>
             <li><i data-lucide="check"></i>Hosting Vercel</li>
-            <li><i data-lucide="check"></i>QR Code langsung terhubung ke website</li>
+            <li><i data-lucide="check"></i>NFC &amp; QR langsung terhubung ke website</li>
             <li><i data-lucide="check"></i>Tanpa Custom Domain</li>
           </ul>
 
@@ -1543,14 +1832,14 @@ table.cmp tfoot td{
 
           <div class="preorder">
             <span class="po-badge">Pre-Order</span>
-            <strong>10 Gantungan + 10 Website</strong>
-            <span>1 Gantungan = 1 Website Personal</span>
+            <strong>10 NFC Card + 10 Website</strong>
+            <span>1 Kartu = 1 Website Personal</span>
           </div>
 
           <div class="group-title">Fitur</div>
           <ul class="feat-list">
-            <li><i data-lucide="check"></i>10 Gantungan Kunci QR</li>
-            <li><i data-lucide="check"></i>Custom Design Gantungan Kunci</li>
+            <li><i data-lucide="check"></i>10 NFC Card (Sosmed / Bisnis)</li>
+            <li><i data-lucide="check"></i>Custom Design Kartu</li>
             <li><i data-lucide="check"></i>10 QR Code Unik</li>
             <li><i data-lucide="check"></i>10 Website Personal</li>
             <li><i data-lucide="check"></i>Landing Page Premium</li>
@@ -1581,8 +1870,8 @@ table.cmp tfoot td{
 
           <div class="preorder">
             <span class="po-badge">Pre-Order</span>
-            <strong>5 Gantungan + 5 Website</strong>
-            <span>1 Gantungan = 1 Website Bisnis</span>
+            <strong>5 NFC Card + 5 Website</strong>
+            <span>1 Kartu = 1 Website Bisnis</span>
           </div>
 
           <div class="group-title">Khusus Untuk</div>
@@ -1591,18 +1880,19 @@ table.cmp tfoot td{
             <span>Bisnis Online</span><span>Usaha</span><span>Organisasi / Komunitas</span><span>Personal Business</span>
           </div>
 
-          <div class="group-title">Fitur Gantungan</div>
+          <div class="group-title">Fitur Kartu</div>
           <ul class="feat-list">
-            <li><i data-lucide="check"></i>5 Gantungan Kunci QR</li>
-            <li><i data-lucide="check"></i>Custom Design Gantungan Kunci</li>
+            <li><i data-lucide="check"></i>5 NFC Card Bisnis</li>
+            <li><i data-lucide="check"></i>Custom Design Kartu</li>
             <li><i data-lucide="check"></i>5 QR Code Unik</li>
-            <li><i data-lucide="check"></i>QR terhubung langsung ke website</li>
+            <li><i data-lucide="check"></i>NFC &amp; QR terhubung langsung ke website</li>
           </ul>
 
           <div class="group-title">Fitur Website</div>
           <ul class="feat-list">
             <li><i data-lucide="check"></i>Website Bisnis</li>
             <li><i data-lucide="check"></i>Landing Page</li>
+            <li><i data-lucide="check"></i>Galeri &amp; Portofolio</li>
             <li><i data-lucide="check"></i>Responsive</li>
             <li><i data-lucide="check"></i>Custom Domain 1 Tahun</li>
             <li><i data-lucide="check"></i>Hosting 1 Tahun</li>
@@ -1657,10 +1947,11 @@ table.cmp tfoot td{
           <h3>Business Basic</h3>
           <div class="price">Rp1.500.000</div>
           <ul class="feat-list">
-            <li><i data-lucide="check"></i>Custom Design Gantungan Kunci</li>
+            <li><i data-lucide="check"></i>Custom Design NFC Card</li>
             <li><i data-lucide="check"></i>Custom Domain 1 Tahun</li>
             <li><i data-lucide="check"></i>Hosting 1 Tahun</li>
             <li><i data-lucide="check"></i>Website Bisnis</li>
+            <li><i data-lucide="check"></i>Galeri &amp; Portofolio</li>
             <li><i data-lucide="check"></i>Database</li>
             <li><i data-lucide="check"></i>Login Admin</li>
             <li><i data-lucide="check"></i>CRUD Data</li>
@@ -1678,6 +1969,7 @@ table.cmp tfoot td{
             <li><i data-lucide="check"></i>WhatsApp</li>
             <li><i data-lucide="check"></i>Google Maps</li>
             <li><i data-lucide="check"></i>Media Sosial</li>
+            <li><i data-lucide="check"></i>Portofolio Lebih Lengkap</li>
             <li><i data-lucide="check"></i>Desain Website Lebih Premium</li>
             <li><i data-lucide="check"></i>Maintenance</li>
             <li><i data-lucide="check"></i>Responsive di berbagai perangkat</li>
@@ -1694,6 +1986,7 @@ table.cmp tfoot td{
             <li><i data-lucide="check"></i>Hak Akses Pengguna</li>
             <li><i data-lucide="check"></i>Database lebih kompleks</li>
             <li><i data-lucide="check"></i>Laporan &amp; Statistik</li>
+            <li><i data-lucide="check"></i>Portofolio &amp; Galeri Custom</li>
             <li><i data-lucide="check"></i>Maintenance &amp; Update Sistem</li>
             <li><i data-lucide="check"></i>Pengembangan Fitur Tambahan</li>
             <li><i data-lucide="check"></i>Design Lebih Premium</li>
@@ -1727,13 +2020,13 @@ table.cmp tfoot td{
           </thead>
           <tbody>
             <tr>
-              <td>Gantungan Kunci QR</td>
+              <td>NFC Card Bisnis</td>
               <td data-label="Basic" class="val">5</td>
               <td data-label="Standard" class="val">5</td>
               <td data-label="Custom" class="val">5</td>
             </tr>
             <tr>
-              <td>Custom Design Gantungan</td>
+              <td>Custom Design Kartu</td>
               <td data-label="Basic"><span class="yes"><i data-lucide="check"></i></span></td>
               <td data-label="Standard"><span class="yes"><i data-lucide="check"></i></span></td>
               <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
@@ -1770,6 +2063,12 @@ table.cmp tfoot td{
             </tr>
             <tr>
               <td>CRUD Data</td>
+              <td data-label="Basic"><span class="yes"><i data-lucide="check"></i></span></td>
+              <td data-label="Standard"><span class="yes"><i data-lucide="check"></i></span></td>
+              <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
+            </tr>
+            <tr>
+              <td>Galeri &amp; Portofolio</td>
               <td data-label="Basic"><span class="yes"><i data-lucide="check"></i></span></td>
               <td data-label="Standard"><span class="yes"><i data-lucide="check"></i></span></td>
               <td data-label="Custom"><span class="yes"><i data-lucide="check"></i></span></td>
@@ -1865,14 +2164,15 @@ table.cmp tfoot td{
        ========================================================= -->
   <section class="section" id="demo">
     <div class="container demo-wrap">
-      <figure class="demo-media reveal">
-        <img src="rumah.png" alt="Tampilan website Qriya di smartphone setelah scan QR" loading="lazy">
+      <figure class="demo-media reveal" data-zoom data-caption="Tampilan Website NEXORA">
+        <img src="rumah.png" alt="Tampilan website NEXORA di smartphone setelah tap NFC atau scan QR" loading="lazy">
+        <span class="zoom-badge" aria-hidden="true"><i data-lucide="zoom-in"></i></span>
       </figure>
 
       <div>
         <span class="eyebrow reveal">Demo</span>
-        <h2 class="reveal" style="--d:.06s">Scan Sekali. Langsung Terhubung.</h2>
-        <p class="lead reveal" style="--d:.12s">QR Code pada gantungan Qriya menjadi pintu masuk menuju website personal atau bisnis Anda.</p>
+        <h2 class="reveal" style="--d:.06s">Tap Sekali. Langsung Terhubung.</h2>
+        <p class="lead reveal" style="--d:.12s">NFC &amp; QR Code pada kartu NEXORA menjadi pintu masuk menuju website personal atau bisnis Anda.</p>
         <div class="actions reveal" style="--d:.18s">
           <a class="btn btn-primary btn-lg" href="demo.html">Lihat Demo <i data-lucide="arrow-right"></i></a>
         </div>
@@ -1881,26 +2181,26 @@ table.cmp tfoot td{
   </section>
 
   <!-- =========================================================
-       SECTION 10 — KENAPA QR KEYCHAIN
+       SECTION 10 — KENAPA NFC CARD
        ========================================================= -->
   <section class="section" id="keunggulan">
     <div class="container">
       <div class="sec-head center reveal">
-        <span class="eyebrow">Kenapa QR Keychain Qriya</span>
+        <span class="eyebrow">Kenapa NFC Card NEXORA</span>
         <h2>Kecil Bentuknya. Besar Fungsinya.</h2>
-        <p class="lead">Enam alasan mengapa gantungan QR Qriya menjadi identitas digital yang praktis.</p>
+        <p class="lead">Enam alasan mengapa NFC Card NEXORA menjadi identitas digital yang praktis.</p>
       </div>
 
       <div class="why">
         <article class="card why-item reveal">
-          <div class="ico" aria-hidden="true"><i data-lucide="key-round"></i></div>
+          <div class="ico" aria-hidden="true"><i data-lucide="credit-card"></i></div>
           <h3>Praktis</h3>
           <p>Identitas digital selalu bersama Anda.</p>
         </article>
         <article class="card why-item reveal" style="--d:.06s">
           <div class="ico" aria-hidden="true"><i data-lucide="zap"></i></div>
           <h3>Cepat</h3>
-          <p>Scan dan langsung menuju website.</p>
+          <p>Tap atau scan dan langsung menuju website.</p>
         </article>
         <article class="card why-item reveal" style="--d:.12s">
           <div class="ico" aria-hidden="true"><i data-lucide="sparkles"></i></div>
@@ -1910,7 +2210,7 @@ table.cmp tfoot td{
         <article class="card why-item reveal" style="--d:.18s">
           <div class="ico" aria-hidden="true"><i data-lucide="user-round"></i></div>
           <h3>Personal</h3>
-          <p>Satu QR dapat terhubung dengan identitas digital.</p>
+          <p>Satu kartu dapat terhubung dengan identitas digital.</p>
         </article>
         <article class="card why-item reveal" style="--d:.24s">
           <div class="ico" aria-hidden="true"><i data-lucide="shield-check"></i></div>
@@ -1933,14 +2233,14 @@ table.cmp tfoot td{
     <div class="container">
       <span class="eyebrow reveal" style="justify-content:center;display:inline-flex">Visual Story</span>
       <h2 class="reveal" style="--d:.06s">Bawa Identitas Digital Anda Ke Mana Saja.</h2>
-      <p class="lead reveal" style="--d:.12s">Dari benda fisik, menuju satu QR Code, satu scan, dan berakhir di halaman digital Anda.</p>
+      <p class="lead reveal" style="--d:.12s">Dari kartu fisik, menuju satu NFC &amp; QR Code, satu tap, dan berakhir di halaman digital Anda.</p>
 
       <div class="story-flow reveal" style="--d:.18s">
-        <span class="sf"><i data-lucide="key-round"></i>Physical</span>
+        <span class="sf"><i data-lucide="credit-card"></i>Physical</span>
         <span class="sep" aria-hidden="true"><i data-lucide="arrow-down"></i></span>
-        <span class="sf"><i data-lucide="qr-code"></i>QR</span>
+        <span class="sf"><i data-lucide="qr-code"></i>NFC / QR</span>
         <span class="sep" aria-hidden="true"><i data-lucide="arrow-down"></i></span>
-        <span class="sf"><i data-lucide="scan-line"></i>Scan</span>
+        <span class="sf"><i data-lucide="scan-line"></i>Tap / Scan</span>
         <span class="sep" aria-hidden="true"><i data-lucide="arrow-down"></i></span>
         <span class="sf"><i data-lucide="globe"></i>Digital</span>
       </div>
@@ -1954,7 +2254,7 @@ table.cmp tfoot td{
     <div class="container">
       <div class="sec-head center reveal">
         <span class="eyebrow">Lokasi Kami</span>
-        <h2>Temukan Qriya di Sini.</h2>
+        <h2>Temukan NEXORA di Sini.</h2>
         <p class="lead">Kunjungi kami di Kampus Universitas Bina Sarana Informatika Margonda, Depok.</p>
       </div>
 
@@ -2004,7 +2304,7 @@ table.cmp tfoot td{
             allowfullscreen=""
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
-            title="Lokasi Qriya - Universitas Bina Sarana Informatika Margonda">
+            title="Lokasi NEXORA - Universitas Bina Sarana Informatika Margonda">
           </iframe>
         </div>
       </div>
@@ -2019,7 +2319,7 @@ table.cmp tfoot td{
       <div class="cta-panel reveal">
         <span class="eyebrow" style="justify-content:center;display:inline-flex">Mulai Sekarang</span>
         <h2>Siap Menghubungkan Dunia Fisik dan Digital?</h2>
-        <p>Mulai dari sebuah gantungan QR dari Qriya dan ubah satu scan menjadi pengalaman digital.</p>
+        <p>Mulai dari sebuah NFC Card dari NEXORA dan ubah satu tap menjadi pengalaman digital.</p>
         <div class="cta-actions">
           <a class="btn btn-primary btn-lg" href="paket.html">Pilih Paket <i data-lucide="arrow-right"></i></a>
           <a class="btn btn-ghost btn-lg" href="demo.html">Lihat Demo</a>
@@ -2037,14 +2337,14 @@ table.cmp tfoot td{
   <div class="container footer-grid">
 
     <div class="f-brand">
-      <a class="brand" href="beranda.html" aria-label="Qriya — Beranda">
-        <img src="foto1.jpg" alt="Logo Qriya">
+      <a class="brand" href="beranda.html" aria-label="NEXORA — Beranda">
+        <img src="foto1.jpg" alt="Logo NEXORA">
         <span class="brand-text">
-          <span class="b-name">Qriya</span>
-          <span class="b-tag">QR Keychain</span>
+          <span class="b-name">NEXORA</span>
+          <span class="b-tag">NFC Card</span>
         </span>
       </a>
-      <p>Qriya menghadirkan gantungan QR yang menghubungkan dunia fisik dengan identitas digital. Satu scan untuk membuka website personal maupun bisnis Anda.</p>
+      <p>NEXORA menghadirkan NFC Card untuk bisnis dan sosial media yang menghubungkan dunia fisik dengan identitas digital. Satu tap untuk membuka website personal maupun bisnis Anda.</p>
     </div>
 
     <div class="f-col">
@@ -2062,10 +2362,10 @@ table.cmp tfoot td{
     <div class="f-col">
       <h4>Produk</h4>
       <ul>
-        <li><a href="paket.html">QR Keychain</a></li>
+        <li><a href="paket.html">NFC Card Sosmed</a></li>
+        <li><a href="paket.html">NFC Card Bisnis</a></li>
         <li><a href="paket.html">Website Personal</a></li>
         <li><a href="paket.html">Website Bisnis</a></li>
-        <li><a href="paket.html">Digital Identity</a></li>
       </ul>
     </div>
 
@@ -2084,10 +2384,35 @@ table.cmp tfoot td{
   </div>
 
   <div class="container footer-bottom">
-    <p>© 2026 Qriya. All rights reserved.</p>
-    <p>Gantungan → Scan → Website → Identitas Digital</p>
+    <p>© 2026 NEXORA. All rights reserved.</p>
+    <p>NFC Card → Tap / Scan → Website → Identitas Digital</p>
   </div>
 </footer>
+
+<!-- =========================================================
+     LIGHTBOX (Image Zoom)
+     ========================================================= -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Pratinjau gambar" aria-hidden="true">
+  <div class="lightbox-hint">Klik gambar untuk zoom · ESC untuk menutup</div>
+
+  <div class="lightbox-controls">
+    <button type="button" class="lightbox-btn" id="lbZoomOut" aria-label="Perkecil">
+      <i data-lucide="zoom-out"></i>
+    </button>
+    <button type="button" class="lightbox-btn" id="lbZoomIn" aria-label="Perbesar">
+      <i data-lucide="zoom-in"></i>
+    </button>
+    <button type="button" class="lightbox-btn" id="lbClose" aria-label="Tutup">
+      <i data-lucide="x"></i>
+    </button>
+  </div>
+
+  <div class="lightbox-stage" id="lbStage">
+    <img id="lbImg" src="" alt="">
+  </div>
+
+  <div class="lightbox-caption" id="lbCaption"></div>
+</div>
 
 <script>
 /* ===== Lucide icons ===== */
@@ -2147,14 +2472,12 @@ table.cmp tfoot td{
     if(e.key === 'Escape' && isOpen) toggle(false);
   });
 
-  /* Klik di luar header & sidebar menutup menu */
   document.addEventListener('click', function(e){
     if(!isOpen) return;
     if(e.target.closest('#navLinks') || e.target.closest('.site-header')) return;
     toggle(false);
   });
 
-  /* Tutup saat resize ke desktop */
   var rt;
   window.addEventListener('resize', function(){
     clearTimeout(rt);
@@ -2163,11 +2486,10 @@ table.cmp tfoot td{
     }, 120);
   });
 
-  /* Tutup saat orientasi berubah */
   window.addEventListener('orientationchange', function(){ toggle(false); });
 })();
 
-/* ===== Navbar: transparan di atas hero, solid halus setelah scroll ===== */
+/* ===== Navbar scroll ===== */
 (function(){
   var header = document.getElementById('siteHeader');
   if(!header) return;
@@ -2209,6 +2531,133 @@ table.cmp tfoot td{
   }, {threshold:0.14, rootMargin:'0px 0px -8% 0px'});
 
   items.forEach(function(el){ io.observe(el); });
+})();
+
+/* ===== Lightbox / Image Zoom ===== */
+(function(){
+  var lb        = document.getElementById('lightbox');
+  var lbImg     = document.getElementById('lbImg');
+  var lbCaption = document.getElementById('lbCaption');
+  var lbStage   = document.getElementById('lbStage');
+  var btnClose  = document.getElementById('lbClose');
+  var btnIn     = document.getElementById('lbZoomIn');
+  var btnOut    = document.getElementById('lbZoomOut');
+  if(!lb || !lbImg) return;
+
+  var scale   = 1;
+  var MIN     = 1;
+  var MAX     = 4;
+  var STEP    = 0.4;
+  var isOpen  = false;
+
+  function applyScale(){
+    lbImg.style.transform = 'scale(' + scale + ')';
+    lbStage.classList.toggle('zoomed', scale > 1.001);
+  }
+
+  function open(src, alt, caption){
+    lbImg.src = src;
+    lbImg.alt = alt || '';
+    lbCaption.textContent = caption || alt || '';
+    scale = 1;
+    applyScale();
+    lb.classList.add('open');
+    lb.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    isOpen = true;
+  }
+
+  function close(){
+    lb.classList.remove('open');
+    lb.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    isOpen = false;
+    setTimeout(function(){
+      if(!isOpen){ lbImg.src = ''; lbImg.style.transform = ''; }
+    }, 320);
+  }
+
+  function zoomIn(){
+    scale = Math.min(MAX, scale + STEP);
+    applyScale();
+  }
+  function zoomOut(){
+    scale = Math.max(MIN, scale - STEP);
+    applyScale();
+  }
+  function toggleZoomAt(ev){
+    if(scale > 1.001){
+      scale = 1;
+      applyScale();
+    } else {
+      // zoom ke arah klik
+      var rect = lbImg.getBoundingClientRect();
+      var cx = ((ev.clientX - rect.left) / rect.width) * 100;
+      var cy = ((ev.clientY - rect.top) / rect.height) * 100;
+      cx = Math.max(0, Math.min(100, cx));
+      cy = Math.max(0, Math.min(100, cy));
+      lbImg.style.transformOrigin = cx + '% ' + cy + '%';
+      scale = 2.2;
+      applyScale();
+    }
+  }
+
+  // Klik pada element dengan [data-zoom]
+  document.querySelectorAll('[data-zoom]').forEach(function(el){
+    el.addEventListener('click', function(e){
+      // cegah trigger jika klik tombol/link di dalam
+      if(e.target.closest('a,button')) return;
+      var img = el.tagName === 'IMG' ? el : el.querySelector('img');
+      if(!img) return;
+      var caption = el.getAttribute('data-caption') || img.alt || '';
+      open(img.src, img.alt, caption);
+    });
+    // tambah tabindex agar bisa diakses keyboard
+    if(!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '0');
+    el.setAttribute('role', 'button');
+    el.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        var img = el.tagName === 'IMG' ? el : el.querySelector('img');
+        if(!img) return;
+        var caption = el.getAttribute('data-caption') || img.alt || '';
+        open(img.src, img.alt, caption);
+      }
+    });
+  });
+
+  btnClose && btnClose.addEventListener('click', close);
+  btnIn    && btnIn.addEventListener('click', zoomIn);
+  btnOut   && btnOut.addEventListener('click', zoomOut);
+
+  lbStage.addEventListener('click', function(e){
+    if(e.target === lbImg || e.target === lbStage){
+      toggleZoomAt(e);
+    }
+  });
+
+  // klik backdrop menutup
+  lb.addEventListener('click', function(e){
+    if(e.target === lb) close();
+  });
+
+  // keyboard
+  document.addEventListener('keydown', function(e){
+    if(!isOpen) return;
+    if(e.key === 'Escape') close();
+    else if(e.key === '+' || e.key === '=') zoomIn();
+    else if(e.key === '-' || e.key === '_') zoomOut();
+    else if(e.key === '0'){ scale = 1; applyScale(); }
+  });
+
+  // swipe / wheel zoom
+  lbStage.addEventListener('wheel', function(e){
+    if(!isOpen) return;
+    if(e.ctrlKey){ e.preventDefault(); return; }
+    e.preventDefault();
+    if(e.deltaY < 0) zoomIn();
+    else zoomOut();
+  }, {passive:false});
 })();
 </script>
 </body>
