@@ -183,8 +183,7 @@ p{color:var(--muted)}
 }
 
 /* =========================================================
-   BRAND — LOCKED (tidak bisa diubah/diedit)
-   Brand text dikunci agar konsisten dengan logo di foto
+   BRAND — LOCKED
    ========================================================= */
 .brand{
   display:flex;align-items:center;gap:12px;flex-shrink:0;
@@ -237,7 +236,6 @@ p{color:var(--muted)}
   background:linear-gradient(120deg,#ffffff 0%,#a5b4fc 45%,#7dd3fc 100%);
   -webkit-background-clip:text;background-clip:text;color:transparent;
 }
-/* Cegah ekstensi/editor mengubah brand */
 .brand [contenteditable="true"],
 .brand [contenteditable=""]{
   -webkit-user-modify:read-only;
@@ -565,6 +563,9 @@ p{color:var(--muted)}
 .feat-list{display:grid;gap:10px;margin-top:24px}
 .feat-list li{display:flex;gap:11px;align-items:flex-start;font-size:.86rem;color:var(--muted);line-height:1.6}
 .feat-list li svg.lucide{width:16px;height:16px;color:#7dd3fc;margin-top:4px}
+.feat-list li.is-disabled{color:rgba(148,163,184,.55)}
+.feat-list li.is-disabled svg.lucide{color:rgba(148,163,184,.55)}
+.feat-list li.is-disabled span{text-decoration:line-through}
 
 /* Brand icons in feature list */
 .feat-list li .bi{width:17px;height:17px;flex:none;margin-top:3px;display:block}
@@ -1415,7 +1416,7 @@ table.cmp tfoot td{
       </p>
 
       <div class="actions reveal" style="--d:.18s">
-        <a class="btn btn-primary btn-lg" href="paket.html">Lihat Paket <i data-lucide="arrow-right"></i></a>
+        <a class="btn btn-primary btn-lg" href="#paket">Lihat Paket <i data-lucide="arrow-right"></i></a>
         <a class="btn btn-ghost btn-lg" href="demo.html">Lihat Demo</a>
       </div>
 
@@ -1525,14 +1526,14 @@ table.cmp tfoot td{
             <div class="ico" aria-hidden="true"><i data-lucide="share-2"></i></div>
             <div>
               <h3>NFC Card Sosmed</h3>
-              <p>Instagram, TikTok, Facebook, WhatsApp, YouTube, dan custom link dalam satu halaman.</p>
+              <p>Instagram, TikTok, Facebook, WhatsApp, YouTube, dan custom link dalam satu halaman. <strong>Tanpa website portofolio.</strong></p>
             </div>
           </article>
           <article class="info-item reveal" style="--d:.30s">
             <div class="ico" aria-hidden="true"><i data-lucide="briefcase"></i></div>
             <div>
               <h3>NFC Card Bisnis</h3>
-              <p>Kartu bisnis digital dengan profil usaha, portofolio, kontak, dan informasi lengkap.</p>
+              <p>Kartu bisnis digital yang terhubung ke <strong>website bisnis lengkap</strong>: profil usaha, portofolio, kontak, dan informasi lengkap.</p>
             </div>
           </article>
         </div>
@@ -1572,15 +1573,15 @@ table.cmp tfoot td{
       <div class="sec-head center reveal">
         <span class="eyebrow">NFC Card · Sosmed &amp; Bisnis</span>
         <h2>📡 NFC CARD — Sosmed &amp; Bisnis</h2>
-        <p class="lead">Satu kartu, satu identitas digital. Cukup <strong>tap NFC</strong> atau <strong>scan QR</strong> menggunakan smartphone untuk membuka <strong>halaman Sosial Media</strong> atau <strong>profil Bisnis</strong> kamu dengan cepat. <br>Klik pada foto kartu untuk melihat <strong>detail desain lebih besar</strong>.</p>
+        <p class="lead">Satu kartu, satu identitas digital. Cukup <strong>tap NFC</strong> atau <strong>scan QR</strong> menggunakan smartphone untuk membuka <strong>halaman Sosial Media</strong> atau <strong>website Bisnis</strong> kamu dengan cepat. <br>Klik pada foto kartu untuk melihat <strong>detail desain lebih besar</strong>.</p>
       </div>
 
       <div class="starter-launch reveal">
         <span class="starter-fire">🔥 PRE-ORDER 15 UNIT</span>
 
         <div class="launch-copy">
-          <strong>Batch Pertama — Terbatas</strong>
-          <span>Hanya tersedia 15 unit pada batch pertama.</span>
+          <strong>Batch Pertama — 15 NFC Card (Sosmed &amp; Bisnis)</strong>
+          <span>Kartu Sosmed → hanya halaman sosial media (tanpa portofolio). Kartu Bisnis → website bisnis lengkap sesuai paket.</span>
         </div>
 
         <div class="starter-quota">
@@ -1612,17 +1613,19 @@ table.cmp tfoot td{
           <h3>Sosmed</h3>
           <div class="starter-price">
             Rp29.000
-            <small>NFC Card Sosmed</small>
+            <small>NFC Card Sosmed · Hanya Halaman Sosial Media</small>
           </div>
           <p class="starter-desc">
-            Kartu NFC &amp; QR Code yang langsung terhubung ke <strong>sosial media masing-masing orang</strong>.
+            Kartu NFC &amp; QR Code yang langsung terhubung ke <strong>halaman sosial media</strong>.
             Cukup tap atau scan untuk membuka semua akun sosial media kamu dalam satu halaman.
+            <strong>Tidak termasuk website portofolio.</strong>
           </p>
 
           <ul class="feat-list">
             <li><i data-lucide="radio"></i>NFC Card</li>
             <li><i data-lucide="qr-code"></i>QR Code Unik</li>
             <li><i data-lucide="share-2"></i>Halaman Sosial Media</li>
+            <li class="is-disabled"><i data-lucide="x"></i><span>Website Portofolio</span></li>
             <li>
               <svg class="bi bi-instagram" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
               Instagram
@@ -1646,7 +1649,7 @@ table.cmp tfoot td{
             <li><i data-lucide="link"></i>Custom Link</li>
           </ul>
 
-          <a class="btn btn-primary btn-block" href="paket.html">Pre-Order Sosmed <i data-lucide="arrow-right"></i></a>
+          <a class="btn btn-primary btn-block" href="#paket">Pre-Order Sosmed <i data-lucide="arrow-right"></i></a>
         </article>
 
         <!-- CARD 2: NFC BISNIS -->
@@ -1669,11 +1672,13 @@ table.cmp tfoot td{
           <h3>Bisnis</h3>
           <div class="starter-price">
             Rp49.000
-            <small>NFC Card Bisnis</small>
+            <small>Per kartu · 1 website bisnis</small>
           </div>
           <p class="starter-desc">
-            Kartu NFC &amp; QR Code untuk <strong>identitas bisnis</strong> Anda. Cukup tap atau scan untuk membuka
-            profil usaha, <strong>portofolio</strong>, kontak, dan informasi bisnis dalam satu halaman profesional.
+            Kartu NFC &amp; QR Code untuk <strong>identitas bisnis</strong> Anda yang <strong>terhubung langsung ke website bisnis</strong>.
+            Cukup tap atau scan untuk membuka profil usaha, <strong>portofolio</strong>, kontak, dan informasi bisnis dalam satu halaman profesional.
+            <br><br><strong>Bisnis Portofolio Full:</strong> <strong>Rp499.000</strong> sudah termasuk <strong>domain + hosting 1 tahun + NFC Card</strong>.
+            <br><strong>Bisnis Portofolio Starter:</strong> <strong>Rp99.000</strong> dengan hosting di <strong>Vercel</strong>, <strong>tidak support custom domain</strong>.
           </p>
 
           <ul class="feat-list">
@@ -1692,7 +1697,7 @@ table.cmp tfoot td{
             <li><i data-lucide="link"></i>Custom Link</li>
           </ul>
 
-          <a class="btn btn-ghost btn-block" href="paket.html">Ambil Bisnis Card</a>
+          <a class="btn btn-ghost btn-block" href="#paket">Ambil Bisnis Card</a>
         </article>
 
       </div>
@@ -1741,8 +1746,8 @@ table.cmp tfoot td{
 
         <article class="starter-feat reveal" style="--d:.18s">
           <div class="ico" aria-hidden="true"><i data-lucide="briefcase"></i></div>
-          <h3>Profil Bisnis</h3>
-          <p>Varian Bisnis: menampilkan profil usaha, portofolio, kontak, alamat, dan informasi bisnis secara profesional.</p>
+          <h3>Website Bisnis</h3>
+          <p>Varian Bisnis: kartu terhubung ke website bisnis yang menampilkan profil usaha, portofolio, kontak, alamat, dan informasi bisnis secara profesional.</p>
         </article>
 
         <article class="starter-feat reveal" style="--d:.24s">
@@ -1754,12 +1759,13 @@ table.cmp tfoot td{
         <article class="starter-feat reveal" style="--d:.30s">
           <div class="ico" aria-hidden="true"><i data-lucide="zap"></i></div>
           <h3>Quick Access</h3>
-          <p>Ketuk NFC atau scan QR untuk membuka halaman/link secara instan tanpa ribet.</p>
+          <p>Ketuk NFC atau scan QR untuk membuka website/link secara instan tanpa ribet.</p>
         </article>
       </div>
 
       <p class="starter-note reveal">
-        <strong>NFC + QR Quick Access.</strong> Ketuk NFC atau scan QR untuk membuka halaman sosial media atau profil bisnis kamu.
+        <strong>NFC + QR Quick Access.</strong> Ketuk NFC atau scan QR untuk membuka halaman sosial media atau website bisnis kamu.
+        <strong>1 Kartu = 1 Website.</strong> Kartu Sosmed hanya terhubung ke halaman sosial media (tanpa website portofolio), kartu Bisnis terhubung ke website bisnis lengkap.
         Fitur login otomatis bergantung pada dukungan platform, perangkat, dan sistem autentikasi yang digunakan.
       </p>
 
@@ -1796,90 +1802,87 @@ table.cmp tfoot td{
   </section>
 
   <!-- =========================================================
-       SECTION 6 — PAKET & HARGA
+       SECTION 6 — PAKET & HARGA (SELARAS DENGAN SOSMED & BISNIS)
        ========================================================= -->
   <section class="section" id="paket">
     <div class="container">
       <div class="sec-head center reveal">
         <span class="eyebrow">Paket &amp; Harga</span>
-        <h2>Pilih Titik Mulai Anda.</h2>
-        <p class="lead">Harga jelas, fitur lengkap. Setiap NFC Card NEXORA selalu terhubung ke satu website.</p>
+        <h2>NFC Card — Sosmed &amp; Bisnis</h2>
+        <p class="lead">
+          Harga transparan per kartu. <strong>Pre-Order batch pertama: 15 unit</strong>.
+          Kartu <strong>Sosmed</strong> hanya untuk halaman sosial media, kartu <strong>Bisnis</strong> untuk website bisnis lengkap.
+        </p>
       </div>
 
       <div class="pricing">
 
+        <!-- SOSMED -->
         <article class="plan reveal">
-          <span class="tag">Starter Project</span>
-          <h3>Starter</h3>
-          <div class="price">Rp99.000<small>mulai dari</small></div>
+          <span class="tag">📱 NFC Card Sosmed</span>
+          <h3>Sosmed</h3>
+          <div class="price">Rp29.000<small>per kartu</small></div>
 
           <div class="preorder">
             <span class="po-badge">Pre-Order</span>
-            <strong>15 NFC Card + 15 Website</strong>
-            <span>1 Kartu = 1 Website Personal</span>
+            <strong>1 Kartu = Halaman Sosmed</strong>
+            <span>Tanpa website portofolio</span>
           </div>
 
           <div class="group-title">Fitur</div>
           <ul class="feat-list">
-            <li><i data-lucide="check"></i>15 NFC Card (Sosmed / Bisnis)</li>
-            <li><i data-lucide="check"></i>Custom Design Kartu</li>
-            <li><i data-lucide="check"></i>15 QR Code Unik</li>
-            <li><i data-lucide="check"></i>15 Website Personal</li>
-            <li><i data-lucide="check"></i>Landing Page</li>
-            <li><i data-lucide="check"></i>Profil Pengguna</li>
-            <li><i data-lucide="check"></i>Link Media Sosial</li>
-            <li><i data-lucide="check"></i>Responsive di HP, Tablet &amp; Laptop</li>
-            <li><i data-lucide="check"></i>Hosting Vercel</li>
-            <li><i data-lucide="check"></i>NFC &amp; QR langsung terhubung ke website</li>
-            <li><i data-lucide="check"></i>Tanpa Custom Domain</li>
+            <li><i data-lucide="radio"></i>NFC Card</li>
+            <li><i data-lucide="qr-code"></i>QR Code Unik</li>
+            <li><i data-lucide="share-2"></i>Halaman Sosial Media</li>
+            <li><i data-lucide="link"></i>Custom Link</li>
+            <li class="is-disabled"><i data-lucide="x"></i><span>Website Portofolio</span></li>
           </ul>
 
           <div class="group-title">Cocok Untuk</div>
           <div class="chips">
-            <span>Mahasiswa</span><span>Pelajar</span><span>Komunitas</span>
-            <span>Teman Satu Kelas</span><span>Organisasi</span><span>Personal Branding Sederhana</span>
+            <span>Content Creator</span><span>Pelajar</span><span>Mahasiswa</span>
+            <span>Personal Branding</span><span>Komunitas</span><span>Influencer</span>
           </div>
 
-          <a class="btn btn-ghost btn-block" href="paket.html">Lihat Detail Paket</a>
+          <a class="btn btn-ghost btn-block" href="paket.html">Pre-Order Sosmed</a>
         </article>
 
+        <!-- BISNIS -->
         <article class="plan featured reveal" style="--d:.1s">
-          <span class="tag">Pro Project · Populer</span>
-          <h3>Pro</h3>
-          <div class="price">Rp499.000<small>mulai dari</small></div>
+          <span class="tag">💼 NFC Card Bisnis · Populer</span>
+          <h3>Bisnis</h3>
+          <div class="price">Rp49.000<small>per kartu</small></div>
 
           <div class="preorder">
             <span class="po-badge">Pre-Order</span>
-            <strong>10 NFC Card + 10 Website</strong>
-            <span>1 Kartu = 1 Website Personal</span>
+            <strong>1 Kartu = 1 Website Bisnis</strong>
+            <span>Portfolio Full: Rp499.000 termasuk domain + hosting 1 tahun + NFC Card</span>
+             <span>Portfolio Starter: Rp99.000 termasuk hosting di Vercel domain tidak di custom + NFC Card</span>
           </div>
 
           <div class="group-title">Fitur</div>
           <ul class="feat-list">
-            <li><i data-lucide="check"></i>10 NFC Card (Sosmed / Bisnis)</li>
-            <li><i data-lucide="check"></i>Custom Design Kartu</li>
-            <li><i data-lucide="check"></i>10 QR Code Unik</li>
-            <li><i data-lucide="check"></i>10 Website Personal</li>
-            <li><i data-lucide="check"></i>Landing Page Premium</li>
-            <li><i data-lucide="check"></i>Profil Lengkap</li>
-            <li><i data-lucide="check"></i>Portfolio Project</li>
-            <li><i data-lucide="check"></i>CV Online</li>
-            <li><i data-lucide="check"></i>Tombol WhatsApp</li>
-            <li><i data-lucide="check"></i>Media Sosial</li>
-            <li><i data-lucide="check"></i>Responsive di berbagai perangkat</li>
-            <li><i data-lucide="check"></i>Custom Domain 1 Tahun</li>
-            <li><i data-lucide="check"></i>Hosting 1 Tahun</li>
+            <li><i data-lucide="radio"></i>NFC Card</li>
+            <li><i data-lucide="qr-code"></i>QR Code Unik</li>
+            <li><i data-lucide="briefcase"></i>Website Bisnis</li>
+            <li><i data-lucide="images"></i>Galeri &amp; Portofolio</li>
+            <li><i data-lucide="store"></i>Nama Usaha &amp; Logo</li>
+            <li><i data-lucide="map-pin"></i>Alamat &amp; Google Maps</li>
+            <li><i data-lucide="message-circle"></i>WhatsApp Bisnis</li>
+            <li><i data-lucide="share-2"></i>Media Sosial Usaha</li>
+            <li><i data-lucide="link"></i>Custom Link</li>
           </ul>
 
           <div class="group-title">Cocok Untuk</div>
           <div class="chips">
-            <span>Mahasiswa</span><span>Fresh Graduate</span><span>Programmer</span>
-            <span>Freelancer</span><span>Content Creator</span><span>Personal Branding</span>
+            <span>UMKM</span><span>Toko</span><span>Kedai Kopi</span>
+            <span>Bisnis Online</span><span>Organisasi</span><span>Personal Business</span>
           </div>
 
-          <a class="btn btn-primary btn-block" href="paket.html">Lihat Detail Paket <i data-lucide="arrow-right"></i></a>
+          <a class="btn btn-primary btn-block" href="paket.html">Pre-Order Bisnis <i data-lucide="arrow-right"></i></a>
         </article>
 
+        <!-- BUSINESS PROJECT -->
         <article class="plan reveal" style="--d:.2s">
           <span class="tag">Business Project</span>
           <h3>Business</h3>
@@ -1887,7 +1890,7 @@ table.cmp tfoot td{
 
           <div class="preorder">
             <span class="po-badge">Pre-Order</span>
-            <strong>5 NFC Card + 5 Website</strong>
+            <strong>5 NFC Card + 5 Website Bisnis</strong>
             <span>1 Kartu = 1 Website Bisnis</span>
           </div>
 
@@ -1902,12 +1905,12 @@ table.cmp tfoot td{
             <li><i data-lucide="check"></i>5 NFC Card Bisnis</li>
             <li><i data-lucide="check"></i>Custom Design Kartu</li>
             <li><i data-lucide="check"></i>5 QR Code Unik</li>
-            <li><i data-lucide="check"></i>NFC &amp; QR terhubung langsung ke website</li>
+            <li><i data-lucide="check"></i>NFC &amp; QR terhubung langsung ke website bisnis</li>
           </ul>
 
           <div class="group-title">Fitur Website</div>
           <ul class="feat-list">
-            <li><i data-lucide="check"></i>Website Bisnis</li>
+            <li><i data-lucide="check"></i>5 Website Bisnis</li>
             <li><i data-lucide="check"></i>Landing Page</li>
             <li><i data-lucide="check"></i>Galeri &amp; Portofolio</li>
             <li><i data-lucide="check"></i>Responsive</li>
@@ -1923,9 +1926,7 @@ table.cmp tfoot td{
             <li><i data-lucide="check"></i>Database</li>
             <li><i data-lucide="check"></i>Login Admin</li>
             <li><i data-lucide="check"></i>Admin Dashboard</li>
-            <li><i data-lucide="check"></i>Tambah Data</li>
-            <li><i data-lucide="check"></i>Edit Data</li>
-            <li><i data-lucide="check"></i>Hapus Data</li>
+            <li><i data-lucide="check"></i>CRUD Data</li>
             <li><i data-lucide="check"></i>Pencarian Data</li>
             <li><i data-lucide="check"></i>Pengelolaan Data</li>
             <li><i data-lucide="check"></i>Responsive di berbagai perangkat</li>
@@ -1940,10 +1941,17 @@ table.cmp tfoot td{
             <li><i data-lucide="check"></i>Backup Database</li>
           </ul>
 
-          <a class="btn btn-ghost btn-block" href="paket.html">Lihat Detail Paket</a>
+          <a class="btn btn-ghost btn-block" href="paket.html">Lihat Detail Business</a>
         </article>
 
       </div>
+
+      <p class="note reveal">
+        <strong>Ketentuan Pre-Order:</strong> Batch pertama menyediakan <strong>15 unit NFC Card</strong> yang terdiri dari
+        <strong>NFC Card Sosmed</strong> dan <strong>NFC Card Bisnis</strong>. Setiap kartu terhubung ke <strong>1 halaman/website</strong> —
+        kartu Sosmed hanya menuju halaman sosial media (tanpa website portofolio), kartu Bisnis menuju website bisnis lengkap.
+        Kuota terbatas, siapa cepat dia dapat.
+      </p>
     </div>
   </section>
 
@@ -1955,7 +1963,7 @@ table.cmp tfoot td{
       <div class="sec-head center reveal">
         <span class="eyebrow">Business Detail</span>
         <h2>Rincian Paket Business.</h2>
-        <p class="lead">Tiga tingkatan sistem bisnis yang dapat disesuaikan dengan skala kebutuhan Anda.</p>
+        <p class="lead">Tiga tingkatan sistem bisnis yang dapat disesuaikan dengan skala kebutuhan Anda. Setiap NFC Card Bisnis terhubung ke website bisnis.</p>
       </div>
 
       <div class="biz-grid">
@@ -2337,7 +2345,7 @@ table.cmp tfoot td{
         <h2>Siap Menghubungkan Dunia Fisik dan Digital?</h2>
         <p>Mulai dari sebuah NFC Card dari NEXORA dan ubah satu tap menjadi pengalaman digital.</p>
         <div class="cta-actions">
-          <a class="btn btn-primary btn-lg" href="paket.html">Pilih Paket <i data-lucide="arrow-right"></i></a>
+          <a class="btn btn-primary btn-lg" href="#paket">Pilih Paket <i data-lucide="arrow-right"></i></a>
           <a class="btn btn-ghost btn-lg" href="demo.html">Lihat Demo</a>
         </div>
       </div>
@@ -2367,7 +2375,7 @@ table.cmp tfoot td{
           <span class="b-tag">NFC Card</span>
         </span>
       </a>
-      <p>NEXORA menghadirkan NFC Card untuk bisnis dan sosial media yang menghubungkan dunia fisik dengan identitas digital. Satu tap untuk membuka website personal maupun bisnis Anda.</p>
+      <p>NEXORA menghadirkan NFC Card untuk bisnis dan sosial media yang menghubungkan dunia fisik dengan identitas digital. Satu tap untuk membuka halaman sosial media atau website bisnis Anda.</p>
     </div>
 
     <div class="f-col">
@@ -2387,8 +2395,8 @@ table.cmp tfoot td{
       <ul>
         <li><a href="paket.html">NFC Card Sosmed</a></li>
         <li><a href="paket.html">NFC Card Bisnis</a></li>
-        <li><a href="paket.html">Website Personal</a></li>
         <li><a href="paket.html">Website Bisnis</a></li>
+        <li><a href="paket.html">Business Project</a></li>
       </ul>
     </div>
 
@@ -2556,17 +2564,13 @@ table.cmp tfoot td{
   items.forEach(function(el){ io.observe(el); });
 })();
 
-/* ===== BRAND LOCK =====
-   Lindungi brand NEXORA agar tidak bisa diubah / diedit
-   (oleh CMS, visual editor, ekstensi browser, maupun script lain)
-*/
+/* ===== BRAND LOCK ===== */
 (function(){
   var LOCKED_BRAND = 'NEXORA';
   var LOCKED_TAG   = 'NFC Card';
 
   function lockBrand(){
     document.querySelectorAll('.brand[data-brand-lock="true"]').forEach(function(brand){
-      // Nonaktifkan contenteditable secara paksa
       brand.setAttribute('contenteditable', 'false');
       brand.setAttribute('spellcheck', 'false');
       brand.setAttribute('translate', 'no');
@@ -2580,11 +2584,9 @@ table.cmp tfoot td{
       var bName = brand.querySelector('.b-name');
       if(bName){
         bName.setAttribute('contenteditable', 'false');
-        // Paksa teks tetap NEXORA jika ada yang coba ubah
         if(bName.textContent.trim() !== LOCKED_BRAND){
           bName.textContent = LOCKED_BRAND;
         }
-        // MutationObserver: cegah perubahan isi teks
         if(!bName.__lockObserver){
           bName.__lockObserver = new MutationObserver(function(){
             if(bName.textContent.trim() !== LOCKED_BRAND){
@@ -2611,7 +2613,6 @@ table.cmp tfoot td{
         }
       }
 
-      // Cegah drag pada gambar logo
       var img = brand.querySelector('img');
       if(img){
         img.setAttribute('draggable', 'false');
